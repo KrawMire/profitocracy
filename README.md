@@ -2,7 +2,13 @@
   <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/main_banner.png" alt="Title image" />
 </p>
 
-Welcome to the source code of **Profitocracy**. 
+<p align="left">
+    <a href="https://apps.apple.com/rs/app/profitocracy/id6503658740">
+      <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/distribution/download_app_store.svg" alt="App Store Download" height="150"/>
+    </a>
+</p>
+
+Welcome to the source code of **Profitocracy**.
 
 **Profitocracy** is a powerful budget management app designed to help users track their expenses effortlessly while following the 50-30-20 budgeting rule.
 
@@ -26,17 +32,36 @@ Welcome to the source code of **Profitocracy**.
     <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/multicurrency_banner.png" alt="Multi-Currency" width="150"/>
 </p>
 
-## Supported Platforms
+# Installation
 
-Profitocracy is created using .NET MAUI and can be launched on different platforms, but the main of them are:
+> [!NOTE]
+> For now, Profitocracy is published only in the Apple App Store. I hope it will be also available at Google Play Market soon.
 
-- iOS;
-- Android.
+## Android
 
-## <a name="503020rule"></a> What is 50-30-20 rule
+To install Profitocracy to an Android device, go to the [latest release](https://github.com/KrawMire/profitocracy-maui/releases/latest) and install an attached *.apk* file.
+Then click on it and follow the instructions.
 
-The 50-30-20 rule is a common way to allocate the spending categories in your personal or household budget. 
-The rule targets 50% of your after-tax income toward necessities, 30% toward things you don’t need—but make 
+> If you want to try out a specific version of Profitocracy, go to
+> [the list of releases](https://github.com/KrawMire/profitocracy-maui/releases)
+> and select the version you would like to install.
+
+## iOS
+
+You can download the Profitocracy on the Apple App Store by following [this link](https://apps.apple.com/rs/app/profitocracy/id6503658740) or by clicking on the following iamge:
+
+<p align="left">
+    <a href="https://apps.apple.com/rs/app/profitocracy/id6503658740">
+      <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/distribution/download_app_store.svg" alt="App Store Download" height="150"/>
+    </a>
+</p>
+
+# More About Profitocracy
+
+## <a name="503020rule"></a> What is a 50-30-20 rule
+
+The 50-30-20 rule is a common way to allocate the spending categories in your personal or household budget.
+The rule targets 50% of your after-tax income toward necessities, 30% toward things you don’t need—but make
 life a little nicer and the final 20% toward paying down debt and/or adding to your savings.
 
 ## Terminologies Used in Profitocracy
@@ -74,27 +99,6 @@ Once created, you can track your category-wise spending on the **Home Screen.**
 
 - If a planned amount is set, Profitocracy compares your spending against it for better tracking.
 - If no planned amount is defined, the app simply displays the total expenses for the category during the ongoing month.
-
-# Installation
-
-For now, the only platform you can install without needing to build the application by yourself is to install it to Android device
-through *.apk* file.
-
-I want to publish Profitocracy to a Google Play Store and Apple App Store, but it will happen later.
-
-## Android
-
-To install Profitocracy to an Android device, go to the [latest release](https://github.com/KrawMire/profitocracy-maui/releases/latest) and install an attached *.apk* file. 
-Then click on it and follow the instructions.
-
-> If you want to try out a specific version of Profitocracy, go to 
-> [the list of releases](https://github.com/KrawMire/profitocracy-maui/releases) 
-> and select the version you would like to install.
-
-## iOS
-
-> [!IMPORTANT]
-> Unfortunately, Profitocracy is not available in App Store yet, therefore, it is not available on iOS. But I hope it will be published there as soon as possible.
 
 # Gettings Started
 
