@@ -9,9 +9,17 @@ public class CurrencyService
 
     static CurrencyService()
     {
-        CurrencyNames.Add(Currency.AvailableCurrencies.Rub.Code, AppResources.Currencies_RussianRuble);
-        CurrencyNames.Add(Currency.AvailableCurrencies.Rsd.Code, AppResources.Currencies_SerbianDinar);
-        CurrencyNames.Add(Currency.AvailableCurrencies.Usd.Code, AppResources.Currencies_UsDollar);
-        CurrencyNames.Add(Currency.AvailableCurrencies.Eur.Code, AppResources.Currencies_EuropeanEuro);
+        foreach (var currency in Currency.AvailableCurrencies.All.Values)
+        {
+            var resourceName = $"Currencies_{currency.Code}";
+            var currencyName = AppResources.ResourceManager.GetString(resourceName, AppResources.Culture);
+
+            if (string.IsNullOrWhiteSpace(currencyName))
+            {
+                continue;   
+            }
+            
+            CurrencyNames.Add(currency.Code, currencyName);
+        }
     }
 }

@@ -23,6 +23,11 @@ public class EditProfilePageViewModel : BaseNotifyObject
     {
         _profileRepository = profileRepository;
         _isCurrent = false;
+        
+        foreach (var currency in Currency.AvailableCurrencies.All.Values)
+        {
+            AvailableCurrencies.Add(currency);   
+        }
     }
 
     public Guid? ProfileId
@@ -47,14 +52,8 @@ public class EditProfilePageViewModel : BaseNotifyObject
         get => _currency; 
         set => SetProperty(ref _currency, value);
     }
-    
-    public ObservableCollection<Currency> AvailableCurrencies { get; } =
-    [
-        Currency.AvailableCurrencies.Usd,
-        Currency.AvailableCurrencies.Eur,
-        Currency.AvailableCurrencies.Rub,
-        Currency.AvailableCurrencies.Rsd
-    ];
+
+    public ObservableCollection<Currency> AvailableCurrencies { get; } = [];
 
     public async Task Initialize()
     {

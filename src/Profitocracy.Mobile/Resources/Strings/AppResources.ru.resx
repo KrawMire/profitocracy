@@ -270,18 +270,6 @@
     <data name="AddTransaction_WithdrawAmount" xml:space="preserve">
         <value>Сумма выведения</value>
     </data>
-    <data name="Currencies_UsDollar" xml:space="preserve">
-        <value>Доллар США</value>
-    </data>
-    <data name="Currencies_SerbianDinar" xml:space="preserve">
-        <value>Сербский динар</value>
-    </data>
-    <data name="Currencies_RussianRuble" xml:space="preserve">
-        <value>Российский рубль</value>
-    </data>
-    <data name="Currencies_EuropeanEuro" xml:space="preserve">
-        <value>Европейский евро</value>
-    </data>
     <data name="Pages_Overview" xml:space="preserve">
         <value>Сводка</value>
     </data>
@@ -345,4 +333,167 @@
     <data name="ProfileSettings_ChangeAlert_Desription" xml:space="preserve">
         <value>Вы уверены, что хотите сделать профиль "{0}" текущим?</value>
     </data>
+    <data name="Currencies_USD" xml:space="preserve">
+        <value>Доллар США</value>
+    </data>
+        <data name="Currencies_EUR" xml:space="preserve">
+        <value>Евро</value>
+    </data>
+        <data name="Currencies_GBP" xml:space="preserve">
+        <value>Британский фунт</value>
+    </data>
+        <data name="Currencies_JPY" xml:space="preserve">
+        <value>Японская иена</value>
+    </data>
+        <data name="Currencies_AUD" xml:space="preserve">
+        <value>Австралийский доллар</value>
+    </data>
+        <data name="Currencies_CAD" xml:space="preserve">
+        <value>Канадский доллар</value>
+    </data>
+        <data name="Currencies_CHF" xml:space="preserve">
+        <value>Швейцарский франк</value>
+    </data>
+        <data name="Currencies_CNY" xml:space="preserve">
+        <value>Китайский юань</value>
+    </data>
+        <data name="Currencies_INR" xml:space="preserve">
+        <value>Индийская рупия</value>
+    </data>
+        <data name="Currencies_RUB" xml:space="preserve">
+        <value>Российский рубль</value>
+    </data>
+        <data name="Currencies_RSD" xml:space="preserve">
+        <value>Сербский динар</value>
+    </data>
+        <data name="Currencies_SEK" xml:space="preserve">
+        <value>Шведская крона</value>
+    </data>
+        <data name="Currencies_NOK" xml:space="preserve">
+        <value>Норвежская крона</value>
+    </data>
+        <data name="Currencies_DKK" xml:space="preserve">
+        <value>Датская крона</value>
+    </data>
+        <data name="Currencies_HUF" xml:space="preserve">
+        <value>Венгерский форинт</value>
+    </data>
+        <data name="Currencies_PLN" xml:space="preserve">
+        <value>Польский злотый</value>
+    </data>
+        <data name="Currencies_BGN" xml:space="preserve">
+        <value>Болгарский лев</value>
+    </data>
+        <data name="Currencies_CZK" xml:space="preserve">
+        <value>Чешская крона</value>
+    </data>
+        <data name="Currencies_RON" xml:space="preserve">
+        <value>Румынский лей</value>
+    </data>
+        <data name="Currencies_MXN" xml:space="preserve">
+        <value>Мексиканский песо</value>
+    </data>
+        <data name="Currencies_BRL" xml:space="preserve">
+        <value>Бразильский реал</value>
+    </data>
+        <data name="Currencies_CLP" xml:space="preserve">
+        <value>Чилийский песо</value>
+    </data>
+        <data name="Currencies_ARS" xml:space="preserve">
+        <value>Аргентинский песо</value>
+    </data>
+        <data name="Currencies_COP" xml:space="preserve">
+        <value>Колумбийский песо</value>
+    </data>
+        <data name="Currencies_PYG" xml:space="preserve">
+        <value>Парагвайский гуарани</value>
+    </data>
+        <data name="Currencies_VEF" xml:space="preserve">
+        <value>Венесуэльский боливар</value>
+    </data>
+        <data name="Currencies_KRW" xml:space="preserve">
+        <value>Южнокорейская вона</value>
+    </data>
+        <data name="Currencies_THB" xml:space="preserve">
+        <value>Тайский бат</value>
+    </data>
+        <data name="Currencies_PHP" xml:space="preserve">
+        <value>Филиппинский песо</value>
+    </data>
+        <data name="Currencies_TWD" xml:space="preserve">
+        <value>Тайваньский доллар</value>
+    </data>
+        <data name="Currencies_HKD" xml:space="preserve">
+        <value>Гонконгский доллар</value>
+    </data>
+        <data name="Currencies_IDR" xml:space="preserve">
+        <value>Индонезийская рупия</value>
+    </data>
+        <data name="Currencies_VND" xml:space="preserve">
+        <value>Вьетнамский донг</value>
+    </data>
+        <data name="Currencies_MYR" xml:space="preserve">
+        <value>Малайзийский ринггит</value>
+    </data>
+        <data name="Currencies_SGD" xml:space="preserve">
+        <value>Сингапурский доллар</value>
+    </data>
+        <data name="Currencies_AED" xml:space="preserve">
+        <value>Дирхам ОАЭ</value>
+    </data>
+        <data name="Currencies_ILS" xml:space="preserve">
+        <value>Израильский новый шекель</value>
+    </data>
+        <data name="Currencies_PKR" xml:space="preserve">
+        <value>Пакистанская рупия</value>
+    </data>
+        <data name="Currencies_BDT" xml:space="preserve">
+        <value>Бангладешская така</value>
+    </data>
+        <data name="Currencies_ZAR" xml:space="preserve">
+        <value>Южноафриканский рэнд</value>
+    </data>
+        <data name="Currencies_EGP" xml:space="preserve">
+        <value>Египетский фунт</value>
+    </data>
+        <data name="Currencies_KES" xml:space="preserve">
+        <value>Кенийский шиллинг</value>
+    </data>
+        <data name="Currencies_NGN" xml:space="preserve">
+        <value>Нигерийская найра</value>
+    </data>
+        <data name="Currencies_GHS" xml:space="preserve">
+        <value>Ганский седи</value>
+    </data>
+        <data name="Currencies_NZD" xml:space="preserve">
+        <value>Новозеландский доллар</value>
+    </data>
+        <data name="Currencies_FJD" xml:space="preserve">
+        <value>Доллар Фиджи</value>
+    </data>
+        <data name="Currencies_WST" xml:space="preserve">
+        <value>Самоанская тала</value>
+    </data>
+        <data name="Currencies_TRY" xml:space="preserve">
+        <value>Турецкая лира</value>
+    </data>
+        <data name="Currencies_IQD" xml:space="preserve">
+        <value>Иракский динар</value>
+    </data>
+        <data name="Currencies_OMR" xml:space="preserve">
+        <value>Оманский риал</value>
+    </data>
+        <data name="Currencies_SAR" xml:space="preserve">
+        <value>Саудовский риял</value>
+    </data>
+        <data name="Currencies_KWD" xml:space="preserve">
+        <value>Кувейтский динар</value>
+    </data>
+        <data name="Currencies_BTC" xml:space="preserve">
+        <value>Биткоин</value>
+    </data>
+        <data name="Currencies_ETH" xml:space="preserve">
+        <value>Эфир</value>
+    </data>
+
 </root>

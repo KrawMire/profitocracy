@@ -67,15 +67,14 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         _isSaved = false;
 
         _isMultiCurrency = false;
+
+        foreach (var currency in Currency.AvailableCurrencies.All.Values)
+        {
+            AvailableCurrencies.Add(currency);   
+        }
     }
 
-    public ObservableCollection<Currency> AvailableCurrencies { get; } =
-    [
-        Currency.AvailableCurrencies.Usd,
-        Currency.AvailableCurrencies.Eur,
-        Currency.AvailableCurrencies.Rub,
-        Currency.AvailableCurrencies.Rsd
-    ];
+    public ObservableCollection<Currency> AvailableCurrencies { get; } = [];
     public ObservableCollection<CategoryModel> AvailableCategories { get; } = [];
     public CategoryModel? Category { get; set; }
 

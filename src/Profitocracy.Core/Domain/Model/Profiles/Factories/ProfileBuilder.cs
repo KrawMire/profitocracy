@@ -74,7 +74,7 @@ public class ProfileBuilder(Guid? profileId = null)
 
 		if (_settings is null)
 		{
-			AddCurrency(Currency.AvailableCurrencies.Usd);
+			AddCurrency(Currency.AvailableCurrencies.DefaultCurrency);
 		}
 
 		return new Profile(

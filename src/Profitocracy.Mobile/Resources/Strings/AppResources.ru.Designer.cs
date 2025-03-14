@@ -549,30 +549,6 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Currencies_UsDollar {
-            get {
-                return ResourceManager.GetString("Currencies_UsDollar", resourceCulture);
-            }
-        }
-        
-        internal static string Currencies_SerbianDinar {
-            get {
-                return ResourceManager.GetString("Currencies_SerbianDinar", resourceCulture);
-            }
-        }
-        
-        internal static string Currencies_RussianRuble {
-            get {
-                return ResourceManager.GetString("Currencies_RussianRuble", resourceCulture);
-            }
-        }
-        
-        internal static string Currencies_EuropeanEuro {
-            get {
-                return ResourceManager.GetString("Currencies_EuropeanEuro", resourceCulture);
-            }
-        }
-        
         internal static string Pages_Overview {
             get {
                 return ResourceManager.GetString("Pages_Overview", resourceCulture);
@@ -696,6 +672,330 @@ namespace Profitocracy.Mobile.Resources.Strings {
         internal static string ProfileSettings_ChangeAlert_Desription {
             get {
                 return ResourceManager.GetString("ProfileSettings_ChangeAlert_Desription", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_USD {
+            get {
+                return ResourceManager.GetString("Currencies_USD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_EUR {
+            get {
+                return ResourceManager.GetString("Currencies_EUR", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_GBP {
+            get {
+                return ResourceManager.GetString("Currencies_GBP", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_JPY {
+            get {
+                return ResourceManager.GetString("Currencies_JPY", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_AUD {
+            get {
+                return ResourceManager.GetString("Currencies_AUD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_CAD {
+            get {
+                return ResourceManager.GetString("Currencies_CAD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_CHF {
+            get {
+                return ResourceManager.GetString("Currencies_CHF", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_CNY {
+            get {
+                return ResourceManager.GetString("Currencies_CNY", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_INR {
+            get {
+                return ResourceManager.GetString("Currencies_INR", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_RUB {
+            get {
+                return ResourceManager.GetString("Currencies_RUB", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_RSD {
+            get {
+                return ResourceManager.GetString("Currencies_RSD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_SEK {
+            get {
+                return ResourceManager.GetString("Currencies_SEK", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_NOK {
+            get {
+                return ResourceManager.GetString("Currencies_NOK", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_DKK {
+            get {
+                return ResourceManager.GetString("Currencies_DKK", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_HUF {
+            get {
+                return ResourceManager.GetString("Currencies_HUF", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_PLN {
+            get {
+                return ResourceManager.GetString("Currencies_PLN", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_BGN {
+            get {
+                return ResourceManager.GetString("Currencies_BGN", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_CZK {
+            get {
+                return ResourceManager.GetString("Currencies_CZK", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_RON {
+            get {
+                return ResourceManager.GetString("Currencies_RON", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_MXN {
+            get {
+                return ResourceManager.GetString("Currencies_MXN", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_BRL {
+            get {
+                return ResourceManager.GetString("Currencies_BRL", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_CLP {
+            get {
+                return ResourceManager.GetString("Currencies_CLP", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_ARS {
+            get {
+                return ResourceManager.GetString("Currencies_ARS", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_COP {
+            get {
+                return ResourceManager.GetString("Currencies_COP", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_PYG {
+            get {
+                return ResourceManager.GetString("Currencies_PYG", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_VEF {
+            get {
+                return ResourceManager.GetString("Currencies_VEF", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_KRW {
+            get {
+                return ResourceManager.GetString("Currencies_KRW", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_THB {
+            get {
+                return ResourceManager.GetString("Currencies_THB", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_PHP {
+            get {
+                return ResourceManager.GetString("Currencies_PHP", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_TWD {
+            get {
+                return ResourceManager.GetString("Currencies_TWD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_HKD {
+            get {
+                return ResourceManager.GetString("Currencies_HKD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_IDR {
+            get {
+                return ResourceManager.GetString("Currencies_IDR", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_VND {
+            get {
+                return ResourceManager.GetString("Currencies_VND", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_MYR {
+            get {
+                return ResourceManager.GetString("Currencies_MYR", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_SGD {
+            get {
+                return ResourceManager.GetString("Currencies_SGD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_AED {
+            get {
+                return ResourceManager.GetString("Currencies_AED", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_ILS {
+            get {
+                return ResourceManager.GetString("Currencies_ILS", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_PKR {
+            get {
+                return ResourceManager.GetString("Currencies_PKR", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_BDT {
+            get {
+                return ResourceManager.GetString("Currencies_BDT", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_ZAR {
+            get {
+                return ResourceManager.GetString("Currencies_ZAR", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_EGP {
+            get {
+                return ResourceManager.GetString("Currencies_EGP", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_KES {
+            get {
+                return ResourceManager.GetString("Currencies_KES", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_NGN {
+            get {
+                return ResourceManager.GetString("Currencies_NGN", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_GHS {
+            get {
+                return ResourceManager.GetString("Currencies_GHS", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_NZD {
+            get {
+                return ResourceManager.GetString("Currencies_NZD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_FJD {
+            get {
+                return ResourceManager.GetString("Currencies_FJD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_WST {
+            get {
+                return ResourceManager.GetString("Currencies_WST", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_TRY {
+            get {
+                return ResourceManager.GetString("Currencies_TRY", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_IQD {
+            get {
+                return ResourceManager.GetString("Currencies_IQD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_OMR {
+            get {
+                return ResourceManager.GetString("Currencies_OMR", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_SAR {
+            get {
+                return ResourceManager.GetString("Currencies_SAR", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_KWD {
+            get {
+                return ResourceManager.GetString("Currencies_KWD", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_BTC {
+            get {
+                return ResourceManager.GetString("Currencies_BTC", resourceCulture);
+            }
+        }
+        
+        internal static string Currencies_ETH {
+            get {
+                return ResourceManager.GetString("Currencies_ETH", resourceCulture);
             }
         }
     }

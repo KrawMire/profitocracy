@@ -26,7 +26,7 @@ public static class NumberUtils
     /// <returns>A string representation of the rounded number prefixed with the currency symbol.</returns>
     public static string RoundDecimalMoney(decimal? num, string? currencySymbol)
     {
-        currencySymbol ??= Currency.AvailableCurrencies.Usd.Symbol;
+        currencySymbol ??= Currency.AvailableCurrencies.DefaultCurrency.Symbol;
 
         return $"{currencySymbol}{RoundDecimal(num)}";
     }

@@ -1,5 +1,6 @@
 using Profitocracy.Core.Domain.Model.Profiles;
 using Profitocracy.Core.Domain.Model.Profiles.Factories;
+using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Infrastructure.Abstractions.Internal;
 using Profitocracy.Infrastructure.Persistence.Sqlite.Models.Profile;
 
@@ -13,7 +14,7 @@ internal class ProfileMapper : IInfrastructureMapper<Profile, ProfileModel>
 			.AddBalance(model.Balance)
 			.AddName(model.Name)
 			.AddStartDate(model.StartTimestamp, model.InitialBalance)
-			.AddCurrency(CurrencyMapper.Currencies[model.CurrencyCode])
+			.AddCurrency(Currency.AvailableCurrencies.All[model.CurrencyCode])
 			.AddIsCurrent(model.IsCurrent);
 
 		if (model.Categories is null)
