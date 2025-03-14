@@ -48,7 +48,7 @@ Then click on it and follow the instructions.
 
 ## iOS
 
-You can download the Profitocracy on the Apple App Store by following [this link](https://apps.apple.com/rs/app/profitocracy/id6503658740) or by clicking on the following iamge:
+You can download the Profitocracy on the Apple App Store by following [this link](https://apps.apple.com/rs/app/profitocracy/id6503658740) or by clicking on the following image:
 
 <p align="left">
     <a href="https://apps.apple.com/rs/app/profitocracy/id6503658740">
