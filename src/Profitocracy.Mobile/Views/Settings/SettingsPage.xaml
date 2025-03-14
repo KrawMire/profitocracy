@@ -66,6 +66,31 @@
                            Text=">" />
                 </FlexLayout>
             </Border>
+            
+            <Label Text="{x:Static resx:AppResources.Settings_AboutApplication}"
+                   Style="{StaticResource SettingsGroupTitle}"
+                   Margin="0,16,0,0"/>
+            <Border Style="{StaticResource SettingsButton}"
+                    Margin="0,8,0,0" >
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="GitHubButton_OnClicked"/>
+                </Border.GestureRecognizers>
+                <FlexLayout JustifyContent="SpaceBetween">
+                    <Label Style="{StaticResource SettingsButtonText}"
+                           Text="{x:Static resx:AppResources.Settings_GitHub}" />
+                    <Label Style="{StaticResource SettingsButtonText}"
+                           Text=">" />
+                </FlexLayout>
+            </Border>
+            <Border Style="{StaticResource SettingsButton}"
+                    Margin="0,8,0,0" >
+                <FlexLayout JustifyContent="SpaceBetween">
+                    <Label Style="{StaticResource SettingsButtonText}"
+                           Text="{x:Static resx:AppResources.Settings_Version}" />
+                    <Label Style="{StaticResource DisabledSettingsButtonText}"
+                           x:Name="VersionLabel"/>
+                </FlexLayout>
+            </Border>
         </StackLayout>
     </ScrollView>
 </abstractions:BaseContentPage>

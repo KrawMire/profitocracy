@@ -612,6 +612,12 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
     
+    <Style TargetType="Label" x:Key="DisabledSettingsButtonText">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+        <Setter Property="TextColor" Value="{StaticResource SecondaryText}"/>
+    </Style>
+    
     <Style TargetType="Border" x:Key="CategoryCard">
         <Setter Property="Padding" Value="18"/>
         <Setter Property="StrokeShape" Value="RoundRectangle 8"/>

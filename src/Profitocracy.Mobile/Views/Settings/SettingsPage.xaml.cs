@@ -1,4 +1,6 @@
+using System.Reflection;
 using Profitocracy.Mobile.Abstractions;
+using Profitocracy.Mobile.Constants;
 using Profitocracy.Mobile.Views.Settings.CategoriesSettings;
 using Profitocracy.Mobile.Views.Settings.LanguageSettings;
 using Profitocracy.Mobile.Views.Settings.ProfilesSettings;
@@ -8,9 +10,16 @@ namespace Profitocracy.Mobile.Views.Settings;
 
 public partial class SettingsPage : BaseContentPage
 {
+	private const string DefaultVersion = "0.0.0"; 
+	
 	public SettingsPage()
 	{
 		InitializeComponent();
+		VersionLabel.Text = Assembly
+			.GetExecutingAssembly()
+			.GetName()
+			.Version?
+			.ToString() ?? DefaultVersion;
 	}
 
 	private void ProfilesButton_OnClicked(object? sender, TappedEventArgs e)
@@ -62,6 +71,14 @@ public partial class SettingsPage : BaseContentPage
 			{
 				await Navigation.PushAsync(langPage);
 			}
+		});
+	}
+
+	private void GitHubButton_OnClicked(object? sender, TappedEventArgs e)
+	{
+		ProcessAction(async () =>
+		{
+			await Browser.Default.OpenAsync(UrlConstants.ProjectGitHubUrl, BrowserLaunchMode.SystemPreferred);
 		});
 	}
 }

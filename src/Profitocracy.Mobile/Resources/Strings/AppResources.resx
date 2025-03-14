@@ -495,4 +495,13 @@
         <data name="Currencies_ETH" xml:space="preserve">
         <value>Ether</value>
     </data>
+    <data name="Settings_AboutApplication" xml:space="preserve">
+        <value>About</value>
+    </data>
+    <data name="Settings_Version" xml:space="preserve">
+        <value>Version</value>
+    </data>
+    <data name="Settings_GitHub" xml:space="preserve">
+        <value>GitHub</value>
+    </data>
 </root>

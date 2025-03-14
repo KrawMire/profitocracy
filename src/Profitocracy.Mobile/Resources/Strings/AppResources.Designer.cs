@@ -998,5 +998,23 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("Currencies_ETH", resourceCulture);
             }
         }
+        
+        internal static string Settings_AboutApplication {
+            get {
+                return ResourceManager.GetString("Settings_AboutApplication", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Version {
+            get {
+                return ResourceManager.GetString("Settings_Version", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_GitHub {
+            get {
+                return ResourceManager.GetString("Settings_GitHub", resourceCulture);
+            }
+        }
     }
 }
