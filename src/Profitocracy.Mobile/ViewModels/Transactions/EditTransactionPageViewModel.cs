@@ -10,6 +10,7 @@ using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Categories;
 using Profitocracy.Mobile.Resources.Strings;
+using Profitocracy.Mobile.Utils;
 
 namespace Profitocracy.Mobile.ViewModels.Transactions;
 
@@ -322,7 +323,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     {
         _amount = _amount.Replace(",", CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator);
         
-        if (!decimal.TryParse(_amount, CultureInfo.InvariantCulture, out var amount))
+        if (!NumberUtils.TryParseDecimal(_amount, out var amount))
         {
             throw new InvalidCastException(AppResources.CommonError_AmountNumber);
         }
@@ -372,9 +373,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         Profile profile,
         TransactionCategory? category)
     {
-        _destinationAmount = _destinationAmount.Replace(",", CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator);
-        
-        if (!decimal.TryParse(_destinationAmount, CultureInfo.InvariantCulture, out var destinationAmount))
+        if (!NumberUtils.TryParseDecimal(_destinationAmount, out var destinationAmount))
         {
             throw new InvalidCastException(AppResources.CommonError_OriginalCurrencyAmountNumber);
         }

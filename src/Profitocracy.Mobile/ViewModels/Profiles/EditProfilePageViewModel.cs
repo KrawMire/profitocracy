@@ -6,6 +6,7 @@ using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
+using Profitocracy.Mobile.Utils;
 
 namespace Profitocracy.Mobile.ViewModels.Profiles;
 
@@ -84,11 +85,7 @@ public class EditProfilePageViewModel : BaseNotifyObject
     
     public async Task CreateFirstProfile()
     {
-        _initialBalance = _initialBalance.Replace(
-            ",", 
-            CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator);
-        
-        if (!decimal.TryParse(_initialBalance, CultureInfo.InvariantCulture, out var numValue))
+        if (!NumberUtils.TryParseDecimal(_initialBalance, out var numValue))
         {
             throw new InvalidCastException(AppResources.CommonError_BalanceNumber);
         }
