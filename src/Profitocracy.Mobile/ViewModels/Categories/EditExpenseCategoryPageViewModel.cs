@@ -1,10 +1,10 @@
-using System.Globalization;
 using Profitocracy.Core.Domain.Abstractions.Services;
 using Profitocracy.Core.Domain.Model.Categories;
 using Profitocracy.Core.Domain.Model.Categories.Factories;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
+using Profitocracy.Mobile.Utils;
 
 namespace Profitocracy.Mobile.ViewModels.Categories;
 
@@ -112,7 +112,7 @@ public class EditExpenseCategoryPageViewModel : BaseNotifyObject
         
         if (_isPlannedAmountPresent)
         {
-            if (!decimal.TryParse(_plannedAmountStr, CultureInfo.InvariantCulture, out var decPlannedAmount))
+            if (!NumberUtils.TryParseDecimal(_plannedAmountStr, out var decPlannedAmount))
             {
                 throw new InvalidCastException(AppResources.CommonError_PlannedAmountNumber);   
             }
