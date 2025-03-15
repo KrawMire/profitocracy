@@ -1,3 +1,4 @@
+using System.Globalization;
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 
 namespace Profitocracy.Mobile.Utils;
@@ -18,6 +19,19 @@ public static class NumberUtils
             ? decimal.Zero 
             : Math.Round((decimal)num, decimals);
 
+    public static bool TryParseDecimal(string? str, out decimal result)
+    {
+        if (string.IsNullOrWhiteSpace(str))
+        {
+            result = 0;
+            return false;
+        }
+
+        str = str.Replace(',', '.');
+
+        return decimal.TryParse(str, CultureInfo.InvariantCulture, out result);
+    }
+    
     /// <summary>
     /// Rounds the given decimal to a specified number of decimals and formats it as currency with a symbol.
     /// </summary>
