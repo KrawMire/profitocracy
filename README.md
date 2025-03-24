@@ -1,3 +1,7 @@
+![GitHub Releases](https://img.shields.io/github/downloads/KrawMire/profitocracy-maui/total?label=Downloads)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/KrawMire/profitocracy-maui?label=Latest%20Release)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KrawMire/profitocracy-maui)
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/main_banner.png" alt="Title image" />
 </p>
