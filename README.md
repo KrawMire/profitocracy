@@ -1,6 +1,11 @@
-![GitHub Releases](https://img.shields.io/github/downloads/KrawMire/profitocracy-maui/total?label=Downloads)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/KrawMire/profitocracy-maui?label=Latest%20Release)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KrawMire/profitocracy-maui)
+![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-000000?logo=apple&logoColor=white)
+![GitHub Releases](https://img.shields.io/github/downloads/KrawMire/profitocracy/total?label=Downloads)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/KrawMire/profitocracy?label=Latest%20Release)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KrawMire/profitocracy)
+![GitHub issues](https://img.shields.io/github/issues/KrawMire/profitocracy?label=Issues)
+![GitHub Repo stars](https://img.shields.io/github/stars/KrawMire/profitocracy?style=social)
+![GitHub](https://img.shields.io/github/license/KrawMire/profitocracy?label=License)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/main_banner.png" alt="Title image" />
