@@ -19,67 +19,86 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
-            <ScrollView Grid.Row="0">
-                <CollectionView x:Name="ProfilesCollectionView"
-                                Margin="0,16,0,16">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="profiles:ProfileModel">
-                            <SwipeView>
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItemView Padding="8,0,4,0"
-                                                       BackgroundColor="Transparent"
-                                                       Invoked="EditProfile_OnInvoked">
-                                            <VerticalStackLayout VerticalOptions="Center" 
-                                                                 Width="16">
-                                                <Border BackgroundColor="{StaticResource InfoBlue}"
-                                                        StrokeThickness="0"
-                                                        Padding="16">
-                                                    <Border.StrokeShape>
-                                                        <RoundRectangle CornerRadius="40"/>
-                                                    </Border.StrokeShape>
-                                                    <Image Source="edit.png" 
-                                                           Width="8"/>
-                                                </Border>
-                                            </VerticalStackLayout>
-                                        </SwipeItemView>
-                                    </SwipeItems>
-                                </SwipeView.RightItems>
-                                
-                                <StackLayout>
-                                    <Border Style="{StaticResource CurrentProfileCard}"
-                                            Margin="0,8,0,0"
-                                            IsVisible="{Binding IsCurrent}">
-                                        <StackLayout>
-                                            <FlexLayout JustifyContent="SpaceBetween">
-                                                <Label Style="{StaticResource CurrentProfileCardName}"
-                                                       Text="{Binding Name}"/>
-                                                <Label Style="{StaticResource CurrentProfileCardName}"
-                                                       Text="{Binding CurrencySymbol}"/>
-                                            </FlexLayout>
-                                        </StackLayout>
-                                    </Border> 
-                                    <Border Style="{StaticResource ProfileCard}"
-                                            Margin="0,8,0,0"
-                                            IsVisible="{Binding IsNotCurrent}">
-                                        <Border.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="ProfileCard_OnTapped"/>
-                                        </Border.GestureRecognizers>
-                                        <StackLayout>
-                                            <FlexLayout JustifyContent="SpaceBetween">
-                                                <Label Style="{StaticResource CategoryCardName}"
-                                                       Text="{Binding Name}"/>
-                                                <Label Style="{StaticResource CategoryCardPlannedAmount}"
-                                                       Text="{Binding CurrencySymbol}"/>
-                                            </FlexLayout>
-                                        </StackLayout>
-                                    </Border>
-                                </StackLayout>
-                            </SwipeView>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
+            <CollectionView Grid.Row="0"
+                            x:Name="ProfilesCollectionView"
+                            VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="profiles:ProfileModel">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItemView Padding="4,0,8,0"
+                                                   BackgroundColor="Transparent"
+                                                   Invoked="DeleteProfile_OnInvoked">
+                                        <VerticalStackLayout VerticalOptions="Center" 
+                                                             Width="16">
+                                            <Border BackgroundColor="{StaticResource DangerRed}"
+                                                    StrokeThickness="0"
+                                                    Padding="16">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="40"/>
+                                                </Border.StrokeShape>
+                                                <Image Source="bin.png" 
+                                                       Width="8"/>
+                                            </Border>
+                                        </VerticalStackLayout>
+                                    </SwipeItemView>
+                                    <SwipeItemView Padding="8,0,4,0"
+                                                   BackgroundColor="Transparent"
+                                                   Invoked="EditProfile_OnInvoked">
+                                        <VerticalStackLayout VerticalOptions="Center" 
+                                                             Width="16">
+                                            <Border BackgroundColor="{StaticResource InfoBlue}"
+                                                    StrokeThickness="0"
+                                                    Padding="16">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="40"/>
+                                                </Border.StrokeShape>
+                                                <Image Source="edit.png" 
+                                                       Width="8"/>
+                                            </Border>
+                                        </VerticalStackLayout>
+                                    </SwipeItemView>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            
+                            <StackLayout>
+                                <Border Style="{StaticResource CurrentProfileCard}"
+                                        Margin="0,8,0,0"
+                                        IsVisible="{Binding IsCurrent}">
+                                    <StackLayout>
+                                        <FlexLayout JustifyContent="SpaceBetween">
+                                            <Label Style="{StaticResource CurrentProfileCardName}"
+                                                   Text="{Binding Name}"/>
+                                            <Label Style="{StaticResource CurrentProfileCardName}"
+                                                   Text="{Binding CurrencySymbol}"/>
+                                        </FlexLayout>
+                                    </StackLayout>
+                                </Border> 
+                                <Border Style="{StaticResource ProfileCard}"
+                                        Margin="0,8,0,0"
+                                        IsVisible="{Binding IsNotCurrent}">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ProfileCard_OnTapped"/>
+                                    </Border.GestureRecognizers>
+                                    <StackLayout>
+                                        <FlexLayout JustifyContent="SpaceBetween">
+                                            <Label Style="{StaticResource CategoryCardName}"
+                                                   Text="{Binding Name}"/>
+                                            <Label Style="{StaticResource CategoryCardPlannedAmount}"
+                                                   Text="{Binding CurrencySymbol}"/>
+                                        </FlexLayout>
+                                    </StackLayout>
+                                </Border>
+                            </StackLayout>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <Grid HeightRequest="92" 
+                          BackgroundColor="Transparent"/>
+                </CollectionView.Footer>
+            </CollectionView>
             
             <Button Grid.Row="0"
                     Text="+"
