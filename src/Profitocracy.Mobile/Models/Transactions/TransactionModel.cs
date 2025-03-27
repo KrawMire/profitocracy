@@ -34,6 +34,23 @@ public class TransactionModel
     {
         get
         {
+            var amount = Amount.ToString(CultureInfo.CurrentCulture);
+            
+            return Type == 0 
+                ? $"+{amount.ToString(CultureInfo.CurrentCulture)}" 
+                : $"-{amount.ToString(CultureInfo.CurrentCulture)}";
+        }
+    }
+
+    public string AdditionalDisplayAmount
+    {
+        get
+        {
+            if (!IsMultiCurrency)
+            {
+                return string.Empty;
+            }
+            
             var amount = IsMultiCurrency 
                 ? DestinationCurrency + ((decimal)DestinationAmount!).ToString(CultureInfo.CurrentCulture) 
                 : Amount.ToString(CultureInfo.CurrentCulture);
@@ -49,23 +66,6 @@ public class TransactionModel
             return SpendingType == 2 
                 ? $"+{amount}" 
                 : $"-{amount}";
-        }
-    }
-
-    public string AdditionalDisplayAmount
-    {
-        get
-        {
-            if (!IsMultiCurrency)
-            {
-                return string.Empty;
-            }
-
-            var amount = Amount.ToString(CultureInfo.CurrentCulture);
-            
-            return Type == 0 
-                ? $"+{amount.ToString(CultureInfo.CurrentCulture)}" 
-                : $"-{amount.ToString(CultureInfo.CurrentCulture)}";
         }
     }
 
