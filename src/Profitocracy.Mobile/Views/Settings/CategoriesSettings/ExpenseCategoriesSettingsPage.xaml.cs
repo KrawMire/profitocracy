@@ -68,8 +68,17 @@ public partial class ExpenseCategoriesSettingsPage : BaseContentPage
 			{
 				throw new ArgumentNullException(AppResources.CommonError_FindCategoryToDelete);
 			}
-			
-			await _viewModel.DeleteCategory((Guid)category.Id);
+
+			var isDelete = await DisplayAlert(
+				AppResources.CategoriesSettings_DeleteAlert_Title,
+				string.Format(AppResources.CategoriesSettings_DeleteAlert_Description, category.Name),
+				AppResources.CategoriesSettings_DeleteAlert_Ok,
+				AppResources.CategoriesSettings_DeleteAlert_Cancel);
+
+			if (isDelete)
+			{
+				await _viewModel.DeleteCategory((Guid)category.Id);	
+			}
 		});
 	}
 	
