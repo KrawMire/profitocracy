@@ -89,4 +89,13 @@ internal class CategoryRepository : ICategoryRepository
 		
 		return categoryId;
 	}
+
+	public async Task DeleteByProfileId(Guid profileId)
+	{
+		await _dbConnection.Init();
+		
+		await _dbConnection.Database
+			.Table<CategoryModel>()
+			.DeleteAsync(c => c.ProfileId == profileId);
+	}
 }

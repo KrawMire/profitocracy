@@ -49,6 +49,17 @@ internal class ProfileRepository : IProfileRepository
 		return _mapper.MapToDomain(updatedProfile);
 	}
 
+	public async Task<Guid> Delete(Guid id)
+	{
+		await _dbConnection.Init();
+		
+		await _dbConnection.Database
+			.Table<ProfileModel>()
+			.DeleteAsync(p => p.Id == id);
+		
+		return id;
+	}
+
 	public async Task<Guid?> GetCurrentProfileId()
 	{
 		await _dbConnection.Init();

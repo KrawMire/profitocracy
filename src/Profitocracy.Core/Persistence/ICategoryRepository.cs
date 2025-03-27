@@ -42,4 +42,11 @@ public interface ICategoryRepository
 	/// <param name="categoryId">Category ID to delete</param>
 	/// <returns>ID of deleted category</returns>
 	Task<Guid> Delete(Guid categoryId);
+
+	/// <summary>
+	/// Deletes all categories associated with the specified profile ID.
+	/// </summary>
+	/// <param name="profileId">The ID of the profile whose categories should be deleted.</param>
+	/// <returns>A task representing the asynchronous operation.</returns>
+	Task DeleteByProfileId(Guid profileId);
 }

@@ -208,4 +208,13 @@ internal class TransactionRepository : ITransactionRepository
 
 		return transactionId;
 	}
+
+	public async Task DeleteByProfileId(Guid profileId)
+	{
+		await _dbConnection.Init();
+		
+		await _dbConnection.Database
+			.Table<TransactionModel>()
+			.DeleteAsync(t => t.ProfileId == profileId);
+	}
 }
