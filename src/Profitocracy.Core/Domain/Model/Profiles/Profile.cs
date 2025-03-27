@@ -14,6 +14,11 @@ namespace Profitocracy.Core.Domain.Model.Profiles;
 /// </summary>
 public class Profile : AggregateRoot<Guid>
 {
+	
+	private const decimal MainRatio = 0.5m;
+	private const decimal SecondaryRatio = 0.3m;
+	private const decimal SavedRatio = 0.2m;
+	
 	internal Profile(
 		Guid id,
 		string name,
@@ -269,12 +274,13 @@ public class Profile : AggregateRoot<Guid>
 		daysInPeriodFromTomorrow = daysInPeriodFromTomorrow == 0 ? 1 : daysInPeriodFromTomorrow;
 
 		Expenses.TotalBalance.PlannedAmount += StartDate.InitialBalance;
-		Expenses.TodayBalance.PlannedAmount = _todayInitialBalance / daysInActualPeriod;
-		Expenses.TomorrowBalance = Balance / daysInPeriodFromTomorrow;
 		
-		Expenses.Main.PlannedAmount = Expenses.TotalBalance.PlannedAmount * 0.5m;
-		Expenses.Secondary.PlannedAmount = Expenses.TotalBalance.PlannedAmount * 0.3m;
-		Expenses.Saved.PlannedAmount = Expenses.TotalBalance.PlannedAmount * 0.2m;
+		Expenses.TodayBalance.PlannedAmount = _todayInitialBalance < 0 ? 0 : _todayInitialBalance / daysInActualPeriod;
+		Expenses.TomorrowBalance = Balance < 0 ? 0 : Balance / daysInPeriodFromTomorrow;
+		
+		Expenses.Main.PlannedAmount = Expenses.TotalBalance.PlannedAmount * MainRatio;
+		Expenses.Secondary.PlannedAmount = Expenses.TotalBalance.PlannedAmount * SecondaryRatio;
+		Expenses.Saved.PlannedAmount = Expenses.TotalBalance.PlannedAmount * SavedRatio;
 	}
 	
 	private void HandleIncomeTransaction(Transaction transaction)
