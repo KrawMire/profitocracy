@@ -32,13 +32,26 @@ Welcome to the source code of **Profitocracy**.
 - 👥 **Multiple Profiles**. Manage separate budgets or accounts for different individuals or purposes all within one app.
 - 💻 **Open-Source**. Profitocracy is open-source, ensuring transparency and the support of a thriving community for constant improvements.
 
+## Android Preview
+
 <p align="left">
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/transactions_banner.png" alt="Transactions" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/categories_banner.png" alt="Categories" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/multiprofiles_banner.png" alt="Multi-Profiles" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/charts_banner.png" alt="Charts" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/theme_banner.png" alt="Theme" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/multicurrency_banner.png" alt="Multi-Currency" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/android/transactions_banner.ap.png" alt="Transactions" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/android/categories_banner.ap.png" alt="Categories" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/android/multiprofiles_banner.ap.png" alt="Multi-Profiles" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/android/charts_banner.ap.png" alt="Charts" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/android/theme_banner.ap.png" alt="Theme" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/android/multicurrency_banner.ap.png" alt="Multi-Currency" width="150"/>
+</p>
+
+## iOS Preview
+
+<p align="left">
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/ios/transactions_banner.png" alt="Transactions" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/ios/categories_banner.png" alt="Categories" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/ios/multiprofiles_banner.png" alt="Multi-Profiles" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/ios/charts_banner.png" alt="Charts" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/ios/theme_banner.png" alt="Theme" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/banners/ios/multicurrency_banner.png" alt="Multi-Currency" width="150"/>
 </p>
 
 # Installation
