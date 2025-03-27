@@ -86,8 +86,8 @@ public static class MauiProgram
 	private static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
 	{
 		_ = mauiAppBuilder.Services
-			.AddSingleton<HomePage>()
-			.AddSingleton<TransactionsPage>()
+			.AddTransient<HomePage>()
+			.AddTransient<TransactionsPage>()
 			.AddTransient<FilteredTransactionsPage>()
 			.AddTransient<EditTransactionPage>()
 			.AddTransient<ExpenseCategoriesSettingsPage>()

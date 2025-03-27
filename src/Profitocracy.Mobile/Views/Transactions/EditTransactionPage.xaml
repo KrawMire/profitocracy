@@ -2,6 +2,7 @@
 
 <abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                               xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
                               xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
                               xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Transactions"
@@ -9,6 +10,7 @@
                               x:DataType="viewmodel:EditTransactionPageViewModel"
                               Loaded="EditTransactionPage_OnLoaded"
                               Shell.PresentationMode="ModalAnimated"
+                              ios:Page.ModalPresentationStyle="PageSheet"
                               Padding="16"
                               HideSoftInputOnTapped="True">
     <Grid VerticalOptions="Fill"

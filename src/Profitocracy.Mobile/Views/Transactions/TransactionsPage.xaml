@@ -54,7 +54,9 @@
             </StackLayout>
         </Border>
         
-        <CollectionView Grid.Row="1" x:Name="TransactionsCollectionView">
+        <CollectionView Grid.Row="1" 
+                        x:Name="TransactionsCollectionView"
+                        VerticalScrollBarVisibility="Default">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="transactions:TransactionModel">
                     <SwipeView>
@@ -154,6 +156,10 @@
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <Grid HeightRequest="92" 
+                      BackgroundColor="Transparent"/>
+            </CollectionView.Footer>
         </CollectionView>
         
         <Button Grid.Row="1"

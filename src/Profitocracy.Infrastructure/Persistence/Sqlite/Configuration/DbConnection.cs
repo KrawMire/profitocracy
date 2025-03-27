@@ -29,7 +29,7 @@ internal class DbConnection
 		}
 	}
 
-	public async Task Init()
+	public async ValueTask Init()
 	{
 		if (_database is not null)
 		{

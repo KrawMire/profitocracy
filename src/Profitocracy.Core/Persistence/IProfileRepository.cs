@@ -46,4 +46,11 @@ public interface IProfileRepository
 	/// <param name="profile">Profile to update</param>
 	/// <returns>Updated profile</returns>
 	Task<Profile> Update(Profile profile);
+
+	/// <summary>
+	/// Deletes a profile by its unique identifier.
+	/// </summary>
+	/// <param name="id">The unique identifier of the profile to delete.</param>
+	/// <returns>The identifier of the deleted profile.</returns>
+	Task<Guid> Delete(Guid id);
 }

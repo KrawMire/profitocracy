@@ -74,4 +74,11 @@ public interface ITransactionRepository
 	/// <param name="transactionId">ID of transaction to delete</param>
 	/// <returns>Deleted transaction ID</returns>
 	Task<Guid> Delete(Guid transactionId);
+
+	/// <summary>
+	/// Deletes all transactions associated with a specific profile identifier.
+	/// </summary>
+	/// <param name="profileId">The identifier of the profile for which to delete transactions.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	Task DeleteByProfileId(Guid profileId);
 }

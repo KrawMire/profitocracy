@@ -38,6 +38,12 @@ public class ProfileSettingsPageViewModel : BaseNotifyObject
         }
     }
 
+    public async Task DeleteProfile(Guid profileId)
+    {
+        await _profileService.DeleteProfile(profileId);
+        await Initialize();
+    }
+
     public async Task SetCurrentProfile(Guid profileId)
     {
         await _profileService.SetCurrentProfile(profileId);

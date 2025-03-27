@@ -11,6 +11,7 @@ public static class CoreRegistry
         return services
             .AddTransient<IProfileService, ProfileService>()
             .AddTransient<ICalculationService, CalculationService>()
-            .AddTransient<ICategoryService, CategoryService>();
+            .AddTransient<ICategoryService, CategoryService>()
+            .AddTransient<ITransactionService, TransactionService>();
     } 
 }

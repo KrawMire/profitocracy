@@ -139,7 +139,7 @@
         <value>Системная</value>
     </data>
     <data name="Languages_English" xml:space="preserve">
-        <value>Английский</value>
+        <value>English</value>
     </data>
     <data name="Languages_Russian" xml:space="preserve">
         <value>Русский</value>
@@ -503,5 +503,62 @@
     </data>
     <data name="Settings_GitHub" xml:space="preserve">
         <value>GitHub</value>
+    </data>
+    <data name="Transactions_DeleteAlert_Ok" xml:space="preserve">
+        <value>Да</value>
+    </data>
+    <data name="Transactions_DeleteAlert_Cancel" xml:space="preserve">
+        <value>Отмена</value>
+    </data>
+    <data name="Transactions_DeleteAlert_Description" xml:space="preserve">
+        <value>Вы уверены, что хотите удалить транзакцию "{0}"?</value>
+    </data>
+    <data name="Transactions_DeleteAlert_Title" xml:space="preserve">
+        <value>Удаление транзакции</value>
+    </data>
+    <data name="CategoriesSettings_DeleteAlert_Cancel" xml:space="preserve">
+        <value>Отмена</value>
+    </data>
+    <data name="CategoriesSettings_DeleteAlert_Ok" xml:space="preserve">
+        <value>Да</value>
+    </data>
+    <data name="CategoriesSettings_DeleteAlert_Title" xml:space="preserve">
+        <value>Удаление категории</value>
+    </data>
+    <data name="CategoriesSettings_DeleteAlert_Description" xml:space="preserve">
+        <value>Вы уверены, что хотите удалить категорию "{0}"?</value>
+    </data>
+    <data name="Transactions_EditNotInPeriodAlert_Cancel" xml:space="preserve">
+        <value>Отмена</value>
+    </data>
+    <data name="Transactions_EditNotInPeriodAlert_Title" xml:space="preserve">
+        <value>Транзакция не в периоде профиля</value>
+    </data>
+    <data name="Transactions_EditNotInPeriodAlert_Ok" xml:space="preserve">
+        <value>Да</value>
+    </data>
+    <data name="Transactions_EditNotInPeriodAlert_Description" xml:space="preserve">
+        <value>Вы уверены, что хотите отредактировать транзакцию "{0}"? Она не в текущем периоде профиля и не влияет на расчеты профиля.</value>
+    </data>
+    <data name="ProfileSettings_DeleteAlert_Cancel" xml:space="preserve">
+        <value>Отмена</value>
+    </data>
+    <data name="ProfileSettings_DeleteAlert_Description" xml:space="preserve">
+        <value>Вы уверены, что хотите удалить профиль "{0}"? Все транзакции и категории этого профиля также будут удалены.</value>
+    </data>
+    <data name="ProfileSettings_DeleteAlert_Ok" xml:space="preserve">
+        <value>Да</value>
+    </data>
+    <data name="ProfileSettings_DeleteAlert_Title" xml:space="preserve">
+        <value>Удаление профиля</value>
+    </data>
+    <data name="ProfileSettings_LastProfileErrorAlert_Description" xml:space="preserve">
+        <value>Профиль "{0}" является последним профилем и не может быть удален.</value>
+    </data>
+    <data name="ProfileSettings_LastProfileErrorAlert_Ok" xml:space="preserve">
+        <value>ОК</value>
+    </data>
+    <data name="ProfileSettings_LastProfileErrorAlert_Title" xml:space="preserve">
+        <value>Последний профиль</value>
     </data>
 </root>

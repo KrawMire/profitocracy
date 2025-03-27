@@ -11,7 +11,7 @@
                               Title="{x:Static resx:AppResources.Pages_Categories}"
                               BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
                               NavigatedTo="UpdateCategoriesList"
-                              Padding="8"
+                              Padding="8,0,8,0"
                               HideSoftInputOnTapped="True">
     <abstractions:BaseContentPage.Content>
         <Grid>
@@ -19,64 +19,68 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
-            <ScrollView Grid.Row="0">
-                <CollectionView x:Name="CategoriesCollectionView">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="categories:CategoryModel">
-                            <SwipeView>
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItemView Padding="4,0,8,0"
-                                                       BackgroundColor="Transparent"
-                                                       Invoked="DeleteCategory_OnInvoked">
-                                            <VerticalStackLayout VerticalOptions="Center" 
-                                                                 Width="16">
-                                                <Border BackgroundColor="{StaticResource DangerRed}"
-                                                        StrokeThickness="0"
-                                                        Padding="16">
-                                                    <Border.StrokeShape>
-                                                        <RoundRectangle CornerRadius="40"/>
-                                                    </Border.StrokeShape>
-                                                    <Image Source="bin.png" 
-                                                           Width="8"/>
-                                                </Border>
-                                            </VerticalStackLayout>
-                                        </SwipeItemView>
-                                        <SwipeItemView Padding="8,0,4,0"
-                                                       BackgroundColor="Transparent"
-                                                       Invoked="EditCategory_OnInvoked">
-                                            <VerticalStackLayout VerticalOptions="Center" 
-                                                                 Width="16">
-                                                <Border BackgroundColor="{StaticResource InfoBlue}"
-                                                        StrokeThickness="0"
-                                                        Padding="16">
-                                                    <Border.StrokeShape>
-                                                        <RoundRectangle CornerRadius="40"/>
-                                                    </Border.StrokeShape>
-                                                    <Image Source="edit.png" 
-                                                           Width="8"/>
-                                                </Border>
-                                            </VerticalStackLayout>
-                                        </SwipeItemView>
-                                    </SwipeItems>
-                                </SwipeView.RightItems>
-                                
-                                <Border Style="{StaticResource CategoryCard}"
-                                        Margin="0,8,0,0">
-                                    <StackLayout>
-                                        <FlexLayout JustifyContent="SpaceBetween">
-                                            <Label Style="{StaticResource CategoryCardName}"
-                                                   Text="{Binding Name}"/>
-                                            <Label Style="{StaticResource CategoryCardPlannedAmount}"
-                                                   Text="{Binding DisplayPlannedAmount}"/>
-                                        </FlexLayout>
-                                    </StackLayout>
-                                </Border>
-                            </SwipeView>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
+            <CollectionView Grid.Row="0"
+                            x:Name="CategoriesCollectionView"
+                            VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="categories:CategoryModel">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItemView Padding="4,0,8,0"
+                                                   BackgroundColor="Transparent"
+                                                   Invoked="DeleteCategory_OnInvoked">
+                                        <VerticalStackLayout VerticalOptions="Center" 
+                                                             Width="16">
+                                            <Border BackgroundColor="{StaticResource DangerRed}"
+                                                    StrokeThickness="0"
+                                                    Padding="16">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="40"/>
+                                                </Border.StrokeShape>
+                                                <Image Source="bin.png" 
+                                                       Width="8"/>
+                                            </Border>
+                                        </VerticalStackLayout>
+                                    </SwipeItemView>
+                                    <SwipeItemView Padding="8,0,4,0"
+                                                   BackgroundColor="Transparent"
+                                                   Invoked="EditCategory_OnInvoked">
+                                        <VerticalStackLayout VerticalOptions="Center" 
+                                                             Width="16">
+                                            <Border BackgroundColor="{StaticResource InfoBlue}"
+                                                    StrokeThickness="0"
+                                                    Padding="16">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="40"/>
+                                                </Border.StrokeShape>
+                                                <Image Source="edit.png" 
+                                                       Width="8"/>
+                                            </Border>
+                                        </VerticalStackLayout>
+                                    </SwipeItemView>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            
+                            <Border Style="{StaticResource CategoryCard}"
+                                    Margin="0,8,0,0">
+                                <StackLayout>
+                                    <FlexLayout JustifyContent="SpaceBetween">
+                                        <Label Style="{StaticResource CategoryCardName}"
+                                               Text="{Binding Name}"/>
+                                        <Label Style="{StaticResource CategoryCardPlannedAmount}"
+                                               Text="{Binding DisplayPlannedAmount}"/>
+                                    </FlexLayout>
+                                </StackLayout>
+                            </Border>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <Grid HeightRequest="92"
+                          BackgroundColor="Transparent"/>
+                </CollectionView.Footer>
+            </CollectionView>
             
             <Button Grid.Row="0"
                     Text="+"

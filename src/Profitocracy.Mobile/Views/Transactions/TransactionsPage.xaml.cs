@@ -56,7 +56,16 @@ public partial class TransactionsPage : BaseContentPage
 				throw new ArgumentNullException(AppResources.CommonError_FindTransactionToDelete);
 			}
 		
-			await _viewModel.DeleteTransaction((Guid)transaction.Id);
+			var isDelete = await DisplayAlert(
+				AppResources.Transactions_DeleteAlert_Title,
+				string.Format(AppResources.Transactions_DeleteAlert_Description, transaction.Description),
+				AppResources.Transactions_DeleteAlert_Ok,
+				AppResources.Transactions_DeleteAlert_Cancel);
+
+			if (isDelete)
+			{
+				await _viewModel.DeleteTransaction((Guid)transaction.Id);	
+			}
 		});
 	}
 
@@ -75,6 +84,23 @@ public partial class TransactionsPage : BaseContentPage
 			{
 				throw new ArgumentNullException(AppResources.CommonError_FindTransactionToEdit);
 			}
+
+			var isTransactionInPeriod = await _viewModel.IsTransactionInProfilePeriod((Guid)transaction.Id);
+			var isEdit = true;
+			
+			if (!isTransactionInPeriod)
+			{
+				isEdit = await DisplayAlert(
+					AppResources.Transactions_EditNotInPeriodAlert_Title,
+					string.Format(AppResources.Transactions_EditNotInPeriodAlert_Description, transaction.Description),
+					AppResources.Transactions_EditNotInPeriodAlert_Ok,
+					AppResources.Transactions_EditNotInPeriodAlert_Cancel);
+			}
+
+			if (!isEdit)
+			{
+				return;
+			}
 			
 			var editPage = Handler?.MauiContext?.Services.GetService<EditTransactionPage>();
 
@@ -84,7 +110,6 @@ public partial class TransactionsPage : BaseContentPage
 			}
 		
 			editPage.AddTransactionId((Guid)transaction.Id);
-			
 			await Navigation.PushModalAsync(editPage);
 		});
 	}

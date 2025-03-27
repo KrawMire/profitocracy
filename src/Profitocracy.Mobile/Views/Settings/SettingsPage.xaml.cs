@@ -1,4 +1,3 @@
-using System.Reflection;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Constants;
 using Profitocracy.Mobile.Views.Settings.CategoriesSettings;
@@ -10,16 +9,10 @@ namespace Profitocracy.Mobile.Views.Settings;
 
 public partial class SettingsPage : BaseContentPage
 {
-	private const string DefaultVersion = "0.0.0"; 
-	
 	public SettingsPage()
 	{
 		InitializeComponent();
-		VersionLabel.Text = Assembly
-			.GetExecutingAssembly()
-			.GetName()
-			.Version?
-			.ToString() ?? DefaultVersion;
+		VersionLabel.Text = AppInfo.VersionString;
 	}
 
 	private void ProfilesButton_OnClicked(object? sender, TappedEventArgs e)

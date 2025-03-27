@@ -142,7 +142,7 @@
         <value>English</value>
     </data>
     <data name="Languages_Russian" xml:space="preserve">
-        <value>Russian</value>
+        <value>Русский</value>
     </data>
     <data name="InfoAlert_ChangeLanguage_Title" xml:space="preserve">
         <value>Warning</value>
@@ -322,7 +322,7 @@
         <value>Cannot find profile with specified ID</value>
     </data>
     <data name="ProfileSettings_ChangeAlert_Title" xml:space="preserve">
-        <value>Change current profile</value>
+        <value>Change Current Profile</value>
     </data>
     <data name="ProfileSettings_ChangeAlert_Desription" xml:space="preserve">
         <value>Are you sure you want to set profile "{0}" current?</value>
@@ -503,5 +503,62 @@
     </data>
     <data name="Settings_GitHub" xml:space="preserve">
         <value>GitHub</value>
+    </data>
+    <data name="CategoriesSettings_DeleteAlert_Title" xml:space="preserve">
+        <value>Delete Category</value>
+    </data>
+    <data name="CategoriesSettings_DeleteAlert_Ok" xml:space="preserve">
+        <value>OK</value>
+    </data>
+    <data name="CategoriesSettings_DeleteAlert_Cancel" xml:space="preserve">
+        <value>Cancel</value>
+    </data>
+    <data name="CategoriesSettings_DeleteAlert_Description" xml:space="preserve">
+        <value>Are you sure you want to delete category "{0}"?</value>
+    </data>
+    <data name="Transactions_DeleteAlert_Cancel" xml:space="preserve">
+        <value>Cancel</value>
+    </data>
+    <data name="Transactions_DeleteAlert_Ok" xml:space="preserve">
+        <value>OK</value>
+    </data>
+    <data name="Transactions_DeleteAlert_Title" xml:space="preserve">
+        <value>Delete Transaction</value>
+    </data>
+    <data name="Transactions_DeleteAlert_Description" xml:space="preserve">
+        <value>Are you sure you want to delete transaction "{0}"?</value>
+    </data>
+    <data name="Transactions_EditNotInPeriodAlert_Cancel" xml:space="preserve">
+        <value>Cancel</value>
+    </data>
+    <data name="Transactions_EditNotInPeriodAlert_Ok" xml:space="preserve">
+        <value>OK</value>
+    </data>
+    <data name="Transactions_EditNotInPeriodAlert_Description" xml:space="preserve">
+        <value>Are you sure you want to edit transaction "{0}"? It is not in the current profile period and does not affect on profile calculation.</value>
+    </data>
+    <data name="Transactions_EditNotInPeriodAlert_Title" xml:space="preserve">
+        <value>Transaction is not in Profile Period</value>
+    </data>
+    <data name="ProfileSettings_DeleteAlert_Cancel" xml:space="preserve">
+        <value>Cancel</value>
+    </data>
+    <data name="ProfileSettings_DeleteAlert_Ok" xml:space="preserve">
+        <value>OK</value>
+    </data>
+    <data name="ProfileSettings_DeleteAlert_Description" xml:space="preserve">
+        <value>Are you sure you want to delete profile "{0}"? All the profile's categories and transactions will be deleted too.</value>
+    </data>
+    <data name="ProfileSettings_DeleteAlert_Title" xml:space="preserve">
+        <value>Delete Profile</value>
+    </data>
+    <data name="ProfileSettings_LastProfileErrorAlert_Title" xml:space="preserve">
+        <value>Last Profile</value>
+    </data>
+    <data name="ProfileSettings_LastProfileErrorAlert_Description" xml:space="preserve">
+        <value>Profile "{0}" is the last profile and you cannot delete it.</value>
+    </data>
+    <data name="ProfileSettings_LastProfileErrorAlert_Ok" xml:space="preserve">
+        <value>OK</value>
     </data>
 </root>

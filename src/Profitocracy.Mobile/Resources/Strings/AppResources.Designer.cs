@@ -1016,5 +1016,119 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("Settings_GitHub", resourceCulture);
             }
         }
+        
+        internal static string CategoriesSettings_DeleteAlert_Title {
+            get {
+                return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string CategoriesSettings_DeleteAlert_Ok {
+            get {
+                return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string CategoriesSettings_DeleteAlert_Cancel {
+            get {
+                return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Cancel", resourceCulture);
+            }
+        }
+        
+        internal static string CategoriesSettings_DeleteAlert_Description {
+            get {
+                return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_DeleteAlert_Cancel {
+            get {
+                return ResourceManager.GetString("Transactions_DeleteAlert_Cancel", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_DeleteAlert_Ok {
+            get {
+                return ResourceManager.GetString("Transactions_DeleteAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_DeleteAlert_Title {
+            get {
+                return ResourceManager.GetString("Transactions_DeleteAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_DeleteAlert_Description {
+            get {
+                return ResourceManager.GetString("Transactions_DeleteAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_EditNotInPeriodAlert_Cancel {
+            get {
+                return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Cancel", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_EditNotInPeriodAlert_Ok {
+            get {
+                return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_EditNotInPeriodAlert_Description {
+            get {
+                return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_EditNotInPeriodAlert_Title {
+            get {
+                return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string ProfileSettings_DeleteAlert_Cancel {
+            get {
+                return ResourceManager.GetString("ProfileSettings_DeleteAlert_Cancel", resourceCulture);
+            }
+        }
+        
+        internal static string ProfileSettings_DeleteAlert_Ok {
+            get {
+                return ResourceManager.GetString("ProfileSettings_DeleteAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string ProfileSettings_DeleteAlert_Description {
+            get {
+                return ResourceManager.GetString("ProfileSettings_DeleteAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string ProfileSettings_DeleteAlert_Title {
+            get {
+                return ResourceManager.GetString("ProfileSettings_DeleteAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string ProfileSettings_LastProfileErrorAlert_Title {
+            get {
+                return ResourceManager.GetString("ProfileSettings_LastProfileErrorAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string ProfileSettings_LastProfileErrorAlert_Description {
+            get {
+                return ResourceManager.GetString("ProfileSettings_LastProfileErrorAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string ProfileSettings_LastProfileErrorAlert_Ok {
+            get {
+                return ResourceManager.GetString("ProfileSettings_LastProfileErrorAlert_Ok", resourceCulture);
+            }
+        }
     }
 }
