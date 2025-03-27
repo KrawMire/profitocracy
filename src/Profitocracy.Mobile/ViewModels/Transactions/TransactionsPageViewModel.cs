@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using Profitocracy.Core.Domain.Abstractions.Services;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Core.Specifications;
 using Profitocracy.Mobile.Abstractions;
@@ -11,6 +12,7 @@ public class TransactionsPageViewModel : BaseNotifyObject
 {
     private readonly ITransactionRepository _transactionRepository;
     private readonly IProfileRepository _profileRepository;
+    private readonly ITransactionService _transactionService;
     
     private Guid? _profileId;
     private DateTime _fromDate;
@@ -18,9 +20,11 @@ public class TransactionsPageViewModel : BaseNotifyObject
     
     public TransactionsPageViewModel(
         IProfileRepository profileRepository,
-        ITransactionRepository transactionRepository)
+        ITransactionRepository transactionRepository, 
+        ITransactionService transactionService)
     {
         _transactionRepository = transactionRepository;
+        _transactionService = transactionService;
         _profileRepository = profileRepository;
         
         var currentDate = DateTime.Now;
@@ -80,6 +84,11 @@ public class TransactionsPageViewModel : BaseNotifyObject
         var deletedId = await _transactionRepository.Delete(transactionId);
 
         Transactions.Remove(Transactions.Single(t => t.Id == deletedId));
+    }
+
+    public Task<bool> IsTransactionInProfilePeriod(Guid transactionId)
+    {
+        return _transactionService.CheckTransactionInCurrentPeriod(transactionId);
     }
 
     private async Task InitializeTransactions()

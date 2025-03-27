@@ -18,6 +18,8 @@ public class EditProfilePageViewModel : BaseNotifyObject
     private Currency _currency;
     private bool _isCurrent;
 
+    private bool _isNotFirstProfile = true;
+    
     private readonly IProfileRepository _profileRepository;
     
     public EditProfilePageViewModel(IProfileRepository profileRepository)
@@ -34,6 +36,12 @@ public class EditProfilePageViewModel : BaseNotifyObject
     public Guid? ProfileId
     {
         set => _profileId = value;
+    }
+
+    public bool IsNotFirstProfile
+    {
+        get => _isNotFirstProfile;
+        private set => SetProperty(ref _isNotFirstProfile, value);
     }
     
     public string Name
@@ -61,6 +69,7 @@ public class EditProfilePageViewModel : BaseNotifyObject
         var existingProfiles = await _profileRepository.GetAllProfiles();
         _isCurrent = !existingProfiles.Any(p => p.IsCurrent && p.Id != _profileId);
         
+        IsNotFirstProfile = existingProfiles.Count != 0;
         SelectedCurrency = AvailableCurrencies[0];
 
         if (_profileId is not null)
