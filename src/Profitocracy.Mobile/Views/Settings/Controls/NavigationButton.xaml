@@ -11,8 +11,10 @@
         </Border.GestureRecognizers>
         <FlexLayout JustifyContent="SpaceBetween">
             <Label Style="{StaticResource SettingsButtonText}"
+                   VerticalTextAlignment="Center"
                    Text="{Binding Title}" />
             <Label Style="{StaticResource SettingsButtonText}"
+                   VerticalTextAlignment="Center"
                    Text="&#xf125;" 
                    FontFamily="ionicons"/>
         </FlexLayout>
