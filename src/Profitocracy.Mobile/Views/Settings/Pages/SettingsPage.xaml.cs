@@ -11,7 +11,7 @@ public partial class SettingsPage : BaseContentPage
 		VersionLabel.Text = AppInfo.VersionString;
 	}
 
-	private void ProfilesButton_OnClicked(object? sender, TappedEventArgs e)
+	private void ProfilesButton_OnClicked(object? sender, EventArgs e)
 	{
 		ProcessAction(async () =>
 		{
@@ -37,7 +37,7 @@ public partial class SettingsPage : BaseContentPage
 		});
 	}
 
-	private void ThemeButton_OnClicked(object? sender, TappedEventArgs e)
+	private void ThemeButton_OnClicked(object? sender, EventArgs e)
 	{
 		ProcessAction(async () =>
 		{
@@ -50,7 +50,7 @@ public partial class SettingsPage : BaseContentPage
 		});
 	}
 
-	private void LanguageButton_OnClicked(object? sender, TappedEventArgs e)
+	private void LanguageButton_OnClicked(object? sender, EventArgs e)
 	{
 		ProcessAction(async () =>
 		{
@@ -63,7 +63,7 @@ public partial class SettingsPage : BaseContentPage
 		});
 	}
 
-	private void GitHubButton_OnClicked(object? sender, TappedEventArgs e)
+	private void GitHubButton_OnClicked(object? sender, EventArgs e)
 	{
 		ProcessAction(async () =>
 		{

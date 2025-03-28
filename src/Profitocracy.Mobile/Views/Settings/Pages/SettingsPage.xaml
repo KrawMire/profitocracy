@@ -4,6 +4,7 @@
                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                               xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
                               xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+                              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Settings.Controls"
                               x:Class="Profitocracy.Mobile.Views.Settings.Pages.SettingsPage"
                               Title="{x:Static resx:AppResources.Pages_Settings}"
                               BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
@@ -14,74 +15,32 @@
             <Label Text="{x:Static resx:AppResources.Settings_Application}"
                    Style="{StaticResource SettingsGroupTitle}"
                    Margin="0,0,0,0"/>
-            <Border Style="{StaticResource SettingsButton}"
-                    Margin="0,8,0,0">
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ProfilesButton_OnClicked"/>
-                </Border.GestureRecognizers>
-                <FlexLayout JustifyContent="SpaceBetween">
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text="{x:Static resx:AppResources.Settings_Profiles}" />
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text=">" />
-                </FlexLayout>
-            </Border>
-            <Border Style="{StaticResource SettingsButton}"
-                    Margin="0,8,0,0" >
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="CategoriesButton_OnClicked"/>
-                </Border.GestureRecognizers>
-                <FlexLayout JustifyContent="SpaceBetween">
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text="{x:Static resx:AppResources.Settings_Categories}" />
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text=">" />
-                </FlexLayout>
-            </Border>
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Profiles}" 
+                                       Clicked="ProfilesButton_OnClicked"
+                                       Margin="0,8,0,0"/>
+            
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Categories}" 
+                                       Clicked="CategoriesButton_OnClicked"
+                                       Margin="0,8,0,0"/>
             
             <Label Text="{x:Static resx:AppResources.Settings_General}"
                    Style="{StaticResource SettingsGroupTitle}"
                    Margin="0,16,0,0"/>
-            <Border Style="{StaticResource SettingsButton}"
-                    Margin="0,8,0,0" >
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ThemeButton_OnClicked"/>
-                </Border.GestureRecognizers>
-                <FlexLayout JustifyContent="SpaceBetween">
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text="{x:Static resx:AppResources.Settings_Theme}" />
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text=">" />
-                </FlexLayout>
-            </Border>
-            <Border Style="{StaticResource SettingsButton}"
-                    Margin="0,8,0,0" >
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="LanguageButton_OnClicked"/>
-                </Border.GestureRecognizers>
-                <FlexLayout JustifyContent="SpaceBetween">
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text="{x:Static resx:AppResources.Settings_Language}" />
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text=">" />
-                </FlexLayout>
-            </Border>
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Theme}" 
+                                       Clicked="ThemeButton_OnClicked"
+                                       Margin="0,8,0,0"/>
+            
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Language}" 
+                                       Clicked="LanguageButton_OnClicked"
+                                       Margin="0,8,0,0"/>
             
             <Label Text="{x:Static resx:AppResources.Settings_AboutApplication}"
                    Style="{StaticResource SettingsGroupTitle}"
                    Margin="0,16,0,0"/>
-            <Border Style="{StaticResource SettingsButton}"
-                    Margin="0,8,0,0" >
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="GitHubButton_OnClicked"/>
-                </Border.GestureRecognizers>
-                <FlexLayout JustifyContent="SpaceBetween">
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text="{x:Static resx:AppResources.Settings_GitHub}" />
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text=">" />
-                </FlexLayout>
-            </Border>
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_GitHub}" 
+                                       Clicked="GitHubButton_OnClicked"
+                                       Margin="0,8,0,0"/>
+            
             <Border Style="{StaticResource SettingsButton}"
                     Margin="0,8,0,0" >
                 <FlexLayout JustifyContent="SpaceBetween">
