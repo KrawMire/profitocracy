@@ -16,7 +16,7 @@
             <Label Style="{StaticResource SettingsButtonText}"
                    VerticalTextAlignment="Center"
                    Text="&#xf125;" 
-                   FontFamily="ionicons"/>
+                   FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"/>
         </FlexLayout>
     </Border>
 </ContentView>
