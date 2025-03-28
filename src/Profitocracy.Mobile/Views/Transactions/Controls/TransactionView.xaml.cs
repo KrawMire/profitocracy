@@ -16,7 +16,11 @@ public partial class TransactionView : ContentView
     
     public TransactionModel Transaction
     {
-        get => (TransactionModel)GetValue(TransactionProperty); 
-        set => SetValue(TransactionProperty, value);
+        get => (TransactionModel)GetValue(TransactionProperty);
+        set
+        {
+            SetValue(TransactionProperty, value);
+            BindingContext = Transaction;
+        }
     }
 }
