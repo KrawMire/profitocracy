@@ -31,25 +31,25 @@ public partial class HomePage : BaseContentPage
 		});
 	}
 
-	private void CategoryLayout_OnTapped(object? sender, TappedEventArgs e)
+	private void CategoryLayout_OnTapped(object? sender, EventArgs e)
 	{
 		ProcessAction(async () =>
 		{
-			await OpenFilteredTransactionsByCategoryPage(sender, e);	
+			await OpenFilteredTransactionsByCategoryPage(sender);	
 		});
 	}
 	
-	private void MainSpendingTypeLayout_OnTapped(object? sender, TappedEventArgs e)
+	private void MainSpendingTypeLayout_OnTapped(object? sender, EventArgs e)
 	{
 		SpendingTypeLayout_OnTapped(SpendingType.Main);
 	}
 
-	private void SecondarySpendingTypeLayout_OnTapped(object? sender, TappedEventArgs e)
+	private void SecondarySpendingTypeLayout_OnTapped(object? sender, EventArgs e)
 	{
 		SpendingTypeLayout_OnTapped(SpendingType.Secondary);
 	}
 
-	private void SavedSpendingTypeLayout_OnTapped(object? sender, TappedEventArgs e)
+	private void SavedSpendingTypeLayout_OnTapped(object? sender, EventArgs e)
 	{
 		SpendingTypeLayout_OnTapped(SpendingType.Saved);
 	}
@@ -62,7 +62,7 @@ public partial class HomePage : BaseContentPage
 		});
 	}
 
-	private async Task OpenFilteredTransactionsByCategoryPage(object? sender, TappedEventArgs e)
+	private async Task OpenFilteredTransactionsByCategoryPage(object? sender)
 	{
 		if ((sender as StackLayout)?.BindingContext is not CategoryExpenseModel category)
 		{

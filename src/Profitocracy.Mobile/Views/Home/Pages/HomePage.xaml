@@ -7,6 +7,7 @@
                               xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
                               xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Home"
                               xmlns:profile="clr-namespace:Profitocracy.Mobile.Models.Profiles"
+                              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
                               x:Class="Profitocracy.Mobile.Views.Home.Pages.HomePage"
                               x:DataType="viewmodel:HomePageViewModel"
                               Title="{x:Static resx:AppResources.Pages_Home}"
@@ -59,72 +60,57 @@
                     </StackLayout>
                 </Border>
                 
-                <Border Style="{StaticResource ExpenseCard}"
-                        Margin="0, 16, 0, 0"
-                        IsVisible="{Binding IsShowSavedAmounts}">
-                    <StackLayout>
-                        <Label Style="{StaticResource ExpenseCardTitle}"
-                               Text="{x:Static resx:AppResources.Home_SavedAmounts}"/>
-                        <CollectionView x:Name="SavedAmountsCollectionView"
-                                        Margin="0,16,0,0">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="profile:SavedAmountModel">
-                                    <FlexLayout JustifyContent="SpaceBetween"
-                                                Margin="0,8,0,0">
-                                        <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                               Text="{Binding CurrencyName}"/>
-                                        <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                               Text="{Binding Amount}"/> 
-                                    </FlexLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                </Border>
-                
-                <Border Style="{StaticResource ExpenseCard}"
-                        Margin="0, 16, 0, 0">
-                    <StackLayout>
-                        <Label Style="{StaticResource ExpenseCardTitle}"
-                               Text="{x:Static resx:AppResources.Home_DailyAmounts}"/>
-                        <Grid Margin="0, 16, 0, 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="64" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="0">
-                                <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                       Text="{x:Static resx:AppResources.Home_TodayBalance}"/>
-                                <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
-                                             Margin="0,8,0,0"
-                                             Progress="{Binding TodayBalanceRatio}"/>
-                                <FlexLayout JustifyContent="SpaceBetween">
-                                    <Label Style="{StaticResource ExpenseCardProgressValue}"
-                                           Text="{Binding TodayActualAmount}"/>
-                                    <Label Style="{StaticResource ExpenseCardProgressValue}"
-                                           Text="{Binding TodayPlannedAmount}" />
+                <controls:ContentSectionView IsVisible="{Binding IsShowSavedAmounts}"
+                                             Title="{x:Static resx:AppResources.Home_SavedAmounts}">
+                    <CollectionView x:Name="SavedAmountsCollectionView"
+                                    Margin="0,16,0,0">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="profile:SavedAmountModel">
+                                <FlexLayout JustifyContent="SpaceBetween"
+                                            Margin="0,8,0,0">
+                                    <Label Style="{StaticResource ExpenseCardSubtitle}"
+                                           Text="{Binding CurrencyName}"/>
+                                    <Label Style="{StaticResource ExpenseCardSubtitle}"
+                                           Text="{Binding Amount}"/> 
                                 </FlexLayout>
-                            </StackLayout>
-                            <StackLayout Grid.Column="2">
-                                <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                       Text="{x:Static resx:AppResources.Home_TomorrowBalance}"/>
-                                <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                       Margin="0,8,0,0"
-                                       Text="{Binding BalanceForTomorrow}"/>
-                            </StackLayout>
-                        </Grid>
-                    </StackLayout>
-                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </controls:ContentSectionView>
                 
-                <Border Style="{StaticResource ExpenseCard}"
-                        Margin="0, 16, 0, 0">
+                <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_DailyAmounts}">
+                    <Grid Margin="0, 16, 0, 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="64" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0">
+                            <Label Style="{StaticResource ExpenseCardSubtitle}"
+                                   Text="{x:Static resx:AppResources.Home_TodayBalance}"/>
+                            <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
+                                         Margin="0,8,0,0"
+                                         Progress="{Binding TodayBalanceRatio}"/>
+                            <FlexLayout JustifyContent="SpaceBetween">
+                                <Label Style="{StaticResource ExpenseCardProgressValue}"
+                                       Text="{Binding TodayActualAmount}"/>
+                                <Label Style="{StaticResource ExpenseCardProgressValue}"
+                                       Text="{Binding TodayPlannedAmount}" />
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2">
+                            <Label Style="{StaticResource ExpenseCardSubtitle}"
+                                   Text="{x:Static resx:AppResources.Home_TomorrowBalance}"/>
+                            <Label Style="{StaticResource ExpenseCardSubtitle}"
+                                   Margin="0,8,0,0"
+                                   Text="{Binding BalanceForTomorrow}"/>
+                        </StackLayout>
+                    </Grid>
+                </controls:ContentSectionView>
+                
+                <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_SpendingTypes}">
                     <StackLayout>
-                        <Label Style="{StaticResource ExpenseCardTitle}"
-                               Text="{x:Static resx:AppResources.Home_SpendingTypes}"/>
-                            
-                        <StackLayout x:Name="MainExpenses"
-                                     Margin="0,16,0,0">
+                        <StackLayout Margin="0,16,0,0">
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="MainSpendingTypeLayout_OnTapped" />
                             </StackLayout.GestureRecognizers>
@@ -141,8 +127,7 @@
                             </FlexLayout>
                         </StackLayout>
                         
-                        <StackLayout x:Name="SecondaryExpenses"
-                                     Margin="0,16,0,0">
+                        <StackLayout Margin="0,16,0,0">
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="SecondarySpendingTypeLayout_OnTapped" />
                             </StackLayout.GestureRecognizers>
@@ -159,8 +144,7 @@
                             </FlexLayout>
                         </StackLayout>
                         
-                        <StackLayout x:Name="SavedExpenses" 
-                                     Margin="0,16,0,0">
+                        <StackLayout Margin="0,16,0,0">
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="SavedSpendingTypeLayout_OnTapped" />
                             </StackLayout.GestureRecognizers>
@@ -177,20 +161,15 @@
                             </FlexLayout>
                         </StackLayout>
                     </StackLayout>
-                </Border>
+                </controls:ContentSectionView>
                 
-                <Border Style="{StaticResource ExpenseCard}"
-                        Margin="0, 16, 0, 0">
+                <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_Categories}">
                     <StackLayout>
-                        <Label Style="{StaticResource ExpenseCardTitle}"
-                               Text="{x:Static resx:AppResources.Home_Categories}"/>
-                        
                         <Label Style="{StaticResource ExpenseCardSubtitle}" 
                                IsVisible="{Binding IsDisplayNoCategories}" 
                                Text="{x:Static resx:AppResources.Home_NoCategories}"
                                Margin="0,16,0,0"
-                               HorizontalTextAlignment="Center"/> 
-                        
+                               HorizontalTextAlignment="Center"/>
                         <CollectionView x:Name="CategoriesExpensesCollectionView">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="categories:CategoryExpenseModel">
@@ -245,7 +224,7 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                     </StackLayout>
-                </Border>
+                </controls:ContentSectionView>
             </VerticalStackLayout>
         </ScrollView>
     </RefreshView>
