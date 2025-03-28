@@ -1,6 +1,6 @@
 ﻿using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Constants;
-using Profitocracy.Mobile.Views.Settings.ProfilesSettings;
+using Profitocracy.Mobile.Views.Settings.Pages;
 
 namespace Profitocracy.Mobile;
 
