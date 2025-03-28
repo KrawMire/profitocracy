@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Settings.Controls"
+             x:Class="Profitocracy.Mobile.Views.Settings.Controls.NavigationButton"
+             x:DataType="controls:NavigationButton">
+    <Border Style="{StaticResource SettingsButton}">
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="InternalNavigationButton_OnClicked"/>
+        </Border.GestureRecognizers>
+        <FlexLayout JustifyContent="SpaceBetween">
+            <Label Style="{StaticResource SettingsButtonText}"
+                   Text="{Binding Title}" />
+            <Label Style="{StaticResource SettingsButtonText}"
+                   Text="&#xf125;" 
+                   FontFamily="ionicons"/>
+        </FlexLayout>
+    </Border>
+</ContentView>

@@ -426,6 +426,7 @@
         <Setter Property="CornerRadius" Value="12"/>
         <Setter Property="Padding" Value="4"/>
         <Setter Property="BackgroundColor" Value="{StaticResource Gray300}"/>
+        <Setter Property="TextColor" Value="{StaticResource LightContent}"/>
     </Style>
     
     <Style TargetType="Label" x:Key="CloseButtonContent">
