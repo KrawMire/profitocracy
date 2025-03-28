@@ -10,7 +10,7 @@
             HeightRequest="60"
             CornerRadius="30"
             ImageSource="{FontImage &#xf217;,
-                FontFamily=ionicons,
+                FontFamily={OnPlatform iOS=Ionicons, Android=Ionicons.ttf#},
                 Size=24}"
             Clicked="InternalAddNewButton_OnClicked">
         <Button.Shadow>

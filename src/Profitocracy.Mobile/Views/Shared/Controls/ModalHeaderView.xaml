@@ -12,7 +12,7 @@
         
         <Button Style="{StaticResource CloseButton}"
                 ImageSource="{FontImage &#xf129;,
-                    FontFamily=ionicons,
+                    FontFamily={OnPlatform iOS=Ionicons, Android=Ionicons.ttf#},
                     Size=12}"
                 Clicked="CloseButton_OnClicked"
                 VerticalOptions="Center"/>
