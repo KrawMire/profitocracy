@@ -17,7 +17,6 @@ public class EditProfilePageViewModel : BaseNotifyObject
     private string _initialBalance = "0";
     private Currency _currency;
     private bool _isCurrent;
-
     private bool _isNotFirstProfile = true;
     
     private readonly IProfileRepository _profileRepository;
@@ -31,6 +30,8 @@ public class EditProfilePageViewModel : BaseNotifyObject
         {
             AvailableCurrencies.Add(currency);   
         }
+        
+        _currency = AvailableCurrencies[0];
     }
 
     public Guid? ProfileId

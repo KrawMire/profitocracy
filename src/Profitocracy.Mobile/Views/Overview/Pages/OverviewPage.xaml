@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
+             xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+             xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Overview"
+             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             x:Class="Profitocracy.Mobile.Views.Overview.Pages.OverviewPage"
+             x:DataType="viewmodel:OverviewPageViewModel"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+             Title="{x:Static resx:AppResources.Pages_Overview}"
+             NavigatedTo="OverviewPage_OnNavigatedTo"
+             HideSoftInputOnTapped="True">
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <StackLayout Padding="8,16">
+            <Picker x:Name="CalculationTypePicker"
+                    SelectedItem="{Binding SelectedDisplayCalculationType}"
+                    ItemDisplayBinding="{Binding  DisplayName}"
+                    SelectedIndexChanged="CalculationTypePicker_OnSelectedIndexChanged"/>
+            
+            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_CategoriesExpenses}">
+                <lvc:CartesianChart Series="{Binding CategoriesExpenses}"
+                                    XAxes="{Binding CategoriesExpensesLabels}"
+                                    HeightRequest="320"
+                                    TooltipPosition="Top"/>
+            </controls:ContentSectionView>
+            
+            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_SpendingTypes}">
+                <lvc:PieChart Series="{Binding SpendingTypeDistribution}"
+                              HeightRequest="160"
+                              TooltipPosition="Top"/>
+            </controls:ContentSectionView>
+            
+            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_IncomeExpense}">
+                <lvc:PieChart Series="{Binding IncomeAndExpense}"
+                              HeightRequest="160"
+                              TooltipPosition="Top"/>
+            </controls:ContentSectionView>
+            
+            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_CategoriesPlannedAndActual}">
+                <lvc:CartesianChart Series="{Binding PlannedAndActualCategoriesAmounts}"
+                                    XAxes="{Binding PlannedAndActualCategoriesAmountsLabels}"
+                                    HeightRequest="320"
+                                    TooltipPosition="Top"/>
+            </controls:ContentSectionView>
+            
+            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_DailyExpenses}">
+                <lvc:CartesianChart Series="{Binding DailyExpenses}"
+                                    XAxes="{Binding DailyExpensesLabels}"
+                                    HeightRequest="320"
+                                    TooltipPosition="Top"/>
+            </controls:ContentSectionView>
+            
+            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_WeeklyExpenses}">
+                <lvc:CartesianChart Series="{Binding WeeklyExpenses}"
+                                    XAxes="{Binding WeeklyExpensesLabels}"
+                                    HeightRequest="320"
+                                    TooltipPosition="Top"/>
+            </controls:ContentSectionView>
+        </StackLayout>
+    </ScrollView>
+</abstractions:BaseContentPage>

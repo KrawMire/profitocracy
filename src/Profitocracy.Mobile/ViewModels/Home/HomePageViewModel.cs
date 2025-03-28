@@ -13,19 +13,18 @@ namespace Profitocracy.Mobile.ViewModels.Home;
 public class HomePageViewModel : BaseNotifyObject
 {
     private string _profileName = string.Empty;
-
-    private string _balance;
-    private string _totalActualAmount;
-    private string _totalPlannedAmount;
-    private string _todayActualAmount;
-    private string _todayPlannedAmount;
-    private string _balanceForTomorrow;
-    private string _mainActualAmount;
-    private string _mainPlannedAmount;
-    private string _secondaryActualAmount;
-    private string _secondaryPlannedAmount;
-    private string _savedActualAmount;
-    private string _savedPlannedAmount;
+    private string _balance = string.Empty;
+    private string _totalActualAmount = string.Empty;
+    private string _totalPlannedAmount = string.Empty;
+    private string _todayActualAmount = string.Empty;
+    private string _todayPlannedAmount = string.Empty;
+    private string _balanceForTomorrow = string.Empty;
+    private string _mainActualAmount = string.Empty;
+    private string _mainPlannedAmount = string.Empty;
+    private string _secondaryActualAmount = string.Empty;
+    private string _secondaryPlannedAmount = string.Empty;
+    private string _savedActualAmount = string.Empty;
+    private string _savedPlannedAmount = string.Empty;
 
     private float _totalBalanceRatio;
     private float _todayBalanceRatio;

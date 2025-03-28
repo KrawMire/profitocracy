@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             x:Class="Profitocracy.Mobile.Views.Shared.Controls.ExpenseProgressView"
+             x:DataType="controls:ExpenseProgressView">
+    <StackLayout>
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="ExpenseProgressView_OnTapped" />
+        </StackLayout.GestureRecognizers>
+        <Label Style="{StaticResource ExpenseCardSubtitle}"
+               Text="{Binding Title}"/>
+        <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
+                     Margin="0,8,0,0"
+                     Progress="{Binding Ratio}"/>
+        <FlexLayout JustifyContent="SpaceBetween">
+            <Label Style="{StaticResource ExpenseCardProgressValue}"
+                   Text="{Binding ActualAmount}"/>
+            <Label Style="{StaticResource ExpenseCardProgressValue}"
+                   Text="{Binding PlannedAmount}" />
+        </FlexLayout>
+    </StackLayout>
+</ContentView>

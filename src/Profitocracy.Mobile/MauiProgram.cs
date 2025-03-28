@@ -8,13 +8,10 @@ using Profitocracy.Mobile.ViewModels.Overview;
 using Profitocracy.Mobile.ViewModels.Profiles;
 using Profitocracy.Mobile.ViewModels.Settings;
 using Profitocracy.Mobile.ViewModels.Transactions;
-using Profitocracy.Mobile.Views.Home;
-using Profitocracy.Mobile.Views.Overview;
-using Profitocracy.Mobile.Views.Settings.CategoriesSettings;
-using Profitocracy.Mobile.Views.Settings.LanguageSettings;
-using Profitocracy.Mobile.Views.Settings.ProfilesSettings;
-using Profitocracy.Mobile.Views.Settings.ThemeSettings;
-using Profitocracy.Mobile.Views.Transactions;
+using Profitocracy.Mobile.Views.Home.Pages;
+using Profitocracy.Mobile.Views.Overview.Pages;
+using Profitocracy.Mobile.Views.Settings.Pages;
+using Profitocracy.Mobile.Views.Transactions.Pages;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace Profitocracy.Mobile;
@@ -33,6 +30,7 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+				fonts.AddFont("Ionicons.ttf", "Ionicons");
 			})
 			.RegisterAppServices()
 			.RegisterViewModels()
