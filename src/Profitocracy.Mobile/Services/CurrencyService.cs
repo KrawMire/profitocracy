@@ -3,7 +3,7 @@ using Profitocracy.Mobile.Resources.Strings;
 
 namespace Profitocracy.Mobile.Services;
 
-public class CurrencyService
+public static class CurrencyService
 {
     public static readonly Dictionary<string, string> CurrencyNames = new();
 

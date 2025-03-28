@@ -30,7 +30,7 @@ public class OverviewPageViewModel : BaseNotifyObject
     private readonly ObservableCollection<decimal> _weeklyExpensesValues = [];
     private readonly ObservableCollection<string> _weeklyExpensesLabelsValues = [];
     
-    private SummaryCalculationDisplayType _selectedDisplayCalculationType;
+    private SummaryCalculationDisplayType _selectedDisplayCalculationType = DisplayCalculationTypes[0];
     private bool _isShowDailyExpenses;
     private bool _isShowWeeklyExpenses;
     
@@ -141,7 +141,7 @@ public class OverviewPageViewModel : BaseNotifyObject
     public ISeries[] WeeklyExpenses { get; set; }
     public Axis[] WeeklyExpensesLabels { get; set; }
 
-    public ObservableCollection<SummaryCalculationDisplayType> DisplayCalculationTypes { get; } =
+    public static ObservableCollection<SummaryCalculationDisplayType> DisplayCalculationTypes { get; } =
     [
         new(SummaryCalculationType.ForMonth, AppResources.Overview_ForMonth),
         new(SummaryCalculationType.ForThreeMonths, AppResources.Overview_ForThreeMonths),
@@ -254,16 +254,16 @@ public class OverviewPageViewModel : BaseNotifyObject
             }
         }
     }
+}
 
-    public class SummaryCalculationDisplayType
+public class SummaryCalculationDisplayType
+{
+    public SummaryCalculationDisplayType(SummaryCalculationType type, string displayName)
     {
-        public SummaryCalculationDisplayType(SummaryCalculationType type, string displayName)
-        {
-            CalculationType = type;
-            DisplayName = displayName;
-        }
-        
-        public SummaryCalculationType CalculationType { get; }
-        public string DisplayName { get; }
+        CalculationType = type;
+        DisplayName = displayName;
     }
+        
+    public SummaryCalculationType CalculationType { get; }
+    public string DisplayName { get; }
 }
