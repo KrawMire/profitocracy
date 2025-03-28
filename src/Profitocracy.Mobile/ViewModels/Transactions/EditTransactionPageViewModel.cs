@@ -73,6 +73,8 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         {
             AvailableCurrencies.Add(currency);   
         }
+        
+        _currency = AvailableCurrencies[0];
     }
 
     public ObservableCollection<Currency> AvailableCurrencies { get; } = [];
