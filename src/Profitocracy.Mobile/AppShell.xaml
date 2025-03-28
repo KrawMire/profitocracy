@@ -2,24 +2,24 @@
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
-       xmlns:transactions="clr-namespace:Profitocracy.Mobile.Views.Transactions"
-       xmlns:home="clr-namespace:Profitocracy.Mobile.Views.Home"
-       xmlns:settings="clr-namespace:Profitocracy.Mobile.Views.Settings"
-       xmlns:overview="clr-namespace:Profitocracy.Mobile.Views.Overview"
+       xmlns:homepages="clr-namespace:Profitocracy.Mobile.Views.Home.Pages"
+       xmlns:transactionpages="clr-namespace:Profitocracy.Mobile.Views.Transactions.Pages"
+       xmlns:overviewpages="clr-namespace:Profitocracy.Mobile.Views.Overview.Pages"
+       xmlns:settingspages="clr-namespace:Profitocracy.Mobile.Views.Settings.Pages"
        x:Class="Profitocracy.Mobile.AppShell"
        Loaded="AppShell_OnLoaded">
     <TabBar>
         <Tab Title="{x:Static resx:AppResources.Pages_Home}" Icon="home.png">
-            <ShellContent ContentTemplate="{DataTemplate home:HomePage}"/>
+            <ShellContent ContentTemplate="{DataTemplate homepages:HomePage}"/>
         </Tab>
         <Tab Title="{x:Static resx:AppResources.Pages_Transactions}" Icon="transactions.png">
-            <ShellContent ContentTemplate="{DataTemplate transactions:TransactionsPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate transactionpages:TransactionsPage}"/>
         </Tab>
         <Tab Title="{x:Static resx:AppResources.Pages_Overview}" Icon="chart.png">
-            <ShellContent ContentTemplate="{DataTemplate overview:OverviewPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate overviewpages:OverviewPage}"/>
         </Tab>
         <Tab Title="{x:Static resx:AppResources.Pages_Settings}" Icon="settings.png">
-            <ShellContent ContentTemplate="{DataTemplate settings:SettingsPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate settingspages:SettingsPage}"/>
         </Tab>
     </TabBar>
 </Shell>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Profitocracy.Mobile.Models.Transactions"
+             x:Class="Profitocracy.Mobile.Views.Transactions.Controls.TransactionView"
+             x:DataType="models:TransactionModel">
+    <Border Style="{StaticResource TransactionCard}">
+        <StackLayout>
+            <FlexLayout JustifyContent="SpaceBetween">
+                <StackLayout>
+                    <Label Text="{Binding DisplaySpendingType}">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding IsIncome}"
+                                                 Value="True">
+                                        <Setter Property="FontSize" Value="18"/>
+                                        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+                                        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding IsIncome}"
+                                                 Value="False">
+                                        <Setter Property="FontSize" Value="18"/>
+                                        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+                                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Label Style="{StaticResource TransactionCardCategory}"
+                           Margin="0,4,0,0"
+                           Text="{Binding Category.Name, FallbackValue=''}"/>
+                    <Label Style="{StaticResource TransactionCardDescription}"
+                           Margin="0,4,0,0"
+                           Text="{Binding Description}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label HorizontalTextAlignment="End"
+                           Text="{Binding DisplayAmount}">
+                        <Label.Style>
+                            <Style TargetType="Label">
+                                <Style.Triggers>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding IsIncome}"
+                                                 Value="True">
+                                        <Setter Property="FontSize" Value="18"/>
+                                        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+                                        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding IsIncome}"
+                                                 Value="False">
+                                        <Setter Property="FontSize" Value="18"/>
+                                        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+                                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                    <Label Style="{StaticResource TransactionCardAdditionalAmount}"
+                           HorizontalTextAlignment="End"
+                           IsVisible="{Binding IsMultiCurrency}"
+                           Text="{Binding AdditionalDisplayAmount}" />
+                    <Label Style="{StaticResource TransactionCardDate}"
+                           Margin="0,4,0,0"
+                           Text="{Binding Timestamp, StringFormat='{0:dd/MM/yyyy hh:mm}'}"/>
+                </StackLayout>
+            </FlexLayout>
+        </StackLayout>
+    </Border>
+</ContentView>

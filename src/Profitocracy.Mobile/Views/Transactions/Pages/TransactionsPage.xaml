@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
+                              xmlns:transactions="clr-namespace:Profitocracy.Mobile.Models.Transactions"
+                              xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+                              xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Transactions"
+                              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Transactions.Controls"
+                              xmlns:sharedcontrols="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+                              x:Class="Profitocracy.Mobile.Views.Transactions.Pages.TransactionsPage"
+                              x:DataType="viewmodel:TransactionsPageViewModel"
+                              Title="{x:Static resx:AppResources.Pages_Transactions}"
+                              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+                              NavigatedTo="TransactionsPage_NavigatedTo"
+                              HideSoftInputOnTapped="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Row="0"
+                Style="{StaticResource DateRangeCard}">
+            <Border.Shadow>
+                <Shadow Brush="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray950}}"
+                        Offset="0,8"
+                        Radius="16"
+                        Opacity="0.9" />
+            </Border.Shadow>
+            <StackLayout>
+                <Label Style="{StaticResource DateRangeTitle}"
+                       Margin="0, 8, 0,0"
+                       Text="{x:Static resx:AppResources.Transactions_DateRange}"/>
+                <Grid Margin="0, 8, 0, 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0"
+                                 Padding="0,0,16,0">
+                        <DatePicker Style="{StaticResource BasicDatePicker}"
+                                    Date="{Binding FromDate, Mode=TwoWay}"/>
+                    </StackLayout>
+                    <Label Grid.Column="1" 
+                           Style="{StaticResource DateRangeTitle}"
+                           VerticalTextAlignment="Center"
+                           Text="-"/>
+                    <StackLayout Grid.Column="2"
+                                 Padding="16, 0, 0,  0">
+                        <DatePicker Style="{StaticResource BasicDatePicker}"
+                                    Date="{Binding ToDate, Mode=TwoWay}"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </Border>
+        
+        <CollectionView Grid.Row="1" 
+                        x:Name="TransactionsCollectionView"
+                        VerticalScrollBarVisibility="Default">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="transactions:TransactionModel">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItemView x:Name="DeleteTransactionSwipeItem"
+                                               Width="56"
+                                               Padding="24"
+                                               BackgroundColor="{StaticResource DangerRed}"
+                                               Invoked="DeleteTransactionSwipeItem_OnInvoked">
+                                    <VerticalStackLayout VerticalOptions="Center">
+                                        <Image Source="bin.png" 
+                                               Width="10" />
+                                    </VerticalStackLayout>
+                                </SwipeItemView>
+                                <SwipeItemView x:Name="EditTransactionSwipeItem"
+                                               Width="56"
+                                               Padding="24"
+                                               BackgroundColor="{StaticResource InfoBlue}"
+                                               Invoked="EditTransactionSwipeItem_OnInvoked">
+                                    <VerticalStackLayout VerticalOptions="Center">
+                                        <Image Source="edit.png" 
+                                               Width="10" />
+                                    </VerticalStackLayout>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        
+                        <controls:TransactionView Transaction="{Binding}"/>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <Grid HeightRequest="92" 
+                      BackgroundColor="Transparent"/>
+            </CollectionView.Footer>
+        </CollectionView>
+        
+        <sharedcontrols:AddNewButton Grid.Row="1"
+                                     HorizontalOptions="End"
+                                     VerticalOptions="End"
+                                     Margin="0,0,16,16"
+                                     Clicked="AddTransactionButton_OnClicked"/>
+    </Grid>
+</abstractions:BaseContentPage>
