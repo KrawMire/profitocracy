@@ -261,12 +261,6 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Transactions_DateRange {
-            get {
-                return ResourceManager.GetString("Transactions_DateRange", resourceCulture);
-            }
-        }
-        
         internal static string ThemeSettings_LightTheme {
             get {
                 return ResourceManager.GetString("ThemeSettings_LightTheme", resourceCulture);
@@ -1128,6 +1122,120 @@ namespace Profitocracy.Mobile.Resources.Strings {
         internal static string ProfileSettings_LastProfileErrorAlert_Ok {
             get {
                 return ResourceManager.GetString("ProfileSettings_LastProfileErrorAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_Filters {
+            get {
+                return ResourceManager.GetString("Transactions_Filters", resourceCulture);
+            }
+        }
+        
+        internal static string Pages_TransactionsFilters {
+            get {
+                return ResourceManager.GetString("Pages_TransactionsFilters", resourceCulture);
+            }
+        }
+        
+        internal static string CommonError_OpenTransactionsFiltersPage {
+            get {
+                return ResourceManager.GetString("CommonError_OpenTransactionsFiltersPage", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_ApplyFilters {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_ApplyFilters", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_StartDate {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_StartDate", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_EndDate {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_EndDate", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_SpendingType {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_SpendingType", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_SearchByCurrency {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_SearchByCurrency", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_TransactionType {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_TransactionType", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_Category {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_Category", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_Description {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_Description", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_SearchByAmount {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_SearchByAmount", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_LessThan {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_LessThan", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_GreaterThan {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_GreaterThan", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_AmountToSearch {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_AmountToSearch", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_Currency {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_Currency", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_Pickers_Any {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_Pickers_Any", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_ResetFilters {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_ResetFilters", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_Expense {
+            get {
+                return ResourceManager.GetString("Transactions_Expense", resourceCulture);
             }
         }
     }

@@ -126,9 +126,6 @@
     <data name="AddCategory_SpecifyPlannedAmount" xml:space="preserve">
         <value>Указать планируемую сумму</value>
     </data>
-    <data name="Transactions_DateRange" xml:space="preserve">
-        <value>Отфильтровать по дате</value>
-    </data>
     <data name="ThemeSettings_LightTheme" xml:space="preserve">
         <value>Светлая</value>
     </data>
@@ -560,5 +557,62 @@
     </data>
     <data name="ProfileSettings_LastProfileErrorAlert_Title" xml:space="preserve">
         <value>Последний профиль</value>
+    </data>
+    <data name="Transactions_Filters" xml:space="preserve">
+        <value>Фильтры</value>
+    </data>
+    <data name="Pages_TransactionsFilters" xml:space="preserve">
+        <value>Фильтры транзакций</value>
+    </data>
+    <data name="CommonError_OpenTransactionsFiltersPage" xml:space="preserve">
+        <value>Не удалось открыть страницу фильтров транзакций</value>
+    </data>
+    <data name="TransactionsFilters_ApplyFilters" xml:space="preserve">
+        <value>Применить фильтры</value>
+    </data>
+    <data name="TransactionsFilters_AmountToSearch" xml:space="preserve">
+        <value>Сумма</value>
+    </data>
+    <data name="TransactionsFilters_Category" xml:space="preserve">
+        <value>Категория</value>
+    </data>
+    <data name="TransactionsFilters_Currency" xml:space="preserve">
+        <value>Валюта</value>
+    </data>
+    <data name="TransactionsFilters_Description" xml:space="preserve">
+        <value>Описание</value>
+    </data>
+    <data name="TransactionsFilters_EndDate" xml:space="preserve">
+        <value>Конечная дата</value>
+    </data>
+    <data name="TransactionsFilters_GreaterThan" xml:space="preserve">
+        <value>Больше чем</value>
+    </data>
+    <data name="TransactionsFilters_LessThan" xml:space="preserve">
+        <value>Меньше чем</value>
+    </data>
+    <data name="TransactionsFilters_SearchByAmount" xml:space="preserve">
+        <value>Поиск по сумме</value>
+    </data>
+    <data name="TransactionsFilters_SearchByCurrency" xml:space="preserve">
+        <value>Поиск по валюте</value>
+    </data>
+    <data name="TransactionsFilters_SpendingType" xml:space="preserve">
+        <value>Тип траты</value>
+    </data>
+    <data name="TransactionsFilters_StartDate" xml:space="preserve">
+        <value>Начальная дата</value>
+    </data>
+    <data name="TransactionsFilters_TransactionType" xml:space="preserve">
+        <value>Тип транзакции</value>
+    </data>
+    <data name="TransactionsFilters_Pickers_Any" xml:space="preserve">
+        <value>Не важно</value>
+    </data>
+    <data name="TransactionsFilters_ResetFilters" xml:space="preserve">
+        <value>Сбросить фильтры</value>
+    </data>
+    <data name="Transactions_Expense" xml:space="preserve">
+        <value>Расход</value>
     </data>
 </root>
