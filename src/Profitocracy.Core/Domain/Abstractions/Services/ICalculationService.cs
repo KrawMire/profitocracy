@@ -19,8 +19,7 @@ public interface ICalculationService
 	/// <summary>
 	/// Calculates a summary for the specified date range.
 	/// </summary>
-	/// <param name="dateFrom">The start date of the period.</param>
-	/// <param name="dateTo">The end date of the period.</param>
+	/// <param name="calcType">Summary calculation type</param>
 	/// <returns>Summary containing transaction and category data for the period.</returns>
 	Task<Summary> GetSummaryForPeriod(SummaryCalculationType calcType);
 }
