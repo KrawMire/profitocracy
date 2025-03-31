@@ -75,6 +75,7 @@ public static class MauiProgram
 			.AddTransient<OverviewPageViewModel>()
 			.AddTransient<LanguageSettingsViewModel>()
 			.AddTransient<ProfileSettingsPageViewModel>()
+			.AddTransient<TransactionsFiltersPageViewModel>()
 			.AddTransient<EditProfilePageViewModel>()
 			.AddTransient<ThemeSettingsPageViewModel>();
 		
@@ -87,6 +88,7 @@ public static class MauiProgram
 			.AddTransient<HomePage>()
 			.AddTransient<TransactionsPage>()
 			.AddTransient<FilteredTransactionsPage>()
+			.AddTransient<TransactionsFiltersPage>()
 			.AddTransient<EditTransactionPage>()
 			.AddTransient<ExpenseCategoriesSettingsPage>()
 			.AddTransient<EditExpenseCategoryPage>()

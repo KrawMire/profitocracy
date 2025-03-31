@@ -1,5 +1,7 @@
 using System.Collections.ObjectModel;
 using Profitocracy.Core.Domain.Abstractions.Services;
+using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
+using Profitocracy.Core.Domain.Model.Transactions.ValueObjects;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Core.Specifications;
 using Profitocracy.Mobile.Abstractions;
@@ -15,8 +17,6 @@ public class TransactionsPageViewModel : BaseNotifyObject
     private readonly ITransactionService _transactionService;
     
     private Guid? _profileId;
-    private DateTime _fromDate;
-    private DateTime _toDate;
     
     public TransactionsPageViewModel(
         IProfileRepository profileRepository,
@@ -26,48 +26,11 @@ public class TransactionsPageViewModel : BaseNotifyObject
         _transactionRepository = transactionRepository;
         _transactionService = transactionService;
         _profileRepository = profileRepository;
-        
-        var currentDate = DateTime.Now;
-        
-        _fromDate = new DateTime(currentDate.Year, currentDate.Month, 1);
-        _toDate = new DateTime(
-            currentDate.Year,
-            currentDate.Month,
-            day: DateTime.DaysInMonth(currentDate.Year, currentDate.Month));
-    }
-
-    public DateTime FromDate
-    {
-        get => _fromDate;
-        set
-        {
-            SetProperty(ref _fromDate, value);
-            _ = InitializeTransactions();
-        }
-    }
-    
-    public DateTime ToDate
-    {
-        get => _toDate;
-        set
-        {
-            var newValue = new DateTime(
-                value.Year, 
-                value.Month, 
-                value.Day,
-                hour: 0,
-                minute: 0,
-                second: 0,
-                millisecond: 0);
-            
-            SetProperty(ref _toDate, newValue);
-            _ = InitializeTransactions();
-        }
     }
     
     public readonly ObservableCollection<TransactionModel> Transactions = [];
 
-    public async Task Initialize()
+    public async Task Initialize(TransactionsFiltersPageViewModel filters)
     {
         _profileId = await _profileRepository.GetCurrentProfileId();
 
@@ -76,7 +39,7 @@ public class TransactionsPageViewModel : BaseNotifyObject
             throw new Exception(AppResources.CommonError_GetCurrentProfile);
         }
         
-        await InitializeTransactions();
+        await InitializeTransactions(filters);
     }
     
     public async Task DeleteTransaction(Guid transactionId)
@@ -91,19 +54,14 @@ public class TransactionsPageViewModel : BaseNotifyObject
         return _transactionService.CheckTransactionInCurrentPeriod(transactionId);
     }
 
-    private async Task InitializeTransactions()
+    private async Task InitializeTransactions(TransactionsFiltersPageViewModel filters)
     {
         if (_profileId is null)
         {
             return;
         }
 
-        var specs = new TransactionsSpecification
-        {
-            ProfileId = _profileId,
-            FromDate = _fromDate,
-            ToDate = _toDate
-        };
+        var specs = BuildSpecification(_profileId.Value, filters);
         
         var transactions = await _transactionRepository.GetFiltered(specs);
         
@@ -113,5 +71,42 @@ public class TransactionsPageViewModel : BaseNotifyObject
         {
             Transactions.Add(TransactionModel.FromDomain(transaction));
         }
+    }
+
+    private static TransactionsSpecification BuildSpecification(
+        Guid profileId, 
+        TransactionsFiltersPageViewModel filters)
+    {
+        TransactionType? transactionType = filters.SelectedTransactionTypeIndex switch
+        {
+            1 => TransactionType.Income,
+            2 => TransactionType.Expense,
+            _ => null
+        };
+
+        SpendingType? spendingType = filters.SelectedSpendingTypeIndex switch
+        {
+            1 => SpendingType.Main,
+            2 => SpendingType.Secondary,
+            3 => SpendingType.Saved,
+            _ => null
+        };
+        
+        return new TransactionsSpecification
+        {
+            ProfileId = profileId,
+            FromDate = filters.FromDate,
+            ToDate = filters.ToDate,
+            CategoryId = filters.SelectedCategory?.Id,
+            TransactionType = transactionType,
+            SpendingType = spendingType,
+            IsMultiCurrency = filters.IsSearchByCurrency,
+            Description = filters.Description,
+            CurrencyCode = filters.IsSearchByCurrency 
+                ? filters.SelectedCurrency.Code
+                : null,
+            IsGreaterThanAmount = filters.IsSearchByAmount && filters.IsGreaterThan,
+            Amount = filters.IsSearchByAmount ? filters.Amount : null,
+        };
     }
 }

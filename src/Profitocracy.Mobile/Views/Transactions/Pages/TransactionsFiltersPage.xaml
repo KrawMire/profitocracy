@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
+             xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+             xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Transactions"
+             x:Class="Profitocracy.Mobile.Views.Transactions.Pages.TransactionsFiltersPage"
+             ios:Page.ModalPresentationStyle="PageSheet"
+             HideSoftInputOnTapped="True"
+             x:DataType="viewmodel:TransactionsFiltersPageViewModel"
+             Padding="16"
+             Loaded="TransactionsFiltersPage_OnLoaded">
+    <abstractions:BaseContentPage.Content>
+        <Grid VerticalOptions="Fill"
+              RowDefinitions="auto,*,auto">
+            <controls:ModalHeaderView Title="{x:Static resx:AppResources.Pages_TransactionsFilters}"
+                                      CloseClicked="CloseButton_OnClicked"/>
+            
+            <ScrollView Grid.Row="1"
+                        VerticalScrollBarVisibility="Never"
+                        Padding="0,16">
+                <StackLayout>
+                    <StackLayout Margin="0,16,0,0">
+                        <Label Text="{x:Static resx:AppResources.TransactionsFilters_StartDate}"/>
+                        <DatePicker Margin="0,4,0,0"
+                                    Date="{Binding FromDate, Mode=TwoWay}"/>
+                    </StackLayout>
+                    
+                    <StackLayout Margin="0,16,0,0">
+                        <Label Text="{x:Static resx:AppResources.TransactionsFilters_EndDate}"/>
+                        <DatePicker Margin="0,4,0,0"
+                                    Date="{Binding ToDate, Mode=TwoWay}"/>
+                    </StackLayout>
+                    
+                    <StackLayout Margin="0,16,0,0">
+                        <Label Text="{x:Static resx:AppResources.TransactionsFilters_Category}"/>
+                        <Picker Margin="0,4,0,0"
+                                x:Name="CategoryPicker"
+                                ItemsSource="{Binding AvailableCategories}"
+                                SelectedItem="{Binding SelectedCategory}"
+                                ItemDisplayBinding="{Binding Name}" />
+                    </StackLayout>
+                    
+                    <StackLayout Margin="0,16,0,0">
+                        <Label Text="{x:Static resx:AppResources.TransactionsFilters_TransactionType}"/>
+                        <Picker Margin="0,4,0,0"
+                                x:Name="TransactionTypePicker"
+                                ItemsSource="{Binding TransactionTypes}"
+                                SelectedIndex="{Binding SelectedTransactionTypeIndex}" />
+                    </StackLayout>
+                    
+                    <StackLayout Margin="0,16,0,0"
+                                 IsVisible="{Binding IsShowSpendingType}">
+                        <Label Text="{x:Static resx:AppResources.TransactionsFilters_SpendingType}"/>
+                        <Picker Margin="0,4,0,0"
+                                x:Name="SpendingTypePicker"
+                                ItemsSource="{Binding SpendingTypes}"
+                                SelectedIndex="{Binding SelectedSpendingTypeIndex}" />
+                    </StackLayout>
+                    
+                    <StackLayout Margin="0,16,0,0">
+                        <Label Text="{x:Static resx:AppResources.TransactionsFilters_Description}"/>
+                        <Entry Margin="0,4,0,0"
+                               Text="{Binding Description, Mode=TwoWay}"/>
+                    </StackLayout>
+                    
+                    <FlexLayout Margin="0,16,0,0"
+                                JustifyContent="SpaceBetween">
+                        <Label Text="{x:Static resx:AppResources.TransactionsFilters_SearchByCurrency}" 
+                               VerticalTextAlignment="Center"/>
+                        <Switch IsToggled="{Binding IsSearchByCurrency, Mode=TwoWay}"/>    
+                    </FlexLayout>
+                    
+                    <StackLayout Margin="0,16,0,0"
+                                 IsVisible="{Binding IsSearchByCurrency}">
+                        <Label Text="{x:Static resx:AppResources.TransactionsFilters_Currency}"/>
+                        <Picker Margin="0,4,0,0"
+                                x:Name="CurrencyPicker"
+                                ItemsSource="{Binding AvailableCurrencies}"
+                                SelectedItem="{Binding SelectedCurrency}"
+                                ItemDisplayBinding="{Binding Code}" />
+                    </StackLayout>
+                    
+                    <FlexLayout Margin="0,16,0,0"
+                                JustifyContent="SpaceBetween">
+                        <Label Text="{x:Static resx:AppResources.TransactionsFilters_SearchByAmount}" 
+                               VerticalTextAlignment="Center"/>
+                        <Switch IsToggled="{Binding IsSearchByAmount, Mode=TwoWay}"/>    
+                    </FlexLayout>
+                    
+                    <StackLayout Margin="0,16,0,0"
+                                 IsVisible="{Binding IsSearchByAmount}">
+                        <FlexLayout JustifyContent="SpaceBetween">
+                            <RadioButton Content="{x:Static resx:AppResources.TransactionsFilters_LessThan}"
+                                         IsChecked="{Binding IsLessThan}"/>
+                            <RadioButton Content="{x:Static resx:AppResources.TransactionsFilters_GreaterThan}"
+                                         IsChecked="{Binding IsGreaterThan}"/>
+                        </FlexLayout>
+                    
+                        <StackLayout Margin="0,16,0,0">
+                            <Label Text="{x:Static resx:AppResources.TransactionsFilters_AmountToSearch}"/>
+                            <Entry Margin="0,4,0,0"
+                                   Keyboard="Numeric"
+                                   Text="{Binding DisplayAmount, Mode=TwoWay}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                </StackLayout>
+            </ScrollView>
+            
+            <Grid Grid.Row="2"
+                  ColumnDefinitions="*,8,*">
+                <Button Grid.Column="0"
+                        Text="{x:Static resx:AppResources.TransactionsFilters_ResetFilters}"
+                        VerticalOptions="End"
+                        Clicked="ResetFiltersButton_OnClicked"/>
+                <Button Grid.Column="2"
+                        Text="{x:Static resx:AppResources.TransactionsFilters_ApplyFilters}"
+                        VerticalOptions="End"
+                        Clicked="ApplyFiltersButton_OnClicked"/>
+            </Grid>
+        </Grid>
+    </abstractions:BaseContentPage.Content>
+</abstractions:BaseContentPage>

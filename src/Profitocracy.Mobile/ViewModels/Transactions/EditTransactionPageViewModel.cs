@@ -33,7 +33,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     private string _amount = string.Empty;
     private string _destinationAmount = string.Empty;
 
-    private Currency _currency;
+    private Currency _selectedCurrency;
     private string? _description;
     private int _transactionType;
     private int? _spendingType;
@@ -74,17 +74,17 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             AvailableCurrencies.Add(currency);   
         }
         
-        _currency = AvailableCurrencies[0];
+        _selectedCurrency = AvailableCurrencies[0];
     }
 
     public ObservableCollection<Currency> AvailableCurrencies { get; } = [];
     public ObservableCollection<CategoryModel> AvailableCategories { get; } = [];
     public CategoryModel? Category { get; set; }
 
-    public Currency Currency
+    public Currency SelectedCurrency
     {
-        get => _currency; 
-        set => SetProperty(ref _currency, value);
+        get => _selectedCurrency; 
+        set => SetProperty(ref _selectedCurrency, value);
     }
 
     public Guid TransactionId
@@ -247,7 +247,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             throw new Exception(AppResources.CommonError_GetCurrentProfile);
         }
      
-        Currency = AvailableCurrencies[0];
+        SelectedCurrency = AvailableCurrencies[0];
         
         var categories = await _categoryRepository.GetAllByProfileId((Guid)profileId);
 
@@ -297,7 +297,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         if (transaction is MultiCurrencyTransaction multiCurrencyTransaction)
         {
             IsMultiCurrency = true;
-            Currency = multiCurrencyTransaction.DestinationCurrency;
+            SelectedCurrency = multiCurrencyTransaction.DestinationCurrency;
             DestinationAmount = multiCurrencyTransaction.DestinationAmount.ToString(CultureInfo.CurrentCulture);
         }
     }
@@ -396,7 +396,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             amount,
             destinationAmount,
             profile.Settings.Currency,
-            Currency,
+            SelectedCurrency,
             profile.Id,
             (TransactionType)_transactionType,
             _spendingType is null or -1 ? null : (SpendingType)_spendingType,
