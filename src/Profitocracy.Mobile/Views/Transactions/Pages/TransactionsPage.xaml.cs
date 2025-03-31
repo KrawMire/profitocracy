@@ -8,11 +8,16 @@ namespace Profitocracy.Mobile.Views.Transactions.Pages;
 public partial class TransactionsPage : BaseContentPage
 {
 	private readonly TransactionsPageViewModel _viewModel;
+	private TransactionsFiltersPageViewModel _lastAppliedFiltersViewModel;
+	private TransactionsFiltersPageViewModel _filtersViewModel;
 	
-	public TransactionsPage(TransactionsPageViewModel viewModel)
+	public TransactionsPage(
+		TransactionsPageViewModel viewModel, 
+		TransactionsFiltersPageViewModel filtersViewModel)
 	{
 		InitializeComponent();
 		
+		_lastAppliedFiltersViewModel = _filtersViewModel = filtersViewModel;
 		BindingContext = _viewModel = viewModel;
 		TransactionsCollectionView.ItemsSource = _viewModel.Transactions;
 	}
@@ -21,7 +26,12 @@ public partial class TransactionsPage : BaseContentPage
 	{
 		ProcessAction(async () =>
 		{
-			await _viewModel.Initialize();
+			if (_filtersViewModel.IsApplied)
+			{
+				_lastAppliedFiltersViewModel = _filtersViewModel;
+			}
+			
+			await _viewModel.Initialize(_lastAppliedFiltersViewModel);
 		});
 	}
 
@@ -111,6 +121,20 @@ public partial class TransactionsPage : BaseContentPage
 		
 			editPage.AddTransactionId((Guid)transaction.Id);
 			await Navigation.PushModalAsync(editPage);
+		});
+	}
+
+	private void TransactionFilters_OnClicked(object? sender, EventArgs e)
+	{
+		ProcessAction(async () =>
+		{
+			_filtersViewModel = 
+				Handler?.MauiContext?.Services.GetService<TransactionsFiltersPageViewModel>() 
+				?? throw new ArgumentNullException(AppResources.CommonError_OpenTransactionsFiltersPage);
+			
+			_filtersViewModel.CopyFrom(_lastAppliedFiltersViewModel);
+			var filtersPage = new TransactionsFiltersPage(_filtersViewModel);
+			await Navigation.PushModalAsync(filtersPage);
 		});
 	}
 }

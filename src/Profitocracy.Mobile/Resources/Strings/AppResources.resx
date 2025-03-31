@@ -126,9 +126,6 @@
     <data name="AddCategory_SaveCategory" xml:space="preserve">
         <value>Save category</value>
     </data>
-    <data name="Transactions_DateRange" xml:space="preserve">
-        <value>Filter by date</value>
-    </data>
     <data name="ThemeSettings_LightTheme" xml:space="preserve">
         <value>Light</value>
     </data>
@@ -560,5 +557,62 @@
     </data>
     <data name="ProfileSettings_LastProfileErrorAlert_Ok" xml:space="preserve">
         <value>OK</value>
+    </data>
+    <data name="Transactions_Filters" xml:space="preserve">
+        <value>Filters</value>
+    </data>
+    <data name="Pages_TransactionsFilters" xml:space="preserve">
+        <value>Transactions Filters</value>
+    </data>
+    <data name="CommonError_OpenTransactionsFiltersPage" xml:space="preserve">
+        <value>Cannot open transactions filters page</value>
+    </data>
+    <data name="TransactionsFilters_ApplyFilters" xml:space="preserve">
+        <value>Apply Filters</value>
+    </data>
+    <data name="TransactionsFilters_StartDate" xml:space="preserve">
+        <value>Date from</value>
+    </data>
+    <data name="TransactionsFilters_EndDate" xml:space="preserve">
+        <value>Date to</value>
+    </data>
+    <data name="TransactionsFilters_SpendingType" xml:space="preserve">
+        <value>Spending type</value>
+    </data>
+    <data name="TransactionsFilters_SearchByCurrency" xml:space="preserve">
+        <value>Search by currency</value>
+    </data>
+    <data name="TransactionsFilters_TransactionType" xml:space="preserve">
+        <value>Transaction type</value>
+    </data>
+    <data name="TransactionsFilters_Category" xml:space="preserve">
+        <value>Category</value>
+    </data>
+    <data name="TransactionsFilters_Description" xml:space="preserve">
+        <value>Description</value>
+    </data>
+    <data name="TransactionsFilters_SearchByAmount" xml:space="preserve">
+        <value>Search by amount</value>
+    </data>
+    <data name="TransactionsFilters_LessThan" xml:space="preserve">
+        <value>Less than</value>
+    </data>
+    <data name="TransactionsFilters_GreaterThan" xml:space="preserve">
+        <value>Greater than</value>
+    </data>
+    <data name="TransactionsFilters_AmountToSearch" xml:space="preserve">
+        <value>Amount</value>
+    </data>
+    <data name="TransactionsFilters_Currency" xml:space="preserve">
+        <value>Currency</value>
+    </data>
+    <data name="TransactionsFilters_Pickers_Any" xml:space="preserve">
+        <value>Any</value>
+    </data>
+    <data name="TransactionsFilters_ResetFilters" xml:space="preserve">
+        <value>Reset filters</value>
+    </data>
+    <data name="Transactions_Expense" xml:space="preserve">
+        <value>Expense</value>
     </data>
 </root>

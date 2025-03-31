@@ -14,50 +14,12 @@
                               BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
                               NavigatedTo="TransactionsPage_NavigatedTo"
                               HideSoftInputOnTapped="True">
+    <abstractions:BaseContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static resx:AppResources.Transactions_Filters}"
+                     Clicked="TransactionFilters_OnClicked"/>
+    </abstractions:BaseContentPage.ToolbarItems>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        
-        <Border Grid.Row="0"
-                Style="{StaticResource DateRangeCard}">
-            <Border.Shadow>
-                <Shadow Brush="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray950}}"
-                        Offset="0,8"
-                        Radius="16"
-                        Opacity="0.9" />
-            </Border.Shadow>
-            <StackLayout>
-                <Label Style="{StaticResource DateRangeTitle}"
-                       Margin="0, 8, 0,0"
-                       Text="{x:Static resx:AppResources.Transactions_DateRange}"/>
-                <Grid Margin="0, 8, 0, 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Column="0"
-                                 Padding="0,0,16,0">
-                        <DatePicker Style="{StaticResource BasicDatePicker}"
-                                    Date="{Binding FromDate, Mode=TwoWay}"/>
-                    </StackLayout>
-                    <Label Grid.Column="1" 
-                           Style="{StaticResource DateRangeTitle}"
-                           VerticalTextAlignment="Center"
-                           Text="-"/>
-                    <StackLayout Grid.Column="2"
-                                 Padding="16, 0, 0,  0">
-                        <DatePicker Style="{StaticResource BasicDatePicker}"
-                                    Date="{Binding ToDate, Mode=TwoWay}"/>
-                    </StackLayout>
-                </Grid>
-            </StackLayout>
-        </Border>
-        
-        <CollectionView Grid.Row="1" 
-                        x:Name="TransactionsCollectionView"
+        <CollectionView x:Name="TransactionsCollectionView"
                         VerticalScrollBarVisibility="Default">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="transactions:TransactionModel">
@@ -97,8 +59,7 @@
             </CollectionView.Footer>
         </CollectionView>
         
-        <sharedcontrols:AddNewButton Grid.Row="1"
-                                     HorizontalOptions="End"
+        <sharedcontrols:AddNewButton HorizontalOptions="End"
                                      VerticalOptions="End"
                                      Margin="0,0,16,16"
                                      Clicked="AddTransactionButton_OnClicked"/>

@@ -85,6 +85,20 @@ internal class TransactionRepository : ITransactionRepository
 			.Table<TransactionModel>()
 			.Where(t => t.ProfileId == spec.ProfileId);
 
+		var isMultiCurrency = spec.IsMultiCurrency is not null && spec.IsMultiCurrency.Value;
+		
+		if (isMultiCurrency)
+		{
+			query = spec.CurrencyCode is not null 
+				? query.Where(t => t.DestinationCurrencyCode == spec.CurrencyCode) 
+				: query.Where(t => t.DestinationCurrencyCode != null);
+			
+			if (spec.Destination is not null)
+			{
+				query = query.Where(t => t.Destination == (short)spec.Destination);
+			}
+		}
+		
 		if (spec.SpendingType is not null)
 		{
 			query = query.Where(t => t.SpendingType.Equals(spec.SpendingType));
@@ -105,14 +119,28 @@ internal class TransactionRepository : ITransactionRepository
 			query = query.Where(t => t.Timestamp <= spec.ToDate);
 		}
 
-		if (spec.IsMultiCurrency is not null)
+		if (spec.TransactionType is not null)
 		{
-			query = query.Where(t => t.DestinationCurrencyCode != null);
+			query = query.Where(t => t.Type == (short)spec.TransactionType);
 		}
 
-		if (spec.Destination is not null)
+		if (!string.IsNullOrWhiteSpace(spec.Description))
 		{
-			query = query.Where(t => t.Destination == (short)spec.Destination);
+			var lowerDesc = spec.Description.ToLower();
+			
+			// Not using string.Contains(string, StringComparison)
+			// because it causes an error in SQLite for some reason
+			query = query.Where(t => t.Description != null 
+			                         && t.Description
+				                         .ToLower()
+				                         .Contains(lowerDesc));
+		}
+
+		if (spec.Amount is not null)
+		{
+			query = spec.IsGreaterThanAmount is not null && spec.IsGreaterThanAmount.Value
+				? query.Where(t => t.Amount >= spec.Amount)
+				: query.Where(t => t.Amount <= spec.Amount);
 		}
 
 		query = query.OrderByDescending(t => t.Timestamp);
