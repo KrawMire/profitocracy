@@ -120,7 +120,7 @@ public class OverviewPageViewModel : BaseNotifyObject
                 Values = _weeklyExpensesValues,
                 Fill = null,
                 GeometryFill = null,
-                GeometryStroke = null
+                GeometrySize = 8
             }
         ];
         
@@ -219,39 +219,52 @@ public class OverviewPageViewModel : BaseNotifyObject
             _plannedCategoriesExpensesLabels.Add(categoryExpectation.CategoryName);
         }
 
-        if (_selectedDisplayCalculationType.CalculationType == SummaryCalculationType.ForMonth)
+        IsShowDailyExpenses = _selectedDisplayCalculationType.CalculationType 
+            is SummaryCalculationType.ForMonth
+            or SummaryCalculationType.ForThreeMonths;
+        
+        IsShowWeeklyExpenses = _selectedDisplayCalculationType.CalculationType 
+            is SummaryCalculationType.ForThreeMonths
+            or SummaryCalculationType.ForSixMonths;
+        
+        if (IsShowDailyExpenses)
         {
-            IsShowDailyExpenses = true;
-            IsShowWeeklyExpenses = false;
-            
-            if (summary.DailyExpenses is null)
-            {
-                return;
-            }
-            
-            foreach (var dailyExpense in summary.DailyExpenses)
-            {
-                _dailyExpensesValues.Add(dailyExpense.Amount);
-                _dailyExpensesLabelsValues.Add(dailyExpense.Date.ToString("dd.MM"));
-            }
+            DistributeDailyExpenses(summary);
         }
-        else
+        
+        if (IsShowWeeklyExpenses)
         {
-            IsShowDailyExpenses = false;
-            IsShowWeeklyExpenses = true;
+            DistributeWeeklyExpenses(summary);
+        }
+    }
+    
+    private void DistributeDailyExpenses(Summary summary)
+    {
+        if (summary.DailyExpenses is null)
+        {
+            return;
+        }
+        
+        foreach (var dailyExpense in summary.DailyExpenses)
+        {
+            _dailyExpensesValues.Add(dailyExpense.Amount);
+            _dailyExpensesLabelsValues.Add(dailyExpense.Date.ToString("dd.MM"));
+        }
+    }
+
+    private void DistributeWeeklyExpenses(Summary summary)
+    {
+        if (summary.WeeklyExpenses is null)
+        {
+            return;
+        }
             
-            if (summary.WeeklyExpenses is null)
-            {
-                return;
-            }
-            
-            foreach (var weeklyExpense in summary.WeeklyExpenses)
-            {
-                var dateStr = $"{weeklyExpense.DateFrom.Date:dd.MM} - {weeklyExpense.DateTo.Date:dd.MM}";
+        foreach (var weeklyExpense in summary.WeeklyExpenses)
+        {
+            var dateStr = $"{weeklyExpense.DateFrom.Date:dd.MM} - {weeklyExpense.DateTo.Date:dd.MM}";
                 
-                _weeklyExpensesValues.Add(weeklyExpense.Amount);
-                _weeklyExpensesLabelsValues.Add(dateStr);
-            }
+            _weeklyExpensesValues.Add(weeklyExpense.Amount);
+            _weeklyExpensesLabelsValues.Add(dateStr);
         }
     }
 }

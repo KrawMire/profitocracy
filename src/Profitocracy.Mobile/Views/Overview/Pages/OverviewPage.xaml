@@ -46,14 +46,16 @@
                                     TooltipPosition="Top"/>
             </controls:ContentSectionView>
             
-            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_DailyExpenses}">
+            <controls:ContentSectionView IsVisible="{Binding IsShowDailyExpenses}"
+                                         Title="{x:Static resx:AppResources.Overview_DailyExpenses}">
                 <lvc:CartesianChart Series="{Binding DailyExpenses}"
                                     XAxes="{Binding DailyExpensesLabels}"
                                     HeightRequest="320"
                                     TooltipPosition="Top"/>
             </controls:ContentSectionView>
             
-            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_WeeklyExpenses}">
+            <controls:ContentSectionView IsVisible="{Binding IsShowWeeklyExpenses}"
+                                         Title="{x:Static resx:AppResources.Overview_WeeklyExpenses}">
                 <lvc:CartesianChart Series="{Binding WeeklyExpenses}"
                                     XAxes="{Binding WeeklyExpensesLabels}"
                                     HeightRequest="320"
