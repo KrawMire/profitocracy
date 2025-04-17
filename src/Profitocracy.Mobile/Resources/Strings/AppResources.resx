@@ -715,6 +715,7 @@
     <value>Expense</value>
   </data>
   <data name="Languages_French" xml:space="preserve">
-    <value>French</value>
+    <value>Français</value>
+    <comment>Français</comment>
   </data>
 </root>
