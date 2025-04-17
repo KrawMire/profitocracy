@@ -706,7 +706,7 @@
     <value>Devise</value>
   </data>
   <data name="TransactionsFilters_Pickers_Any" xml:space="preserve">
-    <value>N'importe lequel</value>
+    <value>Tous</value>
   </data>
   <data name="TransactionsFilters_ResetFilters" xml:space="preserve">
     <value>Réinitialiser les filtres</value>

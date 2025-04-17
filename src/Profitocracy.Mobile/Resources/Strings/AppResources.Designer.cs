@@ -1150,7 +1150,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to French.
+        ///   Looks up a localized string similar to Français.
         /// </summary>
         internal static string Languages_French {
             get {
