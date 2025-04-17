@@ -14,11 +14,16 @@ public static class LocalizationService
     /// Constant string value of Russian language
     /// </summary>
     public const string Russian = "ru";
+
+    /// <summary>
+    /// Constant string value of French language
+    /// </summary>
+    public const string French = "fr";
     
     /// <summary>
     /// Array of supported languages. Represented by code
     /// </summary>
-    public static readonly string[] SupportedLanguages = [English, Russian];
+    public static readonly string[] SupportedLanguages = [English, Russian, French];
     
     public static string CurrentLanguage => CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
     
