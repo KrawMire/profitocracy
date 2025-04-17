@@ -88,6 +88,43 @@
                         </Label>
                     </FlexLayout>
                 </Border>
+
+                <Border Style="{StaticResource ThemeSettingsButton}"
+                        Margin="0,8,0,0">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="FrenchLanguage_OnSelected"/>
+                    </Border.GestureRecognizers>
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border"
+                                     Binding="{Binding IsFrench}"
+                                     Value="True">
+                            <Setter Property="Style" Value="{StaticResource ThemeSettingsButtonActive}"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Border"
+                                     Binding="{Binding IsFrench}"
+                                     Value="False">
+                            <Setter Property="Style" Value="{StaticResource ThemeSettingsButton}"/>
+                        </DataTrigger>
+                    </Border.Triggers>
+                    <FlexLayout JustifyContent="SpaceBetween">
+                        <Label Style="{StaticResource SettingsButtonText}"
+                               Text="{x:Static resx:AppResources.Languages_French}" 
+                               VerticalOptions="Center">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding IsFrench}"
+                                             Value="True">
+                                    <Setter Property="TextColor" Value="{StaticResource DarkPrimaryText}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding IsFrench}"
+                                             Value="False">
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </FlexLayout>
+                </Border>
             </StackLayout>
         </ScrollView>
     </abstractions:BaseContentPage.Content>

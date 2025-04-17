@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profitocracy.Mobile", "src\Profitocracy.Mobile\Profitocracy.Mobile.csproj", "{0AC9F184-8D37-4B34-A3B9-80ED5DA88AB9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profitocracy.Core", "src\Profitocracy.Core\Profitocracy.Core.csproj", "{5079990A-238B-4730-9AD4-412C18BE2F6F}"
@@ -16,6 +19,7 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0AC9F184-8D37-4B34-A3B9-80ED5DA88AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0AC9F184-8D37-4B34-A3B9-80ED5DA88AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC9F184-8D37-4B34-A3B9-80ED5DA88AB9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{0AC9F184-8D37-4B34-A3B9-80ED5DA88AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AC9F184-8D37-4B34-A3B9-80ED5DA88AB9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5079990A-238B-4730-9AD4-412C18BE2F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -27,9 +31,12 @@ Global
 		{BB3C766A-E726-4559-8756-75A843678C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB3C766A-E726-4559-8756-75A843678C56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{0AC9F184-8D37-4B34-A3B9-80ED5DA88AB9} = {4177F8CC-8240-420B-9F67-3E849E1FCED0}
 		{5079990A-238B-4730-9AD4-412C18BE2F6F} = {4177F8CC-8240-420B-9F67-3E849E1FCED0}
 		{BB3C766A-E726-4559-8756-75A843678C56} = {4177F8CC-8240-420B-9F67-3E849E1FCED0}
-		{0AC9F184-8D37-4B34-A3B9-80ED5DA88AB9} = {4177F8CC-8240-420B-9F67-3E849E1FCED0}
 	EndGlobalSection
 EndGlobal

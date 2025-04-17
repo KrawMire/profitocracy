@@ -16,6 +16,7 @@ public class LanguageSettingsViewModel : BaseNotifyObject
     
     private bool _isEnglish;
     private bool _isRussian;
+    private bool _isFrench;
 
 
     public bool IsEnglish
@@ -28,6 +29,12 @@ public class LanguageSettingsViewModel : BaseNotifyObject
     {
         get => _isRussian;
         set => SetProperty(ref _isRussian, value);
+    }
+    
+    public bool IsFrench
+    {
+        get => _isFrench;
+        set => SetProperty(ref _isFrench, value);
     }
 
     public async Task Initialize()
@@ -68,10 +75,17 @@ public class LanguageSettingsViewModel : BaseNotifyObject
             case "ru":
                 IsRussian = true;
                 IsEnglish = false;
+                IsFrench = false;
                 break;
             case "en":
                 IsRussian = false;
                 IsEnglish = true;
+                IsFrench = false;
+                break;
+            case "fr":
+                IsRussian = false;
+                IsEnglish = false;
+                IsFrench = true;
                 break;
         }
     }

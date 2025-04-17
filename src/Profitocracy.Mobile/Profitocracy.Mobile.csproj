@@ -38,18 +38,19 @@
     </ItemGroup>
 
     <ItemGroup>
-        <MauiIcon Include="Resources\AppIcon\appicon.svg"
-                  BaseSize="128,128"
-                  Resize="false"
-                  ForegroundFile="Resources\AppIcon\appiconfg.svg"
-                  Color="#ffffff"/>
-        <MauiSplashScreen Include="Resources\Splash\splash.svg"
-                          BaseSize="500,575"
-                          Resize="false"
-                          Color="#ffffff"/>
-        <MauiImage Include="Resources\Images\*"/>
-        <MauiFont Include="Resources\Fonts\*"/>
-        <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)"/>
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" BaseSize="128,128" Resize="false" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#ffffff" />
+        <MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="500,575" Resize="false" Color="#ffffff" />
+        <MauiImage Include="Resources\Images\*" />
+        <MauiFont Include="Resources\Fonts\*" />
+        <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\Strings\AppResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>AppResources.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
