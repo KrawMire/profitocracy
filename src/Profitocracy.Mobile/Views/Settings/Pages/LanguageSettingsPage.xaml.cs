@@ -1,6 +1,6 @@
+using CommunityToolkit.Mvvm.Messaging;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
-using Profitocracy.Mobile.Services;
 using Profitocracy.Mobile.ViewModels.Settings;
 
 namespace Profitocracy.Mobile.Views.Settings.Pages;
@@ -15,6 +15,21 @@ public partial class LanguageSettingsPage : BaseContentPage
         InitializeComponent();
 
         BindingContext = _viewModel;
+
+        // Subscribe to language changes to show the alert
+        WeakReferenceMessenger.Default.Register<LanguageChangedMessage>(this, async (recipient, message) =>
+        {
+            await DisplayAlert(
+                AppResources.InfoAlert_ChangeLanguage_Title,
+                AppResources.InfoAlert_ChangeLanguage_Message,
+                AppResources.InfoAlert_ChangeLanguage_Ok);
+        });
+    }
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        WeakReferenceMessenger.Default.Unregister<LanguageChangedMessage>(this);
     }
 
     private void LanguageSettingsPage_OnLoaded(object? sender, EventArgs e)
@@ -24,38 +39,9 @@ public partial class LanguageSettingsPage : BaseContentPage
             await _viewModel.Initialize();
         });
     }
+}
 
-    private void EnglishLanguage_OnSelected(object? sender, TappedEventArgs e)
-    {
-        ProcessAction(async () =>
-        {
-            await ChangeLanguage(LocalizationService.English);
-        });
-    }
-
-    private void RussianLanguage_OnSelected(object? sender, TappedEventArgs e)
-    {
-        ProcessAction(async () =>
-        {
-            await ChangeLanguage(LocalizationService.Russian);
-        });
-    }
-
-    private void FrenchLanguage_OnSelected(object? sender, TappedEventArgs e)
-    {
-        ProcessAction(async () =>
-        {
-            await ChangeLanguage(LocalizationService.French);
-        });
-    }
-
-    private async Task ChangeLanguage(string language)
-    {
-        await _viewModel.ChangeLanguage(language);
-
-        await DisplayAlert(
-            AppResources.InfoAlert_ChangeLanguage_Title,
-            AppResources.InfoAlert_ChangeLanguage_Message,
-            AppResources.InfoAlert_ChangeLanguage_Ok);
-    }
+// Define the message class for language changes
+public class LanguageChangedMessage
+{
 }
