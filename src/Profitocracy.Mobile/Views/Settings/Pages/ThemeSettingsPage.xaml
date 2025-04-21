@@ -12,7 +12,7 @@
                               BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
                               HideSoftInputOnTapped="True">
     <abstractions:BaseContentPage.Content>
-        <ScrollView Padding="16"
+        <ScrollView Padding="16,8,16,16"
                 VerticalScrollBarVisibility="Never">
             <StackLayout>
                 <Border Style="{StaticResource ThemeSettingsButton}"
