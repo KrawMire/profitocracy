@@ -29,6 +29,7 @@
     </ItemGroup>
     
     <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
         <PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-rc5.4" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.40" />
@@ -38,18 +39,19 @@
     </ItemGroup>
 
     <ItemGroup>
-        <MauiIcon Include="Resources\AppIcon\appicon.svg"
-                  BaseSize="128,128"
-                  Resize="false"
-                  ForegroundFile="Resources\AppIcon\appiconfg.svg"
-                  Color="#ffffff"/>
-        <MauiSplashScreen Include="Resources\Splash\splash.svg"
-                          BaseSize="500,575"
-                          Resize="false"
-                          Color="#ffffff"/>
-        <MauiImage Include="Resources\Images\*"/>
-        <MauiFont Include="Resources\Fonts\*"/>
-        <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)"/>
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" BaseSize="128,128" Resize="false" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#ffffff" />
+        <MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="500,575" Resize="false" Color="#ffffff" />
+        <MauiImage Include="Resources\Images\*" />
+        <MauiFont Include="Resources\Fonts\*" />
+        <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\Strings\AppResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>AppResources.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -66,6 +68,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Update="Resources\Strings\AppResources.fr.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\Strings\AppResources.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
