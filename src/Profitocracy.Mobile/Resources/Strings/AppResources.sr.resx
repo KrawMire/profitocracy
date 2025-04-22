@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EditProfile_Profile" xml:space="preserve">
+    <value>Профил</value>
+  </data>
+  <data name="Pages_Home" xml:space="preserve">
+    <value>Почетна</value>
+  </data>
+  <data name="Home_Balance" xml:space="preserve">
+    <value>Стање</value>
+  </data>
+  <data name="Home_DailyAmounts" xml:space="preserve">
+    <value>Дневни износи</value>
+  </data>
+  <data name="Home_TomorrowBalance" xml:space="preserve">
+    <value>Сутра</value>
+  </data>
+  <data name="Home_TodayBalance" xml:space="preserve">
+    <value>Данас</value>
+  </data>
+  <data name="Home_SpendingTypes" xml:space="preserve">
+    <value>Типови трошења</value>
+  </data>
+  <data name="Home_Main" xml:space="preserve">
+    <value>Главни</value>
+  </data>
+  <data name="Home_Secondary" xml:space="preserve">
+    <value>Споредни</value>
+  </data>
+  <data name="Home_Saved" xml:space="preserve">
+    <value>Сачувани</value>
+  </data>
+  <data name="Settings_Categories" xml:space="preserve">
+    <value>Категорије</value>
+  </data>
+  <data name="Home_NoCategories" xml:space="preserve">
+    <value>Нема категорија</value>
+  </data>
+  <data name="EditProfile_ProfileName" xml:space="preserve">
+    <value>Назив профила</value>
+  </data>
+  <data name="EditProfile_InitialBalance" xml:space="preserve">
+    <value>Почетно стање</value>
+  </data>
+  <data name="EditProfile_SaveProfile" xml:space="preserve">
+    <value>Сачувај профил</value>
+  </data>
+  <data name="Pages_Transactions" xml:space="preserve">
+    <value>Трансакције</value>
+  </data>
+  <data name="AddTransaction_Income" xml:space="preserve">
+    <value>Приход</value>
+  </data>
+  <data name="Pages_Settings" xml:space="preserve">
+    <value>Подешавања</value>
+  </data>
+  <data name="Pages_NewTransaction" xml:space="preserve">
+    <value>Трансакција</value>
+  </data>
+  <data name="AddTransaction_Expense" xml:space="preserve">
+    <value>Расход</value>
+  </data>
+  <data name="AddTransaction_Category" xml:space="preserve">
+    <value>Категорија</value>
+  </data>
+  <data name="AddTransaction_Amount" xml:space="preserve">
+    <value>Износ у основној валути</value>
+  </data>
+  <data name="AddTransaction_Description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="AddTransaction_Date" xml:space="preserve">
+    <value>Датум</value>
+  </data>
+  <data name="AddTransaction_SaveTransaction" xml:space="preserve">
+    <value>Сачувај трансакцију</value>
+  </data>
+  <data name="Settings_Application" xml:space="preserve">
+    <value>Апликација</value>
+  </data>
+  <data name="Settings_General" xml:space="preserve">
+    <value>Опште</value>
+  </data>
+  <data name="Settings_Profiles" xml:space="preserve">
+    <value>Профили</value>
+  </data>
+  <data name="Settings_Theme" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="Settings_Language" xml:space="preserve">
+    <value>Језик</value>
+  </data>
+  <data name="Categories_NoLimits" xml:space="preserve">
+    <value>Без ограничења</value>
+  </data>
+  <data name="Pages_NewCategory" xml:space="preserve">
+    <value>Категорија</value>
+  </data>
+  <data name="AddCategory_CategoryName" xml:space="preserve">
+    <value>Назив категорије</value>
+  </data>
+  <data name="AddCategory_SpecifyPlannedAmount" xml:space="preserve">
+    <value>Наведи планирани износ</value>
+  </data>
+  <data name="AddCategory_PlannedAmount" xml:space="preserve">
+    <value>Планирани износ</value>
+  </data>
+  <data name="AddCategory_SaveCategory" xml:space="preserve">
+    <value>Сачувај категорију</value>
+  </data>
+  <data name="ThemeSettings_LightTheme" xml:space="preserve">
+    <value>Светла</value>
+  </data>
+  <data name="ThemeSettings_Dark" xml:space="preserve">
+    <value>Тамна</value>
+  </data>
+  <data name="ThemeSettings_System" xml:space="preserve">
+    <value>Системска</value>
+  </data>
+  <data name="Languages_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Languages_Russian" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="InfoAlert_ChangeLanguage_Title" xml:space="preserve">
+    <value>Упозорење</value>
+  </data>
+  <data name="InfoAlert_ChangeLanguage_Message" xml:space="preserve">
+    <value>Да би промене ступиле на снагу, потребно је поново покренути апликацију.</value>
+  </data>
+  <data name="InfoAlert_ChangeLanguage_Ok" xml:space="preserve">
+    <value>У реду</value>
+  </data>
+  <data name="ErrorAlert_Title" xml:space="preserve">
+    <value>Грешка</value>
+  </data>
+  <data name="ErrorAlert_Ok" xml:space="preserve">
+    <value>У реду</value>
+  </data>
+  <data name="ErrorAlert_Description" xml:space="preserve">
+    <value>Дошло је до грешке</value>
+  </data>
+  <data name="CommonError_GetCategoryInfo" xml:space="preserve">
+    <value>Не могу да добавим информације о категорији</value>
+  </data>
+  <data name="CommonError_ShowFilteredTransactions" xml:space="preserve">
+    <value>Не могу да прикажем филтриране трансакције</value>
+  </data>
+  <data name="CommonError_OpenAddCategoryPage" xml:space="preserve">
+    <value>Не могу да отворим страницу за додавање категорије</value>
+  </data>
+  <data name="CommonError_OpenEditTransactionPage" xml:space="preserve">
+    <value>Не могу да отворим страницу за измену трансакције</value>
+  </data>
+  <data name="CommonError_InternalErrorTryAgain" xml:space="preserve">
+    <value>Дошло је до интерне грешке. Покушајте поново</value>
+  </data>
+  <data name="CommonError_FindTransactionToDelete" xml:space="preserve">
+    <value>Не могу да пронађем трансакцију за брисање</value>
+  </data>
+  <data name="CommonError_PlannedAmountNumber" xml:space="preserve">
+    <value>Планирани износ мора бити број</value>
+  </data>
+  <data name="CommonError_GetCurrentProfile" xml:space="preserve">
+    <value>Не могу да добавим тренутни профил</value>
+  </data>
+  <data name="CommonError_GetSettings" xml:space="preserve">
+    <value>Не могу да пронађем подешавања</value>
+  </data>
+  <data name="CommonError_BalanceNumber" xml:space="preserve">
+    <value>Стање мора бити број</value>
+  </data>
+  <data name="AddTransaction_NoneCategory" xml:space="preserve">
+    <value>Без категорије</value>
+  </data>
+  <data name="CommonError_AmountNumber" xml:space="preserve">
+    <value>Износ мора бити број</value>
+  </data>
+  <data name="CommonError_TransactionType" xml:space="preserve">
+    <value>Неважећи тип трансакције</value>
+  </data>
+  <data name="Pages_Language" xml:space="preserve">
+    <value>Језик</value>
+  </data>
+  <data name="Pages_Categories" xml:space="preserve">
+    <value>Категорије</value>
+  </data>
+  <data name="Pages_Theme" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="Home_Categories" xml:space="preserve">
+    <value>Трошкови по категоријама</value>
+  </data>
+  <data name="AddTransaction_Main" xml:space="preserve">
+    <value>Главни</value>
+  </data>
+  <data name="AddTransaction_Secondary" xml:space="preserve">
+    <value>Споредни</value>
+  </data>
+  <data name="AddTransaction_Saved" xml:space="preserve">
+    <value>Сачувани</value>
+  </data>
+  <data name="Transactions_Main" xml:space="preserve">
+    <value>Главни</value>
+  </data>
+  <data name="Transactions_Secondary" xml:space="preserve">
+    <value>Споредни</value>
+  </data>
+  <data name="Transactions_Saved" xml:space="preserve">
+    <value>Сачувани</value>
+  </data>
+  <data name="Transactions_Income" xml:space="preserve">
+    <value>Приход</value>
+  </data>
+  <data name="CommonError_FindTransactionToEdit" xml:space="preserve">
+    <value>Не могу да пронађем трансакцију за измену</value>
+  </data>
+  <data name="InfoAlert_FeatureNotAvailable_Message" xml:space="preserve">
+    <value>Ова функција још увек није доступна. Ускоро ћемо је имплементирати</value>
+  </data>
+  <data name="InfoAlert_FeatureNotAvailable_Title" xml:space="preserve">
+    <value>Још увек није доступно</value>
+  </data>
+  <data name="InfoAlert_FeatureNotAvailable_Ok" xml:space="preserve">
+    <value>У реду</value>
+  </data>
+  <data name="CommonError_FindCategoryToDelete" xml:space="preserve">
+    <value>Не могу да пронађем категорију за брисање</value>
+  </data>
+  <data name="CommonError_FindCategoryToEdit" xml:space="preserve">
+    <value>Не могу да пронађем категорију за измену</value>
+  </data>
+  <data name="Home_SavedAmounts" xml:space="preserve">
+    <value>Сачувани износи</value>
+  </data>
+  <data name="CommonError_OriginalCurrencyAmountNumber" xml:space="preserve">
+    <value>Износ у оригиналној валути мора бити број</value>
+  </data>
+  <data name="AddTransaction_MultiCurrencyTransaction" xml:space="preserve">
+    <value>Мултивалутна трансакција</value>
+  </data>
+  <data name="AddTransaction_OriginalCurrencyAmount" xml:space="preserve">
+    <value>Износ у оригиналној валути</value>
+  </data>
+  <data name="AddTransaction_WithdrawSavedFunds" xml:space="preserve">
+    <value>Исплата са сачуваних средстава</value>
+  </data>
+  <data name="AddTransaction_WithdrawAmount" xml:space="preserve">
+    <value>Износ за исплату</value>
+  </data>
+  <data name="Pages_Overview" xml:space="preserve">
+    <value>Преглед</value>
+  </data>
+  <data name="Overview_CategoriesExpenses" xml:space="preserve">
+    <value>Трошкови по категоријама</value>
+  </data>
+  <data name="Overview_SpendingTypes" xml:space="preserve">
+    <value>Трошкови по типовима</value>
+  </data>
+  <data name="Overview_IncomeExpense" xml:space="preserve">
+    <value>Приходи и расходи</value>
+  </data>
+  <data name="Overview_CategoriesPlannedAndActual" xml:space="preserve">
+    <value>Планирани и стварни трошкови по категоријама</value>
+  </data>
+  <data name="Overview_DailyExpenses" xml:space="preserve">
+    <value>Дневни трошкови</value>
+  </data>
+  <data name="Overview_WeeklyExpenses" xml:space="preserve">
+    <value>Недељни трошкови</value>
+  </data>
+  <data name="OverView_SpendingType_Main" xml:space="preserve">
+    <value>Главни</value>
+  </data>
+  <data name="Overview_SpendingType_Secondary" xml:space="preserve">
+    <value>Споредни</value>
+  </data>
+  <data name="Overview_SpendingType_Saved" xml:space="preserve">
+    <value>Сачувани</value>
+  </data>
+  <data name="Overview_Income" xml:space="preserve">
+    <value>Приход</value>
+  </data>
+  <data name="Overview_Expense" xml:space="preserve">
+    <value>Расход</value>
+  </data>
+  <data name="Overview_ForMonth" xml:space="preserve">
+    <value>За текући месец</value>
+  </data>
+  <data name="Overview_ForThreeMonths" xml:space="preserve">
+    <value>За три месеца</value>
+  </data>
+  <data name="Overview_ForSixMonths" xml:space="preserve">
+    <value>За шест месеци</value>
+  </data>
+  <data name="Pages_Profiles" xml:space="preserve">
+    <value>Профили</value>
+  </data>
+  <data name="CommonError_GetProfileById" xml:space="preserve">
+    <value>Не могу да пронађем профил са наведеним ID-ом</value>
+  </data>
+  <data name="ProfileSettings_ChangeAlert_Title" xml:space="preserve">
+    <value>Промена тренутног профила</value>
+  </data>
+  <data name="ProfileSettings_ChangeAlert_Desription" xml:space="preserve">
+    <value>Да ли сте сигурни да желите да поставите профил "{0}" као тренутни?</value>
+  </data>
+  <data name="ProfileSettings_ChangeAlert_Ok" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="ProfileSettings_ChangeAlert_Cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="Currencies_USD" xml:space="preserve">
+    <value>Амерички долар</value>
+  </data>
+  <data name="Currencies_EUR" xml:space="preserve">
+    <value>Евро</value>
+  </data>
+  <data name="Currencies_GBP" xml:space="preserve">
+    <value>Британска фунта</value>
+  </data>
+  <data name="Currencies_JPY" xml:space="preserve">
+    <value>Јапански јен</value>
+  </data>
+  <data name="Currencies_AUD" xml:space="preserve">
+    <value>Аустралијски долар</value>
+  </data>
+  <data name="Currencies_CAD" xml:space="preserve">
+    <value>Канадски долар</value>
+  </data>
+  <data name="Currencies_CHF" xml:space="preserve">
+    <value>Швајцарски франак</value>
+  </data>
+  <data name="Currencies_CNY" xml:space="preserve">
+    <value>Кинески јуан</value>
+  </data>
+  <data name="Currencies_INR" xml:space="preserve">
+    <value>Индијска рупија</value>
+  </data>
+  <data name="Currencies_RUB" xml:space="preserve">
+    <value>Руска рубља</value>
+  </data>
+  <data name="Currencies_RSD" xml:space="preserve">
+    <value>Српски динар</value>
+  </data>
+  <data name="Currencies_SEK" xml:space="preserve">
+    <value>Шведска круна</value>
+  </data>
+  <data name="Currencies_NOK" xml:space="preserve">
+    <value>Норвешка круна</value>
+  </data>
+  <data name="Currencies_DKK" xml:space="preserve">
+    <value>Данска круна</value>
+  </data>
+  <data name="Currencies_HUF" xml:space="preserve">
+    <value>Мађарска форинта</value>
+  </data>
+  <data name="Currencies_PLN" xml:space="preserve">
+    <value>Пољски злот</value>
+  </data>
+  <data name="Currencies_BGN" xml:space="preserve">
+    <value>Бугарски лев</value>
+  </data>
+  <data name="Currencies_CZK" xml:space="preserve">
+    <value>Чешка круна</value>
+  </data>
+  <data name="Currencies_RON" xml:space="preserve">
+    <value>Румунски леј</value>
+  </data>
+  <data name="Currencies_MXN" xml:space="preserve">
+    <value>Мексички пезос</value>
+  </data>
+  <data name="Currencies_BRL" xml:space="preserve">
+    <value>Бразилски реал</value>
+  </data>
+  <data name="Currencies_CLP" xml:space="preserve">
+    <value>Чилеански пезос</value>
+  </data>
+  <data name="Currencies_ARS" xml:space="preserve">
+    <value>Аргентински пезос</value>
+  </data>
+  <data name="Currencies_COP" xml:space="preserve">
+    <value>Колумбијски пезос</value>
+  </data>
+  <data name="Currencies_PYG" xml:space="preserve">
+    <value>Парагвајски гварани</value>
+  </data>
+  <data name="Currencies_VEF" xml:space="preserve">
+    <value>Венецуелански боливар</value>
+  </data>
+  <data name="Currencies_KRW" xml:space="preserve">
+    <value>Јужнокорејски вон</value>
+  </data>
+  <data name="Currencies_THB" xml:space="preserve">
+    <value>Тајландски бат</value>
+  </data>
+  <data name="Currencies_PHP" xml:space="preserve">
+    <value>Филипински пезос</value>
+  </data>
+  <data name="Currencies_TWD" xml:space="preserve">
+    <value>Тајвански долар</value>
+  </data>
+  <data name="Currencies_HKD" xml:space="preserve">
+    <value>Хонгконшки долар</value>
+  </data>
+  <data name="Currencies_IDR" xml:space="preserve">
+    <value>Индонежанска рупија</value>
+  </data>
+  <data name="Currencies_VND" xml:space="preserve">
+    <value>Вијетнамски донг</value>
+  </data>
+  <data name="Currencies_MYR" xml:space="preserve">
+    <value>Малезијски рингит</value>
+  </data>
+  <data name="Currencies_SGD" xml:space="preserve">
+    <value>Сингапурски долар</value>
+  </data>
+  <data name="Currencies_AED" xml:space="preserve">
+    <value>УАЕ дирхам</value>
+  </data>
+  <data name="Currencies_ILS" xml:space="preserve">
+    <value>Израелски нови шекел</value>
+  </data>
+  <data name="Currencies_PKR" xml:space="preserve">
+    <value>Пакистанска рупија</value>
+  </data>
+  <data name="Currencies_BDT" xml:space="preserve">
+    <value>Бангладешка така</value>
+  </data>
+  <data name="Currencies_ZAR" xml:space="preserve">
+    <value>Јужноафрички ранд</value>
+  </data>
+  <data name="Currencies_EGP" xml:space="preserve">
+    <value>Египатска фунта</value>
+  </data>
+  <data name="Currencies_KES" xml:space="preserve">
+    <value>Кенијски шилинг</value>
+  </data>
+  <data name="Currencies_NGN" xml:space="preserve">
+    <value>Нигеријска наира</value>
+  </data>
+  <data name="Currencies_GHS" xml:space="preserve">
+    <value>Гански седи</value>
+  </data>
+  <data name="Currencies_NZD" xml:space="preserve">
+    <value>Новозеландски долар</value>
+  </data>
+  <data name="Currencies_FJD" xml:space="preserve">
+    <value>Фиџи долар</value>
+  </data>
+  <data name="Currencies_WST" xml:space="preserve">
+    <value>Самоанска тала</value>
+  </data>
+  <data name="Currencies_TRY" xml:space="preserve">
+    <value>Турска лира</value>
+  </data>
+  <data name="Currencies_IQD" xml:space="preserve">
+    <value>Ирачки динар</value>
+  </data>
+  <data name="Currencies_OMR" xml:space="preserve">
+    <value>Омански ријал</value>
+  </data>
+  <data name="Currencies_SAR" xml:space="preserve">
+    <value>Саудијски ријал</value>
+  </data>
+  <data name="Currencies_KWD" xml:space="preserve">
+    <value>Кувајтски динар</value>
+  </data>
+  <data name="Currencies_BTC" xml:space="preserve">
+    <value>Биткоин</value>
+  </data>
+  <data name="Currencies_ETH" xml:space="preserve">
+    <value>Етер</value>
+  </data>
+  <data name="Settings_AboutApplication" xml:space="preserve">
+    <value>О апликацији</value>
+  </data>
+  <data name="Settings_Version" xml:space="preserve">
+    <value>Верзија</value>
+  </data>
+  <data name="Settings_GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="CategoriesSettings_DeleteAlert_Title" xml:space="preserve">
+    <value>Брисање категорије</value>
+  </data>
+  <data name="CategoriesSettings_DeleteAlert_Ok" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="CategoriesSettings_DeleteAlert_Cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="CategoriesSettings_DeleteAlert_Description" xml:space="preserve">
+    <value>Да ли сте сигурни да желите да обришете категорију "{0}"?</value>
+  </data>
+  <data name="Transactions_DeleteAlert_Cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="Transactions_DeleteAlert_Ok" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="Transactions_DeleteAlert_Title" xml:space="preserve">
+    <value>Брисање трансакције</value>
+  </data>
+  <data name="Transactions_DeleteAlert_Description" xml:space="preserve">
+    <value>Да ли сте сигурни да желите да обришете трансакцију "{0}"?</value>
+  </data>
+  <data name="Transactions_EditNotInPeriodAlert_Cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="Transactions_EditNotInPeriodAlert_Ok" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="Transactions_EditNotInPeriodAlert_Description" xml:space="preserve">
+    <value>Да ли сте сигурни да желите да измените трансакцију "{0}"? Она није у тренутном периоду профила и не утиче на израчунавање профила.</value>
+  </data>
+  <data name="Transactions_EditNotInPeriodAlert_Title" xml:space="preserve">
+    <value>Трансакција није у периоду профила</value>
+  </data>
+  <data name="ProfileSettings_DeleteAlert_Cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="ProfileSettings_DeleteAlert_Ok" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="ProfileSettings_DeleteAlert_Description" xml:space="preserve">
+    <value>Да ли сте сигурни да желите да обришете профил "{0}"? Све трансакције и категорије овог профила ће такође бити обрисане.</value>
+  </data>
+  <data name="ProfileSettings_DeleteAlert_Title" xml:space="preserve">
+    <value>Брисање профила</value>
+  </data>
+  <data name="ProfileSettings_LastProfileErrorAlert_Title" xml:space="preserve">
+    <value>Последњи профил</value>
+  </data>
+  <data name="ProfileSettings_LastProfileErrorAlert_Description" xml:space="preserve">
+    <value>Профил "{0}" је последњи профил и не може бити обрисан.</value>
+  </data>
+  <data name="ProfileSettings_LastProfileErrorAlert_Ok" xml:space="preserve">
+    <value>У реду</value>
+  </data>
+  <data name="Transactions_Filters" xml:space="preserve">
+    <value>Филтери</value>
+  </data>
+  <data name="Pages_TransactionsFilters" xml:space="preserve">
+    <value>Филтери трансакција</value>
+  </data>
+  <data name="CommonError_OpenTransactionsFiltersPage" xml:space="preserve">
+    <value>Не могу да отворим страницу са филтерима трансакција</value>
+  </data>
+  <data name="TransactionsFilters_ApplyFilters" xml:space="preserve">
+    <value>Примени филтере</value>
+  </data>
+  <data name="TransactionsFilters_StartDate" xml:space="preserve">
+    <value>Датум од</value>
+  </data>
+  <data name="TransactionsFilters_EndDate" xml:space="preserve">
+    <value>Датум до</value>
+  </data>
+  <data name="TransactionsFilters_SpendingType" xml:space="preserve">
+    <value>Тип трошка</value>
+  </data>
+  <data name="TransactionsFilters_SearchByCurrency" xml:space="preserve">
+    <value>Претрага по валути</value>
+  </data>
+  <data name="TransactionsFilters_TransactionType" xml:space="preserve">
+    <value>Тип трансакције</value>
+  </data>
+  <data name="TransactionsFilters_Category" xml:space="preserve">
+    <value>Категорија</value>
+  </data>
+  <data name="TransactionsFilters_Description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="TransactionsFilters_SearchByAmount" xml:space="preserve">
+    <value>Претрага по износу</value>
+  </data>
+  <data name="TransactionsFilters_LessThan" xml:space="preserve">
+    <value>Мање од</value>
+  </data>
+  <data name="TransactionsFilters_GreaterThan" xml:space="preserve">
+    <value>Више од</value>
+  </data>
+  <data name="TransactionsFilters_AmountToSearch" xml:space="preserve">
+    <value>Износ</value>
+  </data>
+  <data name="TransactionsFilters_Currency" xml:space="preserve">
+    <value>Валута</value>
+  </data>
+  <data name="TransactionsFilters_Pickers_Any" xml:space="preserve">
+    <value>Било који</value>
+  </data>
+  <data name="TransactionsFilters_ResetFilters" xml:space="preserve">
+    <value>Ресетуј филтере</value>
+  </data>
+  <data name="Transactions_Expense" xml:space="preserve">
+    <value>Расход</value>
+  </data>
+  <data name="Languages_French" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="Languages_Spanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="Languages_SerbianCyrillic" xml:space="preserve">
+    <value>Српски (ћирилица)</value>
+  </data>
+  <data name="Languages_SerbianLatin" xml:space="preserve">
+    <value>Srpski (latinica)</value>
+  </data>
+</root>

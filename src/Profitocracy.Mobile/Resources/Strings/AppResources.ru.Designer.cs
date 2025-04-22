@@ -69,15 +69,15 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Home_TodayBalance {
-            get {
-                return ResourceManager.GetString("Home_TodayBalance", resourceCulture);
-            }
-        }
-        
         internal static string Home_TomorrowBalance {
             get {
                 return ResourceManager.GetString("Home_TomorrowBalance", resourceCulture);
+            }
+        }
+        
+        internal static string Home_TodayBalance {
+            get {
+                return ResourceManager.GetString("Home_TodayBalance", resourceCulture);
             }
         }
         
@@ -87,21 +87,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Settings_Categories {
-            get {
-                return ResourceManager.GetString("Settings_Categories", resourceCulture);
-            }
-        }
-        
         internal static string Home_Main {
             get {
                 return ResourceManager.GetString("Home_Main", resourceCulture);
-            }
-        }
-        
-        internal static string Home_Saved {
-            get {
-                return ResourceManager.GetString("Home_Saved", resourceCulture);
             }
         }
         
@@ -111,15 +99,27 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
+        internal static string Home_Saved {
+            get {
+                return ResourceManager.GetString("Home_Saved", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Categories {
+            get {
+                return ResourceManager.GetString("Settings_Categories", resourceCulture);
+            }
+        }
+        
         internal static string Home_NoCategories {
             get {
                 return ResourceManager.GetString("Home_NoCategories", resourceCulture);
             }
         }
         
-        internal static string EditProfile_SaveProfile {
+        internal static string EditProfile_ProfileName {
             get {
-                return ResourceManager.GetString("EditProfile_SaveProfile", resourceCulture);
+                return ResourceManager.GetString("EditProfile_ProfileName", resourceCulture);
             }
         }
         
@@ -129,9 +129,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string EditProfile_ProfileName {
+        internal static string EditProfile_SaveProfile {
             get {
-                return ResourceManager.GetString("EditProfile_ProfileName", resourceCulture);
+                return ResourceManager.GetString("EditProfile_SaveProfile", resourceCulture);
             }
         }
         
@@ -159,9 +159,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string AddTransaction_Amount {
+        internal static string AddTransaction_Expense {
             get {
-                return ResourceManager.GetString("AddTransaction_Amount", resourceCulture);
+                return ResourceManager.GetString("AddTransaction_Expense", resourceCulture);
             }
         }
         
@@ -171,9 +171,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string AddTransaction_Date {
+        internal static string AddTransaction_Amount {
             get {
-                return ResourceManager.GetString("AddTransaction_Date", resourceCulture);
+                return ResourceManager.GetString("AddTransaction_Amount", resourceCulture);
             }
         }
         
@@ -183,9 +183,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string AddTransaction_Expense {
+        internal static string AddTransaction_Date {
             get {
-                return ResourceManager.GetString("AddTransaction_Expense", resourceCulture);
+                return ResourceManager.GetString("AddTransaction_Date", resourceCulture);
             }
         }
         
@@ -207,12 +207,6 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Settings_Language {
-            get {
-                return ResourceManager.GetString("Settings_Language", resourceCulture);
-            }
-        }
-        
         internal static string Settings_Profiles {
             get {
                 return ResourceManager.GetString("Settings_Profiles", resourceCulture);
@@ -222,6 +216,18 @@ namespace Profitocracy.Mobile.Resources.Strings {
         internal static string Settings_Theme {
             get {
                 return ResourceManager.GetString("Settings_Theme", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Language {
+            get {
+                return ResourceManager.GetString("Settings_Language", resourceCulture);
+            }
+        }
+        
+        internal static string Categories_NoLimits {
+            get {
+                return ResourceManager.GetString("Categories_NoLimits", resourceCulture);
             }
         }
         
@@ -237,9 +243,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Categories_NoLimits {
+        internal static string AddCategory_SpecifyPlannedAmount {
             get {
-                return ResourceManager.GetString("Categories_NoLimits", resourceCulture);
+                return ResourceManager.GetString("AddCategory_SpecifyPlannedAmount", resourceCulture);
             }
         }
         
@@ -252,12 +258,6 @@ namespace Profitocracy.Mobile.Resources.Strings {
         internal static string AddCategory_SaveCategory {
             get {
                 return ResourceManager.GetString("AddCategory_SaveCategory", resourceCulture);
-            }
-        }
-        
-        internal static string AddCategory_SpecifyPlannedAmount {
-            get {
-                return ResourceManager.GetString("AddCategory_SpecifyPlannedAmount", resourceCulture);
             }
         }
         
@@ -291,15 +291,15 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string InfoAlert_ChangeLanguage_Message {
-            get {
-                return ResourceManager.GetString("InfoAlert_ChangeLanguage_Message", resourceCulture);
-            }
-        }
-        
         internal static string InfoAlert_ChangeLanguage_Title {
             get {
                 return ResourceManager.GetString("InfoAlert_ChangeLanguage_Title", resourceCulture);
+            }
+        }
+        
+        internal static string InfoAlert_ChangeLanguage_Message {
+            get {
+                return ResourceManager.GetString("InfoAlert_ChangeLanguage_Message", resourceCulture);
             }
         }
         
@@ -429,6 +429,12 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
+        internal static string AddTransaction_Main {
+            get {
+                return ResourceManager.GetString("AddTransaction_Main", resourceCulture);
+            }
+        }
+        
         internal static string AddTransaction_Secondary {
             get {
                 return ResourceManager.GetString("AddTransaction_Secondary", resourceCulture);
@@ -441,21 +447,15 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string AddTransaction_Main {
-            get {
-                return ResourceManager.GetString("AddTransaction_Main", resourceCulture);
-            }
-        }
-        
-        internal static string Transactions_Income {
-            get {
-                return ResourceManager.GetString("Transactions_Income", resourceCulture);
-            }
-        }
-        
         internal static string Transactions_Main {
             get {
                 return ResourceManager.GetString("Transactions_Main", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_Secondary {
+            get {
+                return ResourceManager.GetString("Transactions_Secondary", resourceCulture);
             }
         }
         
@@ -465,9 +465,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Transactions_Secondary {
+        internal static string Transactions_Income {
             get {
-                return ResourceManager.GetString("Transactions_Secondary", resourceCulture);
+                return ResourceManager.GetString("Transactions_Income", resourceCulture);
             }
         }
         
@@ -555,15 +555,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Overview_CategoriesPlannedAndActual {
+        internal static string Overview_SpendingTypes {
             get {
-                return ResourceManager.GetString("Overview_CategoriesPlannedAndActual", resourceCulture);
-            }
-        }
-        
-        internal static string Overview_DailyExpenses {
-            get {
-                return ResourceManager.GetString("Overview_DailyExpenses", resourceCulture);
+                return ResourceManager.GetString("Overview_SpendingTypes", resourceCulture);
             }
         }
         
@@ -573,9 +567,15 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Overview_SpendingTypes {
+        internal static string Overview_CategoriesPlannedAndActual {
             get {
-                return ResourceManager.GetString("Overview_SpendingTypes", resourceCulture);
+                return ResourceManager.GetString("Overview_CategoriesPlannedAndActual", resourceCulture);
+            }
+        }
+        
+        internal static string Overview_DailyExpenses {
+            get {
+                return ResourceManager.GetString("Overview_DailyExpenses", resourceCulture);
             }
         }
         
@@ -591,21 +591,15 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Overview_SpendingType_Saved {
-            get {
-                return ResourceManager.GetString("Overview_SpendingType_Saved", resourceCulture);
-            }
-        }
-        
         internal static string Overview_SpendingType_Secondary {
             get {
                 return ResourceManager.GetString("Overview_SpendingType_Secondary", resourceCulture);
             }
         }
         
-        internal static string Overview_Expense {
+        internal static string Overview_SpendingType_Saved {
             get {
-                return ResourceManager.GetString("Overview_Expense", resourceCulture);
+                return ResourceManager.GetString("Overview_SpendingType_Saved", resourceCulture);
             }
         }
         
@@ -615,21 +609,27 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
+        internal static string Overview_Expense {
+            get {
+                return ResourceManager.GetString("Overview_Expense", resourceCulture);
+            }
+        }
+        
         internal static string Overview_ForMonth {
             get {
                 return ResourceManager.GetString("Overview_ForMonth", resourceCulture);
             }
         }
         
-        internal static string Overview_ForSixMonths {
-            get {
-                return ResourceManager.GetString("Overview_ForSixMonths", resourceCulture);
-            }
-        }
-        
         internal static string Overview_ForThreeMonths {
             get {
                 return ResourceManager.GetString("Overview_ForThreeMonths", resourceCulture);
+            }
+        }
+        
+        internal static string Overview_ForSixMonths {
+            get {
+                return ResourceManager.GetString("Overview_ForSixMonths", resourceCulture);
             }
         }
         
@@ -645,27 +645,27 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string ProfileSettings_ChangeAlert_Ok {
-            get {
-                return ResourceManager.GetString("ProfileSettings_ChangeAlert_Ok", resourceCulture);
-            }
-        }
-        
         internal static string ProfileSettings_ChangeAlert_Title {
             get {
                 return ResourceManager.GetString("ProfileSettings_ChangeAlert_Title", resourceCulture);
             }
         }
         
-        internal static string ProfileSettings_ChangeAlert_Cancel {
-            get {
-                return ResourceManager.GetString("ProfileSettings_ChangeAlert_Cancel", resourceCulture);
-            }
-        }
-        
         internal static string ProfileSettings_ChangeAlert_Desription {
             get {
                 return ResourceManager.GetString("ProfileSettings_ChangeAlert_Desription", resourceCulture);
+            }
+        }
+        
+        internal static string ProfileSettings_ChangeAlert_Ok {
+            get {
+                return ResourceManager.GetString("ProfileSettings_ChangeAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string ProfileSettings_ChangeAlert_Cancel {
+            get {
+                return ResourceManager.GetString("ProfileSettings_ChangeAlert_Cancel", resourceCulture);
             }
         }
         
@@ -1011,33 +1011,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Transactions_DeleteAlert_Ok {
+        internal static string CategoriesSettings_DeleteAlert_Title {
             get {
-                return ResourceManager.GetString("Transactions_DeleteAlert_Ok", resourceCulture);
-            }
-        }
-        
-        internal static string Transactions_DeleteAlert_Cancel {
-            get {
-                return ResourceManager.GetString("Transactions_DeleteAlert_Cancel", resourceCulture);
-            }
-        }
-        
-        internal static string Transactions_DeleteAlert_Description {
-            get {
-                return ResourceManager.GetString("Transactions_DeleteAlert_Description", resourceCulture);
-            }
-        }
-        
-        internal static string Transactions_DeleteAlert_Title {
-            get {
-                return ResourceManager.GetString("Transactions_DeleteAlert_Title", resourceCulture);
-            }
-        }
-        
-        internal static string CategoriesSettings_DeleteAlert_Cancel {
-            get {
-                return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Cancel", resourceCulture);
+                return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Title", resourceCulture);
             }
         }
         
@@ -1047,9 +1023,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string CategoriesSettings_DeleteAlert_Title {
+        internal static string CategoriesSettings_DeleteAlert_Cancel {
             get {
-                return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Title", resourceCulture);
+                return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Cancel", resourceCulture);
             }
         }
         
@@ -1059,15 +1035,33 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string Transactions_EditNotInPeriodAlert_Cancel {
+        internal static string Transactions_DeleteAlert_Cancel {
             get {
-                return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Cancel", resourceCulture);
+                return ResourceManager.GetString("Transactions_DeleteAlert_Cancel", resourceCulture);
             }
         }
         
-        internal static string Transactions_EditNotInPeriodAlert_Title {
+        internal static string Transactions_DeleteAlert_Ok {
             get {
-                return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Title", resourceCulture);
+                return ResourceManager.GetString("Transactions_DeleteAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_DeleteAlert_Title {
+            get {
+                return ResourceManager.GetString("Transactions_DeleteAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_DeleteAlert_Description {
+            get {
+                return ResourceManager.GetString("Transactions_DeleteAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_EditNotInPeriodAlert_Cancel {
+            get {
+                return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Cancel", resourceCulture);
             }
         }
         
@@ -1083,15 +1077,15 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string ProfileSettings_DeleteAlert_Cancel {
+        internal static string Transactions_EditNotInPeriodAlert_Title {
             get {
-                return ResourceManager.GetString("ProfileSettings_DeleteAlert_Cancel", resourceCulture);
+                return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Title", resourceCulture);
             }
         }
         
-        internal static string ProfileSettings_DeleteAlert_Description {
+        internal static string ProfileSettings_DeleteAlert_Cancel {
             get {
-                return ResourceManager.GetString("ProfileSettings_DeleteAlert_Description", resourceCulture);
+                return ResourceManager.GetString("ProfileSettings_DeleteAlert_Cancel", resourceCulture);
             }
         }
         
@@ -1101,9 +1095,21 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
+        internal static string ProfileSettings_DeleteAlert_Description {
+            get {
+                return ResourceManager.GetString("ProfileSettings_DeleteAlert_Description", resourceCulture);
+            }
+        }
+        
         internal static string ProfileSettings_DeleteAlert_Title {
             get {
                 return ResourceManager.GetString("ProfileSettings_DeleteAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string ProfileSettings_LastProfileErrorAlert_Title {
+            get {
+                return ResourceManager.GetString("ProfileSettings_LastProfileErrorAlert_Title", resourceCulture);
             }
         }
         
@@ -1116,12 +1122,6 @@ namespace Profitocracy.Mobile.Resources.Strings {
         internal static string ProfileSettings_LastProfileErrorAlert_Ok {
             get {
                 return ResourceManager.GetString("ProfileSettings_LastProfileErrorAlert_Ok", resourceCulture);
-            }
-        }
-        
-        internal static string ProfileSettings_LastProfileErrorAlert_Title {
-            get {
-                return ResourceManager.GetString("ProfileSettings_LastProfileErrorAlert_Title", resourceCulture);
             }
         }
         
@@ -1149,27 +1149,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string TransactionsFilters_AmountToSearch {
+        internal static string TransactionsFilters_StartDate {
             get {
-                return ResourceManager.GetString("TransactionsFilters_AmountToSearch", resourceCulture);
-            }
-        }
-        
-        internal static string TransactionsFilters_Category {
-            get {
-                return ResourceManager.GetString("TransactionsFilters_Category", resourceCulture);
-            }
-        }
-        
-        internal static string TransactionsFilters_Currency {
-            get {
-                return ResourceManager.GetString("TransactionsFilters_Currency", resourceCulture);
-            }
-        }
-        
-        internal static string TransactionsFilters_Description {
-            get {
-                return ResourceManager.GetString("TransactionsFilters_Description", resourceCulture);
+                return ResourceManager.GetString("TransactionsFilters_StartDate", resourceCulture);
             }
         }
         
@@ -1179,21 +1161,9 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string TransactionsFilters_GreaterThan {
+        internal static string TransactionsFilters_SpendingType {
             get {
-                return ResourceManager.GetString("TransactionsFilters_GreaterThan", resourceCulture);
-            }
-        }
-        
-        internal static string TransactionsFilters_LessThan {
-            get {
-                return ResourceManager.GetString("TransactionsFilters_LessThan", resourceCulture);
-            }
-        }
-        
-        internal static string TransactionsFilters_SearchByAmount {
-            get {
-                return ResourceManager.GetString("TransactionsFilters_SearchByAmount", resourceCulture);
+                return ResourceManager.GetString("TransactionsFilters_SpendingType", resourceCulture);
             }
         }
         
@@ -1203,21 +1173,51 @@ namespace Profitocracy.Mobile.Resources.Strings {
             }
         }
         
-        internal static string TransactionsFilters_SpendingType {
-            get {
-                return ResourceManager.GetString("TransactionsFilters_SpendingType", resourceCulture);
-            }
-        }
-        
-        internal static string TransactionsFilters_StartDate {
-            get {
-                return ResourceManager.GetString("TransactionsFilters_StartDate", resourceCulture);
-            }
-        }
-        
         internal static string TransactionsFilters_TransactionType {
             get {
                 return ResourceManager.GetString("TransactionsFilters_TransactionType", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_Category {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_Category", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_Description {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_Description", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_SearchByAmount {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_SearchByAmount", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_LessThan {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_LessThan", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_GreaterThan {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_GreaterThan", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_AmountToSearch {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_AmountToSearch", resourceCulture);
+            }
+        }
+        
+        internal static string TransactionsFilters_Currency {
+            get {
+                return ResourceManager.GetString("TransactionsFilters_Currency", resourceCulture);
             }
         }
         
@@ -1236,6 +1236,30 @@ namespace Profitocracy.Mobile.Resources.Strings {
         internal static string Transactions_Expense {
             get {
                 return ResourceManager.GetString("Transactions_Expense", resourceCulture);
+            }
+        }
+        
+        internal static string Languages_French {
+            get {
+                return ResourceManager.GetString("Languages_French", resourceCulture);
+            }
+        }
+        
+        internal static string Languages_Spanish {
+            get {
+                return ResourceManager.GetString("Languages_Spanish", resourceCulture);
+            }
+        }
+        
+        internal static string Languages_SerbianCyrillic {
+            get {
+                return ResourceManager.GetString("Languages_SerbianCyrillic", resourceCulture);
+            }
+        }
+        
+        internal static string Languages_SerbianLatin {
+            get {
+                return ResourceManager.GetString("Languages_SerbianLatin", resourceCulture);
             }
         }
     }
