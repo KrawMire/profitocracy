@@ -718,4 +718,7 @@
     <value>Français</value>
     <comment>Français</comment>
   </data>
+  <data name="Languages_Spanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
 </root>

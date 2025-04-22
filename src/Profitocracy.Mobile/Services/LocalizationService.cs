@@ -19,11 +19,16 @@ public static class LocalizationService
     /// Constant string value of French language
     /// </summary>
     public const string French = "fr";
-    
+
+    /// <summary>
+    /// Constant string value of Spanish language
+    /// </summary>
+    public const string Spanish = "es";
+
     /// <summary>
     /// Array of supported languages. Represented by code
     /// </summary>
-    public static readonly string[] SupportedLanguages = [English, Russian, French];
+    public static readonly string[] SupportedLanguages = [English, Russian, French, Spanish];
     
     public static string CurrentLanguage => CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
     
