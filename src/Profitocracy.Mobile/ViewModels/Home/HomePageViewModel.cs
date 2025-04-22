@@ -216,13 +216,13 @@ public ICommand RefreshCommand { get; private set; }
             return;
         }
 
+        _profileCurrency = profile.Settings.Currency.Symbol;
+        
         ProfileId = profile.Id;
         ProfileName = profile.Name;
         Balance = NumberUtils.RoundDecimalMoney(profile.Balance, _profileCurrency);
         DateFrom = profile.BillingPeriod.DateFrom.ToShortDateString();
         DateTo = profile.BillingPeriod.DateTo.ToShortDateString();
-        
-        _profileCurrency = profile.Settings.Currency.Symbol;
         
         InitializeExpenses(profile.Expenses);
         CategoriesExpenses.Clear();
