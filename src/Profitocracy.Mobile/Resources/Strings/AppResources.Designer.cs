@@ -1168,6 +1168,15 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Español.
+        /// </summary>
+        internal static string Languages_Spanish {
+            get {
+                return ResourceManager.GetString("Languages_Spanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expenses by Category.
         /// </summary>
         internal static string Overview_CategoriesExpenses {

@@ -717,4 +717,7 @@
   <data name="Languages_French" xml:space="preserve">
     <value>Français</value>
   </data>
+  <data name="Languages_Spanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
 </root>
