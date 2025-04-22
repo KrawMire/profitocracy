@@ -107,6 +107,7 @@ public class LanguageSettingsViewModel : BaseNotifyObject
             LocalizationService.English => AppResources.Languages_English,
             LocalizationService.Russian => AppResources.Languages_Russian,
             LocalizationService.French => AppResources.Languages_French,
+            LocalizationService.Spanish => AppResources.Languages_Spanish,
             // Add cases for any new languages
             _ => languageCode // Fallback to the language code itself
         };
