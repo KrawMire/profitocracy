@@ -595,6 +595,13 @@
         <Setter Property="TextColor" Value="{StaticResource SecondaryText}"/>
     </Style>
     
+    <Style TargetType="Button" x:Key="SecondaryButton">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+        <Setter Property="BorderColor" Value="{StaticResource Primary}"/>
+        <Setter Property="BorderWidth" Value="1"/>
+    </Style>
+    
     <!-- Settings page -->
     <Style TargetType="Label" x:Key="SettingsGroupTitle">
         <Setter Property="FontSize" Value="24"/>
