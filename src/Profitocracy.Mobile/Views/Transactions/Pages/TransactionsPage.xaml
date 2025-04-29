@@ -19,6 +19,13 @@
                      Clicked="TransactionFilters_OnClicked"/>
     </abstractions:BaseContentPage.ToolbarItems>
     <Grid>
+        <Label Style="{StaticResource ExpenseCardSubtitleSecondary}" 
+               IsVisible="{Binding IsTransactionsListEmpty}" 
+               Text="{x:Static resx:AppResources.Transactions_NoTransactions}"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               Padding="16, 0"/>
+        
         <CollectionView x:Name="TransactionsCollectionView"
                         VerticalScrollBarVisibility="Default">
             <CollectionView.ItemTemplate>

@@ -165,7 +165,7 @@
                 
                 <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_Categories}">
                     <StackLayout>
-                        <Label Style="{StaticResource ExpenseCardSubtitle}" 
+                        <Label Style="{StaticResource ExpenseCardSubtitleSecondary}" 
                                IsVisible="{Binding IsDisplayNoCategories}" 
                                Text="{x:Static resx:AppResources.Home_NoCategories}"
                                Margin="0,16,0,0"

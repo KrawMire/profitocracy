@@ -17,6 +17,7 @@ public class TransactionsPageViewModel : BaseNotifyObject
     private readonly ITransactionService _transactionService;
     
     private Guid? _profileId;
+    private bool _isTransactionsListEmpty;
     
     public TransactionsPageViewModel(
         IProfileRepository profileRepository,
@@ -29,6 +30,12 @@ public class TransactionsPageViewModel : BaseNotifyObject
     }
     
     public readonly ObservableCollection<TransactionModel> Transactions = [];
+    
+    public bool IsTransactionsListEmpty
+    {
+        get => _isTransactionsListEmpty;
+        set => SetProperty(ref _isTransactionsListEmpty, value);
+    }
 
     public async Task Initialize(TransactionsFiltersPageViewModel filters)
     {
@@ -66,6 +73,7 @@ public class TransactionsPageViewModel : BaseNotifyObject
         var transactions = await _transactionRepository.GetFiltered(specs);
         
         Transactions.Clear();
+        IsTransactionsListEmpty = transactions.Count == 0;
 
         foreach (var transaction in transactions)
         {

@@ -13,6 +13,8 @@ public class ExpenseCategoriesSettingsPageViewModel : BaseNotifyObject
     private readonly ICategoryRepository _categoryRepository;
     private readonly ICategoryService _categoryService;
 
+    private bool _isCategoriesListEmpty;
+    
     public ExpenseCategoriesSettingsPageViewModel(
         IProfileRepository profileRepository,
         ICategoryRepository categoryRepository, 
@@ -25,6 +27,12 @@ public class ExpenseCategoriesSettingsPageViewModel : BaseNotifyObject
 
     public readonly ObservableCollection<CategoryModel> Categories = [];
 
+    public bool IsCategoriesListEmpty
+    {
+        get => _isCategoriesListEmpty;
+        set => SetProperty(ref _isCategoriesListEmpty, value);
+    }
+
     public async Task Initialize()
     {
         var profileId = await _profileRepository.GetCurrentProfileId();
@@ -35,7 +43,9 @@ public class ExpenseCategoriesSettingsPageViewModel : BaseNotifyObject
         }
 
         var categories = await _categoryRepository.GetAllByProfileId((Guid)profileId);
+        
         Categories.Clear();
+        IsCategoriesListEmpty = categories.Count == 0;
 
         foreach (var category in categories)
         {
