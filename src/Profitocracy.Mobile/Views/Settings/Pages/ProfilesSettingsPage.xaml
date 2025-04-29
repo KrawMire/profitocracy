@@ -12,7 +12,6 @@
                               Title="{x:Static resx:AppResources.Pages_Profiles}"
                               BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
                               NavigatedTo="UpdateProfilesList"
-                              Padding="8,0,8,0"
                               HideSoftInputOnTapped="True">
     <abstractions:BaseContentPage.Content>
         <Grid>
@@ -63,9 +62,8 @@
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             
-                            <StackLayout>
+                            <StackLayout Margin="8,8,8,0">
                                 <Border Style="{StaticResource CurrentProfileCard}"
-                                        Margin="0,8,0,0"
                                         IsVisible="{Binding IsCurrent}">
                                     <StackLayout>
                                         <FlexLayout JustifyContent="SpaceBetween">
@@ -77,7 +75,6 @@
                                     </StackLayout>
                                 </Border> 
                                 <Border Style="{StaticResource ProfileCard}"
-                                        Margin="0,8,0,0"
                                         IsVisible="{Binding IsNotCurrent}">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ProfileCard_OnTapped"/>
@@ -104,7 +101,7 @@
             <sharedcontrols:AddNewButton Grid.Row="0"
                                          HorizontalOptions="End"
                                          VerticalOptions="End"
-                                         Margin="0,0,8,16"
+                                         Margin="0,0,16,16"
                                          Clicked="AddProfileButton_OnClicked"/>
         </Grid>
     </abstractions:BaseContentPage.Content>
