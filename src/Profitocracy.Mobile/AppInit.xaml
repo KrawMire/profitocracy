@@ -6,6 +6,12 @@
                               x:Class="Profitocracy.Mobile.AppInit"
                               Loaded="AppInit_OnLoaded">
     <abstractions:BaseContentPage.Content>
-        
+        <Grid BackgroundColor="#FFFFFF"
+              ColumnDefinitions="32,*,32"
+              RowDefinitions="32,*,32">
+            <Image Grid.Column="1"
+                   Grid.Row="1"
+                   Source="launchscreen_transparent.png"/>
+        </Grid>
     </abstractions:BaseContentPage.Content>
 </abstractions:BaseContentPage>
