@@ -515,6 +515,12 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
     
+    <Style TargetType="Label" x:Key="ExpenseCardSubtitleSecondary">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+        <Setter Property="TextColor" Value="{StaticResource SecondaryText}"/>
+    </Style>
+    
     <Style TargetType="ProgressBar" x:Key="ExpenseCardProgressBar">
         <Setter Property="HeightRequest" Value="4"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"/>
