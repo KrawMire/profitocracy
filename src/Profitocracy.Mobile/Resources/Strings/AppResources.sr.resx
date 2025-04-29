@@ -726,4 +726,7 @@
   <data name="Languages_SerbianLatin" xml:space="preserve">
     <value>Srpski (latinica)</value>
   </data>
+  <data name="Transactions_NoTransactions" xml:space="preserve">
+    <value>Није пронађена ниједна трансакција за наведене филтере</value>
+  </data>
 </root>

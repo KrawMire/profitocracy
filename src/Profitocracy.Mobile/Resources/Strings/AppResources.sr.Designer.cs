@@ -14,21 +14,21 @@ namespace Profitocracy.Mobile.Resources.Strings {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AppResources_sr_Cyrl {
+    internal class AppResources_sr {
         
         private static System.Resources.ResourceManager resourceMan;
         
         private static System.Globalization.CultureInfo resourceCulture;
         
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AppResources_sr_Cyrl() {
+        internal AppResources_sr() {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Profitocracy.Mobile.Resources.Strings.AppResources_sr_Cyrl", typeof(AppResources_sr_Cyrl).Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Profitocracy.Mobile.Resources.Strings.AppResources_sr", typeof(AppResources_sr).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -1260,6 +1260,12 @@ namespace Profitocracy.Mobile.Resources.Strings {
         internal static string Languages_SerbianLatin {
             get {
                 return ResourceManager.GetString("Languages_SerbianLatin", resourceCulture);
+            }
+        }
+        
+        internal static string Transactions_NoTransactions {
+            get {
+                return ResourceManager.GetString("Transactions_NoTransactions", resourceCulture);
             }
         }
     }

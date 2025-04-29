@@ -1262,5 +1262,11 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("Languages_SerbianLatin", resourceCulture);
             }
         }
+        
+        internal static string Transactions_NoTransactions {
+            get {
+                return ResourceManager.GetString("Transactions_NoTransactions", resourceCulture);
+            }
+        }
     }
 }

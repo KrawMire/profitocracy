@@ -12,14 +12,18 @@
                               Title="{x:Static resx:AppResources.Pages_Categories}"
                               BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
                               NavigatedTo="UpdateCategoriesList"
-                              Padding="8,0,8,0"
                               HideSoftInputOnTapped="True">
     <abstractions:BaseContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+            <Label Style="{StaticResource ExpenseCardSubtitleSecondary}" 
+                   IsVisible="{Binding IsCategoriesListEmpty}" 
+                   Text="{x:Static resx:AppResources.Home_NoCategories}"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Padding="16,0"/>
             <CollectionView Grid.Row="0"
                             x:Name="CategoriesCollectionView"
                             VerticalScrollBarVisibility="Never">
@@ -64,7 +68,7 @@
                             </SwipeView.RightItems>
                             
                             <Border Style="{StaticResource CategoryCard}"
-                                    Margin="0,8,0,0">
+                                    Margin="8,8,8,0">
                                 <StackLayout>
                                     <FlexLayout JustifyContent="SpaceBetween">
                                         <Label Style="{StaticResource CategoryCardName}"
@@ -86,7 +90,7 @@
             <sharedcontrols:AddNewButton Grid.Row="0" 
                                          HorizontalOptions="End"
                                          VerticalOptions="End"
-                                         Margin="0,0,8,16"
+                                         Margin="0,0,16, 16"
                                          Clicked="AddCategoryButton_OnClicked"/>
         </Grid>
     </abstractions:BaseContentPage.Content>
