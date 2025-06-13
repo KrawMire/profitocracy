@@ -729,4 +729,7 @@
   <data name="Transactions_NoTransactions" xml:space="preserve">
     <value>Aucune transaction n'a été trouvée pour les filtres spécifiés</value>
   </data>
+  <data name="Languages_German" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
 </root>

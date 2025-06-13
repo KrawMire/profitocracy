@@ -110,6 +110,7 @@ public class LanguageSettingsViewModel : BaseNotifyObject
             LocalizationService.Spanish => AppResources.Languages_Spanish,
             LocalizationService.CyrillicSerbian => AppResources.Languages_SerbianCyrillic,
             LocalizationService.LatinSerbian => AppResources.Languages_SerbianLatin,
+            LocalizationService.German => AppResources.Languages_German,
             _ => languageCode
         };
     }
