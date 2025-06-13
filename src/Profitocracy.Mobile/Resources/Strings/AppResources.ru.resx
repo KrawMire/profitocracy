@@ -729,4 +729,7 @@
   <data name="Transactions_NoTransactions" xml:space="preserve">
     <value>По указанным фильтрам не было найдено ни одной транзакции</value>
   </data>
+  <data name="Languages_German" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
 </root>
