@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -121,118 +121,118 @@
     <value>Profil</value>
   </data>
   <data name="Pages_Home" xml:space="preserve">
-    <value>Početna</value>
+    <value>Start</value>
   </data>
   <data name="Home_Balance" xml:space="preserve">
-    <value>Stanje</value>
+    <value>Kontostand</value>
   </data>
   <data name="Home_DailyAmounts" xml:space="preserve">
-    <value>Dnevni iznosi</value>
+    <value>Tägliche Beträge</value>
   </data>
   <data name="Home_TomorrowBalance" xml:space="preserve">
-    <value>Sutra</value>
+    <value>Morgen</value>
   </data>
   <data name="Home_TodayBalance" xml:space="preserve">
-    <value>Danas</value>
+    <value>Heute</value>
   </data>
   <data name="Home_SpendingTypes" xml:space="preserve">
-    <value>Tipovi trošenja</value>
+    <value>Ausgabentypen</value>
   </data>
   <data name="Home_Main" xml:space="preserve">
-    <value>Glavni</value>
+    <value>Haupt</value>
   </data>
   <data name="Home_Secondary" xml:space="preserve">
-    <value>Sporedni</value>
+    <value>Sekundär</value>
   </data>
   <data name="Home_Saved" xml:space="preserve">
-    <value>Sačuvani</value>
+    <value>Gespart</value>
   </data>
   <data name="Settings_Categories" xml:space="preserve">
-    <value>Kategorije</value>
+    <value>Kategorien</value>
   </data>
   <data name="Home_NoCategories" xml:space="preserve">
-    <value>Nema kategorija</value>
+    <value>Es gibt noch keine Kategorien</value>
   </data>
   <data name="EditProfile_ProfileName" xml:space="preserve">
-    <value>Naziv profila</value>
+    <value>Profilname</value>
   </data>
   <data name="EditProfile_InitialBalance" xml:space="preserve">
-    <value>Početno stanje</value>
+    <value>Initialer Kontostand</value>
   </data>
   <data name="EditProfile_SaveProfile" xml:space="preserve">
-    <value>Sačuvaj profil</value>
+    <value>Profil speichern</value>
   </data>
   <data name="Pages_Transactions" xml:space="preserve">
-    <value>Transakcije</value>
+    <value>Transaktionen</value>
   </data>
   <data name="AddTransaction_Income" xml:space="preserve">
-    <value>Prihod</value>
+    <value>Einkommen</value>
   </data>
   <data name="Pages_Settings" xml:space="preserve">
-    <value>Podešavanja</value>
+    <value>Einstellungen</value>
   </data>
   <data name="Pages_NewTransaction" xml:space="preserve">
-    <value>Transakcija</value>
+    <value>Transaktion</value>
   </data>
   <data name="AddTransaction_Expense" xml:space="preserve">
-    <value>Rashod</value>
+    <value>Ausgaben</value>
   </data>
   <data name="AddTransaction_Category" xml:space="preserve">
-    <value>Kategorija</value>
+    <value>Kategorie</value>
   </data>
   <data name="AddTransaction_Amount" xml:space="preserve">
-    <value>Iznos u osnovnoj valuti</value>
+    <value>Betrag in der Hauptwährung</value>
   </data>
   <data name="AddTransaction_Description" xml:space="preserve">
-    <value>Opis</value>
+    <value>Beschreibung</value>
   </data>
   <data name="AddTransaction_Date" xml:space="preserve">
     <value>Datum</value>
   </data>
   <data name="AddTransaction_SaveTransaction" xml:space="preserve">
-    <value>Sačuvaj transakciju</value>
+    <value>Transaktion speichern</value>
   </data>
   <data name="Settings_Application" xml:space="preserve">
-    <value>Aplikacija</value>
+    <value>Anwendung</value>
   </data>
   <data name="Settings_General" xml:space="preserve">
-    <value>Opšte</value>
+    <value>Allgemein</value>
   </data>
   <data name="Settings_Profiles" xml:space="preserve">
-    <value>Profili</value>
+    <value>Profile</value>
   </data>
   <data name="Settings_Theme" xml:space="preserve">
-    <value>Tema</value>
+    <value>Darstellung</value>
   </data>
   <data name="Settings_Language" xml:space="preserve">
-    <value>Jezik</value>
+    <value>Sprache</value>
   </data>
   <data name="Categories_NoLimits" xml:space="preserve">
-    <value>Bez ograničenja</value>
+    <value>Kein Limit</value>
   </data>
   <data name="Pages_NewCategory" xml:space="preserve">
-    <value>Kategorija</value>
+    <value>Kategorie</value>
   </data>
   <data name="AddCategory_CategoryName" xml:space="preserve">
-    <value>Naziv kategorije</value>
+    <value>Kategorie Name</value>
   </data>
   <data name="AddCategory_SpecifyPlannedAmount" xml:space="preserve">
-    <value>Navedi planirani iznos</value>
+    <value>Geplanter Betrag angeben</value>
   </data>
   <data name="AddCategory_PlannedAmount" xml:space="preserve">
-    <value>Planirani iznos</value>
+    <value>Geplanter Betrag</value>
   </data>
   <data name="AddCategory_SaveCategory" xml:space="preserve">
-    <value>Sačuvaj kategoriju</value>
+    <value>Kategorie speichern</value>
   </data>
   <data name="ThemeSettings_LightTheme" xml:space="preserve">
-    <value>Svetla</value>
+    <value>Hell</value>
   </data>
   <data name="ThemeSettings_Dark" xml:space="preserve">
-    <value>Tamna</value>
+    <value>Dunkel</value>
   </data>
   <data name="ThemeSettings_System" xml:space="preserve">
-    <value>Sistemska</value>
+    <value>System</value>
   </data>
   <data name="Languages_English" xml:space="preserve">
     <value>English</value>
@@ -241,478 +241,478 @@
     <value>Русский</value>
   </data>
   <data name="InfoAlert_ChangeLanguage_Title" xml:space="preserve">
-    <value>Upozorenje</value>
+    <value>Achtung</value>
   </data>
   <data name="InfoAlert_ChangeLanguage_Message" xml:space="preserve">
-    <value>Da bi promene stupile na snagu, potrebno je ponovo pokrenuti aplikaciju.</value>
+    <value>Starte die Applikation neu, damit die Änderungen aktiv werden.</value>
   </data>
   <data name="InfoAlert_ChangeLanguage_Ok" xml:space="preserve">
-    <value>U redu</value>
+    <value>OK</value>
   </data>
   <data name="ErrorAlert_Title" xml:space="preserve">
-    <value>Greška</value>
+    <value>Fehler</value>
   </data>
   <data name="ErrorAlert_Ok" xml:space="preserve">
-    <value>U redu</value>
+    <value>OK</value>
   </data>
   <data name="ErrorAlert_Description" xml:space="preserve">
-    <value>Došlo je do greške</value>
+    <value>Es ist ein Fehler aufgetreten</value>
   </data>
   <data name="CommonError_GetCategoryInfo" xml:space="preserve">
-    <value>Ne mogu da dobavim informacije o kategoriji</value>
+    <value>Die Info über die Kategorie konnte nicht geladen werden</value>
   </data>
   <data name="CommonError_ShowFilteredTransactions" xml:space="preserve">
-    <value>Ne mogu da prikažem filtrirane transakcije</value>
+    <value>Die gefilterten Transaktionen können nicht angezeigt werden</value>
   </data>
   <data name="CommonError_OpenAddCategoryPage" xml:space="preserve">
-    <value>Ne mogu da otvorim stranicu za dodavanje kategorije</value>
+    <value>Die Seite zum Hinzufügen einer Kategorie konnte nicht geöffnet werden</value>
   </data>
   <data name="CommonError_OpenEditTransactionPage" xml:space="preserve">
-    <value>Ne mogu da otvorim stranicu za izmenu transakcije</value>
+    <value>Die Seite zum Bearbeiten einer Transaktion konnte nicht geöffnet werden</value>
   </data>
   <data name="CommonError_InternalErrorTryAgain" xml:space="preserve">
-    <value>Došlo je do interne greške. Pokušajte ponovo</value>
+    <value>Es ist ein interner Fehler aufgetreten. Versuche es erneut</value>
   </data>
   <data name="CommonError_FindTransactionToDelete" xml:space="preserve">
-    <value>Ne mogu da pronađem transakciju za brisanje</value>
+    <value>Es konnte keine Transaktion zum Löschen gefunden werden</value>
   </data>
   <data name="CommonError_PlannedAmountNumber" xml:space="preserve">
-    <value>Planirani iznos mora biti broj</value>
+    <value>Der geplante Betrag muss eine Zahl sein</value>
   </data>
   <data name="CommonError_GetCurrentProfile" xml:space="preserve">
-    <value>Ne mogu da dobavim trenutni profil</value>
+    <value>Das aktuelle Profil konnte nicht geladen werden</value>
   </data>
   <data name="CommonError_GetSettings" xml:space="preserve">
-    <value>Ne mogu da pronađem podešavanja</value>
+    <value>Die Einstellungen wurden nicht gefunden</value>
   </data>
   <data name="CommonError_BalanceNumber" xml:space="preserve">
-    <value>Stanje mora biti broj</value>
+    <value>Der Kontostand muss eine Zahl sein</value>
   </data>
   <data name="AddTransaction_NoneCategory" xml:space="preserve">
-    <value>Bez kategorije</value>
+    <value>Keine</value>
   </data>
   <data name="CommonError_AmountNumber" xml:space="preserve">
-    <value>Iznos mora biti broj</value>
+    <value>Der Betrag muss eine Zahl sein</value>
   </data>
   <data name="CommonError_TransactionType" xml:space="preserve">
-    <value>Nevažeći tip transakcije</value>
+    <value>Ungültiger Transaktionstyp</value>
   </data>
   <data name="Pages_Language" xml:space="preserve">
-    <value>Jezik</value>
+    <value>Sprache</value>
   </data>
   <data name="Pages_Categories" xml:space="preserve">
-    <value>Kategorije</value>
+    <value>Kategorien</value>
   </data>
   <data name="Pages_Theme" xml:space="preserve">
-    <value>Tema</value>
+    <value>Darstellung</value>
   </data>
   <data name="Home_Categories" xml:space="preserve">
-    <value>Troškovi po kategorijama</value>
+    <value>Ausgabenkategorien</value>
   </data>
   <data name="AddTransaction_Main" xml:space="preserve">
-    <value>Glavni</value>
+    <value>Haupt</value>
   </data>
   <data name="AddTransaction_Secondary" xml:space="preserve">
-    <value>Sporedni</value>
+    <value>Sekundär</value>
   </data>
   <data name="AddTransaction_Saved" xml:space="preserve">
-    <value>Sačuvani</value>
+    <value>Gespart</value>
   </data>
   <data name="Transactions_Main" xml:space="preserve">
-    <value>Glavni</value>
+    <value>Haupt</value>
   </data>
   <data name="Transactions_Secondary" xml:space="preserve">
-    <value>Sporedni</value>
+    <value>Sekundär</value>
   </data>
   <data name="Transactions_Saved" xml:space="preserve">
-    <value>Sačuvani</value>
+    <value>Sparen</value>
   </data>
   <data name="Transactions_Income" xml:space="preserve">
-    <value>Prihod</value>
+    <value>Einkommen</value>
   </data>
   <data name="CommonError_FindTransactionToEdit" xml:space="preserve">
-    <value>Ne mogu da pronađem transakciju za izmenu</value>
+    <value>Es konnte keine Transaktion zum Bearbeiten gefunden werden</value>
   </data>
   <data name="InfoAlert_FeatureNotAvailable_Message" xml:space="preserve">
-    <value>Ova funkcija još uvek nije dostupna. Uskoro ćemo je implementirati</value>
+    <value>Diese Funktion ist derzeit noch nicht verfügbar. Wir werden diese bald einbauen</value>
   </data>
   <data name="InfoAlert_FeatureNotAvailable_Title" xml:space="preserve">
-    <value>Još uvek nije dostupno</value>
+    <value>Derzeit noch nicht verfügbar</value>
   </data>
   <data name="InfoAlert_FeatureNotAvailable_Ok" xml:space="preserve">
-    <value>U redu</value>
+    <value>OK</value>
   </data>
   <data name="CommonError_FindCategoryToDelete" xml:space="preserve">
-    <value>Ne mogu da pronađem kategoriju za brisanje</value>
+    <value>Es konnte keine Kategorie zum Löschen gefunden werden</value>
   </data>
   <data name="CommonError_FindCategoryToEdit" xml:space="preserve">
-    <value>Ne mogu da pronađem kategoriju za izmenu</value>
+    <value>Es konnte keine Kategorie zum Bearbeiten gefunden werden</value>
   </data>
   <data name="Home_SavedAmounts" xml:space="preserve">
-    <value>Sačuvani iznosi</value>
+    <value>Gesparte Beträge</value>
   </data>
   <data name="CommonError_OriginalCurrencyAmountNumber" xml:space="preserve">
-    <value>Iznos u originalnoj valuti mora biti broj</value>
+    <value>Der Betrag in der ursprünglichen Währung muss eine Zahl sein</value>
   </data>
   <data name="AddTransaction_MultiCurrencyTransaction" xml:space="preserve">
-    <value>Multivalutna transakcija</value>
+    <value>Mehrwährung Transaktion</value>
   </data>
   <data name="AddTransaction_OriginalCurrencyAmount" xml:space="preserve">
-    <value>Iznos u originalnoj valuti</value>
+    <value>Betrag in der ursprünglichen Währung</value>
   </data>
   <data name="AddTransaction_WithdrawSavedFunds" xml:space="preserve">
-    <value>Isplata sa sačuvanih sredstava</value>
+    <value>Von gesparten Geldern abheben</value>
   </data>
   <data name="AddTransaction_WithdrawAmount" xml:space="preserve">
-    <value>Iznos za isplatu</value>
+    <value>Betrag zum Abheben</value>
   </data>
   <data name="Pages_Overview" xml:space="preserve">
-    <value>Pregled</value>
+    <value>Übersicht</value>
   </data>
   <data name="Overview_CategoriesExpenses" xml:space="preserve">
-    <value>Troškovi po kategorijama</value>
+    <value>Ausgaben nach Kategorie</value>
   </data>
   <data name="Overview_SpendingTypes" xml:space="preserve">
-    <value>Troškovi po tipovima</value>
+    <value>Verteilung der Ausgabentypen</value>
   </data>
   <data name="Overview_IncomeExpense" xml:space="preserve">
-    <value>Prihodi i rashodi</value>
+    <value>Einkommen und Ausgaben</value>
   </data>
   <data name="Overview_CategoriesPlannedAndActual" xml:space="preserve">
-    <value>Planirani i stvarni troškovi po kategorijama</value>
+    <value>Geplante und Aktuelle Ausgaben nach Kategorie</value>
   </data>
   <data name="Overview_DailyExpenses" xml:space="preserve">
-    <value>Dnevni troškovi</value>
+    <value>Tägliche Ausgaben</value>
   </data>
   <data name="Overview_WeeklyExpenses" xml:space="preserve">
-    <value>Nedeljni troškovi</value>
+    <value>Wöchentliche Ausgaben</value>
   </data>
   <data name="OverView_SpendingType_Main" xml:space="preserve">
-    <value>Glavni</value>
+    <value>Haupt</value>
   </data>
   <data name="Overview_SpendingType_Secondary" xml:space="preserve">
-    <value>Sporedni</value>
+    <value>Sekundär</value>
   </data>
   <data name="Overview_SpendingType_Saved" xml:space="preserve">
-    <value>Sačuvani</value>
+    <value>Gespart</value>
   </data>
   <data name="Overview_Income" xml:space="preserve">
-    <value>Prihod</value>
+    <value>Einkommen</value>
   </data>
   <data name="Overview_Expense" xml:space="preserve">
-    <value>Rashod</value>
+    <value>Ausgaben</value>
   </data>
   <data name="Overview_ForMonth" xml:space="preserve">
-    <value>Za tekući mesec</value>
+    <value>Für den aktuellen Monat</value>
   </data>
   <data name="Overview_ForThreeMonths" xml:space="preserve">
-    <value>Za tri meseca</value>
+    <value>Für drei Monate</value>
   </data>
   <data name="Overview_ForSixMonths" xml:space="preserve">
-    <value>Za šest meseci</value>
+    <value>Für sechs Monate</value>
   </data>
   <data name="Pages_Profiles" xml:space="preserve">
-    <value>Profili</value>
+    <value>Profile</value>
   </data>
   <data name="CommonError_GetProfileById" xml:space="preserve">
-    <value>Ne mogu da pronađem profil sa navedenim ID-om</value>
+    <value>Das Profil mit einer spezifischen ID konnte nicht gefunden werden</value>
   </data>
   <data name="ProfileSettings_ChangeAlert_Title" xml:space="preserve">
-    <value>Promena trenutnog profila</value>
+    <value>Aktuelles Profil wechseln</value>
   </data>
   <data name="ProfileSettings_ChangeAlert_Desription" xml:space="preserve">
-    <value>Da li ste sigurni da želite da postavite profil "{0}" kao trenutni?</value>
+    <value>Bist du sicher, dass du auf das Profil "{0}" wechseln möchtest?</value>
   </data>
   <data name="ProfileSettings_ChangeAlert_Ok" xml:space="preserve">
-    <value>Da</value>
+    <value>OK</value>
   </data>
   <data name="ProfileSettings_ChangeAlert_Cancel" xml:space="preserve">
-    <value>Otkaži</value>
+    <value>Abbrechen</value>
   </data>
   <data name="Currencies_USD" xml:space="preserve">
-    <value>Američki dolar</value>
+    <value>US-Dollar</value>
   </data>
   <data name="Currencies_EUR" xml:space="preserve">
-    <value>Evro</value>
+    <value>Euro</value>
   </data>
   <data name="Currencies_GBP" xml:space="preserve">
-    <value>Britanska funta</value>
+    <value>Britischer Pfund</value>
   </data>
   <data name="Currencies_JPY" xml:space="preserve">
-    <value>Japanski jen</value>
+    <value>Japanischer Yen</value>
   </data>
   <data name="Currencies_AUD" xml:space="preserve">
-    <value>Australijski dolar</value>
+    <value>Australischer Dollar</value>
   </data>
   <data name="Currencies_CAD" xml:space="preserve">
-    <value>Kanadski dolar</value>
+    <value>Kanadischer Dollar</value>
   </data>
   <data name="Currencies_CHF" xml:space="preserve">
-    <value>Švajcarski franak</value>
+    <value>Schweizer Franken</value>
   </data>
   <data name="Currencies_CNY" xml:space="preserve">
-    <value>Kineski juan</value>
+    <value>Chinesischer Yuan</value>
   </data>
   <data name="Currencies_INR" xml:space="preserve">
-    <value>Indijska rupija</value>
+    <value>Indische Rupie</value>
   </data>
   <data name="Currencies_RUB" xml:space="preserve">
-    <value>Ruska rublja</value>
+    <value>Russischer Rubel</value>
   </data>
   <data name="Currencies_RSD" xml:space="preserve">
-    <value>Srpski dinar</value>
+    <value>Serbischer Dinar</value>
   </data>
   <data name="Currencies_SEK" xml:space="preserve">
-    <value>Švedska kruna</value>
+    <value>Schwedische Krone</value>
   </data>
   <data name="Currencies_NOK" xml:space="preserve">
-    <value>Norveška kruna</value>
+    <value>Norwegische Krone</value>
   </data>
   <data name="Currencies_DKK" xml:space="preserve">
-    <value>Danska kruna</value>
+    <value>Dänische Krone</value>
   </data>
   <data name="Currencies_HUF" xml:space="preserve">
-    <value>Mađarska forinta</value>
+    <value>Ungarischer Forint</value>
   </data>
   <data name="Currencies_PLN" xml:space="preserve">
-    <value>Poljski zlot</value>
+    <value>Polnischer Zloty</value>
   </data>
   <data name="Currencies_BGN" xml:space="preserve">
-    <value>Bugarski lev</value>
+    <value>Bulgarischer Lew</value>
   </data>
   <data name="Currencies_CZK" xml:space="preserve">
-    <value>Češka kruna</value>
+    <value>Tschechische Krone</value>
   </data>
   <data name="Currencies_RON" xml:space="preserve">
-    <value>Rumunski lej</value>
+    <value>Rumänischer Leu</value>
   </data>
   <data name="Currencies_MXN" xml:space="preserve">
-    <value>Meksički pezos</value>
+    <value>Mexikanischer Peso</value>
   </data>
   <data name="Currencies_BRL" xml:space="preserve">
-    <value>Brazilski real</value>
+    <value>Brasilianischer Real</value>
   </data>
   <data name="Currencies_CLP" xml:space="preserve">
-    <value>Čileanski pezos</value>
+    <value>Chilenischer Peso</value>
   </data>
   <data name="Currencies_ARS" xml:space="preserve">
-    <value>Argentinski pezos</value>
+    <value>Argentinischer Peso</value>
   </data>
   <data name="Currencies_COP" xml:space="preserve">
-    <value>Kolumbijski pezos</value>
+    <value>Kolumbianischer Peso</value>
   </data>
   <data name="Currencies_PYG" xml:space="preserve">
-    <value>Paragvajski gvarani</value>
+    <value>Paraguayischer Guarani</value>
   </data>
   <data name="Currencies_VEF" xml:space="preserve">
-    <value>Venecuelanski bolivar</value>
+    <value>Venezolanischer Bolívar</value>
   </data>
   <data name="Currencies_KRW" xml:space="preserve">
-    <value>Južnokorejski von</value>
+    <value>Südkoreanischer Won</value>
   </data>
   <data name="Currencies_THB" xml:space="preserve">
-    <value>Tajlandski bat</value>
+    <value>Thai Baht</value>
   </data>
   <data name="Currencies_PHP" xml:space="preserve">
-    <value>Filipinski pezos</value>
+    <value>Philippinischer Peso</value>
   </data>
   <data name="Currencies_TWD" xml:space="preserve">
-    <value>Tajvanski dolar</value>
+    <value>Taiwan-Dollar</value>
   </data>
   <data name="Currencies_HKD" xml:space="preserve">
-    <value>Hongkonški dolar</value>
+    <value>Hongkong-Dollar</value>
   </data>
   <data name="Currencies_IDR" xml:space="preserve">
-    <value>Indonežanska rupija</value>
+    <value>Indonesische Rupiah</value>
   </data>
   <data name="Currencies_VND" xml:space="preserve">
-    <value>Vijetnamski dong</value>
+    <value>Vietnamesischer Dong</value>
   </data>
   <data name="Currencies_MYR" xml:space="preserve">
-    <value>Malezijski ringit</value>
+    <value>Malaysischer Ringgit</value>
   </data>
   <data name="Currencies_SGD" xml:space="preserve">
-    <value>Singapurski dolar</value>
+    <value>Singapur-Dollar</value>
   </data>
   <data name="Currencies_AED" xml:space="preserve">
-    <value>UAE dirham</value>
+    <value>VAE-Dirham</value>
   </data>
   <data name="Currencies_ILS" xml:space="preserve">
-    <value>Izraelski novi šekel</value>
+    <value>Israelischer Schekel</value>
   </data>
   <data name="Currencies_PKR" xml:space="preserve">
-    <value>Pakistanska rupija</value>
+    <value>Pakistanische Rupie</value>
   </data>
   <data name="Currencies_BDT" xml:space="preserve">
-    <value>Bangladeška taka</value>
+    <value>Bangladeschischer Taka</value>
   </data>
   <data name="Currencies_ZAR" xml:space="preserve">
-    <value>Južnoafrički rand</value>
+    <value>Südafrikanischer Rand</value>
   </data>
   <data name="Currencies_EGP" xml:space="preserve">
-    <value>Egipatska funta</value>
+    <value>Ägyptisches Pfund</value>
   </data>
   <data name="Currencies_KES" xml:space="preserve">
-    <value>Kenijski šiling</value>
+    <value>Kenia-Schilling</value>
   </data>
   <data name="Currencies_NGN" xml:space="preserve">
-    <value>Nigerijska naira</value>
+    <value>Nigerianische Naira</value>
   </data>
   <data name="Currencies_GHS" xml:space="preserve">
-    <value>Ganski sedi</value>
+    <value>Ghanaischer Cedi</value>
   </data>
   <data name="Currencies_NZD" xml:space="preserve">
-    <value>Novozelandski dolar</value>
+    <value>Neuseeland-Dollar</value>
   </data>
   <data name="Currencies_FJD" xml:space="preserve">
-    <value>Fidži dolar</value>
+    <value>Fidschi-Dollar</value>
   </data>
   <data name="Currencies_WST" xml:space="preserve">
-    <value>Samoanska tala</value>
+    <value>Samoanischer Tala</value>
   </data>
   <data name="Currencies_TRY" xml:space="preserve">
-    <value>Turska lira</value>
+    <value>Türkische Lira</value>
   </data>
   <data name="Currencies_IQD" xml:space="preserve">
-    <value>Irački dinar</value>
+    <value>Irakischer Dinar</value>
   </data>
   <data name="Currencies_OMR" xml:space="preserve">
-    <value>Omanski rijal</value>
+    <value>Omanischer Rial</value>
   </data>
   <data name="Currencies_SAR" xml:space="preserve">
-    <value>Saudijski rijal</value>
+    <value>Saudi-Riyal</value>
   </data>
   <data name="Currencies_KWD" xml:space="preserve">
-    <value>Kuvajtski dinar</value>
+    <value>Kuwait-Dinar</value>
   </data>
   <data name="Currencies_BTC" xml:space="preserve">
     <value>Bitcoin</value>
   </data>
   <data name="Currencies_ETH" xml:space="preserve">
-    <value>Ether</value>
+    <value>Ethereum</value>
   </data>
   <data name="Settings_AboutApplication" xml:space="preserve">
-    <value>O aplikaciji</value>
+    <value>Über</value>
   </data>
   <data name="Settings_Version" xml:space="preserve">
-    <value>Verzija</value>
+    <value>Version</value>
   </data>
   <data name="Settings_GitHub" xml:space="preserve">
     <value>GitHub</value>
   </data>
   <data name="CategoriesSettings_DeleteAlert_Title" xml:space="preserve">
-    <value>Brisanje kategorije</value>
+    <value>Kategorie löschen</value>
   </data>
   <data name="CategoriesSettings_DeleteAlert_Ok" xml:space="preserve">
-    <value>Da</value>
+    <value>OK</value>
   </data>
   <data name="CategoriesSettings_DeleteAlert_Cancel" xml:space="preserve">
-    <value>Otkaži</value>
+    <value>Abbrechen</value>
   </data>
   <data name="CategoriesSettings_DeleteAlert_Description" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete kategoriju "{0}"?</value>
+    <value>Bist du sicher, dass du die Kategorie "{0}" löschen möchtest?</value>
   </data>
   <data name="Transactions_DeleteAlert_Cancel" xml:space="preserve">
-    <value>Otkaži</value>
+    <value>Abbrechen</value>
   </data>
   <data name="Transactions_DeleteAlert_Ok" xml:space="preserve">
-    <value>Da</value>
+    <value>OK</value>
   </data>
   <data name="Transactions_DeleteAlert_Title" xml:space="preserve">
-    <value>Brisanje transakcije</value>
+    <value>Transaktion löschen</value>
   </data>
   <data name="Transactions_DeleteAlert_Description" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete transakciju "{0}"?</value>
+    <value>Bist du sicher, dass du die Transaktion"{0}" löschen möchtest?</value>
   </data>
   <data name="Transactions_EditNotInPeriodAlert_Cancel" xml:space="preserve">
-    <value>Otkaži</value>
+    <value>Abbrechen</value>
   </data>
   <data name="Transactions_EditNotInPeriodAlert_Ok" xml:space="preserve">
-    <value>Da</value>
+    <value>OK</value>
   </data>
   <data name="Transactions_EditNotInPeriodAlert_Description" xml:space="preserve">
-    <value>Da li ste sigurni da želite da izmenite transakciju "{0}"? Ona nije u trenutnom periodu profila i ne utiče na izračunavanje profila.</value>
+    <value>Bist du sicher, dass du die Transaktion "{0}" bearbeiten möchtest? Diese ist nicht in dem aktuellen Zeitraum deines Profils enthalten und beeinflusst nicht die Berechnungen in deinem Profil.</value>
   </data>
   <data name="Transactions_EditNotInPeriodAlert_Title" xml:space="preserve">
-    <value>Transakcija nije u periodu profila</value>
+    <value>Diese Transaktion ist nicht in dem Zeitraum deines Profils enthalten</value>
   </data>
   <data name="ProfileSettings_DeleteAlert_Cancel" xml:space="preserve">
-    <value>Otkaži</value>
+    <value>Abbrechen</value>
   </data>
   <data name="ProfileSettings_DeleteAlert_Ok" xml:space="preserve">
-    <value>Da</value>
+    <value>OK</value>
   </data>
   <data name="ProfileSettings_DeleteAlert_Description" xml:space="preserve">
-    <value>Da li ste sigurni da želite da obrišete profil "{0}"? Sve transakcije i kategorije ovog profila će takođe biti obrisane.</value>
+    <value>Bist du sicher, dass du das Profil "{0}" löschen möchtest? Alle Kategorien und Transaktionen in diesem Profil werden ebenfalls gelöscht.</value>
   </data>
   <data name="ProfileSettings_DeleteAlert_Title" xml:space="preserve">
-    <value>Brisanje profila</value>
+    <value>Profil löschen</value>
   </data>
   <data name="ProfileSettings_LastProfileErrorAlert_Title" xml:space="preserve">
-    <value>Poslednji profil</value>
+    <value>Letztes Profil</value>
   </data>
   <data name="ProfileSettings_LastProfileErrorAlert_Description" xml:space="preserve">
-    <value>Profil "{0}" je poslednji profil i ne može biti obrisan.</value>
+    <value>Das Profil "{0}" ist dein letztes Profil und kann nicht gelöscht werden.</value>
   </data>
   <data name="ProfileSettings_LastProfileErrorAlert_Ok" xml:space="preserve">
-    <value>U redu</value>
+    <value>OK</value>
   </data>
   <data name="Transactions_Filters" xml:space="preserve">
-    <value>Filteri</value>
+    <value>Filter</value>
   </data>
   <data name="Pages_TransactionsFilters" xml:space="preserve">
-    <value>Filteri transakcija</value>
+    <value>Transaktion Filter</value>
   </data>
   <data name="CommonError_OpenTransactionsFiltersPage" xml:space="preserve">
-    <value>Ne mogu da otvorim stranicu sa filterima transakcija</value>
+    <value>Die Seite zum Filtern von Transaktionen konnte nicht geöffnet werden</value>
   </data>
   <data name="TransactionsFilters_ApplyFilters" xml:space="preserve">
-    <value>Primeni filtere</value>
+    <value>Filter anwenden</value>
   </data>
   <data name="TransactionsFilters_StartDate" xml:space="preserve">
-    <value>Datum od</value>
+    <value>Startdatum</value>
   </data>
   <data name="TransactionsFilters_EndDate" xml:space="preserve">
-    <value>Datum do</value>
+    <value>Enddatum</value>
   </data>
   <data name="TransactionsFilters_SpendingType" xml:space="preserve">
-    <value>Tip troška</value>
+    <value>Ausgabentyp</value>
   </data>
   <data name="TransactionsFilters_SearchByCurrency" xml:space="preserve">
-    <value>Pretraga po valuti</value>
+    <value>Suche nach Währung</value>
   </data>
   <data name="TransactionsFilters_TransactionType" xml:space="preserve">
-    <value>Tip transakcije</value>
+    <value>Transaktionstyp</value>
   </data>
   <data name="TransactionsFilters_Category" xml:space="preserve">
-    <value>Kategorija</value>
+    <value>Kategorie</value>
   </data>
   <data name="TransactionsFilters_Description" xml:space="preserve">
-    <value>Opis</value>
+    <value>Beschreibung</value>
   </data>
   <data name="TransactionsFilters_SearchByAmount" xml:space="preserve">
-    <value>Pretraga po iznosu</value>
+    <value>Suche nach Menge</value>
   </data>
   <data name="TransactionsFilters_LessThan" xml:space="preserve">
-    <value>Manje od</value>
+    <value>Kleiner als</value>
   </data>
   <data name="TransactionsFilters_GreaterThan" xml:space="preserve">
-    <value>Više od</value>
+    <value>Größer als</value>
   </data>
   <data name="TransactionsFilters_AmountToSearch" xml:space="preserve">
-    <value>Iznos</value>
+    <value>Betrag</value>
   </data>
   <data name="TransactionsFilters_Currency" xml:space="preserve">
-    <value>Valuta</value>
+    <value>Währung</value>
   </data>
   <data name="TransactionsFilters_Pickers_Any" xml:space="preserve">
-    <value>Bilo koji</value>
+    <value>Alle</value>
   </data>
   <data name="TransactionsFilters_ResetFilters" xml:space="preserve">
-    <value>Resetuj filtere</value>
+    <value>Filter zurücksetzen</value>
   </data>
   <data name="Transactions_Expense" xml:space="preserve">
-    <value>Rashod</value>
+    <value>Ausgaben</value>
   </data>
   <data name="Languages_French" xml:space="preserve">
     <value>Français</value>
@@ -727,7 +727,7 @@
     <value>Srpski (latinica)</value>
   </data>
   <data name="Transactions_NoTransactions" xml:space="preserve">
-    <value>Nije pronađena nijedna transakcija za navedene filtere</value>
+    <value>Es konnten keine Transaktionen für die angegebenen Filter gefunden werden</value>
   </data>
   <data name="Languages_German" xml:space="preserve">
     <value>Deutsch</value>

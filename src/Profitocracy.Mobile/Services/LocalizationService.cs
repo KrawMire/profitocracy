@@ -34,7 +34,12 @@ public static class LocalizationService
     /// Constant string value of Serbian language (Latin)
     /// </summary>
     public const string LatinSerbian = "sr-Latn";
-    
+
+    /// <summary>
+    /// Constant string value of German language
+    /// </summary>
+    public const string German = "de";
+
     /// <summary>
     /// Constant string value for a default language
     /// </summary>
@@ -45,7 +50,7 @@ public static class LocalizationService
     /// </summary>
     public static readonly string[] SupportedLanguages = 
     [
-        English, Russian, French, Spanish, CyrillicSerbian, LatinSerbian
+        English, Russian, French, Spanish, CyrillicSerbian, LatinSerbian, German
     ];
     
     public static string CurrentLanguage => CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;

@@ -88,6 +88,11 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Compile Update="Resources\Strings\AppResources.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>AppResources.resx</DependentUpon>
+        </Compile>
         <Compile Update="Resources\Strings\AppResources.es.Designer.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
