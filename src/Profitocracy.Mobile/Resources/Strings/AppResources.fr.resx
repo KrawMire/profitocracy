@@ -732,4 +732,19 @@
   <data name="Languages_German" xml:space="preserve">
     <value>Deutsch</value>
   </data>
+  <data name="CommonError_OpenOverviewFiltersPage" xml:space="preserve">
+    <value>Impossible d'ouvrir la page des filtres de aperçu</value>
+  </data>
+  <data name="OverviewFilters_StartDate" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+  <data name="OverviewFilters_EndDate" xml:space="preserve">
+    <value>Date de fin</value>
+  </data>
+  <data name="Pages_OverviewFilters" xml:space="preserve">
+    <value>Filtres</value>
+  </data>
+  <data name="Overview_Filters" xml:space="preserve">
+    <value>Filtres</value>
+  </data>
 </root>
