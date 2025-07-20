@@ -3,6 +3,7 @@ using System.Globalization;
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
+using Profitocracy.Mobile.Constants;
 using Profitocracy.Mobile.Models.Categories;
 using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.Utils;
@@ -11,60 +12,52 @@ namespace Profitocracy.Mobile.ViewModels.Transactions;
 
 public class TransactionsFiltersPageViewModel : BaseNotifyObject
 {
-    private const int MinHours = 0;
-    private const int MinMinutes = 0;
-    private const int MinSeconds = 0;
-    private const int MaxHours = TimeSpan.HoursPerDay - 1;
-    private const int MaxMinutes = (int)TimeSpan.MinutesPerHour - 1;
-    private const int MaxSeconds = (int)TimeSpan.SecondsPerMinute - 1;
-    private const int MaxMilliseconds = (int)TimeSpan.MillisecondsPerSecond - 1;
-
     private static readonly string AnyType = AppResources.TransactionsFilters_Pickers_Any;
     private static readonly string MainSpendingType = AppResources.Transactions_Main;
     private static readonly string SecondarySpendingType = AppResources.Transactions_Secondary;
     private static readonly string SavedSpendingType = AppResources.Transactions_Saved;
     private static readonly string IncomeSpendingType = AppResources.Transactions_Income;
     private static readonly string ExpenseSpendingType = AppResources.Transactions_Expense;
-    
+
     private static readonly CategoryModel AnyCategory = new()
     {
         Id = Guid.NewGuid(),
         ProfileId = Guid.Empty,
         Name = AppResources.TransactionsFilters_Pickers_Any
     };
-    
+
     private Currency _selectedCurrency = AvailableCurrencies[0];
-    
+
     private bool _isSearchByCurrency;
     private bool _isSearchByAmount;
     private bool _isGreaterThan;
     private bool _isLessThan;
     private bool _isShowSpendingType;
-    
+
     private DateTime _fromDate;
     private DateTime _toDate;
     private string _description = string.Empty;
     private string _displayAmount = string.Empty;
-    
+
     private int _selectedTransactionTypeIndex = -1;
     private int _selectedSpendingTypeIndex = -1;
     private CategoryModel? _selectedCategory;
-    
+
     private readonly IProfileRepository _profileRepository;
     private readonly ICategoryRepository _categoryRepository;
-    
+
     public TransactionsFiltersPageViewModel(
-        ICategoryRepository categoryRepository, 
+        ICategoryRepository categoryRepository,
         IProfileRepository profileRepository)
     {
         _categoryRepository = categoryRepository;
         _profileRepository = profileRepository;
-        
+
         foreach (var currency in Currency.AvailableCurrencies.All.Values)
         {
-            AvailableCurrencies.Add(currency);   
+            AvailableCurrencies.Add(currency);
         }
-        
+
         Reset();
     }
 
@@ -73,32 +66,32 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
         IncomeSpendingType,
         ExpenseSpendingType
     ];
-    
+
     public static List<string> SpendingTypes { get; } = [
         AnyType,
         MainSpendingType,
         SecondarySpendingType,
         SavedSpendingType
     ];
-    
+
     public static List<Currency> AvailableCurrencies { get; } = Currency.AvailableCurrencies.All.Values.ToList();
     public ObservableCollection<CategoryModel> AvailableCategories { get; } = [];
-    
+
     public bool IsApplied { get; private set; }
-    
+
     public DateTime FromDate
     {
         get => _fromDate;
         set
         {
             var newValue = new DateTime(
-                value.Year, 
-                value.Month, 
+                value.Year,
+                value.Month,
                 value.Day,
-                hour: MinHours,
-                minute: MinMinutes,
-                second: MinSeconds);
-            
+                hour: TimeConstants.MinHours,
+                minute: TimeConstants.MinMinutes,
+                second: TimeConstants.MinSeconds);
+
             SetProperty(ref _fromDate, newValue);
         }
     }
@@ -109,33 +102,33 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
         set
         {
             var newValue = new DateTime(
-                value.Year, 
-                value.Month, 
+                value.Year,
+                value.Month,
                 value.Day,
-                hour: MaxHours,
-                minute: MaxMinutes,
-                second: MaxSeconds,
-                millisecond: MaxMilliseconds);
-            
+                hour: TimeConstants.MaxHours,
+                minute: TimeConstants.MaxMinutes,
+                second: TimeConstants.MaxSeconds,
+                millisecond: TimeConstants.MaxMilliseconds);
+
             SetProperty(ref _toDate, newValue);
         }
     }
-    
+
     public string Description
     {
         get => _description;
         set => SetProperty(ref _description, value);
     }
-    
+
     public bool IsSearchByCurrency
     {
         get => _isSearchByCurrency;
         set => SetProperty(ref _isSearchByCurrency, value);
     }
-    
+
     public Currency SelectedCurrency
     {
-        get => _selectedCurrency; 
+        get => _selectedCurrency;
         set => SetProperty(ref _selectedCurrency, value);
     }
 
@@ -154,7 +147,7 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
             {
                 return;
             }
-            
+
             _isGreaterThan = !value;
             SetProperty(ref _isLessThan, value);
         }
@@ -177,7 +170,7 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
 
     public CategoryModel? SelectedCategory
     {
-        get => _selectedCategory; 
+        get => _selectedCategory;
         set => SetProperty(ref _selectedCategory, value);
     }
 
@@ -204,7 +197,7 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
     }
 
     public decimal Amount { get; private set; }
-    
+
     public string DisplayAmount
     {
         get => _displayAmount;
@@ -226,50 +219,50 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
         Description = other.Description;
         DisplayAmount = other.Amount.ToString(CultureInfo.InvariantCulture);
     }
-    
+
     public void Reset()
     {
         IsLessThan = true;
-        
+
         IsApplied = false;
         IsGreaterThan = false;
         IsSearchByAmount = false;
         IsSearchByCurrency = false;
-        
+
         SelectedCurrency = AvailableCurrencies[0];
         SelectedTransactionTypeIndex = 0;
         SelectedSpendingTypeIndex = 0;
-        SelectedCategory = AvailableCategories.Count > 0 ? AvailableCategories[0] : null;   
-        
+        SelectedCategory = AvailableCategories.Count > 0 ? AvailableCategories[0] : null;
+
         DisplayAmount = string.Empty;
         Description = string.Empty;
-        
+
         var currentDate = DateTime.Now;
-        
+
         FromDate = new DateTime(currentDate.Year, currentDate.Month, 1);
         ToDate = new DateTime(
             currentDate.Year,
             currentDate.Month,
             day: DateTime.DaysInMonth(currentDate.Year, currentDate.Month),
-            hour: MaxHours,
-            minute: MaxMinutes,
-            second: MaxSeconds,
-            millisecond: MaxMilliseconds);
+            hour: TimeConstants.MaxHours,
+            minute: TimeConstants.MaxMinutes,
+            second: TimeConstants.MaxSeconds,
+            millisecond: TimeConstants.MaxMilliseconds);
     }
 
     public async Task Initialize()
     {
         var profileId = await _profileRepository.GetCurrentProfileId();
-        
+
         if (profileId is null)
         {
             throw new Exception(AppResources.CommonError_GetCurrentProfile);
         }
-        
+
         var categories = await _categoryRepository.GetAllByProfileId((Guid)profileId);
 
         AvailableCategories.Add(AnyCategory);
-        
+
         foreach (var category in categories)
         {
             AvailableCategories.Add(CategoryModel.FromDomain(category));
@@ -279,7 +272,7 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
         {
             SelectedCategory = AvailableCategories
                 .FirstOrDefault(
-                    c => c.Id == SelectedCategory.Id, 
+                    c => c.Id == SelectedCategory.Id,
                     AvailableCategories[0]);
         }
         else
@@ -296,7 +289,7 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
         {
             SelectedSpendingTypeIndex = 0;
         }
-        
+
         OnPropertyChanged(nameof(SelectedCategory));
         OnPropertyChanged(nameof(SelectedTransactionTypeIndex));
         OnPropertyChanged(nameof(SelectedSpendingTypeIndex));
@@ -308,7 +301,7 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
     public void Apply()
     {
         var amount = 0m;
-        
+
         if (IsSearchByAmount && !NumberUtils.TryParseDecimal(DisplayAmount, out amount))
         {
             throw new InvalidCastException(AppResources.CommonError_AmountNumber);
@@ -325,7 +318,25 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
         {
             SelectedSpendingTypeIndex = 0;
         }
-        
+
+        FromDate = new DateTime(
+            FromDate.Year,
+            FromDate.Month,
+            FromDate.Day,
+            TimeConstants.MinHours,
+            TimeConstants.MinMinutes,
+            TimeConstants.MinSeconds,
+            TimeConstants.MinMilliseconds);
+
+        ToDate = new DateTime(
+            ToDate.Year,
+            ToDate.Month,
+            ToDate.Day,
+            TimeConstants.MaxHours,
+            TimeConstants.MaxMinutes,
+            TimeConstants.MaxSeconds,
+            TimeConstants.MaxMilliseconds);
+
         IsApplied = true;
     }
 }

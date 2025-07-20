@@ -1268,5 +1268,41 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("Transactions_NoTransactions", resourceCulture);
             }
         }
+        
+        internal static string Languages_German {
+            get {
+                return ResourceManager.GetString("Languages_German", resourceCulture);
+            }
+        }
+        
+        internal static string CommonError_OpenOverviewFiltersPage {
+            get {
+                return ResourceManager.GetString("CommonError_OpenOverviewFiltersPage", resourceCulture);
+            }
+        }
+        
+        internal static string OverviewFilters_StartDate {
+            get {
+                return ResourceManager.GetString("OverviewFilters_StartDate", resourceCulture);
+            }
+        }
+        
+        internal static string OverviewFilters_EndDate {
+            get {
+                return ResourceManager.GetString("OverviewFilters_EndDate", resourceCulture);
+            }
+        }
+        
+        internal static string Pages_OverviewFilters {
+            get {
+                return ResourceManager.GetString("Pages_OverviewFilters", resourceCulture);
+            }
+        }
+        
+        internal static string Overview_Filters {
+            get {
+                return ResourceManager.GetString("Overview_Filters", resourceCulture);
+            }
+        }
     }
 }
