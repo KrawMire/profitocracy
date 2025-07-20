@@ -5,69 +5,69 @@ namespace Profitocracy.Mobile.Views.Settings.Pages;
 
 public partial class SettingsPage : BaseContentPage
 {
-	public SettingsPage()
-	{
-		InitializeComponent();
-		VersionLabel.Text = AppInfo.VersionString;
-	}
+    public SettingsPage()
+    {
+        InitializeComponent();
+        VersionLabel.Text = AppInfo.VersionString;
+    }
 
-	private void ProfilesButton_OnClicked(object? sender, EventArgs e)
-	{
-		ProcessAction(async () =>
-		{
-			var profilesPage = Handler?.MauiContext?.Services.GetService<ProfilesSettingsPage>();
+    private void ProfilesButton_OnClicked(object? sender, EventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            var profilesPage = Handler?.MauiContext?.Services.GetService<ProfilesSettingsPage>();
 
-			if (profilesPage is not null)
-			{
-				await Navigation.PushAsync(profilesPage);
-			}
-		});
-	}
-	
-	private void CategoriesButton_OnClicked(object? sender, EventArgs e)
-	{
-		ProcessAction(async () =>
-		{
-			var categoriesPage = Handler?.MauiContext?.Services.GetService<ExpenseCategoriesSettingsPage>();
+            if (profilesPage is not null)
+            {
+                await Navigation.PushAsync(profilesPage);
+            }
+        });
+    }
 
-			if (categoriesPage is not null)
-			{
-				await Navigation.PushAsync(categoriesPage);
-			}
-		});
-	}
+    private void CategoriesButton_OnClicked(object? sender, EventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            var categoriesPage = Handler?.MauiContext?.Services.GetService<ExpenseCategoriesSettingsPage>();
 
-	private void ThemeButton_OnClicked(object? sender, EventArgs e)
-	{
-		ProcessAction(async () =>
-		{
-			var themePage = Handler?.MauiContext?.Services.GetService<ThemeSettingsPage>();
+            if (categoriesPage is not null)
+            {
+                await Navigation.PushAsync(categoriesPage);
+            }
+        });
+    }
 
-			if (themePage is not null)
-			{
-				await Navigation.PushAsync(themePage);
-			}
-		});
-	}
+    private void ThemeButton_OnClicked(object? sender, EventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            var themePage = Handler?.MauiContext?.Services.GetService<ThemeSettingsPage>();
 
-	private void LanguageButton_OnClicked(object? sender, EventArgs e)
-	{
-		ProcessAction(async () =>
-		{
-			var langPage = Handler?.MauiContext?.Services.GetService<LanguageSettingsPage>();
+            if (themePage is not null)
+            {
+                await Navigation.PushAsync(themePage);
+            }
+        });
+    }
 
-			if (langPage is not null)
-			{
-				await Navigation.PushAsync(langPage);
-			}
-		});
-	}
+    private void LanguageButton_OnClicked(object? sender, EventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            var langPage = Handler?.MauiContext?.Services.GetService<LanguageSettingsPage>();
 
-	private void GitHubButton_OnClicked(object? sender, EventArgs e)
-	{
-		ProcessAction(async () =>
-		{
-			await Browser.Default.OpenAsync(UrlConstants.ProjectGitHubUrl, BrowserLaunchMode.SystemPreferred);
-		});
-	}
+            if (langPage is not null)
+            {
+                await Navigation.PushAsync(langPage);
+            }
+        });
+    }
+
+    private void GitHubButton_OnClicked(object? sender, EventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            await Browser.Default.OpenAsync(UrlConstants.ProjectGitHubUrl, BrowserLaunchMode.SystemPreferred);
+        });
+    }
 }

@@ -6,19 +6,19 @@ namespace Profitocracy.Core.Domain.Model.Settings;
 public class Settings : AggregateRoot<Guid>
 {
     public Settings(
-        Guid id, 
+        Guid id,
         Theme theme,
         string language) : base(id)
     {
         Theme = theme;
         Language = language;
     }
-    
+
     /// <summary>
     /// Current used theme.
     /// </summary>
     public Theme Theme { get; set; }
-    
+
     /// <summary>
     /// Language is represented by lang code.
     /// (Example: English - en, Russian - ru)

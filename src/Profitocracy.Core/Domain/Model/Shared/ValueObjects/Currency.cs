@@ -7,10 +7,10 @@ public class Currency : IEquatable<Currency>
         Code = code;
         Symbol = symbol;
     }
-    
+
     public string Code { get; }
     public string Symbol { get; }
-    
+
     public bool Equals(Currency? cur)
     {
         return cur?.Code == Code;
@@ -25,7 +25,7 @@ public class Currency : IEquatable<Currency>
     {
         return !cur1.Code.Equals(cur2.Code);
     }
-    
+
     public override bool Equals(object? obj)
     {
         return obj is Currency other && Equals(other);
@@ -35,7 +35,7 @@ public class Currency : IEquatable<Currency>
     {
         return HashCode.Combine(Code, Symbol);
     }
-    
+
     /// We force other layers of the project to use
     /// AvailableCurrencies instead of creating own currencies
     public static class AvailableCurrencies
@@ -51,7 +51,7 @@ public class Currency : IEquatable<Currency>
         public static readonly Currency Cny = new("CNY", "¥"); // Chinese Yuan Renminbi
         public static readonly Currency Inr = new("INR", "₹"); // Indian Rupee
         public static readonly Currency Rub = new("RUB", "₽"); // Russian Ruble
-        
+
         // -- Other currencies --
         public static readonly Currency Aed = new("AED", "د.إ"); // UAE Dirham
         public static readonly Currency Ars = new("ARS", "$"); // Argentine Peso
@@ -97,25 +97,25 @@ public class Currency : IEquatable<Currency>
         public static readonly Currency Vnd = new("VND", "₫"); // Vietnamese Dong
         public static readonly Currency Wst = new("WST", "WS$"); // Samoan Tala
         public static readonly Currency Zar = new("ZAR", "R"); // South African Rand
-        
+
         public static readonly Currency DefaultCurrency = Usd;
-        
+
         public static readonly IDictionary<string, Currency> All = new Dictionary<string, Currency>
         {
             { Usd.Code, Usd }, { Eur.Code, Eur }, { Gbp.Code, Gbp }, { Jpy.Code, Jpy },
             { Aud.Code, Aud }, { Cad.Code, Cad }, { Chf.Code, Chf }, { Cny.Code, Cny },
             { Inr.Code, Inr }, { Rub.Code, Rub },
-            
-            { Aed.Code, Aed }, { Ars.Code, Ars }, { Bdt.Code, Bdt }, { Bgn.Code, Bgn }, 
+
+            { Aed.Code, Aed }, { Ars.Code, Ars }, { Bdt.Code, Bdt }, { Bgn.Code, Bgn },
             { Brl.Code, Brl }, { Btc.Code, Btc }, { Clp.Code, Clp }, { Cop.Code, Cop },
             { Czk.Code, Czk }, { Dkk.Code, Dkk }, { Egp.Code, Egp }, { Eth.Code, Eth },
-            { Fjd.Code, Fjd }, { Ghs.Code, Ghs }, { Hkd.Code, Hkd }, { Huf.Code, Huf }, 
+            { Fjd.Code, Fjd }, { Ghs.Code, Ghs }, { Hkd.Code, Hkd }, { Huf.Code, Huf },
             { Idr.Code, Idr }, { Ils.Code, Ils }, { Iqd.Code, Iqd }, { Kes.Code, Kes },
             { Krw.Code, Krw }, { Kwd.Code, Kwd }, { Mxn.Code, Mxn }, { Myr.Code, Myr },
             { Nok.Code, Nok }, { Ngn.Code, Ngn }, { Nzd.Code, Nzd }, { Omr.Code, Omr },
             { Php.Code, Php }, { Pln.Code, Pln }, { Pkr.Code, Pkr }, { Pyg.Code, Pyg },
-            { Ron.Code, Ron }, { Rsd.Code, Rsd }, { Sar.Code, Sar }, { Sek.Code, Sek }, 
-            { Sgd.Code, Sgd }, { Thb.Code, Thb }, { Try.Code, Try }, { Twd.Code, Twd }, 
+            { Ron.Code, Ron }, { Rsd.Code, Rsd }, { Sar.Code, Sar }, { Sek.Code, Sek },
+            { Sgd.Code, Sgd }, { Thb.Code, Thb }, { Try.Code, Try }, { Twd.Code, Twd },
             { Vef.Code, Vef }, { Vnd.Code, Vnd }, { Wst.Code, Wst }, { Zar.Code, Zar }
         };
     }

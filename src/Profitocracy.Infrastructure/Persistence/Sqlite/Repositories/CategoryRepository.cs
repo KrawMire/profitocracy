@@ -8,94 +8,94 @@ namespace Profitocracy.Infrastructure.Persistence.Sqlite.Repositories;
 
 internal class CategoryRepository : ICategoryRepository
 {
-	private readonly DbConnection _dbConnection;
-	private readonly IInfrastructureMapper<Category, CategoryModel> _mapper;
-	
-	public CategoryRepository(
-		DbConnection connection,
-		IInfrastructureMapper<Category, CategoryModel> mapper)
-	{
-		_dbConnection = connection;
-		_mapper = mapper;
-	}
-	
-	public async Task<List<Category>> GetAllByProfileId(Guid profileId)
-	{
-		await _dbConnection.Init();
+    private readonly DbConnection _dbConnection;
+    private readonly IInfrastructureMapper<Category, CategoryModel> _mapper;
 
-		var categories = await _dbConnection.Database
-			.Table<CategoryModel>()
-			.Where(c => c.ProfileId.Equals(profileId))
-			.OrderByDescending(c => c.PlannedAmount)
-			.ToListAsync();
+    public CategoryRepository(
+        DbConnection connection,
+        IInfrastructureMapper<Category, CategoryModel> mapper)
+    {
+        _dbConnection = connection;
+        _mapper = mapper;
+    }
 
-		var domainCategories = categories
-			.Select(_mapper.MapToDomain)
-			.ToList();
+    public async Task<List<Category>> GetAllByProfileId(Guid profileId)
+    {
+        await _dbConnection.Init();
 
-		return domainCategories;
-	}
+        var categories = await _dbConnection.Database
+            .Table<CategoryModel>()
+            .Where(c => c.ProfileId.Equals(profileId))
+            .OrderByDescending(c => c.PlannedAmount)
+            .ToListAsync();
 
-	public async Task<Category?> GetById(Guid categoryId)
-	{
-		await _dbConnection.Init();
-		
-		var category = await _dbConnection.Database
-			.Table<CategoryModel>()
-			.FirstOrDefaultAsync(c => c.Id == categoryId);
+        var domainCategories = categories
+            .Select(_mapper.MapToDomain)
+            .ToList();
 
-		return category is not null
-			? _mapper.MapToDomain(category)
-			: null;
-	}
+        return domainCategories;
+    }
 
-	public async Task<Category> Create(Category category)
-	{
-		await _dbConnection.Init();
+    public async Task<Category?> GetById(Guid categoryId)
+    {
+        await _dbConnection.Init();
 
-		var categoryToCreate = _mapper.MapToModel(category);
-		await _dbConnection.Database.InsertAsync(categoryToCreate);
+        var category = await _dbConnection.Database
+            .Table<CategoryModel>()
+            .FirstOrDefaultAsync(c => c.Id == categoryId);
 
-		var createdCategory = await _dbConnection.Database
-			.Table<CategoryModel>()
-			.Where(c => c.Id == categoryToCreate.Id)
-			.FirstAsync();
+        return category is not null
+            ? _mapper.MapToDomain(category)
+            : null;
+    }
 
-		return _mapper.MapToDomain(createdCategory);
-	}
+    public async Task<Category> Create(Category category)
+    {
+        await _dbConnection.Init();
 
-	public async Task<Category> Update(Category category)
-	{
-		await _dbConnection.Init();
-		
-		var categoryToUpdate = _mapper.MapToModel(category);
-		await _dbConnection.Database.UpdateAsync(categoryToUpdate);
-		
-		var updatedCategory = await _dbConnection.Database
-			.Table<CategoryModel>()
-			.Where(c => c.Id == categoryToUpdate.Id)
-			.FirstOrDefaultAsync();
+        var categoryToCreate = _mapper.MapToModel(category);
+        await _dbConnection.Database.InsertAsync(categoryToCreate);
 
-		return _mapper.MapToDomain(updatedCategory);
-	}
+        var createdCategory = await _dbConnection.Database
+            .Table<CategoryModel>()
+            .Where(c => c.Id == categoryToCreate.Id)
+            .FirstAsync();
 
-	public async Task<Guid> Delete(Guid categoryId)
-	{
-		await _dbConnection.Init();
+        return _mapper.MapToDomain(createdCategory);
+    }
 
-		await _dbConnection.Database
-			.Table<CategoryModel>()
-			.DeleteAsync(c => c.Id == categoryId);
-		
-		return categoryId;
-	}
+    public async Task<Category> Update(Category category)
+    {
+        await _dbConnection.Init();
 
-	public async Task DeleteByProfileId(Guid profileId)
-	{
-		await _dbConnection.Init();
-		
-		await _dbConnection.Database
-			.Table<CategoryModel>()
-			.DeleteAsync(c => c.ProfileId == profileId);
-	}
+        var categoryToUpdate = _mapper.MapToModel(category);
+        await _dbConnection.Database.UpdateAsync(categoryToUpdate);
+
+        var updatedCategory = await _dbConnection.Database
+            .Table<CategoryModel>()
+            .Where(c => c.Id == categoryToUpdate.Id)
+            .FirstOrDefaultAsync();
+
+        return _mapper.MapToDomain(updatedCategory);
+    }
+
+    public async Task<Guid> Delete(Guid categoryId)
+    {
+        await _dbConnection.Init();
+
+        await _dbConnection.Database
+            .Table<CategoryModel>()
+            .DeleteAsync(c => c.Id == categoryId);
+
+        return categoryId;
+    }
+
+    public async Task DeleteByProfileId(Guid profileId)
+    {
+        await _dbConnection.Init();
+
+        await _dbConnection.Database
+            .Table<CategoryModel>()
+            .DeleteAsync(c => c.ProfileId == profileId);
+    }
 }

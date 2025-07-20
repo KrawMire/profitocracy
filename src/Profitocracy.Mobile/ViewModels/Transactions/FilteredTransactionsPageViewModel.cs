@@ -21,7 +21,7 @@ public class FilteredTransactionsPageViewModel : BaseNotifyObject
     public async Task Initialize(Guid profileId, Guid? categoryId, SpendingType? spendingType, DateTime dateFrom, DateTime dateTo)
     {
         Transactions.Clear();
-        
+
         var specs = new TransactionsSpecification
         {
             ProfileId = profileId,

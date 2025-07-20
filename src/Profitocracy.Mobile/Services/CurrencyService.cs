@@ -16,9 +16,9 @@ public static class CurrencyService
 
             if (string.IsNullOrWhiteSpace(currencyName))
             {
-                continue;   
+                continue;
             }
-            
+
             CurrencyNames.Add(currency.Code, currencyName);
         }
     }

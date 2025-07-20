@@ -13,7 +13,7 @@ public interface ISettingsRepository
     /// </summary>
     /// <returns>Current application settings</returns>
     Task<Settings?> GetCurrentSettings();
-    
+
     /// <summary>
     /// Create application settings if it does not exist, otherwise, updates
     /// </summary>

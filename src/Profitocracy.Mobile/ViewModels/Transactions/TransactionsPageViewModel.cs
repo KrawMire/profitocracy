@@ -15,22 +15,22 @@ public class TransactionsPageViewModel : BaseNotifyObject
     private readonly ITransactionRepository _transactionRepository;
     private readonly IProfileRepository _profileRepository;
     private readonly ITransactionService _transactionService;
-    
+
     private Guid? _profileId;
     private bool _isTransactionsListEmpty;
-    
+
     public TransactionsPageViewModel(
         IProfileRepository profileRepository,
-        ITransactionRepository transactionRepository, 
+        ITransactionRepository transactionRepository,
         ITransactionService transactionService)
     {
         _transactionRepository = transactionRepository;
         _transactionService = transactionService;
         _profileRepository = profileRepository;
     }
-    
+
     public readonly ObservableCollection<TransactionModel> Transactions = [];
-    
+
     public bool IsTransactionsListEmpty
     {
         get => _isTransactionsListEmpty;
@@ -45,10 +45,10 @@ public class TransactionsPageViewModel : BaseNotifyObject
         {
             throw new Exception(AppResources.CommonError_GetCurrentProfile);
         }
-        
+
         await InitializeTransactions(filters);
     }
-    
+
     public async Task DeleteTransaction(Guid transactionId)
     {
         var deletedId = await _transactionRepository.Delete(transactionId);
@@ -69,9 +69,9 @@ public class TransactionsPageViewModel : BaseNotifyObject
         }
 
         var specs = BuildSpecification(_profileId.Value, filters);
-        
+
         var transactions = await _transactionRepository.GetFiltered(specs);
-        
+
         Transactions.Clear();
         IsTransactionsListEmpty = transactions.Count == 0;
 
@@ -82,7 +82,7 @@ public class TransactionsPageViewModel : BaseNotifyObject
     }
 
     private static TransactionsSpecification BuildSpecification(
-        Guid profileId, 
+        Guid profileId,
         TransactionsFiltersPageViewModel filters)
     {
         TransactionType? transactionType = filters.SelectedTransactionTypeIndex switch
@@ -99,7 +99,7 @@ public class TransactionsPageViewModel : BaseNotifyObject
             3 => SpendingType.Saved,
             _ => null
         };
-        
+
         return new TransactionsSpecification
         {
             ProfileId = profileId,
@@ -110,7 +110,7 @@ public class TransactionsPageViewModel : BaseNotifyObject
             SpendingType = spendingType,
             IsMultiCurrency = filters.IsSearchByCurrency,
             Description = filters.Description,
-            CurrencyCode = filters.IsSearchByCurrency 
+            CurrencyCode = filters.IsSearchByCurrency
                 ? filters.SelectedCurrency.Code
                 : null,
             IsGreaterThanAmount = filters.IsSearchByAmount && filters.IsGreaterThan,

@@ -6,13 +6,13 @@ namespace Profitocracy.Mobile.Views.Transactions.Pages;
 public partial class TransactionsFiltersPage : BaseContentPage
 {
     private readonly TransactionsFiltersPageViewModel _viewModel;
-    
+
     public TransactionsFiltersPage(TransactionsFiltersPageViewModel viewModel)
     {
         InitializeComponent();
-        
+
         BindingContext = _viewModel = viewModel;
-        
+
         CategoryPicker.ItemsSource = _viewModel.AvailableCategories;
         CurrencyPicker.ItemsSource = TransactionsFiltersPageViewModel.AvailableCurrencies;
         TransactionTypePicker.ItemsSource = TransactionsFiltersPageViewModel.TransactionTypes;
@@ -23,10 +23,10 @@ public partial class TransactionsFiltersPage : BaseContentPage
     {
         ProcessAction(async () =>
         {
-            await Navigation.PopModalAsync(); 
+            await Navigation.PopModalAsync();
         });
     }
-    
+
     private void ApplyFiltersButton_OnClicked(object? sender, EventArgs e)
     {
         ProcessAction(async () =>

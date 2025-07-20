@@ -13,5 +13,5 @@ public static class CoreRegistry
             .AddTransient<ICalculationService, CalculationService>()
             .AddTransient<ICategoryService, CategoryService>()
             .AddTransient<ITransactionService, TransactionService>();
-    } 
+    }
 }

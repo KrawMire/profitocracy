@@ -21,7 +21,7 @@ public class EditExpenseCategoryPageViewModel : BaseNotifyObject
 
     public EditExpenseCategoryPageViewModel(
         ICategoryRepository categoryRepository,
-        IProfileRepository profileRepository, 
+        IProfileRepository profileRepository,
         ICategoryService categoryService)
     {
         _categoryRepository = categoryRepository;
@@ -74,14 +74,14 @@ public class EditExpenseCategoryPageViewModel : BaseNotifyObject
         {
             return;
         }
-        
+
         var category = await _categoryRepository.GetById((Guid)_categoryId);
 
         if (category is null)
         {
             throw new ArgumentNullException(AppResources.CommonError_FindCategoryToEdit);
         }
-        
+
         Name = category.Name;
         IsPlannedAmountPresent = category.PlannedAmount is not null;
         PlannedAmount = category.PlannedAmount?.ToString() ?? string.Empty;
@@ -99,7 +99,7 @@ public class EditExpenseCategoryPageViewModel : BaseNotifyObject
         var category = await BuildCategory(_categoryId);
         await _categoryService.UpdateCategory(category);
     }
-    
+
     private async Task CreateCategory()
     {
         var category = await BuildCategory(null);
@@ -109,14 +109,14 @@ public class EditExpenseCategoryPageViewModel : BaseNotifyObject
     private async Task<Category> BuildCategory(Guid? categoryId)
     {
         decimal? plannedAmount = null;
-        
+
         if (_isPlannedAmountPresent)
         {
             if (!NumberUtils.TryParseDecimal(_plannedAmountStr, out var decPlannedAmount))
             {
-                throw new InvalidCastException(AppResources.CommonError_PlannedAmountNumber);   
+                throw new InvalidCastException(AppResources.CommonError_PlannedAmountNumber);
             }
-            
+
             plannedAmount = decPlannedAmount;
         }
 

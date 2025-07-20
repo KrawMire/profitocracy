@@ -14,7 +14,7 @@
 
         <ApplicationTitle>Profitocracy</ApplicationTitle>
         <ApplicationId>com.krawmire.profitocracy</ApplicationId>
-        
+
         <ApplicationVersion>34</ApplicationVersion>
         <ApplicationDisplayVersion>1.9.2</ApplicationDisplayVersion>
     </PropertyGroup>
@@ -27,13 +27,13 @@
         <ProjectReference Include="..\Profitocracy.Core\Profitocracy.Core.csproj" />
         <ProjectReference Include="..\Profitocracy.Infrastructure\Profitocracy.Infrastructure.csproj" />
     </ItemGroup>
-    
+
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
         <PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-rc5.4" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.40" />
-        
+
         <!-- Development dependencies -->
         <PackageReference Condition="'$(Configuration)' != 'Release'" Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
     </ItemGroup>

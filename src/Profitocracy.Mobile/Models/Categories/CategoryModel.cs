@@ -17,7 +17,7 @@ public class CategoryModel
         var displayPlannedAmount = category.PlannedAmount is not null
             ? category.PlannedAmount.ToString()
             : AppResources.Categories_NoLimits;
-        
+
         return new CategoryModel
         {
             Id = category.Id,

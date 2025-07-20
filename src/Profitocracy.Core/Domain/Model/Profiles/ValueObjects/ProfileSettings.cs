@@ -7,5 +7,5 @@ namespace Profitocracy.Core.Domain.Model.Profiles.ValueObjects;
 /// </summary>
 public struct ProfileSettings
 {
-	public required Currency Currency { get; set; }
+    public required Currency Currency { get; set; }
 }
