@@ -35,17 +35,17 @@ public class MultiCurrencyTransaction : Transaction
     public Currency SourceCurrency { get; }
 
     public Currency DestinationCurrency { get; }
-    
+
     /// <summary>
     /// Destination of the transaction.
     /// </summary>
     public TransactionDestination Destination { get; }
-    
+
     /// <summary>
     /// Amount of the transaction in destination currency.
     /// </summary>
     public decimal DestinationAmount { get; }
-    
+
     /// <summary>
     /// The ratio between amount of transaction
     /// and destination currency amount. 

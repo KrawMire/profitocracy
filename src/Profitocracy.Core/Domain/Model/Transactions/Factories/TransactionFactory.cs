@@ -6,61 +6,61 @@ namespace Profitocracy.Core.Domain.Model.Transactions.Factories;
 
 public class TransactionFactory
 {
-	public static Transaction CreateTransaction(
-		Guid? id,
-		decimal amount,
-		Guid profileId,
-		TransactionType type,
-		SpendingType? spendingType,
-		DateTime timestamp,
-		string? description,
-		TransactionGeoTag? geoTag,
-		TransactionCategory? category)
-	{
-		id ??= Guid.NewGuid();
+    public static Transaction CreateTransaction(
+        Guid? id,
+        decimal amount,
+        Guid profileId,
+        TransactionType type,
+        SpendingType? spendingType,
+        DateTime timestamp,
+        string? description,
+        TransactionGeoTag? geoTag,
+        TransactionCategory? category)
+    {
+        id ??= Guid.NewGuid();
 
-		return new Transaction(
-			(Guid)id,
-			amount,
-			profileId,
-			type,
-			spendingType,
-			timestamp,
-			description,
-			geoTag,
-			category);
-	}
+        return new Transaction(
+            (Guid)id,
+            amount,
+            profileId,
+            type,
+            spendingType,
+            timestamp,
+            description,
+            geoTag,
+            category);
+    }
 
-	public static MultiCurrencyTransaction CreateMultiCurrencyTransaction(
-		Guid? id,
-		decimal amount,
-		decimal destinationAmount,
-		Currency sourceCurrency,
-		Currency destinationCurrency,
-		Guid profileId,
-		TransactionType type,
-		SpendingType? spendingType,
-		TransactionDestination destination,
-		DateTime timestamp,
-		string? description,
-		TransactionGeoTag? geoTag,
-		TransactionCategory? category)
-	{
-		id ??= Guid.NewGuid();
+    public static MultiCurrencyTransaction CreateMultiCurrencyTransaction(
+        Guid? id,
+        decimal amount,
+        decimal destinationAmount,
+        Currency sourceCurrency,
+        Currency destinationCurrency,
+        Guid profileId,
+        TransactionType type,
+        SpendingType? spendingType,
+        TransactionDestination destination,
+        DateTime timestamp,
+        string? description,
+        TransactionGeoTag? geoTag,
+        TransactionCategory? category)
+    {
+        id ??= Guid.NewGuid();
 
-		return new MultiCurrencyTransaction(
-			(Guid)id,
-			amount,
-			destinationAmount,
-			sourceCurrency,
-			destinationCurrency,
-			profileId,
-			type,
-			spendingType,
-			destination,
-			timestamp,
-			description,
-			geoTag,
-			category);
-	}
+        return new MultiCurrencyTransaction(
+            (Guid)id,
+            amount,
+            destinationAmount,
+            sourceCurrency,
+            destinationCurrency,
+            profileId,
+            type,
+            spendingType,
+            destination,
+            timestamp,
+            description,
+            geoTag,
+            category);
+    }
 }

@@ -7,7 +7,7 @@ public class CategoryExpense
         CategoryName = categoryName;
         Amount = 0;
     }
-    
+
     public string CategoryName { get; init; }
     public decimal Amount { get; internal set; }
 }

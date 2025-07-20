@@ -18,7 +18,7 @@ public class ThemeSettingsPageViewModel : BaseNotifyObject
     private bool _isLightTheme;
     private bool _isDarkTheme;
     private bool _isSystemTheme;
-    
+
     public bool IsLightTheme
     {
         get => _isLightTheme;
@@ -27,13 +27,13 @@ public class ThemeSettingsPageViewModel : BaseNotifyObject
 
     public bool IsDarkTheme
     {
-        get => _isDarkTheme; 
+        get => _isDarkTheme;
         private set => SetProperty(ref _isDarkTheme, value);
     }
 
     public bool IsSystemTheme
     {
-        get => _isSystemTheme; 
+        get => _isSystemTheme;
         private set => SetProperty(ref _isSystemTheme, value);
     }
 
@@ -45,10 +45,10 @@ public class ThemeSettingsPageViewModel : BaseNotifyObject
         {
             throw new Exception(AppResources.CommonError_GetSettings);
         }
-        
+
         InitializeThemeFlags(settings.Theme);
     }
-    
+
     public async Task ChangeTheme(Theme theme)
     {
         var settings = await _settingsRepository.GetCurrentSettings();
@@ -61,10 +61,10 @@ public class ThemeSettingsPageViewModel : BaseNotifyObject
         settings.Theme = theme;
 
         var saveTask = _settingsRepository.CreateOrUpdate(settings);
-        
+
         InitializeThemeFlags(theme);
         ThemeService.ChangeTheme(theme);
-        
+
         await saveTask;
     }
 

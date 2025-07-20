@@ -8,15 +8,15 @@ internal class CategoryService : ICategoryService
 {
     private readonly ICategoryRepository _categoryRepository;
     private readonly ITransactionRepository _transactionRepository;
-    
+
     public CategoryService(
-        ICategoryRepository categoryRepository, 
+        ICategoryRepository categoryRepository,
         ITransactionRepository transactionRepository)
     {
         _categoryRepository = categoryRepository;
         _transactionRepository = transactionRepository;
     }
-    
+
     public async Task<Guid> DeleteCategory(Guid id)
     {
         await _transactionRepository.ClearWithCategory(id);

@@ -25,11 +25,11 @@ public abstract class BaseNotifyObject : INotifyPropertyChanged
         {
             return;
         }
-        
+
         property = value;
         OnPropertyChanged(propertyName);
     }
-    
+
     /// <summary>
     /// Notify listener about changes of a property
     /// </summary>

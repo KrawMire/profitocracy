@@ -16,12 +16,12 @@ public abstract class BaseContentPage : ContentPage
     {
         try
         {
-            await action();   
+            await action();
         }
         catch (Exception ex)
         {
             await DisplayAlert(
-                AppResources.ErrorAlert_Title, 
+                AppResources.ErrorAlert_Title,
                 $"{AppResources.ErrorAlert_Description}: {ex.Message}",
                 AppResources.ErrorAlert_Ok);
         }

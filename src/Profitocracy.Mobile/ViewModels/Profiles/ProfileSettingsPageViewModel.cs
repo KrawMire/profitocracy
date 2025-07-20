@@ -10,9 +10,9 @@ public class ProfileSettingsPageViewModel : BaseNotifyObject
 {
     private readonly IProfileRepository _profileRepository;
     private readonly IProfileService _profileService;
-    
+
     public ProfileSettingsPageViewModel(
-        IProfileRepository profileRepository, 
+        IProfileRepository profileRepository,
         IProfileService profileService)
     {
         _profileRepository = profileRepository;
@@ -24,9 +24,9 @@ public class ProfileSettingsPageViewModel : BaseNotifyObject
     public async Task Initialize()
     {
         var profiles = await _profileRepository.GetAllProfiles();
-        
+
         Profiles.Clear();
-        
+
         foreach (var profile in profiles.Where(profile => profile.IsCurrent))
         {
             Profiles.Add(ProfileModel.FromDomain(profile));

@@ -13,7 +13,7 @@ public class TransactionModel
         AppResources.Transactions_Saved,
         AppResources.Transactions_Income
     ];
-    
+
     public Guid? Id { get; set; }
     public bool IsMultiCurrency { get; set; }
     public required decimal Amount { get; set; }
@@ -27,7 +27,7 @@ public class TransactionModel
     public string? Description { get; set; }
 
     public bool IsIncome => SpendingType is null or -1;
-    
+
     public string DisplaySpendingType => IsIncome ? SpendingTypes[3] : SpendingTypes[(int)SpendingType!];
 
     public string DisplayAmount
@@ -35,9 +35,9 @@ public class TransactionModel
         get
         {
             var amount = Amount.ToString(CultureInfo.CurrentCulture);
-            
-            return Type == 0 
-                ? $"+{amount.ToString(CultureInfo.CurrentCulture)}" 
+
+            return Type == 0
+                ? $"+{amount.ToString(CultureInfo.CurrentCulture)}"
                 : $"-{amount.ToString(CultureInfo.CurrentCulture)}";
         }
     }
@@ -50,9 +50,9 @@ public class TransactionModel
             {
                 return string.Empty;
             }
-            
-            var amount = IsMultiCurrency 
-                ? DestinationCurrency + ((decimal)DestinationAmount!).ToString(CultureInfo.CurrentCulture) 
+
+            var amount = IsMultiCurrency
+                ? DestinationCurrency + ((decimal)DestinationAmount!).ToString(CultureInfo.CurrentCulture)
                 : Amount.ToString(CultureInfo.CurrentCulture);
 
             if (Type == 0)
@@ -63,8 +63,8 @@ public class TransactionModel
 
             // In case of expense, if it's saving transaction,
             // we take from profile balance and put it to saved amount
-            return SpendingType == 2 
-                ? $"+{amount}" 
+            return SpendingType == 2
+                ? $"+{amount}"
                 : $"-{amount}";
         }
     }
@@ -81,10 +81,10 @@ public class TransactionModel
                 Name = transaction.Category.Name
             };
         }
-        
+
         var multiTransaction = transaction as MultiCurrencyTransaction;
         var isMultiCurrency = multiTransaction is not null;
-        
+
         return new TransactionModel
         {
             Id = transaction.Id,

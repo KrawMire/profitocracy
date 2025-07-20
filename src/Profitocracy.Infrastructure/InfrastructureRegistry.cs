@@ -17,36 +17,36 @@ namespace Profitocracy.Infrastructure;
 
 public static class InfrastructureRegistry
 {
-	public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services, InfrastructureConfiguration configuration)
-	{
-		return services
-			.RegisterPersistence(configuration)
-			.RegisterMappers()
-			.RegisterRepositories();
-	}
-	
-	private static IServiceCollection RegisterPersistence(this IServiceCollection services, InfrastructureConfiguration configuration)
-	{
-		return services
-			.AddSingleton(configuration)
-			.AddTransient<DbConnection>();
-	}
+    public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services, InfrastructureConfiguration configuration)
+    {
+        return services
+            .RegisterPersistence(configuration)
+            .RegisterMappers()
+            .RegisterRepositories();
+    }
 
-	private static IServiceCollection RegisterMappers(this IServiceCollection services)
-	{
-		return services
-			.AddTransient<IInfrastructureMapper<Transaction, TransactionModel>, TransactionMapper>()
-			.AddTransient<IInfrastructureMapper<Profile, ProfileModel>, ProfileMapper>()
-			.AddTransient<IInfrastructureMapper<Category, CategoryModel>, CategoryMapper>()
-			.AddTransient<IInfrastructureMapper<Settings, SettingsModel>, SettingsMapper>();
-	}
+    private static IServiceCollection RegisterPersistence(this IServiceCollection services, InfrastructureConfiguration configuration)
+    {
+        return services
+            .AddSingleton(configuration)
+            .AddTransient<DbConnection>();
+    }
 
-	private static IServiceCollection RegisterRepositories(this IServiceCollection services)
-	{
-		return services
-			.AddTransient<ITransactionRepository, TransactionRepository>()
-			.AddTransient<IProfileRepository, ProfileRepository>()
-			.AddTransient<ICategoryRepository, CategoryRepository>()
-			.AddTransient<ISettingsRepository, SettingsRepository>();
-	}
+    private static IServiceCollection RegisterMappers(this IServiceCollection services)
+    {
+        return services
+            .AddTransient<IInfrastructureMapper<Transaction, TransactionModel>, TransactionMapper>()
+            .AddTransient<IInfrastructureMapper<Profile, ProfileModel>, ProfileMapper>()
+            .AddTransient<IInfrastructureMapper<Category, CategoryModel>, CategoryMapper>()
+            .AddTransient<IInfrastructureMapper<Settings, SettingsModel>, SettingsMapper>();
+    }
+
+    private static IServiceCollection RegisterRepositories(this IServiceCollection services)
+    {
+        return services
+            .AddTransient<ITransactionRepository, TransactionRepository>()
+            .AddTransient<IProfileRepository, ProfileRepository>()
+            .AddTransient<ICategoryRepository, CategoryRepository>()
+            .AddTransient<ISettingsRepository, SettingsRepository>();
+    }
 }

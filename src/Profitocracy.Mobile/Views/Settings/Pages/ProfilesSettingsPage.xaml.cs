@@ -9,7 +9,7 @@ namespace Profitocracy.Mobile.Views.Settings.Pages;
 public partial class ProfilesSettingsPage : BaseContentPage
 {
     private readonly ProfileSettingsPageViewModel _viewModel;
-    
+
     public ProfilesSettingsPage(ProfileSettingsPageViewModel viewModel)
     {
         InitializeComponent();
@@ -24,7 +24,7 @@ public partial class ProfilesSettingsPage : BaseContentPage
             await OpenEditProfilePage(null);
         });
     }
-    
+
     private void EditProfile_OnInvoked(object? sender, EventArgs e)
     {
         ProcessAction(async () =>
@@ -33,18 +33,18 @@ public partial class ProfilesSettingsPage : BaseContentPage
             {
                 throw new InvalidCastException(AppResources.CommonError_InternalErrorTryAgain);
             }
-			
+
             var profile = swipeItem.BindingContext as ProfileModel;
 
             if (profile?.Id is null)
             {
                 throw new ArgumentNullException(AppResources.CommonError_GetProfileById);
             }
-			
+
             await OpenEditProfilePage((Guid)profile.Id);
         });
     }
-    
+
     private void UpdateProfilesList(object? sender, NavigatedToEventArgs e)
     {
         ProcessAction(async () =>
@@ -78,7 +78,7 @@ public partial class ProfilesSettingsPage : BaseContentPage
             {
                 throw new InvalidCastException(AppResources.CommonError_InternalErrorTryAgain);
             }
-			
+
             var profile = profileCardBorder.BindingContext as ProfileModel;
 
             if (profile?.Id is null)
@@ -107,7 +107,7 @@ public partial class ProfilesSettingsPage : BaseContentPage
             {
                 throw new InvalidCastException(AppResources.CommonError_InternalErrorTryAgain);
             }
-			
+
             var profile = swipeItem.BindingContext as ProfileModel;
 
             if (profile?.Id is null)

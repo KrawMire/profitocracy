@@ -14,10 +14,10 @@ public class ExpenseCategoriesSettingsPageViewModel : BaseNotifyObject
     private readonly ICategoryService _categoryService;
 
     private bool _isCategoriesListEmpty;
-    
+
     public ExpenseCategoriesSettingsPageViewModel(
         IProfileRepository profileRepository,
-        ICategoryRepository categoryRepository, 
+        ICategoryRepository categoryRepository,
         ICategoryService categoryService)
     {
         _profileRepository = profileRepository;
@@ -43,7 +43,7 @@ public class ExpenseCategoriesSettingsPageViewModel : BaseNotifyObject
         }
 
         var categories = await _categoryRepository.GetAllByProfileId((Guid)profileId);
-        
+
         Categories.Clear();
         IsCategoriesListEmpty = categories.Count == 0;
 

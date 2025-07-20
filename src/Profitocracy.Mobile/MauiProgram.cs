@@ -18,86 +18,86 @@ namespace Profitocracy.Mobile;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		
-		builder
-			.UseSkiaSharp()
-			.UseLiveCharts()
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-				fonts.AddFont("Ionicons.ttf", "Ionicons");
-			})
-			.RegisterAppServices()
-			.RegisterViewModels()
-			.RegisterViews();
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
 
-		
+        builder
+            .UseSkiaSharp()
+            .UseLiveCharts()
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("Ionicons.ttf", "Ionicons");
+            })
+            .RegisterAppServices()
+            .RegisterViewModels()
+            .RegisterViews();
+
+
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
-		var infrastructureConfig = new InfrastructureConfiguration
-		{
-			AppDirectoryPath = FileSystem.AppDataDirectory 
-		};
-		
-		builder.Services
-			.RegisterInfrastructureServices(infrastructureConfig)
-			.RegisterCoreServices()
-			.AddSingleton<TransactionsPage>();
+        var infrastructureConfig = new InfrastructureConfiguration
+        {
+            AppDirectoryPath = FileSystem.AppDataDirectory
+        };
 
-		return builder.Build();
-	}
-	
-	private static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
-	{
-		_ = mauiAppBuilder.Services
-			.AddSingleton<AppShell>()
-			.AddSingleton<AppInit>();
+        builder.Services
+            .RegisterInfrastructureServices(infrastructureConfig)
+            .RegisterCoreServices()
+            .AddSingleton<TransactionsPage>();
 
-		return mauiAppBuilder;
-	}
+        return builder.Build();
+    }
 
-	private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
-	{
-		_ = mauiAppBuilder.Services
-			.AddTransient<HomePageViewModel>()
-			.AddTransient<EditTransactionPageViewModel>()
-			.AddTransient<FilteredTransactionsPageViewModel>()
-			.AddTransient<TransactionsPageViewModel>()
-			.AddTransient<ExpenseCategoriesSettingsPageViewModel>()
-			.AddTransient<EditExpenseCategoryPageViewModel>()
-			.AddTransient<OverviewPageViewModel>()
-			.AddTransient<LanguageSettingsViewModel>()
-			.AddTransient<ProfileSettingsPageViewModel>()
-			.AddTransient<TransactionsFiltersPageViewModel>()
-			.AddTransient<EditProfilePageViewModel>()
-			.AddTransient<ThemeSettingsPageViewModel>();
-		
-		return mauiAppBuilder;
-	}
+    private static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+    {
+        _ = mauiAppBuilder.Services
+            .AddSingleton<AppShell>()
+            .AddSingleton<AppInit>();
 
-	private static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
-	{
-		_ = mauiAppBuilder.Services
-			.AddTransient<HomePage>()
-			.AddTransient<TransactionsPage>()
-			.AddTransient<FilteredTransactionsPage>()
-			.AddTransient<TransactionsFiltersPage>()
-			.AddTransient<EditTransactionPage>()
-			.AddTransient<ExpenseCategoriesSettingsPage>()
-			.AddTransient<EditExpenseCategoryPage>()
-			.AddTransient<OverviewPage>()
-			.AddTransient<ProfilesSettingsPage>()
-			.AddTransient<EditProfilePage>()
-			.AddTransient<ThemeSettingsPage>()
-			.AddTransient<LanguageSettingsPage>();
-		
-		return mauiAppBuilder;
-	}
+        return mauiAppBuilder;
+    }
+
+    private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
+    {
+        _ = mauiAppBuilder.Services
+            .AddTransient<HomePageViewModel>()
+            .AddTransient<EditTransactionPageViewModel>()
+            .AddTransient<FilteredTransactionsPageViewModel>()
+            .AddTransient<TransactionsPageViewModel>()
+            .AddTransient<ExpenseCategoriesSettingsPageViewModel>()
+            .AddTransient<EditExpenseCategoryPageViewModel>()
+            .AddTransient<OverviewPageViewModel>()
+            .AddTransient<OverviewFiltersPageViewModel>()
+            .AddTransient<LanguageSettingsViewModel>()
+            .AddTransient<ProfileSettingsPageViewModel>()
+            .AddTransient<TransactionsFiltersPageViewModel>()
+            .AddTransient<EditProfilePageViewModel>()
+            .AddTransient<ThemeSettingsPageViewModel>();
+
+        return mauiAppBuilder;
+    }
+
+    private static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
+    {
+        _ = mauiAppBuilder.Services
+            .AddTransient<HomePage>()
+            .AddTransient<TransactionsPage>()
+            .AddTransient<FilteredTransactionsPage>()
+            .AddTransient<EditTransactionPage>()
+            .AddTransient<ExpenseCategoriesSettingsPage>()
+            .AddTransient<EditExpenseCategoryPage>()
+            .AddTransient<OverviewPage>()
+            .AddTransient<ProfilesSettingsPage>()
+            .AddTransient<EditProfilePage>()
+            .AddTransient<ThemeSettingsPage>()
+            .AddTransient<LanguageSettingsPage>();
+
+        return mauiAppBuilder;
+    }
 }

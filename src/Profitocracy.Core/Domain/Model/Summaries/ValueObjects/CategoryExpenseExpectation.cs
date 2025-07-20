@@ -8,7 +8,7 @@ public class CategoryExpenseExpectation
         PlannedAmount = plannedAmount;
         ActualAmount = 0;
     }
-    
+
     public string CategoryName { get; }
     public decimal PlannedAmount { get; }
     public decimal ActualAmount { get; internal set; }
