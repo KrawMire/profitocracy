@@ -19,7 +19,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     private readonly IProfileRepository _profileRepository;
     private readonly ITransactionRepository _transactionRepository;
     private readonly ICategoryRepository _categoryRepository;
-    
+
     private static readonly CategoryModel NoneCategory = new()
     {
         Id = Guid.NewGuid(),
@@ -28,7 +28,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     };
 
     private Guid? _transactionId;
-    
+
     private DateTime _timestamp = DateTime.Now;
     private string _amount = string.Empty;
     private string _destinationAmount = string.Empty;
@@ -37,18 +37,18 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     private string? _description;
     private int _transactionType;
     private int? _spendingType;
-    
+
     private bool _isIncome;
     private bool _isExpense;
     private bool _isMain;
     private bool _isSecondary;
     private bool _isSaved;
-    
+
     private bool _isMultiCurrency;
-    
+
     public EditTransactionPageViewModel(
         IProfileRepository profileRepository,
-        ITransactionRepository transactionRepository, 
+        ITransactionRepository transactionRepository,
         ICategoryRepository categoryRepository)
     {
         _profileRepository = profileRepository;
@@ -56,12 +56,12 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         _categoryRepository = categoryRepository;
 
         _transactionId = null;
-        
+
         _transactionType = 1;
         _spendingType = 0;
-        
+
         _isIncome = false;
-        
+
         _isExpense = true;
         _isMain = true;
         _isSecondary = false;
@@ -71,9 +71,9 @@ public class EditTransactionPageViewModel : BaseNotifyObject
 
         foreach (var currency in Currency.AvailableCurrencies.All.Values)
         {
-            AvailableCurrencies.Add(currency);   
+            AvailableCurrencies.Add(currency);
         }
-        
+
         _selectedCurrency = AvailableCurrencies[0];
     }
 
@@ -83,7 +83,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
 
     public Currency SelectedCurrency
     {
-        get => _selectedCurrency; 
+        get => _selectedCurrency;
         set => SetProperty(ref _selectedCurrency, value);
     }
 
@@ -91,7 +91,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     {
         set => _transactionId = value;
     }
-    
+
     public bool IsIncome
     {
         get => _isIncome;
@@ -103,25 +103,25 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         get => _isExpense;
         set => SetProperty(ref _isExpense, value);
     }
-    
+
     public bool IsMain
     {
         get => _isMain;
         set => SetProperty(ref _isMain, value);
     }
-    
+
     public bool IsSecondary
     {
         get => _isSecondary;
         set => SetProperty(ref _isSecondary, value);
     }
-    
+
     public bool IsSaved
     {
         get => _isSaved;
         set => SetProperty(ref _isSaved, value);
     }
-    
+
     public bool IsMultiCurrency
     {
         get => _isMultiCurrency;
@@ -133,12 +133,12 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             }
 
             _isMultiCurrency = value;
-            
+
             if (!_isMultiCurrency)
             {
                 SpendingType = 0;
             }
-            
+
             OnPropertyChanged();
         }
     }
@@ -153,7 +153,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             {
                 return;
             }
-            
+
             _transactionType = value;
 
             switch (value)
@@ -173,7 +173,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             OnPropertyChanged();
         }
     }
-    
+
     public int? SpendingType
     {
         get => _spendingType;
@@ -183,7 +183,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             {
                 return;
             }
-            
+
             _spendingType = value;
 
             switch (value)
@@ -205,23 +205,23 @@ public class EditTransactionPageViewModel : BaseNotifyObject
                     IsSaved = false;
                     break;
             }
-                
+
             OnPropertyChanged();
         }
     }
-    
+
     public string Amount
     {
         get => _amount;
         set => SetProperty(ref _amount, value);
     }
-    
+
     public string DestinationAmount
     {
         get => _destinationAmount;
         set => SetProperty(ref _destinationAmount, value);
     }
-    
+
     public DateTime Timestamp
     {
         get => _timestamp;
@@ -241,18 +241,18 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     public async Task Initialize()
     {
         var profileId = await _profileRepository.GetCurrentProfileId();
-        
+
         if (profileId is null)
         {
             throw new Exception(AppResources.CommonError_GetCurrentProfile);
         }
-     
+
         SelectedCurrency = AvailableCurrencies[0];
-        
+
         var categories = await _categoryRepository.GetAllByProfileId((Guid)profileId);
 
         AvailableCategories.Add(NoneCategory);
-        
+
         foreach (var category in categories)
         {
             AvailableCategories.Add(CategoryModel.FromDomain(category));
@@ -274,7 +274,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             throw new ArgumentNullException(AppResources.CommonError_FindTransactionToEdit);
         }
 
-        var isIncomeTransaction = 
+        var isIncomeTransaction =
             transaction.Type == Core.Domain.Model.Transactions.ValueObjects.TransactionType.Income;
 
         IsIncome = isIncomeTransaction;
@@ -282,16 +282,16 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         IsMain = transaction.SpendingType == Core.Domain.Model.Shared.ValueObjects.SpendingType.Main;
         IsSecondary = transaction.SpendingType == Core.Domain.Model.Shared.ValueObjects.SpendingType.Secondary;
         IsSaved = transaction.SpendingType == Core.Domain.Model.Shared.ValueObjects.SpendingType.Saved;
-        
+
         TransactionType = (int)transaction.Type;
         SpendingType = isIncomeTransaction ? null : (int?)transaction.SpendingType;
         Amount = transaction.Amount.ToString(CultureInfo.CurrentCulture);
         Timestamp = transaction.Timestamp;
         Description = transaction.Description!;
-        
+
         if (transaction.Category is not null)
         {
-            Category = AvailableCategories.FirstOrDefault(c => c.Id == transaction.Category.Id);   
+            Category = AvailableCategories.FirstOrDefault(c => c.Id == transaction.Category.Id);
         }
 
         if (transaction is MultiCurrencyTransaction multiCurrencyTransaction)
@@ -314,27 +314,27 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         var transaction = await BuildTransaction(null);
         await _transactionRepository.Create(transaction);
     }
-    
+
     private async Task UpdateTransaction()
     {
         var transaction = await BuildTransaction(_transactionId);
         await _transactionRepository.Update(transaction);
     }
-    
+
     private async Task<Transaction> BuildTransaction(Guid? transactionId)
     {
         _amount = _amount.Replace(",", CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator);
-        
+
         if (!NumberUtils.TryParseDecimal(_amount, out var amount))
         {
             throw new InvalidCastException(AppResources.CommonError_AmountNumber);
         }
-        
+
         if (_transactionType < 0)
         {
             throw new IndexOutOfRangeException(AppResources.CommonError_TransactionType);
         }
-        
+
         var currentProfile = await _profileRepository.GetCurrentProfile();
 
         if (currentProfile is null)
@@ -343,7 +343,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         }
 
         TransactionCategory? category = null;
-        
+
         if (Category?.Id is not null && !Category.Id.Equals(NoneCategory.Id))
         {
             category = new TransactionCategory((Guid)Category.Id)
@@ -356,7 +356,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         {
             return BuildMultiCurrencyTransaction(transactionId, amount, currentProfile, category);
         }
-        
+
         return TransactionFactory.CreateTransaction(
             id: transactionId,
             amount,

@@ -181,12 +181,12 @@ public class HomePageViewModel : BaseNotifyObject
         get => _isShowSavedAmounts;
         set => SetProperty(ref _isShowSavedAmounts, value);
     }
-    
-public ICommand RefreshCommand { get; private set; }
-    
+
+    public ICommand RefreshCommand { get; private set; }
+
     public readonly ObservableCollection<SavedAmountModel> SavedAmounts = [];
     public readonly ObservableCollection<CategoryExpenseModel> CategoriesExpenses = [];
-    
+
     public HomePageViewModel(ICalculationService calculationService)
     {
         _calculationService = calculationService;
@@ -206,7 +206,7 @@ public ICommand RefreshCommand { get; private set; }
             // Ignored
         }
     }
-    
+
     public async Task Initialize()
     {
         var profile = await _calculationService.GetCurrentProfile();
@@ -217,13 +217,13 @@ public ICommand RefreshCommand { get; private set; }
         }
 
         _profileCurrency = profile.Settings.Currency.Symbol;
-        
+
         ProfileId = profile.Id;
         ProfileName = profile.Name;
         Balance = NumberUtils.RoundDecimalMoney(profile.Balance, _profileCurrency);
         DateFrom = profile.BillingPeriod.DateFrom.ToShortDateString();
         DateTo = profile.BillingPeriod.DateTo.ToShortDateString();
-        
+
         InitializeExpenses(profile.Expenses);
         CategoriesExpenses.Clear();
 
@@ -239,13 +239,13 @@ public ICommand RefreshCommand { get; private set; }
 
         SavedAmounts.Clear();
         IsShowSavedAmounts = profile.SavedAmounts.Count > 0;
-        
+
         foreach (var savedAmount in profile.SavedAmounts)
         {
             var savedAmountModel = SavedAmountModel.FromDomain(savedAmount);
             SavedAmounts.Add(savedAmountModel);
         }
-        
+
         IsRefreshing = false;
     }
 
@@ -262,10 +262,10 @@ public ICommand RefreshCommand { get; private set; }
         SecondaryPlannedAmount = NumberUtils.RoundDecimalMoney(expenses.Secondary.PlannedAmount, _profileCurrency);
         SavedActualAmount = NumberUtils.RoundDecimalMoney(expenses.Saved.ActualAmount, _profileCurrency);
         SavedPlannedAmount = NumberUtils.RoundDecimalMoney(expenses.Saved.PlannedAmount, _profileCurrency);
-        
+
         InitializeExpenseRatios(expenses);
     }
-    
+
     private void InitializeExpenseRatios(ProfileExpenses expenses)
     {
         TotalBalanceRatio = GetExpenseRatio(expenses.TotalBalance);
@@ -281,7 +281,7 @@ public ICommand RefreshCommand { get; private set; }
         {
             decimal? plannedAmount = null;
             float? ratio = null;
-            
+
             var showRatio = category.PlannedAmount is not (null or 0);
 
             if (showRatio)
@@ -289,20 +289,20 @@ public ICommand RefreshCommand { get; private set; }
                 plannedAmount = category.PlannedAmount;
                 ratio = GetCategoryRatio(category);
             }
-            
+
             var categoryExpense = new CategoryExpenseModel(
                 Id: category.Id,
-                Name: category.Name, 
+                Name: category.Name,
                 ActualAmount: NumberUtils.RoundDecimal(category.ActualAmount),
                 IsShowRatio: showRatio,
                 PlannedAmount: plannedAmount,
                 Ratio: ratio,
                 _profileCurrency);
-            
+
             CategoriesExpenses.Add(categoryExpense);
         }
     }
-    
+
     private static float GetExpenseRatio(ProfileExpense expense)
     {
         if (expense.PlannedAmount == 0)
@@ -312,7 +312,7 @@ public ICommand RefreshCommand { get; private set; }
 
         return NumberUtils.GetFloatRatio(expense.ActualAmount, expense.PlannedAmount);
     }
-    
+
     private static float GetCategoryRatio(ProfileCategory category)
     {
         if (category.PlannedAmount is null or 0)

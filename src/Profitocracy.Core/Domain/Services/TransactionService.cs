@@ -9,7 +9,7 @@ internal class TransactionService : ITransactionService
     private readonly IProfileRepository _profileRepository;
 
     public TransactionService(
-        ITransactionRepository transactionRepository, 
+        ITransactionRepository transactionRepository,
         IProfileRepository profileRepository)
     {
         _transactionRepository = transactionRepository;
@@ -24,15 +24,15 @@ internal class TransactionService : ITransactionService
         {
             return false;
         }
-        
+
         var profile = await _profileRepository.GetCurrentProfile();
 
         if (profile is null)
         {
             return false;
         }
-        
-        return profile.BillingPeriod.DateFrom <= transaction.Timestamp && 
+
+        return profile.BillingPeriod.DateFrom <= transaction.Timestamp &&
                transaction.Timestamp <= profile.BillingPeriod.DateTo;
     }
 }

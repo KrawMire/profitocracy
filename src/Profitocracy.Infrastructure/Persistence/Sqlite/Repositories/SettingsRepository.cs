@@ -22,35 +22,35 @@ internal class SettingsRepository : ISettingsRepository
     public async Task<Settings?> GetCurrentSettings()
     {
         await _dbConnection.Init();
-        
+
         var settings = await _dbConnection.Database
             .Table<SettingsModel>()
             .FirstOrDefaultAsync();
 
-        return settings is null 
-            ? null 
+        return settings is null
+            ? null
             : _mapper.MapToDomain(settings);
     }
 
     public async Task<Settings> CreateOrUpdate(Settings settings)
     {
         await _dbConnection.Init();
-        
+
         var settingsToEdit = _mapper.MapToModel(settings);
-        
+
         var settingsModel = await _dbConnection.Database
             .Table<SettingsModel>()
             .FirstOrDefaultAsync();
 
         if (settingsModel is null)
         {
-            _ = await _dbConnection.Database.InsertAsync(settingsToEdit);   
+            _ = await _dbConnection.Database.InsertAsync(settingsToEdit);
         }
         else
         {
             _ = await _dbConnection.Database.UpdateAsync(settingsToEdit);
         }
-        
+
         settingsModel = await _dbConnection.Database
             .Table<SettingsModel>()
             .FirstOrDefaultAsync();

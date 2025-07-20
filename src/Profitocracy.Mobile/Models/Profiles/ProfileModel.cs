@@ -9,9 +9,9 @@ public class ProfileModel
     public required decimal Balance { get; init; }
     public required string CurrencySymbol { get; init; }
     public bool IsCurrent { get; set; }
-    
+
     public bool IsNotCurrent => !IsCurrent;
-    
+
     public static ProfileModel FromDomain(Profile profile)
     {
         return new ProfileModel

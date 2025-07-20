@@ -9,7 +9,7 @@ public static class LocalizationService
     /// Constant string value of English language
     /// </summary>
     public const string English = "en";
-    
+
     /// <summary>
     /// Constant string value of Russian language
     /// </summary>
@@ -24,12 +24,12 @@ public static class LocalizationService
     /// Constant string value of Spanish language
     /// </summary>
     public const string Spanish = "es";
-    
+
     /// <summary>
     /// Constant string value of Serbian language (Cyrillic)
     /// </summary>
     public const string CyrillicSerbian = "sr";
-    
+
     /// <summary>
     /// Constant string value of Serbian language (Latin)
     /// </summary>
@@ -48,22 +48,22 @@ public static class LocalizationService
     /// <summary>
     /// Array of supported languages. Represented by code
     /// </summary>
-    public static readonly string[] SupportedLanguages = 
+    public static readonly string[] SupportedLanguages =
     [
         English, Russian, French, Spanish, CyrillicSerbian, LatinSerbian, German
     ];
-    
+
     public static string CurrentLanguage => CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-    
+
     public static void ChangeCurrentLanguage(string language)
     {
         if (!SupportedLanguages.Contains(language))
         {
             language = DefaultLanguage;
         }
-            
+
         var culture = new CultureInfo(language);
-        
+
         AppResources.Culture = culture;
         Thread.CurrentThread.CurrentCulture = culture;
         Thread.CurrentThread.CurrentUICulture = culture;

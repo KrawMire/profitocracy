@@ -12,8 +12,8 @@ internal class ProfileService : IProfileService
     private readonly ICategoryRepository _categoryRepository;
 
     public ProfileService(
-        IProfileRepository profileRepository, 
-        ITransactionRepository transactionRepository, 
+        IProfileRepository profileRepository,
+        ITransactionRepository transactionRepository,
         ICategoryRepository categoryRepository)
     {
         _profileRepository = profileRepository;
@@ -33,18 +33,18 @@ internal class ProfileService : IProfileService
             {
                 continue;
             }
-            
+
             profile.IsCurrent = isCurrent;
             await _profileRepository.Update(profile);
         }
-        
+
         var currentProfile = await _profileRepository.GetCurrentProfile();
 
         if (currentProfile is null)
         {
             throw new NullReferenceException("An error occurred while setting current profile.");
         }
-        
+
         return currentProfile;
     }
 
@@ -63,23 +63,23 @@ internal class ProfileService : IProfileService
         {
             return profileId;
         }
-        
+
         var updateCurrent = profileToDelete.IsCurrent;
-            
+
         var tasks = new[]
         {
             _transactionRepository.DeleteByProfileId(profileId),
             _categoryRepository.DeleteByProfileId(profileId),
             _profileRepository.Delete(profileId)
         };
-        
+
         await Task.WhenAll(tasks);
 
         if (!updateCurrent)
         {
             return profileId;
         }
-        
+
         var nextCurrent = profiles.First(p => p.Id != profileId && !p.IsCurrent);
         await SetCurrentProfile(nextCurrent.Id);
 

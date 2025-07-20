@@ -19,7 +19,7 @@ public partial class ThemeSettingsPage : BaseContentPage
     {
         ProcessAction(async () =>
         {
-            await _viewModel.Initialize();    
+            await _viewModel.Initialize();
         });
     }
 
@@ -27,7 +27,7 @@ public partial class ThemeSettingsPage : BaseContentPage
     {
         ProcessAction(async () =>
         {
-            await ChangeTheme(Theme.Light); 
+            await ChangeTheme(Theme.Light);
         });
     }
 
@@ -35,7 +35,7 @@ public partial class ThemeSettingsPage : BaseContentPage
     {
         ProcessAction(async () =>
         {
-            await ChangeTheme(Theme.Dark); 
+            await ChangeTheme(Theme.Dark);
         });
     }
 
@@ -43,7 +43,7 @@ public partial class ThemeSettingsPage : BaseContentPage
     {
         ProcessAction(async () =>
         {
-            await ChangeTheme(Theme.System); 
+            await ChangeTheme(Theme.System);
         });
     }
 

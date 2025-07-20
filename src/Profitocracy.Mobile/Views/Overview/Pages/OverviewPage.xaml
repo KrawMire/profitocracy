@@ -13,39 +13,47 @@
              Title="{x:Static resx:AppResources.Pages_Overview}"
              NavigatedTo="OverviewPage_OnNavigatedTo"
              HideSoftInputOnTapped="True">
+    <abstractions:BaseContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static resx:AppResources.Overview_Filters}"
+                     Clicked="PeriodButton_Clicked"/>
+    </abstractions:BaseContentPage.ToolbarItems>
     <ScrollView VerticalScrollBarVisibility="Never">
         <StackLayout Padding="8,16">
-            <Picker x:Name="CalculationTypePicker"
-                    SelectedItem="{Binding SelectedDisplayCalculationType}"
-                    ItemDisplayBinding="{Binding  DisplayName}"
-                    SelectedIndexChanged="CalculationTypePicker_OnSelectedIndexChanged"/>
-            
+            <Label Style="{StaticResource PageSubtitle}">
+                <Label.Text>
+                    <MultiBinding StringFormat="{}{0:d} - {1:d}">
+                        <Binding Path="DateFrom"/>
+                        <Binding Path="DateTo"/>
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+
             <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_CategoriesExpenses}">
                 <lvc:CartesianChart Series="{Binding CategoriesExpenses}"
                                     XAxes="{Binding CategoriesExpensesLabels}"
                                     HeightRequest="320"
                                     TooltipPosition="Top"/>
             </controls:ContentSectionView>
-            
+
             <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_SpendingTypes}">
                 <lvc:PieChart Series="{Binding SpendingTypeDistribution}"
                               HeightRequest="160"
                               TooltipPosition="Top"/>
             </controls:ContentSectionView>
-            
+
             <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_IncomeExpense}">
                 <lvc:PieChart Series="{Binding IncomeAndExpense}"
                               HeightRequest="160"
                               TooltipPosition="Top"/>
             </controls:ContentSectionView>
-            
+
             <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_CategoriesPlannedAndActual}">
                 <lvc:CartesianChart Series="{Binding PlannedAndActualCategoriesAmounts}"
                                     XAxes="{Binding PlannedAndActualCategoriesAmountsLabels}"
                                     HeightRequest="320"
                                     TooltipPosition="Top"/>
             </controls:ContentSectionView>
-            
+
             <controls:ContentSectionView IsVisible="{Binding IsShowDailyExpenses}"
                                          Title="{x:Static resx:AppResources.Overview_DailyExpenses}">
                 <lvc:CartesianChart Series="{Binding DailyExpenses}"
@@ -53,7 +61,7 @@
                                     HeightRequest="320"
                                     TooltipPosition="Top"/>
             </controls:ContentSectionView>
-            
+
             <controls:ContentSectionView IsVisible="{Binding IsShowWeeklyExpenses}"
                                          Title="{x:Static resx:AppResources.Overview_WeeklyExpenses}">
                 <lvc:CartesianChart Series="{Binding WeeklyExpenses}"

@@ -18,19 +18,19 @@ public class EditProfilePageViewModel : BaseNotifyObject
     private Currency _currency;
     private bool _isCurrent;
     private bool _isNotFirstProfile = true;
-    
+
     private readonly IProfileRepository _profileRepository;
-    
+
     public EditProfilePageViewModel(IProfileRepository profileRepository)
     {
         _profileRepository = profileRepository;
         _isCurrent = false;
-        
+
         foreach (var currency in Currency.AvailableCurrencies.All.Values)
         {
-            AvailableCurrencies.Add(currency);   
+            AvailableCurrencies.Add(currency);
         }
-        
+
         _currency = AvailableCurrencies[0];
     }
 
@@ -44,7 +44,7 @@ public class EditProfilePageViewModel : BaseNotifyObject
         get => _isNotFirstProfile;
         private set => SetProperty(ref _isNotFirstProfile, value);
     }
-    
+
     public string Name
     {
         get => _name;
@@ -56,10 +56,10 @@ public class EditProfilePageViewModel : BaseNotifyObject
         get => _initialBalance;
         set => SetProperty(ref _initialBalance, value);
     }
-    
+
     public Currency SelectedCurrency
     {
-        get => _currency; 
+        get => _currency;
         set => SetProperty(ref _currency, value);
     }
 
@@ -69,21 +69,21 @@ public class EditProfilePageViewModel : BaseNotifyObject
     {
         var existingProfiles = await _profileRepository.GetAllProfiles();
         _isCurrent = !existingProfiles.Any(p => p.IsCurrent && p.Id != _profileId);
-        
+
         IsNotFirstProfile = existingProfiles.Count != 0;
         SelectedCurrency = AvailableCurrencies[0];
 
         if (_profileId is not null)
         {
             var profile = await _profileRepository.GetProfileById((Guid)_profileId);
-            
+
             if (profile is null)
             {
                 throw new ArgumentNullException(nameof(_profileId), AppResources.CommonError_GetProfileById);
             }
-            
+
             InitializeEditableProfile(profile);
-        } 
+        }
     }
 
     private void InitializeEditableProfile(Profile profile)
@@ -92,7 +92,7 @@ public class EditProfilePageViewModel : BaseNotifyObject
         InitialBalance = profile.Balance.ToString(CultureInfo.CurrentCulture);
         SelectedCurrency = profile.Settings.Currency;
     }
-    
+
     public async Task CreateFirstProfile()
     {
         if (!NumberUtils.TryParseDecimal(_initialBalance, out var numValue))
@@ -112,7 +112,7 @@ public class EditProfilePageViewModel : BaseNotifyObject
         }
         else
         {
-            await _profileRepository.Create(profileBuilder.Build());   
+            await _profileRepository.Create(profileBuilder.Build());
         }
     }
 }

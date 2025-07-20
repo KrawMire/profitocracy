@@ -6,16 +6,16 @@ public partial class ContentSectionView : ContentView
     {
         InitializeComponent();
     }
-    
+
     public static readonly BindableProperty TitleProperty = BindableProperty.Create(
-        nameof(Title), 
-        typeof(string), 
-        typeof(ModalHeaderView), 
+        nameof(Title),
+        typeof(string),
+        typeof(ModalHeaderView),
         string.Empty);
 
     public string Title
     {
-        get => (string) GetValue(TitleProperty);
+        get => (string)GetValue(TitleProperty);
         set => SetValue(TitleProperty, value);
     }
 }

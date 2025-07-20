@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <?xaml-comp compile="true" ?>
-<ResourceDictionary 
+<ResourceDictionary
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
@@ -410,13 +410,13 @@
     <Style x:Key="BalanceCard" TargetType="StackLayout">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource Gray600}}"/>
     </Style>
-    
+
     <Style x:Key="MenuCategory" TargetType="StackLayout">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource Gray600}}"/>
     </Style>
-    
+
     <!-- Application-specific styles -->
-    
+
     <!-- Common -->
     <Style TargetType="Button" x:Key="CloseButton">
         <Setter Property="WidthRequest" Value="24"/>
@@ -428,7 +428,7 @@
         <Setter Property="BackgroundColor" Value="{StaticResource Gray300}"/>
         <Setter Property="TextColor" Value="{StaticResource LightContent}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="CloseButtonContent">
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
         <Setter Property="VerticalTextAlignment" Value="Center"/>
@@ -436,223 +436,223 @@
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="TextColor" Value="{StaticResource White}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="PageTitle">
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="PageSubtitle">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <Style TargetType="DatePicker" x:Key="BasicDatePicker">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightContent}, Dark={StaticResource DarkContent}}"/>
     </Style>
-    
+
     <!-- Home page -->
     <Style TargetType="Border" x:Key="ProfileExpenseCard">
-        <Setter Property="Padding" Value="18"/>
+        <Setter Property="Padding" Value="16"/>
         <Setter Property="StrokeShape" Value="RoundRectangle 16"/>
         <Setter Property="StrokeThickness" Value="0"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SecondaryLight}, Dark={StaticResource SecondaryDark}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="ProfileExpenseCardTitle">
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{StaticResource SpecialPrimaryText}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="ProfileExpenseCardPeriod">
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightSpecialSecondaryText}, Dark={StaticResource DarkSpecialSecondaryText}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="ProfileExpenseCardSubtitle">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{StaticResource SpecialPrimaryText}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="ProfileExpenseCardBalance">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="TextColor" Value="{StaticResource SpecialPrimaryText}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="ProfileExpenseCardProgressValue">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="TextColor" Value="{StaticResource SpecialPrimaryText}"/>
     </Style>
-    
+
     <Style TargetType="ProgressBar" x:Key="ProfileExpenseCardProgressBar">
         <Setter Property="HeightRequest" Value="4"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"/>
         <Setter Property="ProgressColor" Value="{AppThemeBinding Light={StaticResource SecondaryDark}, Dark={StaticResource SecondaryLight}}" />
     </Style>
-    
+
     <Style TargetType="Border" x:Key="ExpenseCard">
         <Setter Property="Padding" Value="16"/>
         <Setter Property="StrokeShape" Value="RoundRectangle 16"/>
         <Setter Property="StrokeThickness" Value="0"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightContent}, Dark={StaticResource DarkContent}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="ExpenseCardTitle">
-        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="ExpenseCardSubtitle">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="ExpenseCardSubtitleSecondary">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{StaticResource SecondaryText}"/>
     </Style>
-    
+
     <Style TargetType="ProgressBar" x:Key="ExpenseCardProgressBar">
         <Setter Property="HeightRequest" Value="4"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"/>
         <Setter Property="ProgressColor" Value="{StaticResource Primary}" />
     </Style>
-    
+
     <Style TargetType="Label" x:Key="ExpenseCardProgressValue">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="ExpenseCardBalance">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <!-- Transactions page -->
     <Style TargetType="Label" x:Key="DateRangeTitle">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{StaticResource LightContent}"/>
     </Style>
-    
+
     <Style TargetType="Border" x:Key="DateRangeCard">
         <Setter Property="Padding" Value="8, 8, 8,16"/>
         <Setter Property="StrokeThickness" Value="0"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SecondaryLight}, Dark={StaticResource SecondaryDark}}"/>
     </Style>
-    
+
     <Style TargetType="Border" x:Key="TransactionCard">
         <Setter Property="Padding" Value="8"/>
         <Setter Property="StrokeThickness" Value="0"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightContent}, Dark={StaticResource DarkContent}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="TransactionCardSpendType">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="TransactionCardSpendTypeIncome">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{StaticResource Primary}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="TransactionCardCategory">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="TransactionCardDescription">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="TextColor" Value="{StaticResource SecondaryText}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="TransactionCardAdditionalAmount">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="TextColor" Value="{StaticResource SecondaryText}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="TransactionCardAmount">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="TransactionCardAmountIncome">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{StaticResource Primary}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="TransactionCardDate">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="TextColor" Value="{StaticResource SecondaryText}"/>
     </Style>
-    
+
     <Style TargetType="Button" x:Key="SecondaryButton">
         <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="TextColor" Value="{StaticResource Primary}"/>
         <Setter Property="BorderColor" Value="{StaticResource Primary}"/>
         <Setter Property="BorderWidth" Value="1"/>
     </Style>
-    
+
     <!-- Settings page -->
     <Style TargetType="Label" x:Key="SettingsGroupTitle">
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <Style TargetType="Border" x:Key="SettingsButton">
         <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
         <Setter Property="StrokeThickness" Value="0"/>
         <Setter Property="Padding" Value="16,12"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightContent}, Dark={StaticResource DarkContent}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="SettingsButtonText">
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="DisabledSettingsButtonText">
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{StaticResource SecondaryText}"/>
     </Style>
-    
+
     <Style TargetType="Border" x:Key="CategoryCard">
         <Setter Property="Padding" Value="18"/>
         <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
         <Setter Property="StrokeThickness" Value="0"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightContent}, Dark={StaticResource DarkContent}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="CategoryCardName">
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
         <Setter Property="FontSize" Value="18"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="CategoryCardPlannedAmount">
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{StaticResource SecondaryText}"/>
         <Setter Property="FontSize" Value="18"/>
     </Style>
-    
+
     <!-- Add transaction page -->
     <Style TargetType="Button" x:Key="TransactionAddTypeButton">
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
@@ -660,20 +660,20 @@
         <Setter Property="BackgroundColor" Value="{StaticResource LightBackground}"/>
         <Setter Property="TextColor" Value="{StaticResource LightPrimaryText}"/>
     </Style>
-    
+
     <Style TargetType="Button" x:Key="TransactionAddTypeButtonActive">
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="TextColor" Value="{StaticResource White}"/>
     </Style>
-    
+
     <Style TargetType="Border" x:Key="TransactionAddAmountBorder">
         <Setter Property="StrokeShape" Value="RoundRectangle 16"/>
         <Setter Property="StrokeThickness" Value="1"/>
         <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}"/>
     </Style>
-    
+
     <!-- Theme and language settings page -->
     <Style TargetType="Border" x:Key="ThemeSettingsButton">
         <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
@@ -681,14 +681,14 @@
         <Setter Property="Padding" Value="16,12"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightContent}, Dark={StaticResource DarkContent}}"/>
     </Style>
-    
+
     <Style TargetType="Border" x:Key="ThemeSettingsButtonActive">
         <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
         <Setter Property="StrokeThickness" Value="0"/>
         <Setter Property="Padding" Value="16,12"/>
         <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
     </Style>
-    
+
     <!-- Profiles Settings Page -->
     <Style TargetType="Border" x:Key="ProfileCard">
         <Setter Property="Padding" Value="18"/>
@@ -696,14 +696,14 @@
         <Setter Property="StrokeThickness" Value="0"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightContent}, Dark={StaticResource DarkContent}}"/>
     </Style>
-    
+
     <Style TargetType="Border" x:Key="CurrentProfileCard">
         <Setter Property="Padding" Value="18"/>
         <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
         <Setter Property="StrokeThickness" Value="0"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SecondaryLight}, Dark={StaticResource SecondaryDark}}"/>
     </Style>
-    
+
     <Style TargetType="Label" x:Key="CurrentProfileCardName">
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{StaticResource SpecialPrimaryText}"/>

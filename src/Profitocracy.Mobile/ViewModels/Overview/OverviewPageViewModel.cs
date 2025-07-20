@@ -6,6 +6,7 @@ using Profitocracy.Core.Domain.Abstractions.Services;
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Core.Domain.Model.Summaries;
 using Profitocracy.Core.Domain.Model.Summaries.ValueObjects;
+using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
 
@@ -14,7 +15,8 @@ namespace Profitocracy.Mobile.ViewModels.Overview;
 public class OverviewPageViewModel : BaseNotifyObject
 {
     private readonly ICalculationService _calculationService;
-    
+    private readonly IProfileRepository _profileRepository;
+
     private readonly ObservableCollection<decimal> _categoriesExpensesValues = [];
     private readonly ObservableCollection<string> _categoriesExpensesLabelsValues = [];
     private readonly ObservableCollection<decimal> _mainSpendingTypeExpenses = [];
@@ -29,14 +31,18 @@ public class OverviewPageViewModel : BaseNotifyObject
     private readonly ObservableCollection<string> _dailyExpensesLabelsValues = [];
     private readonly ObservableCollection<decimal> _weeklyExpensesValues = [];
     private readonly ObservableCollection<string> _weeklyExpensesLabelsValues = [];
-    
-    private SummaryCalculationDisplayType _selectedDisplayCalculationType = DisplayCalculationTypes[0];
+
     private bool _isShowDailyExpenses;
     private bool _isShowWeeklyExpenses;
-    
-    public OverviewPageViewModel(ICalculationService calculationService)
+
+    private DateTime _dateFrom;
+    private DateTime _dateTo;
+
+    public OverviewPageViewModel(ICalculationService calculationService, IProfileRepository profileRepository)
     {
         _calculationService = calculationService;
+        _profileRepository = profileRepository;
+
         _isShowDailyExpenses = false;
         _isShowWeeklyExpenses = false;
 
@@ -45,12 +51,12 @@ public class OverviewPageViewModel : BaseNotifyObject
             new ColumnSeries<decimal, RoundedRectangleGeometry, LabelGeometry>
             {
                 Values = _categoriesExpensesValues
-            }
+            },
         ];
 
         CategoriesExpensesLabels =
         [
-            new Axis { Labels = _categoriesExpensesLabelsValues }
+            new Axis { Labels = _categoriesExpensesLabelsValues },
         ];
 
         SpendingTypeDistribution =
@@ -69,7 +75,7 @@ public class OverviewPageViewModel : BaseNotifyObject
             {
                 Values = _savedSpendingTypeExpenses,
                 Name = AppResources.Overview_SpendingType_Saved
-            }
+            },
         ];
 
         IncomeAndExpense =
@@ -83,18 +89,18 @@ public class OverviewPageViewModel : BaseNotifyObject
             {
                 Values = _totalExpense,
                 Name = AppResources.Overview_Expense
-            }
+            },
         ];
 
         PlannedAndActualCategoriesAmounts =
         [
             new ColumnSeries<decimal> { Values = _plannedCategoriesExpenses },
-            new ColumnSeries<decimal> { Values = _actualCategoriesExpenses }
+            new ColumnSeries<decimal> { Values = _actualCategoriesExpenses },
         ];
 
         PlannedAndActualCategoriesAmountsLabels =
         [
-            new Axis { Labels = _plannedCategoriesExpensesLabels }
+            new Axis { Labels = _plannedCategoriesExpensesLabels },
         ];
 
         DailyExpenses =
@@ -104,13 +110,13 @@ public class OverviewPageViewModel : BaseNotifyObject
                 Values = _dailyExpensesValues,
                 Fill = null,
                 GeometryFill = null,
-                GeometryStroke = null
+                GeometryStroke = null,
             }
         ];
-        
+
         DailyExpensesLabels =
         [
-            new Axis { Labels = _dailyExpensesLabelsValues }
+            new Axis { Labels = _dailyExpensesLabelsValues },
         ];
 
         WeeklyExpenses =
@@ -120,16 +126,16 @@ public class OverviewPageViewModel : BaseNotifyObject
                 Values = _weeklyExpensesValues,
                 Fill = null,
                 GeometryFill = null,
-                GeometrySize = 8
+                GeometrySize = 8,
             }
         ];
-        
+
         WeeklyExpensesLabels =
         [
-            new Axis { Labels = _weeklyExpensesLabelsValues }
+            new Axis { Labels = _weeklyExpensesLabelsValues },
         ];
     }
-    
+
     public ISeries[] CategoriesExpenses { get; set; }
     public Axis[] CategoriesExpensesLabels { get; set; }
     public ISeries[] SpendingTypeDistribution { get; set; }
@@ -140,19 +146,6 @@ public class OverviewPageViewModel : BaseNotifyObject
     public Axis[] DailyExpensesLabels { get; set; }
     public ISeries[] WeeklyExpenses { get; set; }
     public Axis[] WeeklyExpensesLabels { get; set; }
-
-    public static ObservableCollection<SummaryCalculationDisplayType> DisplayCalculationTypes { get; } =
-    [
-        new(SummaryCalculationType.ForMonth, AppResources.Overview_ForMonth),
-        new(SummaryCalculationType.ForThreeMonths, AppResources.Overview_ForThreeMonths),
-        new(SummaryCalculationType.ForSixMonths, AppResources.Overview_ForSixMonths)
-    ];
-    
-    public SummaryCalculationDisplayType SelectedDisplayCalculationType
-    {
-        get => _selectedDisplayCalculationType;
-        set => SetProperty(ref _selectedDisplayCalculationType, value);
-    }
 
     public bool IsShowDailyExpenses
     {
@@ -166,15 +159,30 @@ public class OverviewPageViewModel : BaseNotifyObject
         set => SetProperty(ref _isShowWeeklyExpenses, value);
     }
 
-    public async Task Initialize(bool calcTypeChanged = false)
+    public DateTime DateFrom
     {
-        if (!calcTypeChanged)
-        {
-            SelectedDisplayCalculationType = DisplayCalculationTypes[0];
-        }
-        
-        var summary = await _calculationService.GetSummaryForPeriod(_selectedDisplayCalculationType.CalculationType);
-        
+        get => _dateFrom;
+        private set => SetProperty(ref _dateFrom, value);
+    }
+
+    public DateTime DateTo
+    {
+        get => _dateTo;
+        private set => SetProperty(ref _dateTo, value);
+    }
+
+    public async Task Initialize(OverviewFiltersPageViewModel filters)
+    {
+        DateFrom = filters.DateFrom;
+        DateTo = filters.DateTo;
+
+        await Update();
+    }
+
+    public async Task Update()
+    {
+        var summary = await _calculationService.GetSummaryForPeriod(DateFrom, DateTo);
+
         InvalidateSeries();
         DistributeSummary(summary);
     }
@@ -208,10 +216,10 @@ public class OverviewPageViewModel : BaseNotifyObject
         _mainSpendingTypeExpenses.Add(summary.SpendingTypesExpenses[SpendingType.Main]);
         _secondarySpendingTypeExpenses.Add(summary.SpendingTypesExpenses[SpendingType.Secondary]);
         _savedSpendingTypeExpenses.Add(summary.SpendingTypesExpenses[SpendingType.Saved]);
-        
+
         _totalExpense.Add(summary.TotalExpenses);
         _totalIncome.Add(summary.TotalIncome);
-        
+
         foreach (var categoryExpectation in summary.CategoryExpenseExpectations.Values)
         {
             _plannedCategoriesExpenses.Add(categoryExpectation.PlannedAmount);
@@ -219,32 +227,27 @@ public class OverviewPageViewModel : BaseNotifyObject
             _plannedCategoriesExpensesLabels.Add(categoryExpectation.CategoryName);
         }
 
-        IsShowDailyExpenses = _selectedDisplayCalculationType.CalculationType 
-            is SummaryCalculationType.ForMonth
-            or SummaryCalculationType.ForThreeMonths;
-        
-        IsShowWeeklyExpenses = _selectedDisplayCalculationType.CalculationType 
-            is SummaryCalculationType.ForThreeMonths
-            or SummaryCalculationType.ForSixMonths;
-        
+        IsShowDailyExpenses = summary.CalculationType.HasFlag(SummaryCalculationType.IncludeDaily);
+        IsShowWeeklyExpenses = summary.CalculationType.HasFlag(SummaryCalculationType.IncludeWeekly);
+
         if (IsShowDailyExpenses)
         {
             DistributeDailyExpenses(summary);
         }
-        
+
         if (IsShowWeeklyExpenses)
         {
             DistributeWeeklyExpenses(summary);
         }
     }
-    
+
     private void DistributeDailyExpenses(Summary summary)
     {
         if (summary.DailyExpenses is null)
         {
             return;
         }
-        
+
         foreach (var dailyExpense in summary.DailyExpenses)
         {
             _dailyExpensesValues.Add(dailyExpense.Amount);
@@ -258,25 +261,13 @@ public class OverviewPageViewModel : BaseNotifyObject
         {
             return;
         }
-            
+
         foreach (var weeklyExpense in summary.WeeklyExpenses)
         {
             var dateStr = $"{weeklyExpense.DateFrom.Date:dd.MM} - {weeklyExpense.DateTo.Date:dd.MM}";
-                
+
             _weeklyExpensesValues.Add(weeklyExpense.Amount);
             _weeklyExpensesLabelsValues.Add(dateStr);
         }
     }
-}
-
-public class SummaryCalculationDisplayType
-{
-    public SummaryCalculationDisplayType(SummaryCalculationType type, string displayName)
-    {
-        CalculationType = type;
-        DisplayName = displayName;
-    }
-        
-    public SummaryCalculationType CalculationType { get; }
-    public string DisplayName { get; }
 }
