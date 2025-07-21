@@ -17,6 +17,12 @@
     </a>
 </p>
 
+<p align="left">
+    <a href="https://play.google.com/store/apps/details?id=com.krawmire.profitocracy">
+      <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/distribution/download_google_play.svg" alt="Google Play Download" height="150"/>
+    </a>
+</p>
+
 Welcome to the source code of **Profitocracy**.
 
 **Profitocracy** is a powerful budget management app designed to help users track their expenses effortlessly while following the 50-30-20 budgeting rule.
@@ -56,12 +62,17 @@ Welcome to the source code of **Profitocracy**.
 
 # Installation
 
-> [!NOTE]
-> For now, Profitocracy is published only in the Apple App Store. I hope it will be also available at Google Play Market soon.
-
 ## Android
 
-To install Profitocracy to an Android device, go to the [latest release](https://github.com/KrawMire/profitocracy-maui/releases/latest) and install an attached *.apk* file.
+To install Profitocracy to an Android device through the Google Play, click on the following link:
+
+<p align="left">
+    <a href="https://play.google.com/store/apps/details?id=com.krawmire.profitocracy">
+      <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/dev/docs/assets/distribution/download_google_play.svg" alt="Google Play Download" height="150"/>
+    </a>
+</p>
+
+To install Profitocracy to an Android device manually via an APK file, go to the [latest release](https://github.com/KrawMire/profitocracy-maui/releases/latest) and install an attached *.apk* file.
 Then click on it and follow the instructions.
 
 > If you want to try out a specific version of Profitocracy, go to
