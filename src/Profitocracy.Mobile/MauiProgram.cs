@@ -67,6 +67,7 @@ public static class MauiProgram
     {
         _ = mauiAppBuilder.Services
             .AddTransient<HomePageViewModel>()
+            .AddTransient<NewPeriodSelectionPageViewModel>()
             .AddTransient<EditTransactionPageViewModel>()
             .AddTransient<FilteredTransactionsPageViewModel>()
             .AddTransient<TransactionsPageViewModel>()
@@ -87,6 +88,7 @@ public static class MauiProgram
     {
         _ = mauiAppBuilder.Services
             .AddTransient<HomePage>()
+            .AddTransient<NewPeriodSelectionPage>()
             .AddTransient<TransactionsPage>()
             .AddTransient<FilteredTransactionsPage>()
             .AddTransient<EditTransactionPage>()
