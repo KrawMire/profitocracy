@@ -21,6 +21,7 @@ internal class ProfileService : IProfileService
         _categoryRepository = categoryRepository;
     }
 
+    /// <inheritdoc />
     public async Task<Profile> SetCurrentProfile(Guid profileId)
     {
         var profiles = await _profileRepository.GetAllProfiles();
@@ -48,6 +49,27 @@ internal class ProfileService : IProfileService
         return currentProfile;
     }
 
+    /// <inheritdoc />
+    public async Task<Profile> StartNewProfilePeriod(Guid profileId, DateTime currentDate, DateTime endDate)
+    {
+        var profile = await _profileRepository.GetProfileById(profileId);
+
+        if (profile is null)
+        {
+            throw new InvalidOperationException("Current profile was not found");
+        }
+
+        var startPeriodDate = new DateTime(currentDate.Year, currentDate.Month, 1);
+        var endPeriodDate = new DateTime(endDate.Year, endDate.Month, endDate.Day);
+
+        endPeriodDate = endPeriodDate.Add(DateTime.MaxValue.TimeOfDay);
+
+        profile.StartNewBillingPeriod(startPeriodDate, endPeriodDate);
+
+        return await _profileRepository.Update(profile);
+    }
+
+    /// <inheritdoc />
     public async Task<Guid> DeleteProfile(Guid profileId)
     {
         var profiles = await _profileRepository.GetAllProfiles();

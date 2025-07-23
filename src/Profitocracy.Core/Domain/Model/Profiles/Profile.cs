@@ -25,6 +25,22 @@ public class Profile : AggregateRoot<Guid>
         AnchorDate startDate,
         List<ProfileCategory> categoriesExpenses,
         ProfileSettings settings,
+        bool isCurrent) : this(
+            id,
+            name,
+            startDate,
+            null,
+            categoriesExpenses,
+            settings,
+            isCurrent) { }
+
+    internal Profile(
+        Guid id,
+        string name,
+        AnchorDate startDate,
+        TimePeriod? billingPeriod,
+        List<ProfileCategory> categoriesExpenses,
+        ProfileSettings settings,
         bool isCurrent) : base(id)
     {
         Name = name;
@@ -63,7 +79,7 @@ public class Profile : AggregateRoot<Guid>
             }
         };
 
-        BillingPeriod = new TimePeriod
+        BillingPeriod = billingPeriod ?? new TimePeriod
         {
             DateFrom = new DateTime(
                 StartDate.Timestamp.Year,
@@ -80,7 +96,7 @@ public class Profile : AggregateRoot<Guid>
                 hour: 23,
                 minute: 59,
                 second: 59,
-                millisecond: 999)
+                millisecond: 999),
         };
 
         SavedAmounts = new Dictionary<Currency, decimal>();
@@ -143,8 +159,25 @@ public class Profile : AggregateRoot<Guid>
     private decimal _todayInitialBalance;
 
     /// <summary>
+    /// Starts a new billing period with the specified start and end dates.
+    /// </summary>
+    /// <param name="startDate">The start date of the new billing period.</param>
+    /// <param name="endDate">The end date of the new billing period.</param>
+    public void StartNewBillingPeriod(DateTime startDate, DateTime endDate)
+    {
+        if (endDate < startDate)
+            throw new ArgumentException("End date must be greater than the start date.");
+
+        BillingPeriod = new TimePeriod
+        {
+            DateFrom = startDate,
+            DateTo = endDate,
+        };
+    }
+
+    /// <summary>
     /// Process transaction and
-    /// project results in profile
+    /// project the results in profile
     /// </summary>
     /// <param name="transactions">Transactions to handle</param>
     /// <param name="currentDate">Current date</param>
@@ -162,23 +195,27 @@ public class Profile : AggregateRoot<Guid>
             }
         }
 
-        if (StartDate.Timestamp.Month != currentDate.Month)
+        if (BillingPeriod.DateTo < currentDate)
         {
             IsNewPeriod = true;
 
             StartDate = new AnchorDate
             {
                 InitialBalance = Balance,
-                Timestamp = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day)
+                Timestamp = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day),
             };
+
+            var endDate = new DateTime(
+                currentDate.Year,
+                currentDate.Month,
+                day: DateTime.DaysInMonth(currentDate.Year, currentDate.Month));
+
+            endDate = endDate.Add(DateTime.MaxValue.TimeOfDay);
 
             BillingPeriod = new TimePeriod
             {
                 DateFrom = new DateTime(currentDate.Year, currentDate.Month, 1),
-                DateTo = new DateTime(
-                    currentDate.Year,
-                    currentDate.Month,
-                    day: DateTime.DaysInMonth(currentDate.Year, currentDate.Month))
+                DateTo = endDate,
             };
         }
 
@@ -266,7 +303,9 @@ public class Profile : AggregateRoot<Guid>
 
     private void RecalculateExpenses(DateTime currentDate)
     {
-        var daysInActualPeriod = BillingPeriod.DateTo.Day - currentDate.Day + 1;
+        var currentPeriodDiff = BillingPeriod.DateTo - currentDate;
+
+        var daysInActualPeriod = currentPeriodDiff.Days + 1;
         var daysInPeriodFromTomorrow = daysInActualPeriod - 1;
 
         // Used to prevent division by zero
