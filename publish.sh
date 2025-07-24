@@ -24,6 +24,11 @@ function publish_android() {
     -p:AndroidSigningKeyPass="${ANDROID_SIGNING_KEY_PASS}" \
     -p:AndroidSigningStorePass="${ANDROID_SIGNING_STORE_PASS}"
 
+  if [ $? -ne 0 ]; then
+    echo "An error occurred while publishing Android application. Exiting..."
+    exit 3
+  fi
+
   echo "Application for Android has been successfully published to ${ANDROID_PUBLISH_PATH}."
 }
 
@@ -39,6 +44,11 @@ function publish_ios() {
     -p:RuntimeIdentifier="${IOS_RUNTIME_ID}" \
     -p:CodesignKey="${IOS_CODESIGN_KEY}" \
     -p:CodesignProvision="${IOS_CODESIGN_PROVISION}"
+
+    if [ $? -ne 0 ]; then
+      echo "An error occurred while publishing iOS application. Exiting..."
+      exit 3
+    fi
 
   echo "Application for iOS has been successfully published to ${IOS_PUBLISH_PATH}."
 }
