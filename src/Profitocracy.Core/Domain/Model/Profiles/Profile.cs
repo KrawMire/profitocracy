@@ -32,7 +32,8 @@ public class Profile : AggregateRoot<Guid>
             null,
             categoriesExpenses,
             settings,
-            isCurrent) { }
+            isCurrent)
+    { }
 
     internal Profile(
         Guid id,
