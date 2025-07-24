@@ -17,6 +17,13 @@ internal class ProfileMapper : IInfrastructureMapper<Profile, ProfileModel>
             .AddCurrency(Currency.AvailableCurrencies.All[model.CurrencyCode])
             .AddIsCurrent(model.IsCurrent);
 
+        if (model.BillingStartDate is not null && model.BillingEndDate is not null)
+        {
+            builder.AddBillingPeriod(
+                (DateTime)model.BillingStartDate,
+                (DateTime)model.BillingEndDate);
+        }
+
         if (model.Categories is null)
         {
             return builder.Build();
@@ -50,6 +57,8 @@ internal class ProfileMapper : IInfrastructureMapper<Profile, ProfileModel>
             Name = entity.Name,
             StartTimestamp = entity.StartDate.Timestamp,
             InitialBalance = entity.StartDate.InitialBalance,
+            BillingStartDate = entity.BillingPeriod.DateFrom,
+            BillingEndDate = entity.BillingPeriod.DateTo,
             Balance = entity.Balance,
             IsCurrent = entity.IsCurrent,
             Categories = categories,

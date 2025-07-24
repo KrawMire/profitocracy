@@ -1304,5 +1304,41 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("OverviewFilters_EndDate", resourceCulture);
             }
         }
+        
+        internal static string Home_StartNewPeriod {
+            get {
+                return ResourceManager.GetString("Home_StartNewPeriod", resourceCulture);
+            }
+        }
+        
+        internal static string StartNewPeriod_StartNewPeriod {
+            get {
+                return ResourceManager.GetString("StartNewPeriod_StartNewPeriod", resourceCulture);
+            }
+        }
+        
+        internal static string StartNewPeriod_NewPeriod {
+            get {
+                return ResourceManager.GetString("StartNewPeriod_NewPeriod", resourceCulture);
+            }
+        }
+        
+        internal static string CommonError_OpenNewPeriodPage {
+            get {
+                return ResourceManager.GetString("CommonError_OpenNewPeriodPage", resourceCulture);
+            }
+        }
+        
+        internal static string StartNewPeriod_DateFrom {
+            get {
+                return ResourceManager.GetString("StartNewPeriod_DateFrom", resourceCulture);
+            }
+        }
+        
+        internal static string StartNewPeriod_DateTo {
+            get {
+                return ResourceManager.GetString("StartNewPeriod_DateTo", resourceCulture);
+            }
+        }
     }
 }

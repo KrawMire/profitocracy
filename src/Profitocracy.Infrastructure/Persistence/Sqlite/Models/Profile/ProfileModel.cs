@@ -15,6 +15,8 @@ internal class ProfileModel
 
     public DateTime StartTimestamp { get; set; }
     public decimal InitialBalance { get; set; }
+    public DateTime? BillingStartDate { get; set; }
+    public DateTime? BillingEndDate { get; set; }
     public decimal Balance { get; set; }
 
     public bool IsCurrent { get; set; }

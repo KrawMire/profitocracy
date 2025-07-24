@@ -747,4 +747,22 @@
   <data name="Overview_Filters" xml:space="preserve">
     <value>Filteri</value>
   </data>
+  <data name="CommonError_OpenNewPeriodPage" xml:space="preserve">
+    <value>Ne mogu da otvorim stranicu novi period</value>
+  </data>
+  <data name="Home_StartNewPeriod" xml:space="preserve">
+    <value>Počni novi period</value>
+  </data>
+  <data name="StartNewPeriod_StartNewPeriod" xml:space="preserve">
+    <value>Počni novi period</value>
+  </data>
+  <data name="StartNewPeriod_NewPeriod" xml:space="preserve">
+    <value>Novi period</value>
+  </data>
+  <data name="StartNewPeriod_DateFrom" xml:space="preserve">
+    <value>Datum od</value>
+  </data>
+  <data name="StartNewPeriod_DateTo" xml:space="preserve">
+    <value>Datum do</value>
+  </data>
 </root>

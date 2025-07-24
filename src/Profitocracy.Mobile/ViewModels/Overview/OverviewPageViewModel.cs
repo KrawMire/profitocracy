@@ -6,7 +6,6 @@ using Profitocracy.Core.Domain.Abstractions.Services;
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Core.Domain.Model.Summaries;
 using Profitocracy.Core.Domain.Model.Summaries.ValueObjects;
-using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
 
@@ -15,7 +14,6 @@ namespace Profitocracy.Mobile.ViewModels.Overview;
 public class OverviewPageViewModel : BaseNotifyObject
 {
     private readonly ICalculationService _calculationService;
-    private readonly IProfileRepository _profileRepository;
 
     private readonly ObservableCollection<decimal> _categoriesExpensesValues = [];
     private readonly ObservableCollection<string> _categoriesExpensesLabelsValues = [];
@@ -38,10 +36,9 @@ public class OverviewPageViewModel : BaseNotifyObject
     private DateTime _dateFrom;
     private DateTime _dateTo;
 
-    public OverviewPageViewModel(ICalculationService calculationService, IProfileRepository profileRepository)
+    public OverviewPageViewModel(ICalculationService calculationService)
     {
         _calculationService = calculationService;
-        _profileRepository = profileRepository;
 
         _isShowDailyExpenses = false;
         _isShowWeeklyExpenses = false;

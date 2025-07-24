@@ -747,4 +747,22 @@
   <data name="Overview_Filters" xml:space="preserve">
     <value>Filtres</value>
   </data>
+  <data name="CommonError_OpenNewPeriodPage" xml:space="preserve">
+    <value>Impossible d’ouvrir la page nouvelle période</value>
+  </data>
+  <data name="Home_StartNewPeriod" xml:space="preserve">
+    <value>Commencer une nouvelle période</value>
+  </data>
+  <data name="StartNewPeriod_StartNewPeriod" xml:space="preserve">
+    <value>Commencer une nouvelle période</value>
+  </data>
+  <data name="StartNewPeriod_NewPeriod" xml:space="preserve">
+    <value>Nouvelle période</value>
+  </data>
+  <data name="StartNewPeriod_DateFrom" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+  <data name="StartNewPeriod_DateTo" xml:space="preserve">
+    <value>Date de fin</value>
+  </data>
 </root>
