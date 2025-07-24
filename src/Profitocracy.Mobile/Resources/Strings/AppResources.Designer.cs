@@ -1328,5 +1328,17 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("CommonError_OpenNewPeriodPage", resourceCulture);
             }
         }
+        
+        internal static string StartNewPeriod_DateFrom {
+            get {
+                return ResourceManager.GetString("StartNewPeriod_DateFrom", resourceCulture);
+            }
+        }
+        
+        internal static string StartNewPeriod_DateTo {
+            get {
+                return ResourceManager.GetString("StartNewPeriod_DateTo", resourceCulture);
+            }
+        }
     }
 }

@@ -760,4 +760,10 @@
   <data name="CommonError_OpenNewPeriodPage" xml:space="preserve">
     <value>Cannot open new period page</value>
   </data>
+  <data name="StartNewPeriod_DateFrom" xml:space="preserve">
+    <value>Date from</value>
+  </data>
+  <data name="StartNewPeriod_DateTo" xml:space="preserve">
+    <value>Date to</value>
+  </data>
 </root>
