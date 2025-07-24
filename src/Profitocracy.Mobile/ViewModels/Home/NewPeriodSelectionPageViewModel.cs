@@ -7,6 +7,7 @@ namespace Profitocracy.Mobile.ViewModels.Home;
 
 public class NewPeriodSelectionPageViewModel : BaseNotifyObject
 {
+    private DateTime _dateFrom;
     private DateTime _dateTo;
 
     private readonly IProfileService _profileService;
@@ -19,7 +20,14 @@ public class NewPeriodSelectionPageViewModel : BaseNotifyObject
         _profileService = profileService;
         _profileRepository = profileRepository;
 
-        _dateTo = DateTime.Now;
+        DateFrom = DateTime.Now;
+        DateTo = DateTime.Now;
+    }
+
+    public DateTime DateFrom
+    {
+        get => _dateFrom;
+        private init => SetProperty(ref _dateFrom, value);
     }
 
     public DateTime DateTo

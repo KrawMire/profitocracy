@@ -10,15 +10,18 @@ internal class ProfileService : IProfileService
     private readonly IProfileRepository _profileRepository;
     private readonly ITransactionRepository _transactionRepository;
     private readonly ICategoryRepository _categoryRepository;
+    private readonly ICalculationService _calculationService;
 
     public ProfileService(
         IProfileRepository profileRepository,
         ITransactionRepository transactionRepository,
-        ICategoryRepository categoryRepository)
+        ICategoryRepository categoryRepository,
+        ICalculationService calculationService)
     {
         _profileRepository = profileRepository;
         _transactionRepository = transactionRepository;
         _categoryRepository = categoryRepository;
+        _calculationService = calculationService;
     }
 
     /// <inheritdoc />
@@ -59,10 +62,15 @@ internal class ProfileService : IProfileService
             throw new InvalidOperationException("Current profile was not found");
         }
 
-        var startPeriodDate = new DateTime(currentDate.Year, currentDate.Month, 1);
+        var startPeriodDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day);
         var endPeriodDate = new DateTime(endDate.Year, endDate.Month, endDate.Day);
 
         endPeriodDate = endPeriodDate.Add(DateTime.MaxValue.TimeOfDay);
+
+        profile = await _calculationService.PopulateAndProcessProfile(
+            profile,
+            profile.BillingPeriod.DateFrom,
+            profile.BillingPeriod.DateTo.AddDays(-1));
 
         profile.StartNewBillingPeriod(startPeriodDate, endPeriodDate);
 

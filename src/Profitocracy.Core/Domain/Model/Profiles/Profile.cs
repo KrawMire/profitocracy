@@ -173,6 +173,12 @@ public class Profile : AggregateRoot<Guid>
             DateFrom = startDate,
             DateTo = endDate,
         };
+
+        StartDate = new AnchorDate
+        {
+            Timestamp = startDate,
+            InitialBalance = Balance,
+        };
     }
 
     /// <summary>
@@ -214,7 +220,7 @@ public class Profile : AggregateRoot<Guid>
 
             BillingPeriod = new TimePeriod
             {
-                DateFrom = new DateTime(currentDate.Year, currentDate.Month, 1),
+                DateFrom = StartDate.Timestamp.Date,
                 DateTo = endDate,
             };
         }
@@ -333,7 +339,7 @@ public class Profile : AggregateRoot<Guid>
     {
         Balance -= transaction.Amount;
 
-        if (transaction.Timestamp.Day == currentDate.Day)
+        if (transaction.Timestamp.Date == currentDate.Date)
         {
             Expenses.TodayBalance.ActualAmount += transaction.Amount;
         }
