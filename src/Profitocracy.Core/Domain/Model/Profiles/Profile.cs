@@ -202,7 +202,7 @@ public class Profile : AggregateRoot<Guid>
             }
         }
 
-        if (BillingPeriod.DateTo < currentDate)
+        if (BillingPeriod.DateTo < currentDate || currentDate < BillingPeriod.DateFrom)
         {
             IsNewPeriod = true;
 

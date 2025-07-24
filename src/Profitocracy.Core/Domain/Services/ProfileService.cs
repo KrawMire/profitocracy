@@ -70,7 +70,7 @@ internal class ProfileService : IProfileService
         profile = await _calculationService.PopulateAndProcessProfile(
             profile,
             profile.BillingPeriod.DateFrom,
-            profile.BillingPeriod.DateTo.AddDays(-1));
+            startPeriodDate.AddDays(-1));
 
         profile.StartNewBillingPeriod(startPeriodDate, endPeriodDate);
 
