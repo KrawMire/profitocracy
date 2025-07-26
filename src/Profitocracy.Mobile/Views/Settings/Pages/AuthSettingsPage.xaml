@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+                              xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
+                              xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Auth"
+                              x:Class="Profitocracy.Mobile.Views.Settings.Pages.AuthSettingsPage"
+                              Title="{x:Static resx:AppResources.Pages_Authentication}"
+                              Loaded="AuthSettingsPage_OnLoaded"
+                              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+                              HideSoftInputOnTapped="True"
+                              x:DataType="viewmodel:AuthSettingsPageViewModel">
+    <Grid RowDefinitions="*,auto">
+        <ScrollView Padding="16,8,16,16"
+                    HorizontalScrollBarVisibility="Never"
+                    Grid.Row="0">
+            <StackLayout>
+                <FlexLayout JustifyContent="SpaceBetween">
+                    <Label Text="{x:Static resx:AppResources.AuthSettings_Enabled}"
+                           VerticalTextAlignment="Center"/>
+                    <Switch IsToggled="{Binding IsEnabled, Mode=TwoWay}"/>
+                </FlexLayout>
+
+                <StackLayout IsVisible="{Binding IsEnabled}">
+                    <FlexLayout JustifyContent="SpaceBetween">
+                        <Label Text="{x:Static resx:AppResources.AuthSettings_UseBiometrics}"
+                               VerticalTextAlignment="Center"/>
+                        <Switch IsToggled="{Binding IsBiometricEnabled, Mode=TwoWay}"/>
+                    </FlexLayout>
+
+                    <StackLayout Margin="0,32,0,0">
+                        <Label Text="{x:Static resx:AppResources.AuthSettings_PassCode}"/>
+                        <Entry Margin="0,4,0,0"
+                               Text="{Binding Code, Mode=TwoWay}"
+                               Keyboard="Numeric"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Margin="16"
+                     Grid.Row="1">
+            <Button Text="{x:Static resx:AppResources.AuthSettings_Save}"
+                    Clicked="SaveButton_OnClicked"/>
+        </StackLayout>
+    </Grid>
+</abstractions:BaseContentPage>

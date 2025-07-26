@@ -1,4 +1,5 @@
 using Profitocracy.Mobile.Abstractions;
+using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.ViewModels.Auth;
 
 namespace Profitocracy.Mobile.Views.Auth;
@@ -54,7 +55,10 @@ public partial class AuthPage : BaseContentPage
                 case -1:
                     return;
                 case 0:
-                    await DisplayAlert("Title", "Password is invalid", "OK");
+                    await DisplayAlert(
+                        AppResources.Auth_InvalidPasswordAlert_Title,
+                        AppResources.Auth_InvalidPasswordAlert_Description,
+                        AppResources.Auth_InvalidPasswordAlert_Ok);
                     break;
                 case 1:
                     AuthPassed.Invoke(this, EventArgs.Empty);
@@ -67,10 +71,10 @@ public partial class AuthPage : BaseContentPage
     {
         var code = _viewModel.PassCode;
 
-        LabelCode1.Text = code[0] == -1 ? "" : "*";
-        LabelCode2.Text = code[1] == -1 ? "" : "*";
-        LabelCode3.Text = code[2] == -1 ? "" : "*";
-        LabelCode4.Text = code[3] == -1 ? "" : "*";
+        LabelCode1.Text = code[0] == -1 ? "" : "\uf314";
+        LabelCode2.Text = code[1] == -1 ? "" : "\uf314";
+        LabelCode3.Text = code[2] == -1 ? "" : "\uf314";
+        LabelCode4.Text = code[3] == -1 ? "" : "\uf314";
 
         if (_missedCodeDigitStyle is not null && _filledCodeDigitStyle is not null)
         {

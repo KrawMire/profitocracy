@@ -1,4 +1,5 @@
 using Profitocracy.Core.Integrations;
+using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 
 namespace Profitocracy.Mobile.ViewModels.Auth;
@@ -6,6 +7,7 @@ namespace Profitocracy.Mobile.ViewModels.Auth;
 public class AuthPageViewModel : BaseNotifyObject
 {
     private readonly ISecurityProvider _securityProvider;
+    private readonly ISettingsRepository _settingsRepository;
 
     private int _currentIndex;
     private static readonly Dictionary<string, int> ButtonNumbers = new()
@@ -24,9 +26,13 @@ public class AuthPageViewModel : BaseNotifyObject
         { "BiometricAuth", -2 },
     };
 
-    public AuthPageViewModel(ISecurityProvider securityProvider)
+    public AuthPageViewModel(
+        ISecurityProvider securityProvider,
+        ISettingsRepository settingsRepository)
     {
         _securityProvider = securityProvider;
+        _settingsRepository = settingsRepository;
+
         PassCode = [-1, -1, -1, -1];
     }
 
@@ -92,16 +98,44 @@ public class AuthPageViewModel : BaseNotifyObject
 
     private async Task<int> ValidatePassCode()
     {
-        var passCode = string.Join("", PassCode.Select(x => x.ToString()));
-        var isValid = await _securityProvider.ValidatePassword(passCode);
+        Exception? exception = null;
 
-        if (isValid)
+        try
         {
-            return 1;
+            var settings = await _settingsRepository.GetCurrentSettings();
+
+            // In case when user at this page
+            // but there is no active password.
+            if (settings?.Authentication.PasswordHash is null
+                || string.IsNullOrEmpty(settings.Authentication.PasswordHash))
+            {
+                return 1;
+            }
+
+            var passCode = string.Join("", PassCode.Select(x => x.ToString()));
+            var isValid = _securityProvider.ValidatePassword(
+                passCode,
+                settings.Authentication.PasswordHash);
+
+            if (isValid)
+            {
+                return 1;
+            }
+        }
+        catch (Exception ex)
+        {
+            exception = ex;
+        }
+        finally
+        {
+            PassCode = [-1, -1, -1, -1];
+            _currentIndex = 0;
         }
 
-        PassCode = [-1, -1, -1, -1];
-        _currentIndex = 0;
+        if (exception is not null)
+        {
+            throw exception;
+        }
 
         return 0;
     }

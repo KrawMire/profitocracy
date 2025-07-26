@@ -82,7 +82,8 @@ public static class MauiProgram
             .AddTransient<ProfileSettingsPageViewModel>()
             .AddTransient<TransactionsFiltersPageViewModel>()
             .AddTransient<EditProfilePageViewModel>()
-            .AddTransient<ThemeSettingsPageViewModel>();
+            .AddTransient<ThemeSettingsPageViewModel>()
+            .AddTransient<AuthSettingsPageViewModel>();
 
         return mauiAppBuilder;
     }
@@ -102,7 +103,8 @@ public static class MauiProgram
             .AddTransient<ProfilesSettingsPage>()
             .AddTransient<EditProfilePage>()
             .AddTransient<ThemeSettingsPage>()
-            .AddTransient<LanguageSettingsPage>();
+            .AddTransient<LanguageSettingsPage>()
+            .AddTransient<AuthSettingsPage>();
 
         return mauiAppBuilder;
     }

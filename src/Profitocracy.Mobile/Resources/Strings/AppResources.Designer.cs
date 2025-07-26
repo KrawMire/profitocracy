@@ -1340,5 +1340,89 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("StartNewPeriod_DateTo", resourceCulture);
             }
         }
+        
+        internal static string Auth_Welcome {
+            get {
+                return ResourceManager.GetString("Auth_Welcome", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Authentication {
+            get {
+                return ResourceManager.GetString("Settings_Authentication", resourceCulture);
+            }
+        }
+        
+        internal static string Auth_InvalidPasswordAlert_Title {
+            get {
+                return ResourceManager.GetString("Auth_InvalidPasswordAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string Auth_InvalidPasswordAlert_Ok {
+            get {
+                return ResourceManager.GetString("Auth_InvalidPasswordAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string Auth_InvalidPasswordAlert_Description {
+            get {
+                return ResourceManager.GetString("Auth_InvalidPasswordAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string Pages_Authentication {
+            get {
+                return ResourceManager.GetString("Pages_Authentication", resourceCulture);
+            }
+        }
+        
+        internal static string AuthSettings_Enabled {
+            get {
+                return ResourceManager.GetString("AuthSettings_Enabled", resourceCulture);
+            }
+        }
+        
+        internal static string AuthSettings_UseBiometrics {
+            get {
+                return ResourceManager.GetString("AuthSettings_UseBiometrics", resourceCulture);
+            }
+        }
+        
+        internal static string AuthSettings_PassCode {
+            get {
+                return ResourceManager.GetString("AuthSettings_PassCode", resourceCulture);
+            }
+        }
+        
+        internal static string AuthSettings_Save {
+            get {
+                return ResourceManager.GetString("AuthSettings_Save", resourceCulture);
+            }
+        }
+        
+        internal static string AuthSettings_Error_PassCodeFormat {
+            get {
+                return ResourceManager.GetString("AuthSettings_Error_PassCodeFormat", resourceCulture);
+            }
+        }
+        
+        internal static string AuthSettings_SavedAlert_Title {
+            get {
+                return ResourceManager.GetString("AuthSettings_SavedAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string AuthSettings_SavedAlert_Description {
+            get {
+                return ResourceManager.GetString("AuthSettings_SavedAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string AuthSettings_SavedAlert_Ok {
+            get {
+                return ResourceManager.GetString("AuthSettings_SavedAlert_Ok", resourceCulture);
+            }
+        }
     }
 }

@@ -3,45 +3,43 @@
 <abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                               xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+                              xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
                               x:Class="Profitocracy.Mobile.Views.Auth.AuthPage"
                               Title="Authentication"
                               Padding="16"
                               BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
     <Grid RowDefinitions="*,*,auto">
         <Label Grid.Row="0"
-               Text="Welcome to the Profitocracy"
-               FontSize="32"
-               VerticalTextAlignment="Center"
-               HorizontalTextAlignment="Center"
-               FontFamily="OpenSansSemibold"/>
+               Text="{x:Static resx:AppResources.Auth_Welcome}"
+               Style="{StaticResource AuthTitle}"/>
         <Grid Grid.Row="1"
               ColumnDefinitions="*,4,*,4,*,4,*">
             <Border Style="{StaticResource MissedAuthCodeDigit}"
                     x:Name="BorderCode1"
                     Grid.Column="0">
-                <Label Text="*"
-                       x:Name="LabelCode1"
+                <Label x:Name="LabelCode1"
+                       FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
                        Style="{StaticResource AuthCodeDigitText}"/>
             </Border>
             <Border Style="{StaticResource MissedAuthCodeDigit}"
                     x:Name="BorderCode2"
                     Grid.Column="2">
-                <Label Text="*"
-                       x:Name="LabelCode2"
+                <Label x:Name="LabelCode2"
+                       FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
                        Style="{StaticResource AuthCodeDigitText}"/>
             </Border>
             <Border Style="{StaticResource MissedAuthCodeDigit}"
                     x:Name="BorderCode3"
                     Grid.Column="4">
-                <Label Text="*"
-                       x:Name="LabelCode3"
+                <Label x:Name="LabelCode3"
+                       FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
                        Style="{StaticResource AuthCodeDigitText}"/>
             </Border>
             <Border Style="{StaticResource MissedAuthCodeDigit}"
                     x:Name="BorderCode4"
                     Grid.Column="6">
-                <Label Text="*"
-                       x:Name="LabelCode4"
+                <Label x:Name="LabelCode4"
+                       FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
                        Style="{StaticResource AuthCodeDigitText}"/>
             </Border>
         </Grid>

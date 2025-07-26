@@ -42,8 +42,7 @@ public partial class AppInit : BaseContentPage
         var settings = await InitializeSettings();
         var initArgs = new InitEventArgs
         {
-            // RequireAuthentication = settings.Authentication.IsAuthenticationEnabled,
-            RequireAuthentication = true,
+            RequireAuthentication = settings.Authentication.IsAuthenticationEnabled,
         };
 
         return initArgs;

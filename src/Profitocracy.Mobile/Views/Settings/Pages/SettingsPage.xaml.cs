@@ -12,56 +12,19 @@ public partial class SettingsPage : BaseContentPage
     }
 
     private void ProfilesButton_OnClicked(object? sender, EventArgs e)
-    {
-        ProcessAction(async () =>
-        {
-            var profilesPage = Handler?.MauiContext?.Services.GetService<ProfilesSettingsPage>();
-
-            if (profilesPage is not null)
-            {
-                await Navigation.PushAsync(profilesPage);
-            }
-        });
-    }
+        => ProcessAction(NavigateToPage<ProfilesSettingsPage>);
 
     private void CategoriesButton_OnClicked(object? sender, EventArgs e)
-    {
-        ProcessAction(async () =>
-        {
-            var categoriesPage = Handler?.MauiContext?.Services.GetService<ExpenseCategoriesSettingsPage>();
+        => ProcessAction(NavigateToPage<ExpenseCategoriesSettingsPage>);
 
-            if (categoriesPage is not null)
-            {
-                await Navigation.PushAsync(categoriesPage);
-            }
-        });
-    }
+    private void AuthenticationButton_OnClicked(object? sender, EventArgs e)
+        => ProcessAction(NavigateToPage<AuthSettingsPage>);
 
     private void ThemeButton_OnClicked(object? sender, EventArgs e)
-    {
-        ProcessAction(async () =>
-        {
-            var themePage = Handler?.MauiContext?.Services.GetService<ThemeSettingsPage>();
-
-            if (themePage is not null)
-            {
-                await Navigation.PushAsync(themePage);
-            }
-        });
-    }
+        => ProcessAction(NavigateToPage<ThemeSettingsPage>);
 
     private void LanguageButton_OnClicked(object? sender, EventArgs e)
-    {
-        ProcessAction(async () =>
-        {
-            var langPage = Handler?.MauiContext?.Services.GetService<LanguageSettingsPage>();
-
-            if (langPage is not null)
-            {
-                await Navigation.PushAsync(langPage);
-            }
-        });
-    }
+        => ProcessAction(NavigateToPage<LanguageSettingsPage>);
 
     private void GitHubButton_OnClicked(object? sender, EventArgs e)
     {
@@ -69,5 +32,15 @@ public partial class SettingsPage : BaseContentPage
         {
             await Browser.Default.OpenAsync(UrlConstants.ProjectGitHubUrl, BrowserLaunchMode.SystemPreferred);
         });
+    }
+
+    private async Task NavigateToPage<T>() where T : Page
+    {
+        var page = Handler?.MauiContext?.Services.GetService<T>();
+
+        if (page is not null)
+        {
+            await Navigation.PushAsync(page);
+        }
     }
 }

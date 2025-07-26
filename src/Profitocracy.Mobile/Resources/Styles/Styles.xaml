@@ -161,7 +161,7 @@
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -744,9 +744,15 @@
 
     <Style TargetType="Label" x:Key="AuthCodeDigitText">
         <Setter Property="FontSize" Value="24" />
-        <Setter Property="FontFamily" Value="OpenSansSemibold" />
         <Setter Property="TextColor" Value="{StaticResource SpecialPrimaryText}"/>
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="AuthTitle">
+        <Setter Property="FontSize" Value="32" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
     </Style>
 </ResourceDictionary>
