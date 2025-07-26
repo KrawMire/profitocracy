@@ -2,12 +2,14 @@
 using Microsoft.Extensions.Logging;
 using Profitocracy.Core;
 using Profitocracy.Infrastructure;
+using Profitocracy.Mobile.ViewModels.Auth;
 using Profitocracy.Mobile.ViewModels.Categories;
 using Profitocracy.Mobile.ViewModels.Home;
 using Profitocracy.Mobile.ViewModels.Overview;
 using Profitocracy.Mobile.ViewModels.Profiles;
 using Profitocracy.Mobile.ViewModels.Settings;
 using Profitocracy.Mobile.ViewModels.Transactions;
+using Profitocracy.Mobile.Views.Auth;
 using Profitocracy.Mobile.Views.Home.Pages;
 using Profitocracy.Mobile.Views.Overview.Pages;
 using Profitocracy.Mobile.Views.Settings.Pages;
@@ -66,6 +68,7 @@ public static class MauiProgram
     private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
     {
         _ = mauiAppBuilder.Services
+            .AddTransient<AuthPageViewModel>()
             .AddTransient<HomePageViewModel>()
             .AddTransient<NewPeriodSelectionPageViewModel>()
             .AddTransient<EditTransactionPageViewModel>()
@@ -87,6 +90,7 @@ public static class MauiProgram
     private static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
     {
         _ = mauiAppBuilder.Services
+            .AddTransient<AuthPage>()
             .AddTransient<HomePage>()
             .AddTransient<NewPeriodSelectionPage>()
             .AddTransient<TransactionsPage>()

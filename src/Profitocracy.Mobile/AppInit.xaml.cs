@@ -9,6 +9,11 @@ using Profitocracy.Mobile.Views.Settings.Pages;
 
 namespace Profitocracy.Mobile;
 
+public class InitEventArgs
+{
+    public bool RequireAuthentication { get; set; }
+}
+
 public partial class AppInit : BaseContentPage
 {
     private readonly ISettingsRepository _settingsRepository;
@@ -21,23 +26,30 @@ public partial class AppInit : BaseContentPage
         _settingsRepository = settingsRepository;
     }
 
-    public event EventHandler<EventArgs> Initialized = null!;
+    public event EventHandler<InitEventArgs> Initialized = null!;
 
     private void AppInit_OnLoaded(object? sender, EventArgs e)
     {
         ProcessAction(async () =>
         {
-            await InitializeApplication();
-            Initialized.Invoke(this, e);
+            var args = await InitializeApplication();
+            Initialized.Invoke(this, args);
         });
     }
 
-    private async Task InitializeApplication()
+    private async Task<InitEventArgs> InitializeApplication()
     {
-        await InitializeSettings();
+        var settings = await InitializeSettings();
+        var initArgs = new InitEventArgs
+        {
+            // RequireAuthentication = settings.Authentication.IsAuthenticationEnabled,
+            RequireAuthentication = true,
+        };
+
+        return initArgs;
     }
 
-    private async Task InitializeSettings()
+    private async Task<Settings> InitializeSettings()
     {
         var settings = await _settingsRepository.GetCurrentSettings();
         var theme = settings?.Theme ?? Theme.System;
@@ -47,7 +59,7 @@ public partial class AppInit : BaseContentPage
         if (settings is not null)
         {
             LocalizationService.ChangeCurrentLanguage(settings.Language);
-            return;
+            return settings;
         }
 
         var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
@@ -61,11 +73,19 @@ public partial class AppInit : BaseContentPage
             lang = LocalizationService.CurrentLanguage;
         }
 
+        var authSettings = settings?.Authentication ?? new AuthenticationSettings
+        {
+            IsAuthenticationEnabled = false,
+            IsBiometricAuthEnabled = false,
+            PasswordHash = null,
+        };
+
         settings = new Settings(
             Guid.NewGuid(),
             theme,
-            lang);
+            lang,
+            authSettings);
 
-        await _settingsRepository.CreateOrUpdate(settings);
+        return await _settingsRepository.CreateOrUpdate(settings);
     }
 }
