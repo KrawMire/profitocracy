@@ -747,4 +747,88 @@
   <data name="Overview_Filters" xml:space="preserve">
     <value>Filteri</value>
   </data>
+  <data name="CommonError_OpenNewPeriodPage" xml:space="preserve">
+    <value>Ne mogu da otvorim stranicu novi period</value>
+  </data>
+  <data name="Home_StartNewPeriod" xml:space="preserve">
+    <value>Počni novi period</value>
+  </data>
+  <data name="StartNewPeriod_StartNewPeriod" xml:space="preserve">
+    <value>Počni novi period</value>
+  </data>
+  <data name="StartNewPeriod_NewPeriod" xml:space="preserve">
+    <value>Novi period</value>
+  </data>
+  <data name="StartNewPeriod_DateFrom" xml:space="preserve">
+    <value>Datum od</value>
+  </data>
+  <data name="StartNewPeriod_DateTo" xml:space="preserve">
+    <value>Datum do</value>
+  </data>
+  <data name="Pages_Authentication" xml:space="preserve">
+      <value>Autentifikacija</value>
+  </data>
+  <data name="Settings_Authentication" xml:space="preserve">
+      <value>Autentifikacija</value>
+  </data>
+  <data name="AuthSettings_BiometricNotSupported" xml:space="preserve">
+      <value>Biometrija nije podržana na vašem uređaju</value>
+  </data>
+  <data name="AuthSettings_Enabled" xml:space="preserve">
+      <value>Omogućeno</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Title" xml:space="preserve">
+      <value>Autentifikacija nije uspela</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Ok" xml:space="preserve">
+      <value>U redu</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Description" xml:space="preserve">
+      <value>Biometrijska autentifikacija nije uspela</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Title" xml:space="preserve">
+      <value>Autentifikacija nije uspela</value>
+  </data>
+  <data name="AuthSettings_Error_PassCodeFormat" xml:space="preserve">
+      <value>Šifra treba da sadrži samo 4 cifre</value>
+  </data>
+  <data name="AuthSettings_PassCode" xml:space="preserve">
+      <value>Šifra</value>
+  </data>
+  <data name="AuthSettings_Save" xml:space="preserve">
+      <value>Sačuvaj podešavanja</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Description" xml:space="preserve">
+      <value>Podešavanja autentifikacije su uspešno sačuvana.</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Ok" xml:space="preserve">
+      <value>U redu</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Title" xml:space="preserve">
+      <value>Uspeh</value>
+  </data>
+  <data name="AuthSettings_UseBiometrics" xml:space="preserve">
+      <value>Biometrija (FaceID, Otisak prsta)</value>
+  </data>
+  <data name="Auth_Biometric_Description" xml:space="preserve">
+      <value>Hajde da koristimo biometriju da vas autentifikujemo</value>
+  </data>
+  <data name="Auth_Biometric_NegativeText" xml:space="preserve">
+      <value>Autentifikacija nije uspela</value>
+  </data>
+  <data name="Auth_Biometric_Subtitle" xml:space="preserve">
+      <value>Korišćenje biometrije za autentifikaciju</value>
+  </data>
+  <data name="Auth_Biometric_Title" xml:space="preserve">
+      <value>Autentifikacija</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Description" xml:space="preserve">
+      <value>Lozinka nije validna</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Ok" xml:space="preserve">
+      <value>Pokušajte ponovo</value>
+  </data>
+  <data name="Auth_Welcome" xml:space="preserve">
+      <value>Dobrodošli u Profitocracy</value>
+  </data>
 </root>

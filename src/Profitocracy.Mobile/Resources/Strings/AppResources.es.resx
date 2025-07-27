@@ -747,4 +747,88 @@
   <data name="Overview_Filters" xml:space="preserve">
     <value>Filtros</value>
   </data>
+  <data name="CommonError_OpenNewPeriodPage" xml:space="preserve">
+    <value>No se puede abrir la página de nuevo período</value>
+  </data>
+  <data name="Home_StartNewPeriod" xml:space="preserve">
+    <value>Iniciar nuevo período</value>
+  </data>
+  <data name="StartNewPeriod_StartNewPeriod" xml:space="preserve">
+    <value>Iniciar nuevo período</value>
+  </data>
+  <data name="StartNewPeriod_NewPeriod" xml:space="preserve">
+    <value>Nuevo período</value>
+  </data>
+  <data name="StartNewPeriod_DateFrom" xml:space="preserve">
+    <value>Fecha desde</value>
+  </data>
+  <data name="StartNewPeriod_DateTo" xml:space="preserve">
+    <value>Fecha hasta</value>
+  </data>
+  <data name="Settings_Authentication" xml:space="preserve">
+      <value>Autenticación</value>
+  </data>
+  <data name="Pages_Authentication" xml:space="preserve">
+      <value>Autenticación</value>
+  </data>
+  <data name="AuthSettings_BiometricNotSupported" xml:space="preserve">
+      <value>La biometría no está soportada en su dispositivo</value>
+  </data>
+  <data name="AuthSettings_Enabled" xml:space="preserve">
+      <value>Habilitado</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Title" xml:space="preserve">
+      <value>Falló la autenticación</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Description" xml:space="preserve">
+      <value>Falló la autenticación biométrica</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Title" xml:space="preserve">
+      <value>Falló la autenticación</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Ok" xml:space="preserve">
+      <value>OK</value>
+  </data>
+  <data name="AuthSettings_Error_PassCodeFormat" xml:space="preserve">
+      <value>El código debe contener solo 4 dígitos</value>
+  </data>
+  <data name="AuthSettings_PassCode" xml:space="preserve">
+      <value>Código de acceso</value>
+  </data>
+  <data name="AuthSettings_Save" xml:space="preserve">
+      <value>Guardar configuración</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Description" xml:space="preserve">
+      <value>La configuración de autenticación se ha guardado con éxito.</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Ok" xml:space="preserve">
+      <value>ОК</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Title" xml:space="preserve">
+      <value>Éxito</value>
+  </data>
+  <data name="AuthSettings_UseBiometrics" xml:space="preserve">
+      <value>Biométricos (FaceID, Huella dactilar)</value>
+  </data>
+  <data name="Auth_Biometric_Description" xml:space="preserve">
+      <value>Usemos la biometría para autenticarte</value>
+  </data>
+  <data name="Auth_Biometric_NegativeText" xml:space="preserve">
+      <value>Falló la autenticación</value>
+  </data>
+  <data name="Auth_Biometric_Subtitle" xml:space="preserve">
+      <value>Usar biometría para autenticación</value>
+  </data>
+  <data name="Auth_Biometric_Title" xml:space="preserve">
+      <value>Autenticación</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Description" xml:space="preserve">
+      <value>La contraseña no es válida</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Ok" xml:space="preserve">
+      <value>Inténtalo de nuevo</value>
+  </data>
+  <data name="Auth_Welcome" xml:space="preserve">
+      <value>Bienvenido a la Profitocracy</value>
+  </data>
 </root>

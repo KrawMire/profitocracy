@@ -193,7 +193,7 @@
     <value>Сохранить транзакцию</value>
   </data>
   <data name="Settings_Application" xml:space="preserve">
-    <value>Настройки приложения</value>
+    <value>Приложение</value>
   </data>
   <data name="Settings_General" xml:space="preserve">
     <value>Основные</value>
@@ -746,5 +746,89 @@
   </data>
   <data name="Overview_Filters" xml:space="preserve">
     <value>Фильтры</value>
+  </data>
+  <data name="CommonError_OpenNewPeriodPage" xml:space="preserve">
+    <value>Не удаётся открыть страницу нового периода</value>
+  </data>
+  <data name="Home_StartNewPeriod" xml:space="preserve">
+    <value>Начать новый период</value>
+  </data>
+  <data name="StartNewPeriod_StartNewPeriod" xml:space="preserve">
+    <value>Начать новый период</value>
+  </data>
+  <data name="StartNewPeriod_NewPeriod" xml:space="preserve">
+    <value>Новый период</value>
+  </data>
+  <data name="StartNewPeriod_DateFrom" xml:space="preserve">
+    <value>Дата с</value>
+  </data>
+  <data name="StartNewPeriod_DateTo" xml:space="preserve">
+    <value>Дата по</value>
+  </data>
+  <data name="Pages_Authentication" xml:space="preserve">
+      <value>Аутентификация</value>
+  </data>
+  <data name="Settings_Authentication" xml:space="preserve">
+      <value>Аутентификация</value>
+  </data>
+  <data name="AuthSettings_BiometricNotSupported" xml:space="preserve">
+      <value>Биометрия не поддерживается на вашем устройстве</value>
+  </data>
+  <data name="AuthSettings_Enabled" xml:space="preserve">
+      <value>Включено</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Title" xml:space="preserve">
+      <value>Сбой аутентификации</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Description" xml:space="preserve">
+      <value>Сбой биометрической аутентификации</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Title" xml:space="preserve">
+      <value>Сбой аутентификации</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Ok" xml:space="preserve">
+      <value>OK</value>
+  </data>
+  <data name="AuthSettings_Error_PassCodeFormat" xml:space="preserve">
+      <value>Пароль должен содержать только 4 цифры</value>
+  </data>
+  <data name="AuthSettings_PassCode" xml:space="preserve">
+      <value>Пароль</value>
+  </data>
+  <data name="AuthSettings_Save" xml:space="preserve">
+      <value>Сохранить настройки</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Description" xml:space="preserve">
+      <value>Настройки аутентификации успешно сохранены.</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Ok" xml:space="preserve">
+      <value>ОК</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Title" xml:space="preserve">
+      <value>Успех</value>
+  </data>
+  <data name="AuthSettings_UseBiometrics" xml:space="preserve">
+      <value>Биометрия (FaceID, Отпечаток пальца)</value>
+  </data>
+  <data name="Auth_Biometric_Description" xml:space="preserve">
+      <value>Давайте используем биометрию для вашей аутентификации</value>
+  </data>
+  <data name="Auth_Biometric_NegativeText" xml:space="preserve">
+      <value>Сбой аутентификации</value>
+  </data>
+  <data name="Auth_Biometric_Subtitle" xml:space="preserve">
+      <value>Использование биометрии для аутентификации</value>
+  </data>
+  <data name="Auth_Biometric_Title" xml:space="preserve">
+      <value>Аутентификация</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Description" xml:space="preserve">
+      <value>Пароль недействителен</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Ok" xml:space="preserve">
+      <value>Попробуйте снова</value>
+  </data>
+  <data name="Auth_Welcome" xml:space="preserve">
+      <value>Добро пожаловать в Profitocracy</value>
   </data>
 </root>

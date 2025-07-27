@@ -31,6 +31,21 @@ public partial class HomePage : BaseContentPage
         });
     }
 
+    private void StartNewPeriodButton_OnClicked(object? sender, EventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            var newPeriodPage = Handler?.MauiContext?.Services.GetService<NewPeriodSelectionPage>();
+
+            if (newPeriodPage is null)
+            {
+                throw new Exception(AppResources.CommonError_OpenNewPeriodPage);
+            }
+
+            await Navigation.PushModalAsync(newPeriodPage);
+        });
+    }
+
     private void CategoryLayout_OnTapped(object? sender, EventArgs e)
     {
         ProcessAction(async () =>

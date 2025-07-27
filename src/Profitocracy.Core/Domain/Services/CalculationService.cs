@@ -40,18 +40,22 @@ internal class CalculationService : ICalculationService
             return null;
         }
 
-        return await PopulateAndProcessProfile(profile);
+        return await PopulateAndProcessProfile(
+            profile,
+            profile.BillingPeriod.DateFrom,
+            profile.BillingPeriod.DateTo);
     }
 
-    private async Task<Profile> PopulateAndProcessProfile(Profile profile)
+    /// <inheritdoc />
+    public async Task<Profile> PopulateAndProcessProfile(Profile profile, DateTime startDate, DateTime endDate)
     {
         var savingTransactions = await _transactionRepository.GetFiltered(
             new TransactionsSpecification
             {
                 ProfileId = profile.Id,
                 Destination = TransactionDestination.SavingsBalance,
-                ToDate = profile.BillingPeriod.DateFrom,
-                IsMultiCurrency = true
+                ToDate = startDate,
+                IsMultiCurrency = true,
             });
 
         var withdrawTransactions = await _transactionRepository.GetFiltered(
@@ -59,14 +63,14 @@ internal class CalculationService : ICalculationService
             {
                 ProfileId = profile.Id,
                 Destination = TransactionDestination.ProfileBalance,
-                ToDate = profile.BillingPeriod.DateFrom,
-                IsMultiCurrency = true
+                ToDate = startDate,
+                IsMultiCurrency = true,
             });
 
         var transactions = await _transactionRepository.GetForPeriod(
             profile.Id,
-            profile.BillingPeriod.DateFrom,
-            profile.BillingPeriod.DateTo);
+            startDate,
+            endDate);
 
         transactions = transactions
             .Concat(savingTransactions)
@@ -99,7 +103,10 @@ internal class CalculationService : ICalculationService
         var updatedProfile = await _profileRepository.Update(profile);
 
         // Supposed to be executed a maximum of 2 times
-        return await PopulateAndProcessProfile(updatedProfile);
+        return await PopulateAndProcessProfile(
+            updatedProfile,
+            updatedProfile.BillingPeriod.DateFrom,
+            updatedProfile.BillingPeriod.DateTo);
     }
 
     /// <inheritdoc />

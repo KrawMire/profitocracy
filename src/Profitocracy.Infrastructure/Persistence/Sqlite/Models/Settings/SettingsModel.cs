@@ -11,5 +11,9 @@ internal class SettingsModel
 
 #pragma warning disable CS8618
     public string Language { get; set; }
+    public string? Password { get; set; }
 #pragma warning restore CS8618
+
+    public bool IsAuthenticationEnabled { get; set; }
+    public bool IsBiometricAuthEnabled { get; set; }
 }

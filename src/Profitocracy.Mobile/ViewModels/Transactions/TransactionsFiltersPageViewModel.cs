@@ -34,6 +34,8 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
     private bool _isLessThan;
     private bool _isShowSpendingType;
 
+    private DateTime? _profileDateFrom;
+    private DateTime? _profileDateTo;
     private DateTime _fromDate;
     private DateTime _toDate;
     private string _description = string.Empty;
@@ -239,8 +241,8 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
 
         var currentDate = DateTime.Now;
 
-        FromDate = new DateTime(currentDate.Year, currentDate.Month, 1);
-        ToDate = new DateTime(
+        FromDate = _profileDateFrom ?? new DateTime(currentDate.Year, currentDate.Month, 1);
+        ToDate = _profileDateTo ?? new DateTime(
             currentDate.Year,
             currentDate.Month,
             day: DateTime.DaysInMonth(currentDate.Year, currentDate.Month),
@@ -252,14 +254,14 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
 
     public async Task Initialize()
     {
-        var profileId = await _profileRepository.GetCurrentProfileId();
+        var profile = await _profileRepository.GetCurrentProfile();
 
-        if (profileId is null)
+        if (profile is null)
         {
             throw new Exception(AppResources.CommonError_GetCurrentProfile);
         }
 
-        var categories = await _categoryRepository.GetAllByProfileId((Guid)profileId);
+        var categories = await _categoryRepository.GetAllByProfileId(profile.Id);
 
         AvailableCategories.Add(AnyCategory);
 
@@ -290,12 +292,16 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
             SelectedSpendingTypeIndex = 0;
         }
 
+        _profileDateFrom = profile.BillingPeriod.DateFrom;
+        _profileDateTo = profile.BillingPeriod.DateTo;
+
+        FromDate = (DateTime)_profileDateFrom;
+        ToDate = (DateTime)_profileDateTo;
+
         OnPropertyChanged(nameof(SelectedCategory));
         OnPropertyChanged(nameof(SelectedTransactionTypeIndex));
         OnPropertyChanged(nameof(SelectedSpendingTypeIndex));
         OnPropertyChanged(nameof(SelectedCurrency));
-        OnPropertyChanged(nameof(FromDate));
-        OnPropertyChanged(nameof(ToDate));
     }
 
     public void Apply()

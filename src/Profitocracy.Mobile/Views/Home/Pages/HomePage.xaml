@@ -18,7 +18,7 @@
                  Command="{Binding RefreshCommand}">
         <ScrollView VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Padding="8, 16">
-                
+
                 <Border Style="{StaticResource ProfileExpenseCard}">
                     <Border.Shadow>
                         <Shadow Brush="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray950}}"
@@ -48,18 +48,23 @@
                                    Text="{Binding Balance}"/>
                         </FlexLayout>
                         <StackLayout Margin="0, 16, 0, 0">
-                            <ProgressBar Style="{StaticResource ProfileExpenseCardProgressBar}" 
+                            <ProgressBar Style="{StaticResource ProfileExpenseCardProgressBar}"
                                          Progress="{Binding TotalBalanceRatio}"/>
                             <FlexLayout JustifyContent="SpaceBetween">
-                                <Label Style="{StaticResource ProfileExpenseCardProgressValue}" 
+                                <Label Style="{StaticResource ProfileExpenseCardProgressValue}"
                                        Text="{Binding TotalActualAmount}"/>
-                                <Label Style="{StaticResource ProfileExpenseCardProgressValue}" 
+                                <Label Style="{StaticResource ProfileExpenseCardProgressValue}"
                                        Text="{Binding TotalPlannedAmount}" />
                             </FlexLayout>
                         </StackLayout>
+
+                        <Button Text="{x:Static resx:AppResources.Home_StartNewPeriod}"
+                                Margin="0,16,0,0"
+                                VerticalOptions="End"
+                                Clicked="StartNewPeriodButton_OnClicked"/>
                     </StackLayout>
                 </Border>
-                
+
                 <controls:ContentSectionView IsVisible="{Binding IsShowSavedAmounts}"
                                              Title="{x:Static resx:AppResources.Home_SavedAmounts}">
                     <CollectionView x:Name="SavedAmountsCollectionView"
@@ -71,13 +76,13 @@
                                     <Label Style="{StaticResource ExpenseCardSubtitle}"
                                            Text="{Binding CurrencyName}"/>
                                     <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                           Text="{Binding Amount}"/> 
+                                           Text="{Binding Amount}"/>
                                 </FlexLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </controls:ContentSectionView>
-                
+
                 <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_DailyAmounts}">
                     <Grid Margin="0, 16, 0, 0">
                         <Grid.ColumnDefinitions>
@@ -107,7 +112,7 @@
                         </StackLayout>
                     </Grid>
                 </controls:ContentSectionView>
-                
+
                 <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_SpendingTypes}">
                     <StackLayout>
                         <StackLayout Margin="0,16,0,0">
@@ -126,7 +131,7 @@
                                        Text="{Binding MainPlannedAmount}" />
                             </FlexLayout>
                         </StackLayout>
-                        
+
                         <StackLayout Margin="0,16,0,0">
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="SecondarySpendingTypeLayout_OnTapped" />
@@ -143,7 +148,7 @@
                                        Text="{Binding SecondaryPlannedAmount}" />
                             </FlexLayout>
                         </StackLayout>
-                        
+
                         <StackLayout Margin="0,16,0,0">
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="SavedSpendingTypeLayout_OnTapped" />
@@ -162,11 +167,11 @@
                         </StackLayout>
                     </StackLayout>
                 </controls:ContentSectionView>
-                
+
                 <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_Categories}">
                     <StackLayout>
-                        <Label Style="{StaticResource ExpenseCardSubtitleSecondary}" 
-                               IsVisible="{Binding IsDisplayNoCategories}" 
+                        <Label Style="{StaticResource ExpenseCardSubtitleSecondary}"
+                               IsVisible="{Binding IsDisplayNoCategories}"
                                Text="{x:Static resx:AppResources.Home_NoCategories}"
                                Margin="0,16,0,0"
                                HorizontalTextAlignment="Center"/>
@@ -177,13 +182,13 @@
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="CategoryLayout_OnTapped" />
                                         </StackLayout.GestureRecognizers>
-                                        
+
                                         <StackLayout Margin="0,16,0,0"
                                                      IsVisible="{Binding IsShowRatio}">
                                             <Label Style="{StaticResource ExpenseCardSubtitle}"
                                                    Text="{Binding Name}" />
                                             <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
-                                                         Progress="{Binding Ratio}" 
+                                                         Progress="{Binding Ratio}"
                                                          Margin="0, 8,0,0"/>
                                             <FlexLayout JustifyContent="SpaceBetween">
                                                 <Label Style="{StaticResource ExpenseCardProgressValue}">
@@ -204,7 +209,7 @@
                                                 </Label>
                                             </FlexLayout>
                                         </StackLayout>
-                                        
+
                                         <FlexLayout JustifyContent="SpaceBetween"
                                                     Margin="0,16,0,0"
                                                     IsVisible="{Binding IsNotShowRatio}">

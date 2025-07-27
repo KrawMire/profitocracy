@@ -13,6 +13,17 @@ public interface IProfileService
     Task<Profile> SetCurrentProfile(Guid profileId);
 
     /// <summary>
+    /// Starts a new period of a profile.
+    /// Start date is taken from the current date,
+    /// end date is specified via an argument.
+    /// </summary>
+    /// <param name="profileId">ID of the profile to start new period for.</param>
+    /// <param name="currentDate">Current date.</param>
+    /// <param name="endDate">Period end date.</param>
+    /// <returns>Profile with updated period.</returns>
+    Task<Profile> StartNewProfilePeriod(Guid profileId, DateTime currentDate, DateTime endDate);
+
+    /// <summary>
     /// Deletes the profile with the specified profile ID.
     /// </summary>
     /// <param name="profileId">The ID of the profile to be deleted.</param>

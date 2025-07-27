@@ -25,8 +25,8 @@
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}" />
-        <Setter Property="FontFamily" Value="OpenSansRegular"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="BorderWidth" Value="0"/>
         <Setter Property="CornerRadius" Value="8"/>
         <Setter Property="Padding" Value="14,10"/>
@@ -161,7 +161,7 @@
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -708,5 +708,52 @@
         <Setter Property="FontFamily" Value="OpenSansSemibold"/>
         <Setter Property="TextColor" Value="{StaticResource SpecialPrimaryText}"/>
         <Setter Property="FontSize" Value="18"/>
+    </Style>
+
+    <!-- Auth Page -->
+    <Style TargetType="Border" x:Key="MissedAuthCodeDigit">
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightContent}, Dark={StaticResource DarkContent}}" />
+        <Setter Property="MaximumHeightRequest" Value="48" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 8" />
+        <Setter Property="Height" Value="48" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="ActiveAuthCodeDigit">
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 8" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="MaximumHeightRequest" Value="48" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="AuthCodeDigitInput">
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightContent}, Dark={StaticResource DarkContent}}" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 8" />
+        <Setter Property="Height" Value="48" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="AuthCodeDigitInputText">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource DarkPrimaryText}}"/>
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="AuthCodeDigitText">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="TextColor" Value="{StaticResource SpecialPrimaryText}"/>
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="AuthTitle">
+        <Setter Property="FontSize" Value="32" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
     </Style>
 </ResourceDictionary>

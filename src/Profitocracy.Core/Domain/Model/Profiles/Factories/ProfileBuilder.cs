@@ -6,10 +6,11 @@ namespace Profitocracy.Core.Domain.Model.Profiles.Factories;
 
 public class ProfileBuilder(Guid? profileId = null)
 {
-    private Guid _id = profileId ?? Guid.NewGuid();
+    private readonly Guid _id = profileId ?? Guid.NewGuid();
     private decimal _balance;
     private string _name = "Default";
     private bool _isCurrent = true;
+    private TimePeriod? _billingPeriod;
 
     private readonly List<ProfileCategory> _categories = [];
 
@@ -35,6 +36,17 @@ public class ProfileBuilder(Guid? profileId = null)
             Timestamp = date,
             InitialBalance = balance
         };
+        return this;
+    }
+
+    public ProfileBuilder AddBillingPeriod(DateTime dateFrom, DateTime dateTo)
+    {
+        _billingPeriod = new TimePeriod
+        {
+            DateFrom = dateFrom,
+            DateTo = dateTo,
+        };
+
         return this;
     }
 
@@ -81,6 +93,7 @@ public class ProfileBuilder(Guid? profileId = null)
             _id,
             _name,
             (AnchorDate)_startDate!,
+            _billingPeriod!,
             _categories,
             (ProfileSettings)_settings!,
             _isCurrent);
