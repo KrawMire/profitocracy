@@ -831,4 +831,7 @@
   <data name="Auth_Welcome" xml:space="preserve">
       <value>Bienvenido a la Profitocracy</value>
   </data>
+  <data name="Settings_RateTheApp" xml:space="preserve">
+      <value>Califica la aplicación</value>
+  </data>
 </root>

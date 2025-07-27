@@ -1,5 +1,6 @@
 ﻿using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
+using Plugin.Maui.AppRating;
 using Plugin.LocalNotification;
 using Plugin.Maui.Biometric;
 using Profitocracy.Core;
@@ -53,7 +54,8 @@ public static class MauiProgram
         builder.Services
             .RegisterInfrastructureServices(infrastructureConfig)
             .RegisterCoreServices()
-            .AddSingleton(_ => BiometricAuthenticationService.Default);
+            .AddSingleton(BiometricAuthenticationService.Default)
+            .AddSingleton(AppRating.Default!);
 
         return builder.Build();
     }

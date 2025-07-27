@@ -15,8 +15,8 @@
         <ApplicationTitle>Profitocracy</ApplicationTitle>
         <ApplicationId>com.krawmire.profitocracy</ApplicationId>
 
-        <ApplicationVersion>38</ApplicationVersion>
-        <ApplicationDisplayVersion>1.12.1</ApplicationDisplayVersion>
+        <ApplicationVersion>40</ApplicationVersion>
+        <ApplicationDisplayVersion>1.12.3</ApplicationDisplayVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
@@ -33,6 +33,7 @@
         <PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-rc5.4" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.40" />
+        <PackageReference Include="Plugin.Maui.AppRating" Version="1.2.1" />
         <PackageReference Include="Plugin.LocalNotification" Version="12.0.2" />
         <PackageReference Include="Plugin.Maui.Biometric" Version="0.0.7" />
 

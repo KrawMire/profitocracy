@@ -48,6 +48,9 @@
             <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_GitHub}"
                                        Clicked="GitHubButton_OnClicked"
                                        Margin="0,8,0,0"/>
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_RateTheApp}"
+                                       Clicked="RateAppButton_OnClicked"
+                                       Margin="0,8,0,0"/>
 
             <Border Style="{StaticResource SettingsButton}"
                     Margin="0,8,0,0" >
