@@ -42,6 +42,7 @@ public static class NotificationService
             Schedule =
             {
                 NotifyTime = scheduledTime,
+                RepeatType = NotificationRepeat.Daily,
             },
         };
 
