@@ -103,7 +103,10 @@ internal class CalculationService : ICalculationService
         var updatedProfile = await _profileRepository.Update(profile);
 
         // Supposed to be executed a maximum of 2 times
-        return await PopulateAndProcessProfile(updatedProfile, startDate, endDate);
+        return await PopulateAndProcessProfile(
+            updatedProfile,
+            updatedProfile.BillingPeriod.DateFrom,
+            updatedProfile.BillingPeriod.DateTo);
     }
 
     /// <inheritdoc />
