@@ -156,7 +156,7 @@ public class AuthPageViewModel : BaseNotifyObject
 
         if (!settings.Authentication.IsBiometricAuthEnabled)
         {
-            return 0;
+            return -2;
         }
 
         var authRequest = new AuthenticationRequest
@@ -173,7 +173,7 @@ public class AuthPageViewModel : BaseNotifyObject
 
         return response.Status switch
         {
-            BiometricResponseStatus.Failure => 0,
+            BiometricResponseStatus.Failure => -2,
             BiometricResponseStatus.Success => 1,
             _ => 0,
         };

@@ -773,7 +773,7 @@
       <value>Authentication</value>
   </data>
   <data name="Auth_InvalidPasswordAlert_Title" xml:space="preserve">
-      <value>Invalid Password</value>
+      <value>Authentication failed</value>
   </data>
   <data name="Auth_InvalidPasswordAlert_Ok" xml:space="preserve">
       <value>Try again</value>
@@ -822,5 +822,14 @@
   </data>
   <data name="Auth_Biometric_Subtitle" xml:space="preserve">
       <value>Using biometric for authentication</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Description" xml:space="preserve">
+      <value>Biometric authentication failed</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Title" xml:space="preserve">
+      <value>Authentication failed</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Ok" xml:space="preserve">
+      <value>OK</value>
   </data>
 </root>

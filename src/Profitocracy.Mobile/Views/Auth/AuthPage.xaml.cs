@@ -52,6 +52,12 @@ public partial class AuthPage : BaseContentPage
 
             switch (result)
             {
+                case -2:
+                    await DisplayAlert(
+                        AppResources.Auth_InvalidBiometricAlert_Title,
+                        AppResources.Auth_InvalidBiometricAlert_Description,
+                        AppResources.Auth_InvalidBiometricAlert_Ok);
+                    break;
                 case -1:
                     return;
                 case 0:
