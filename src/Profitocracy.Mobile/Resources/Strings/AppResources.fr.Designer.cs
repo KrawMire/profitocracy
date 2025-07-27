@@ -1472,5 +1472,11 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("Auth_Welcome", resourceCulture);
             }
         }
+        
+        internal static string Settings_RateTheApp {
+            get {
+                return ResourceManager.GetString("Settings_RateTheApp", resourceCulture);
+            }
+        }
     }
 }
