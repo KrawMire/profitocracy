@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+                              xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
+                              x:Class="Profitocracy.Mobile.Views.Auth.AuthPage"
+                              Title="Authentication"
+                              Padding="16"
+                              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+    <Grid RowDefinitions="*,*,auto">
+        <Label Grid.Row="0"
+               Text="{x:Static resx:AppResources.Auth_Welcome}"
+               Style="{StaticResource AuthTitle}"/>
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,4,*,4,*,4,*">
+            <Border Style="{StaticResource MissedAuthCodeDigit}"
+                    x:Name="BorderCode1"
+                    Grid.Column="0">
+                <Label x:Name="LabelCode1"
+                       FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
+                       Style="{StaticResource AuthCodeDigitText}"/>
+            </Border>
+            <Border Style="{StaticResource MissedAuthCodeDigit}"
+                    x:Name="BorderCode2"
+                    Grid.Column="2">
+                <Label x:Name="LabelCode2"
+                       FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
+                       Style="{StaticResource AuthCodeDigitText}"/>
+            </Border>
+            <Border Style="{StaticResource MissedAuthCodeDigit}"
+                    x:Name="BorderCode3"
+                    Grid.Column="4">
+                <Label x:Name="LabelCode3"
+                       FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
+                       Style="{StaticResource AuthCodeDigitText}"/>
+            </Border>
+            <Border Style="{StaticResource MissedAuthCodeDigit}"
+                    x:Name="BorderCode4"
+                    Grid.Column="6">
+                <Label x:Name="LabelCode4"
+                       FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
+                       Style="{StaticResource AuthCodeDigitText}"/>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*,8,*,8,*"
+              RowDefinitions="*,8,*,8,*,8,*" >
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Number1"
+                    Grid.Column="0"
+                    Grid.Row="0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="1"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Number2"
+                    Grid.Column="2"
+                    Grid.Row="0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="2"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Number3"
+                    Grid.Column="4"
+                    Grid.Row="0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="3"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Number4"
+                    Grid.Column="0"
+                    Grid.Row="2">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="4"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Number5"
+                    Grid.Column="2"
+                    Grid.Row="2">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="5"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Number6"
+                    Grid.Column="4"
+                    Grid.Row="2">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="6"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Number7"
+                    Grid.Column="0"
+                    Grid.Row="4">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="7"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Number8"
+                    Grid.Column="2"
+                    Grid.Row="4">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="8"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Number9"
+                    Grid.Column="4"
+                    Grid.Row="4">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="9"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="BiometricAuth"
+                    Grid.Column="0"
+                    Grid.Row="6">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="&#xf29e;"
+                       FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Number0"
+                    Grid.Column="2"
+                    Grid.Row="6">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="0"
+                       Style="{StaticResource AuthCodeDigitInputText}"/>
+            </Border>
+            <Border Style="{StaticResource AuthCodeDigitInput}"
+                    AutomationId="Delete"
+                    Grid.Column="4"
+                    Grid.Row="6">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AuthCodeInputButton_Clicked"/>
+                </Border.GestureRecognizers>
+                <Label Text="&#xf3bf;"
+                       FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
+                       FontSize="24"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"/>
+            </Border>
+        </Grid>
+    </Grid>
+</abstractions:BaseContentPage>

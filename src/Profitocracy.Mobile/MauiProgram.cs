@@ -1,13 +1,16 @@
 ﻿using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
+using Plugin.Maui.Biometric;
 using Profitocracy.Core;
 using Profitocracy.Infrastructure;
+using Profitocracy.Mobile.ViewModels.Auth;
 using Profitocracy.Mobile.ViewModels.Categories;
 using Profitocracy.Mobile.ViewModels.Home;
 using Profitocracy.Mobile.ViewModels.Overview;
 using Profitocracy.Mobile.ViewModels.Profiles;
 using Profitocracy.Mobile.ViewModels.Settings;
 using Profitocracy.Mobile.ViewModels.Transactions;
+using Profitocracy.Mobile.Views.Auth;
 using Profitocracy.Mobile.Views.Home.Pages;
 using Profitocracy.Mobile.Views.Overview.Pages;
 using Profitocracy.Mobile.Views.Settings.Pages;
@@ -49,7 +52,7 @@ public static class MauiProgram
         builder.Services
             .RegisterInfrastructureServices(infrastructureConfig)
             .RegisterCoreServices()
-            .AddSingleton<TransactionsPage>();
+            .AddSingleton(_ => BiometricAuthenticationService.Default);
 
         return builder.Build();
     }
@@ -66,6 +69,7 @@ public static class MauiProgram
     private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
     {
         _ = mauiAppBuilder.Services
+            .AddTransient<AuthPageViewModel>()
             .AddTransient<HomePageViewModel>()
             .AddTransient<NewPeriodSelectionPageViewModel>()
             .AddTransient<EditTransactionPageViewModel>()
@@ -79,7 +83,8 @@ public static class MauiProgram
             .AddTransient<ProfileSettingsPageViewModel>()
             .AddTransient<TransactionsFiltersPageViewModel>()
             .AddTransient<EditProfilePageViewModel>()
-            .AddTransient<ThemeSettingsPageViewModel>();
+            .AddTransient<ThemeSettingsPageViewModel>()
+            .AddTransient<AuthSettingsPageViewModel>();
 
         return mauiAppBuilder;
     }
@@ -87,6 +92,7 @@ public static class MauiProgram
     private static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
     {
         _ = mauiAppBuilder.Services
+            .AddTransient<AuthPage>()
             .AddTransient<HomePage>()
             .AddTransient<NewPeriodSelectionPage>()
             .AddTransient<TransactionsPage>()
@@ -98,7 +104,8 @@ public static class MauiProgram
             .AddTransient<ProfilesSettingsPage>()
             .AddTransient<EditProfilePage>()
             .AddTransient<ThemeSettingsPage>()
-            .AddTransient<LanguageSettingsPage>();
+            .AddTransient<LanguageSettingsPage>()
+            .AddTransient<AuthSettingsPage>();
 
         return mauiAppBuilder;
     }

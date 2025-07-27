@@ -3,8 +3,10 @@ using Profitocracy.Core.Domain.Model.Categories;
 using Profitocracy.Core.Domain.Model.Profiles;
 using Profitocracy.Core.Domain.Model.Settings;
 using Profitocracy.Core.Domain.Model.Transactions;
+using Profitocracy.Core.Integrations;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Infrastructure.Abstractions.Internal;
+using Profitocracy.Infrastructure.Integrations;
 using Profitocracy.Infrastructure.Persistence.Sqlite.Configuration;
 using Profitocracy.Infrastructure.Persistence.Sqlite.Mappers;
 using Profitocracy.Infrastructure.Persistence.Sqlite.Models.Category;
@@ -20,9 +22,16 @@ public static class InfrastructureRegistry
     public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services, InfrastructureConfiguration configuration)
     {
         return services
+            .RegisterIntegrationsServices()
             .RegisterPersistence(configuration)
             .RegisterMappers()
             .RegisterRepositories();
+    }
+
+    private static IServiceCollection RegisterIntegrationsServices(this IServiceCollection services)
+    {
+        return services
+            .AddTransient<ISecurityProvider, SecurityProvider>();
     }
 
     private static IServiceCollection RegisterPersistence(this IServiceCollection services, InfrastructureConfiguration configuration)

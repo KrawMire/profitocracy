@@ -766,4 +766,70 @@
   <data name="StartNewPeriod_DateTo" xml:space="preserve">
     <value>Date to</value>
   </data>
+  <data name="Auth_Welcome" xml:space="preserve">
+      <value>Welcome to the Profitocracy</value>
+  </data>
+  <data name="Settings_Authentication" xml:space="preserve">
+      <value>Authentication</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Title" xml:space="preserve">
+      <value>Authentication failed</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Ok" xml:space="preserve">
+      <value>Try again</value>
+  </data>
+  <data name="Auth_InvalidPasswordAlert_Description" xml:space="preserve">
+      <value>The password is invalid</value>
+  </data>
+  <data name="Pages_Authentication" xml:space="preserve">
+      <value>Authentication</value>
+  </data>
+  <data name="AuthSettings_Enabled" xml:space="preserve">
+      <value>Enabled</value>
+  </data>
+  <data name="AuthSettings_UseBiometrics" xml:space="preserve">
+      <value>Biometrics (FaceID, Fingerprint)</value>
+  </data>
+  <data name="AuthSettings_PassCode" xml:space="preserve">
+      <value>Pass code</value>
+  </data>
+  <data name="AuthSettings_Save" xml:space="preserve">
+      <value>Save settings</value>
+  </data>
+  <data name="AuthSettings_Error_PassCodeFormat" xml:space="preserve">
+      <value>Pass code should contain only 4 digits</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Title" xml:space="preserve">
+      <value>Success</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Description" xml:space="preserve">
+      <value>Authentication settings has been saved successfully.</value>
+  </data>
+  <data name="AuthSettings_SavedAlert_Ok" xml:space="preserve">
+      <value>OK</value>
+  </data>
+  <data name="AuthSettings_BiometricNotSupported" xml:space="preserve">
+      <value>Biometric is not supported on your device</value>
+  </data>
+  <data name="Auth_Biometric_Title" xml:space="preserve">
+      <value>Authentication</value>
+  </data>
+  <data name="Auth_Biometric_Description" xml:space="preserve">
+      <value>Let's use biometric to authenticate you</value>
+  </data>
+  <data name="Auth_Biometric_NegativeText" xml:space="preserve">
+      <value>Authentication failed</value>
+  </data>
+  <data name="Auth_Biometric_Subtitle" xml:space="preserve">
+      <value>Using biometric for authentication</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Description" xml:space="preserve">
+      <value>Biometric authentication failed</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Title" xml:space="preserve">
+      <value>Authentication failed</value>
+  </data>
+  <data name="Auth_InvalidBiometricAlert_Ok" xml:space="preserve">
+      <value>OK</value>
+  </data>
 </root>

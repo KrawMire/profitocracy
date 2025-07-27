@@ -1,4 +1,6 @@
-﻿namespace Profitocracy.Mobile;
+﻿using Profitocracy.Mobile.Views.Auth;
+
+namespace Profitocracy.Mobile;
 
 public partial class App : Application
 {
@@ -16,7 +18,26 @@ public partial class App : Application
     protected override Window CreateWindow(IActivationState? activationState)
     {
         var newWindow = new Window(_appInit);
-        _appInit.Initialized += (_, _) => newWindow.Page = _serviceProvider.GetRequiredService<AppShell>();
+
+        _appInit.Initialized += (_, args) =>
+        {
+            if (args.RequireAuthentication)
+            {
+                var authPage = _serviceProvider.GetRequiredService<AuthPage>();
+
+                authPage.AuthPassed += (_, _) =>
+                {
+                    var page = _serviceProvider.GetRequiredService<AppShell>();
+                    newWindow.Page = page;
+                };
+
+                newWindow.Page = authPage;
+                return;
+            }
+
+            var page = _serviceProvider.GetRequiredService<AppShell>();
+            newWindow.Page = page;
+        };
 
         return newWindow;
     }

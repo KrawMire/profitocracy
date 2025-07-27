@@ -15,32 +15,35 @@
             <Label Text="{x:Static resx:AppResources.Settings_Application}"
                    Style="{StaticResource SettingsGroupTitle}"
                    Margin="0,0,0,0"/>
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Profiles}" 
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Profiles}"
                                        Clicked="ProfilesButton_OnClicked"
                                        Margin="0,8,0,0"/>
-            
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Categories}" 
+
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Categories}"
                                        Clicked="CategoriesButton_OnClicked"
                                        Margin="0,8,0,0"/>
-            
+
             <Label Text="{x:Static resx:AppResources.Settings_General}"
                    Style="{StaticResource SettingsGroupTitle}"
                    Margin="0,16,0,0"/>
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Theme}" 
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Authentication}"
+                                       Clicked="AuthenticationButton_OnClicked"
+                                       Margin="0,8,0,0"/>
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Theme}"
                                        Clicked="ThemeButton_OnClicked"
                                        Margin="0,8,0,0"/>
-            
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Language}" 
+
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Language}"
                                        Clicked="LanguageButton_OnClicked"
                                        Margin="0,8,0,0"/>
-            
+
             <Label Text="{x:Static resx:AppResources.Settings_AboutApplication}"
                    Style="{StaticResource SettingsGroupTitle}"
                    Margin="0,16,0,0"/>
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_GitHub}" 
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_GitHub}"
                                        Clicked="GitHubButton_OnClicked"
                                        Margin="0,8,0,0"/>
-            
+
             <Border Style="{StaticResource SettingsButton}"
                     Margin="0,8,0,0" >
                 <FlexLayout JustifyContent="SpaceBetween">
