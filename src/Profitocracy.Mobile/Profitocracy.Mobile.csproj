@@ -35,6 +35,7 @@
         <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.90" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.90" />
         <PackageReference Include="Plugin.Maui.AppRating" Version="1.2.1" />
+        <PackageReference Include="Plugin.LocalNotification" Version="12.0.2" />
         <PackageReference Include="Plugin.Maui.Biometric" Version="0.0.7" />
 
         <!-- Development dependencies -->
@@ -63,10 +64,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Update="Resources\Strings\AppResources.resx">
-          <Generator>ResXFileCodeGenerator</Generator>
-          <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
         <EmbeddedResource Update="Resources\Strings\AppResources.de.resx">
           <Generator>ResXFileCodeGenerator</Generator>
           <LastGenOutput>AppResources.de.Designer.cs</LastGenOutput>
@@ -91,14 +88,13 @@
           <Generator>ResXFileCodeGenerator</Generator>
           <LastGenOutput>AppResources.sr-Latn.Designer.cs</LastGenOutput>
         </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Strings\AppResources.resx">
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Update="Resources\Strings\AppResources.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>AppResources.resx</DependentUpon>
-        </Compile>
         <Compile Update="Resources\Strings\AppResources.de.Designer.cs">
           <DesignTime>True</DesignTime>
           <AutoGen>True</AutoGen>
@@ -128,6 +124,11 @@
           <DesignTime>True</DesignTime>
           <AutoGen>True</AutoGen>
           <DependentUpon>AppResources.sr-Latn.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Strings\AppResources.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>AppResources.resx</DependentUpon>
         </Compile>
     </ItemGroup>
 
