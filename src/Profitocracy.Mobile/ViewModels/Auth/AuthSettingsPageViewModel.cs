@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using Plugin.Maui.Biometric;
 using Profitocracy.Core.Integrations;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
@@ -16,13 +17,16 @@ public class AuthSettingsPageViewModel : BaseNotifyObject
 
     private readonly ISettingsRepository _settingsRepository;
     private readonly ISecurityProvider _securityProvider;
+    private readonly IBiometric _biometricService;
 
     public AuthSettingsPageViewModel(
         ISettingsRepository settingsRepository,
-        ISecurityProvider securityProvider)
+        ISecurityProvider securityProvider,
+        IBiometric biometricService)
     {
         _settingsRepository = settingsRepository;
         _securityProvider = securityProvider;
+        _biometricService = biometricService;
     }
 
     public bool IsEnabled
@@ -84,6 +88,23 @@ public class AuthSettingsPageViewModel : BaseNotifyObject
             settings.Authentication.IsAuthenticationEnabled = IsEnabled;
             settings.Authentication.IsBiometricAuthEnabled = false;
             settings.Authentication.PasswordHash = null;
+        }
+
+        if (settings.Authentication.IsBiometricAuthEnabled)
+        {
+            if (!_biometricService.IsPlatformSupported)
+            {
+                IsBiometricEnabled = false;
+                throw new NotSupportedException(AppResources.AuthSettings_BiometricNotSupported);
+            }
+
+            var bioStatus = await _biometricService.GetAuthenticationStatusAsync();
+
+            if (bioStatus != BiometricHwStatus.Success)
+            {
+                IsBiometricEnabled = false;
+                throw new NotSupportedException(AppResources.AuthSettings_BiometricNotSupported);
+            }
         }
 
         await _settingsRepository.CreateOrUpdate(settings);

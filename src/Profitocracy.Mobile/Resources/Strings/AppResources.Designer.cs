@@ -1424,5 +1424,35 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("AuthSettings_SavedAlert_Ok", resourceCulture);
             }
         }
+        
+        internal static string AuthSettings_BiometricNotSupported {
+            get {
+                return ResourceManager.GetString("AuthSettings_BiometricNotSupported", resourceCulture);
+            }
+        }
+        
+        internal static string Auth_Biometric_Title {
+            get {
+                return ResourceManager.GetString("Auth_Biometric_Title", resourceCulture);
+            }
+        }
+        
+        internal static string Auth_Biometric_Description {
+            get {
+                return ResourceManager.GetString("Auth_Biometric_Description", resourceCulture);
+            }
+        }
+        
+        internal static string Auth_Biometric_NegativeText {
+            get {
+                return ResourceManager.GetString("Auth_Biometric_NegativeText", resourceCulture);
+            }
+        }
+        
+        internal static string Auth_Biometric_Subtitle {
+            get {
+                return ResourceManager.GetString("Auth_Biometric_Subtitle", resourceCulture);
+            }
+        }
     }
 }

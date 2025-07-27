@@ -1,6 +1,8 @@
+using Plugin.Maui.Biometric;
 using Profitocracy.Core.Integrations;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
+using Profitocracy.Mobile.Resources.Strings;
 
 namespace Profitocracy.Mobile.ViewModels.Auth;
 
@@ -8,6 +10,7 @@ public class AuthPageViewModel : BaseNotifyObject
 {
     private readonly ISecurityProvider _securityProvider;
     private readonly ISettingsRepository _settingsRepository;
+    private readonly IBiometric _biometricService;
 
     private int _currentIndex;
     private static readonly Dictionary<string, int> ButtonNumbers = new()
@@ -28,10 +31,12 @@ public class AuthPageViewModel : BaseNotifyObject
 
     public AuthPageViewModel(
         ISecurityProvider securityProvider,
-        ISettingsRepository settingsRepository)
+        ISettingsRepository settingsRepository,
+        IBiometric biometricService)
     {
         _securityProvider = securityProvider;
         _settingsRepository = settingsRepository;
+        _biometricService = biometricService;
 
         PassCode = [-1, -1, -1, -1];
     }
@@ -53,14 +58,14 @@ public class AuthPageViewModel : BaseNotifyObject
                 RemoveDigit();
                 return -1;
             case -2:
-                return -1;
+                return await ValidateBiometricAsync();
         }
 
         AddDigit(digit);
 
         if (_currentIndex == 4)
         {
-            return await ValidatePassCode();
+            return await ValidatePassCodeAsync();
         }
 
         return -1;
@@ -96,7 +101,7 @@ public class AuthPageViewModel : BaseNotifyObject
         }
     }
 
-    private async Task<int> ValidatePassCode()
+    private async Task<int> ValidatePassCodeAsync()
     {
         Exception? exception = null;
 
@@ -138,5 +143,39 @@ public class AuthPageViewModel : BaseNotifyObject
         }
 
         return 0;
+    }
+
+    private async Task<int> ValidateBiometricAsync()
+    {
+        var settings = await _settingsRepository.GetCurrentSettings();
+
+        if (settings is null)
+        {
+            return 1;
+        }
+
+        if (!settings.Authentication.IsBiometricAuthEnabled)
+        {
+            return 0;
+        }
+
+        var authRequest = new AuthenticationRequest
+        {
+            AllowPasswordAuth = false,
+            AuthStrength = AuthenticatorStrength.Strong,
+            Title = AppResources.Auth_Biometric_Title,
+            Description = AppResources.Auth_Biometric_Description,
+            NegativeText = AppResources.Auth_Biometric_NegativeText,
+            Subtitle = AppResources.Auth_Biometric_Subtitle,
+        };
+
+        var response = await _biometricService.AuthenticateAsync(authRequest, CancellationToken.None);
+
+        return response.Status switch
+        {
+            BiometricResponseStatus.Failure => 0,
+            BiometricResponseStatus.Success => 1,
+            _ => 0,
+        };
     }
 }

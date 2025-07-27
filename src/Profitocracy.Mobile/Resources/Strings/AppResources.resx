@@ -808,4 +808,19 @@
   <data name="AuthSettings_SavedAlert_Ok" xml:space="preserve">
       <value>OK</value>
   </data>
+  <data name="AuthSettings_BiometricNotSupported" xml:space="preserve">
+      <value>Biometric is not supported on your device</value>
+  </data>
+  <data name="Auth_Biometric_Title" xml:space="preserve">
+      <value>Authentication</value>
+  </data>
+  <data name="Auth_Biometric_Description" xml:space="preserve">
+      <value>Let's use biometric to authenticate you</value>
+  </data>
+  <data name="Auth_Biometric_NegativeText" xml:space="preserve">
+      <value>Authentication failed</value>
+  </data>
+  <data name="Auth_Biometric_Subtitle" xml:space="preserve">
+      <value>Using biometric for authentication</value>
+  </data>
 </root>
