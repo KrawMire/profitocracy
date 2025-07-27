@@ -1,7 +1,7 @@
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Mobile.Resources.Strings;
 
-namespace Profitocracy.Mobile.Services;
+namespace Profitocracy.Mobile.Services.Static;
 
 public static class CurrencyService
 {
