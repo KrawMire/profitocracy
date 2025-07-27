@@ -832,4 +832,26 @@
   <data name="Auth_InvalidBiometricAlert_Ok" xml:space="preserve">
       <value>OK</value>
   </data>
+  <data name="Settings_Notifications" xml:space="preserve">
+      <value>Notifications</value>
+  </data>
+  <data name="NotificationsSettings_Enabled" xml:space="preserve">
+      <value>Enabled</value>
+  </data>
+  <data name="NotificationsSettings_AddTransactionReminderEnabled" xml:space="preserve">
+      <value>Transaction reminder</value>
+  </data>
+  <data name="NotificationsSettings_AddTransactionReminderTime" xml:space="preserve">
+      <value>Reminder time</value>
+  </data>
+  <data name="NotificationsSettings_Save" xml:space="preserve">
+      <value>Save</value>
+  </data>
+  <data name="Notifications_AddTransactionReminder_Title" xml:space="preserve">
+      <value>Don't Forget to Log Today's Expenses!
+</value>
+  </data>
+  <data name="Notifications_AddTransactionReminder_Description" xml:space="preserve">
+      <value>Keep your budget on track - add your transactions for today before the day ends!</value>
+  </data>
 </root>

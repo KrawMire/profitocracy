@@ -1,10 +1,9 @@
 ﻿using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
+using Plugin.LocalNotification;
 using Plugin.Maui.Biometric;
 using Profitocracy.Core;
 using Profitocracy.Infrastructure;
-using Profitocracy.Mobile.Services;
-using Profitocracy.Mobile.Services.PlatformDependent;
 using Profitocracy.Mobile.ViewModels.Auth;
 using Profitocracy.Mobile.ViewModels.Categories;
 using Profitocracy.Mobile.ViewModels.Home;
@@ -40,8 +39,7 @@ public static class MauiProgram
             .RegisterAppServices()
             .RegisterViewModels()
             .RegisterViews()
-            .RegisterPlatformDependentServices();
-
+            .UseLocalNotification();
 
 #if DEBUG
         builder.Logging.AddDebug();
@@ -69,17 +67,6 @@ public static class MauiProgram
         return mauiAppBuilder;
     }
 
-    private static MauiAppBuilder RegisterPlatformDependentServices(this MauiAppBuilder mauiAppBuilder)
-    {
-        _ = mauiAppBuilder.Services
-#if ANDROID
-            .AddTransient<INotificationService, AndroidNotificationService>();
-#elif IOS
-            .AddTransient<INotificationService, IosNotificationService>();
-#endif
-        return mauiAppBuilder;
-    }
-
     private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
     {
         _ = mauiAppBuilder.Services
@@ -98,6 +85,7 @@ public static class MauiProgram
             .AddTransient<TransactionsFiltersPageViewModel>()
             .AddTransient<EditProfilePageViewModel>()
             .AddTransient<ThemeSettingsPageViewModel>()
+            .AddTransient<NotificationsSettingsPageViewModel>()
             .AddTransient<AuthSettingsPageViewModel>();
 
         return mauiAppBuilder;
@@ -117,6 +105,7 @@ public static class MauiProgram
             .AddTransient<OverviewPage>()
             .AddTransient<ProfilesSettingsPage>()
             .AddTransient<EditProfilePage>()
+            .AddTransient<NotificationsSettingsPage>()
             .AddTransient<ThemeSettingsPage>()
             .AddTransient<LanguageSettingsPage>()
             .AddTransient<AuthSettingsPage>();

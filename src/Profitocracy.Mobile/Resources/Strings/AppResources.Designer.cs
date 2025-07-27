@@ -1472,5 +1472,47 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("Auth_InvalidBiometricAlert_Ok", resourceCulture);
             }
         }
+        
+        internal static string Settings_Notifications {
+            get {
+                return ResourceManager.GetString("Settings_Notifications", resourceCulture);
+            }
+        }
+        
+        internal static string NotificationsSettings_Enabled {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_Enabled", resourceCulture);
+            }
+        }
+        
+        internal static string NotificationsSettings_AddTransactionReminderEnabled {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_AddTransactionReminderEnabled", resourceCulture);
+            }
+        }
+        
+        internal static string NotificationsSettings_AddTransactionReminderTime {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_AddTransactionReminderTime", resourceCulture);
+            }
+        }
+        
+        internal static string NotificationsSettings_Save {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_Save", resourceCulture);
+            }
+        }
+        
+        internal static string Notifications_AddTransactionReminder_Title {
+            get {
+                return ResourceManager.GetString("Notifications_AddTransactionReminder_Title", resourceCulture);
+            }
+        }
+        
+        internal static string Notifications_AddTransactionReminder_Description {
+            get {
+                return ResourceManager.GetString("Notifications_AddTransactionReminder_Description", resourceCulture);
+            }
+        }
     }
 }
