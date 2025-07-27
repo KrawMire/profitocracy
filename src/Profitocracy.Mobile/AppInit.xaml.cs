@@ -5,6 +5,7 @@ using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Constants;
 using Profitocracy.Mobile.Services;
+using Profitocracy.Mobile.Services.Static;
 using Profitocracy.Mobile.Views.Settings.Pages;
 
 namespace Profitocracy.Mobile;
@@ -39,13 +40,20 @@ public partial class AppInit : BaseContentPage
 
     private async Task<InitEventArgs> InitializeApplication()
     {
+        await InitializePermissions();
         var settings = await InitializeSettings();
+
         var initArgs = new InitEventArgs
         {
             RequireAuthentication = settings.Authentication.IsAuthenticationEnabled,
         };
 
         return initArgs;
+    }
+
+    private async Task InitializePermissions()
+    {
+        var status = await Permissions.RequestAsync<NotificationPermission>();
     }
 
     private async Task<Settings> InitializeSettings()

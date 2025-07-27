@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 using Plugin.Maui.Biometric;
 using Profitocracy.Core;
 using Profitocracy.Infrastructure;
+using Profitocracy.Mobile.Services;
+using Profitocracy.Mobile.Services.PlatformDependent;
 using Profitocracy.Mobile.ViewModels.Auth;
 using Profitocracy.Mobile.ViewModels.Categories;
 using Profitocracy.Mobile.ViewModels.Home;
@@ -37,7 +39,8 @@ public static class MauiProgram
             })
             .RegisterAppServices()
             .RegisterViewModels()
-            .RegisterViews();
+            .RegisterViews()
+            .RegisterPlatformDependentServices();
 
 
 #if DEBUG
@@ -63,6 +66,17 @@ public static class MauiProgram
             .AddSingleton<AppShell>()
             .AddSingleton<AppInit>();
 
+        return mauiAppBuilder;
+    }
+
+    private static MauiAppBuilder RegisterPlatformDependentServices(this MauiAppBuilder mauiAppBuilder)
+    {
+        _ = mauiAppBuilder.Services
+#if ANDROID
+            .AddTransient<INotificationService, AndroidNotificationService>();
+#elif IOS
+            .AddTransient<INotificationService, IosNotificationService>();
+#endif
         return mauiAppBuilder;
     }
 
