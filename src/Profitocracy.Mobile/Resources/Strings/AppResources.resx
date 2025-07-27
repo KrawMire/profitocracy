@@ -832,4 +832,7 @@
   <data name="Auth_InvalidBiometricAlert_Ok" xml:space="preserve">
       <value>OK</value>
   </data>
+  <data name="Settings_RateTheApp" xml:space="preserve">
+      <value>Rate the app</value>
+  </data>
 </root>
