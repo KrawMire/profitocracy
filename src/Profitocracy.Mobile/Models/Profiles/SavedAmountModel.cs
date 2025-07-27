@@ -1,5 +1,5 @@
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
-using Profitocracy.Mobile.Services;
+using Profitocracy.Mobile.Services.Static;
 
 namespace Profitocracy.Mobile.Models.Profiles;
 

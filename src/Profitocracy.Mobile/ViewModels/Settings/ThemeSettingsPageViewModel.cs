@@ -2,7 +2,7 @@ using Profitocracy.Core.Domain.Model.Settings.ValueObjects;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
-using Profitocracy.Mobile.Services;
+using Profitocracy.Mobile.Services.Static;
 
 namespace Profitocracy.Mobile.ViewModels.Settings;
 

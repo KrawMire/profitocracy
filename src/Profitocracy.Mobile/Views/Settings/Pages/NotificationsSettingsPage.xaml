@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+             xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
+             xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Settings"
+             x:Class="Profitocracy.Mobile.Views.Settings.Pages.NotificationsSettingsPage"
+             x:DataType="viewmodel:NotificationsSettingsPageViewModel"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+             Title="{x:Static resx:AppResources.Pages_Authentication}"
+             Loaded="NotificationsSettingsPage_OnLoaded"
+             HideSoftInputOnTapped="True">
+    <Grid RowDefinitions="*,auto">
+        <ScrollView Padding="16,8,16,16"
+                    HorizontalScrollBarVisibility="Never"
+                    Grid.Row="0">
+            <StackLayout>
+                <FlexLayout JustifyContent="SpaceBetween">
+                    <Label Text="{x:Static resx:AppResources.NotificationsSettings_Enabled}"
+                           VerticalTextAlignment="Center"/>
+                    <Switch IsToggled="{Binding IsEnabled, Mode=TwoWay}"/>
+                </FlexLayout>
+
+                <StackLayout IsVisible="{Binding IsEnabled}"
+                             Margin="0,16,0,0">
+                    <FlexLayout JustifyContent="SpaceBetween">
+                        <Label Text="{x:Static resx:AppResources.NotificationsSettings_AddTransactionReminderEnabled}"
+                               VerticalTextAlignment="Center"/>
+                        <Switch IsToggled="{Binding IsAddTransactionReminderEnabled, Mode=TwoWay}"/>
+                    </FlexLayout>
+
+                    <StackLayout Margin="0,16,0,0"
+                                 IsVisible="{Binding IsAddTransactionReminderEnabled}">
+                        <Label Text="{x:Static resx:AppResources.NotificationsSettings_AddTransactionReminderTime}"/>
+                        <TimePicker Time="{Binding AddTransactionReminderTime, Mode=TwoWay}"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Margin="16"
+                     Grid.Row="1">
+            <Button Text="{x:Static resx:AppResources.NotificationsSettings_Save}"
+                    Clicked="SaveButton_OnClicked"/>
+        </StackLayout>
+    </Grid>
+</abstractions:BaseContentPage>

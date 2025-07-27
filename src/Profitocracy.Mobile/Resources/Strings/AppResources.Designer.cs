@@ -9,21 +9,21 @@
 
 namespace Profitocracy.Mobile.Resources.Strings {
     using System;
-    
-    
+
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class AppResources {
-        
+
         private static System.Resources.ResourceManager resourceMan;
-        
+
         private static System.Globalization.CultureInfo resourceCulture;
-        
+
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal AppResources() {
         }
-        
+
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static System.Resources.ResourceManager ResourceManager {
             get {
@@ -34,7 +34,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return resourceMan;
             }
         }
-        
+
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static System.Globalization.CultureInfo Culture {
             get {
@@ -44,1438 +44,1480 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 resourceCulture = value;
             }
         }
-        
+
         internal static string EditProfile_Profile {
             get {
                 return ResourceManager.GetString("EditProfile_Profile", resourceCulture);
             }
         }
-        
+
         internal static string Pages_Home {
             get {
                 return ResourceManager.GetString("Pages_Home", resourceCulture);
             }
         }
-        
+
         internal static string Home_Balance {
             get {
                 return ResourceManager.GetString("Home_Balance", resourceCulture);
             }
         }
-        
+
         internal static string Home_DailyAmounts {
             get {
                 return ResourceManager.GetString("Home_DailyAmounts", resourceCulture);
             }
         }
-        
+
         internal static string Home_TomorrowBalance {
             get {
                 return ResourceManager.GetString("Home_TomorrowBalance", resourceCulture);
             }
         }
-        
+
         internal static string Home_TodayBalance {
             get {
                 return ResourceManager.GetString("Home_TodayBalance", resourceCulture);
             }
         }
-        
+
         internal static string Home_SpendingTypes {
             get {
                 return ResourceManager.GetString("Home_SpendingTypes", resourceCulture);
             }
         }
-        
+
         internal static string Home_Main {
             get {
                 return ResourceManager.GetString("Home_Main", resourceCulture);
             }
         }
-        
+
         internal static string Home_Secondary {
             get {
                 return ResourceManager.GetString("Home_Secondary", resourceCulture);
             }
         }
-        
+
         internal static string Home_Saved {
             get {
                 return ResourceManager.GetString("Home_Saved", resourceCulture);
             }
         }
-        
+
         internal static string Settings_Categories {
             get {
                 return ResourceManager.GetString("Settings_Categories", resourceCulture);
             }
         }
-        
+
         internal static string Home_NoCategories {
             get {
                 return ResourceManager.GetString("Home_NoCategories", resourceCulture);
             }
         }
-        
+
         internal static string EditProfile_ProfileName {
             get {
                 return ResourceManager.GetString("EditProfile_ProfileName", resourceCulture);
             }
         }
-        
+
         internal static string EditProfile_InitialBalance {
             get {
                 return ResourceManager.GetString("EditProfile_InitialBalance", resourceCulture);
             }
         }
-        
+
         internal static string EditProfile_SaveProfile {
             get {
                 return ResourceManager.GetString("EditProfile_SaveProfile", resourceCulture);
             }
         }
-        
+
         internal static string Pages_Transactions {
             get {
                 return ResourceManager.GetString("Pages_Transactions", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_Income {
             get {
                 return ResourceManager.GetString("AddTransaction_Income", resourceCulture);
             }
         }
-        
+
         internal static string Pages_Settings {
             get {
                 return ResourceManager.GetString("Pages_Settings", resourceCulture);
             }
         }
-        
+
         internal static string Pages_NewTransaction {
             get {
                 return ResourceManager.GetString("Pages_NewTransaction", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_Expense {
             get {
                 return ResourceManager.GetString("AddTransaction_Expense", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_Category {
             get {
                 return ResourceManager.GetString("AddTransaction_Category", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_Amount {
             get {
                 return ResourceManager.GetString("AddTransaction_Amount", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_Description {
             get {
                 return ResourceManager.GetString("AddTransaction_Description", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_Date {
             get {
                 return ResourceManager.GetString("AddTransaction_Date", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_SaveTransaction {
             get {
                 return ResourceManager.GetString("AddTransaction_SaveTransaction", resourceCulture);
             }
         }
-        
+
         internal static string Settings_Application {
             get {
                 return ResourceManager.GetString("Settings_Application", resourceCulture);
             }
         }
-        
+
         internal static string Settings_General {
             get {
                 return ResourceManager.GetString("Settings_General", resourceCulture);
             }
         }
-        
+
         internal static string Settings_Profiles {
             get {
                 return ResourceManager.GetString("Settings_Profiles", resourceCulture);
             }
         }
-        
+
         internal static string Settings_Theme {
             get {
                 return ResourceManager.GetString("Settings_Theme", resourceCulture);
             }
         }
-        
+
         internal static string Settings_Language {
             get {
                 return ResourceManager.GetString("Settings_Language", resourceCulture);
             }
         }
-        
+
         internal static string Categories_NoLimits {
             get {
                 return ResourceManager.GetString("Categories_NoLimits", resourceCulture);
             }
         }
-        
+
         internal static string Pages_NewCategory {
             get {
                 return ResourceManager.GetString("Pages_NewCategory", resourceCulture);
             }
         }
-        
+
         internal static string AddCategory_CategoryName {
             get {
                 return ResourceManager.GetString("AddCategory_CategoryName", resourceCulture);
             }
         }
-        
+
         internal static string AddCategory_SpecifyPlannedAmount {
             get {
                 return ResourceManager.GetString("AddCategory_SpecifyPlannedAmount", resourceCulture);
             }
         }
-        
+
         internal static string AddCategory_PlannedAmount {
             get {
                 return ResourceManager.GetString("AddCategory_PlannedAmount", resourceCulture);
             }
         }
-        
+
         internal static string AddCategory_SaveCategory {
             get {
                 return ResourceManager.GetString("AddCategory_SaveCategory", resourceCulture);
             }
         }
-        
+
         internal static string ThemeSettings_LightTheme {
             get {
                 return ResourceManager.GetString("ThemeSettings_LightTheme", resourceCulture);
             }
         }
-        
+
         internal static string ThemeSettings_Dark {
             get {
                 return ResourceManager.GetString("ThemeSettings_Dark", resourceCulture);
             }
         }
-        
+
         internal static string ThemeSettings_System {
             get {
                 return ResourceManager.GetString("ThemeSettings_System", resourceCulture);
             }
         }
-        
+
         internal static string Languages_English {
             get {
                 return ResourceManager.GetString("Languages_English", resourceCulture);
             }
         }
-        
+
         internal static string Languages_Russian {
             get {
                 return ResourceManager.GetString("Languages_Russian", resourceCulture);
             }
         }
-        
+
         internal static string InfoAlert_ChangeLanguage_Title {
             get {
                 return ResourceManager.GetString("InfoAlert_ChangeLanguage_Title", resourceCulture);
             }
         }
-        
+
         internal static string InfoAlert_ChangeLanguage_Message {
             get {
                 return ResourceManager.GetString("InfoAlert_ChangeLanguage_Message", resourceCulture);
             }
         }
-        
+
         internal static string InfoAlert_ChangeLanguage_Ok {
             get {
                 return ResourceManager.GetString("InfoAlert_ChangeLanguage_Ok", resourceCulture);
             }
         }
-        
+
         internal static string ErrorAlert_Title {
             get {
                 return ResourceManager.GetString("ErrorAlert_Title", resourceCulture);
             }
         }
-        
+
         internal static string ErrorAlert_Ok {
             get {
                 return ResourceManager.GetString("ErrorAlert_Ok", resourceCulture);
             }
         }
-        
+
         internal static string ErrorAlert_Description {
             get {
                 return ResourceManager.GetString("ErrorAlert_Description", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_GetCategoryInfo {
             get {
                 return ResourceManager.GetString("CommonError_GetCategoryInfo", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_ShowFilteredTransactions {
             get {
                 return ResourceManager.GetString("CommonError_ShowFilteredTransactions", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_OpenAddCategoryPage {
             get {
                 return ResourceManager.GetString("CommonError_OpenAddCategoryPage", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_OpenEditTransactionPage {
             get {
                 return ResourceManager.GetString("CommonError_OpenEditTransactionPage", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_InternalErrorTryAgain {
             get {
                 return ResourceManager.GetString("CommonError_InternalErrorTryAgain", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_FindTransactionToDelete {
             get {
                 return ResourceManager.GetString("CommonError_FindTransactionToDelete", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_PlannedAmountNumber {
             get {
                 return ResourceManager.GetString("CommonError_PlannedAmountNumber", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_GetCurrentProfile {
             get {
                 return ResourceManager.GetString("CommonError_GetCurrentProfile", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_GetSettings {
             get {
                 return ResourceManager.GetString("CommonError_GetSettings", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_BalanceNumber {
             get {
                 return ResourceManager.GetString("CommonError_BalanceNumber", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_NoneCategory {
             get {
                 return ResourceManager.GetString("AddTransaction_NoneCategory", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_AmountNumber {
             get {
                 return ResourceManager.GetString("CommonError_AmountNumber", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_TransactionType {
             get {
                 return ResourceManager.GetString("CommonError_TransactionType", resourceCulture);
             }
         }
-        
+
         internal static string Pages_Language {
             get {
                 return ResourceManager.GetString("Pages_Language", resourceCulture);
             }
         }
-        
+
         internal static string Pages_Categories {
             get {
                 return ResourceManager.GetString("Pages_Categories", resourceCulture);
             }
         }
-        
+
         internal static string Pages_Theme {
             get {
                 return ResourceManager.GetString("Pages_Theme", resourceCulture);
             }
         }
-        
+
         internal static string Home_Categories {
             get {
                 return ResourceManager.GetString("Home_Categories", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_Main {
             get {
                 return ResourceManager.GetString("AddTransaction_Main", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_Secondary {
             get {
                 return ResourceManager.GetString("AddTransaction_Secondary", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_Saved {
             get {
                 return ResourceManager.GetString("AddTransaction_Saved", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_Main {
             get {
                 return ResourceManager.GetString("Transactions_Main", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_Secondary {
             get {
                 return ResourceManager.GetString("Transactions_Secondary", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_Saved {
             get {
                 return ResourceManager.GetString("Transactions_Saved", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_Income {
             get {
                 return ResourceManager.GetString("Transactions_Income", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_FindTransactionToEdit {
             get {
                 return ResourceManager.GetString("CommonError_FindTransactionToEdit", resourceCulture);
             }
         }
-        
+
         internal static string InfoAlert_FeatureNotAvailable_Message {
             get {
                 return ResourceManager.GetString("InfoAlert_FeatureNotAvailable_Message", resourceCulture);
             }
         }
-        
+
         internal static string InfoAlert_FeatureNotAvailable_Title {
             get {
                 return ResourceManager.GetString("InfoAlert_FeatureNotAvailable_Title", resourceCulture);
             }
         }
-        
+
         internal static string InfoAlert_FeatureNotAvailable_Ok {
             get {
                 return ResourceManager.GetString("InfoAlert_FeatureNotAvailable_Ok", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_FindCategoryToDelete {
             get {
                 return ResourceManager.GetString("CommonError_FindCategoryToDelete", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_FindCategoryToEdit {
             get {
                 return ResourceManager.GetString("CommonError_FindCategoryToEdit", resourceCulture);
             }
         }
-        
+
         internal static string Home_SavedAmounts {
             get {
                 return ResourceManager.GetString("Home_SavedAmounts", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_OriginalCurrencyAmountNumber {
             get {
                 return ResourceManager.GetString("CommonError_OriginalCurrencyAmountNumber", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_MultiCurrencyTransaction {
             get {
                 return ResourceManager.GetString("AddTransaction_MultiCurrencyTransaction", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_OriginalCurrencyAmount {
             get {
                 return ResourceManager.GetString("AddTransaction_OriginalCurrencyAmount", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_WithdrawSavedFunds {
             get {
                 return ResourceManager.GetString("AddTransaction_WithdrawSavedFunds", resourceCulture);
             }
         }
-        
+
         internal static string AddTransaction_WithdrawAmount {
             get {
                 return ResourceManager.GetString("AddTransaction_WithdrawAmount", resourceCulture);
             }
         }
-        
+
         internal static string Pages_Overview {
             get {
                 return ResourceManager.GetString("Pages_Overview", resourceCulture);
             }
         }
-        
+
         internal static string Overview_CategoriesExpenses {
             get {
                 return ResourceManager.GetString("Overview_CategoriesExpenses", resourceCulture);
             }
         }
-        
+
         internal static string Overview_SpendingTypes {
             get {
                 return ResourceManager.GetString("Overview_SpendingTypes", resourceCulture);
             }
         }
-        
+
         internal static string Overview_IncomeExpense {
             get {
                 return ResourceManager.GetString("Overview_IncomeExpense", resourceCulture);
             }
         }
-        
+
         internal static string Overview_CategoriesPlannedAndActual {
             get {
                 return ResourceManager.GetString("Overview_CategoriesPlannedAndActual", resourceCulture);
             }
         }
-        
+
         internal static string Overview_DailyExpenses {
             get {
                 return ResourceManager.GetString("Overview_DailyExpenses", resourceCulture);
             }
         }
-        
+
         internal static string Overview_WeeklyExpenses {
             get {
                 return ResourceManager.GetString("Overview_WeeklyExpenses", resourceCulture);
             }
         }
-        
+
         internal static string OverView_SpendingType_Main {
             get {
                 return ResourceManager.GetString("OverView_SpendingType_Main", resourceCulture);
             }
         }
-        
+
         internal static string Overview_SpendingType_Secondary {
             get {
                 return ResourceManager.GetString("Overview_SpendingType_Secondary", resourceCulture);
             }
         }
-        
+
         internal static string Overview_SpendingType_Saved {
             get {
                 return ResourceManager.GetString("Overview_SpendingType_Saved", resourceCulture);
             }
         }
-        
+
         internal static string Overview_Income {
             get {
                 return ResourceManager.GetString("Overview_Income", resourceCulture);
             }
         }
-        
+
         internal static string Overview_Expense {
             get {
                 return ResourceManager.GetString("Overview_Expense", resourceCulture);
             }
         }
-        
+
         internal static string Overview_ForMonth {
             get {
                 return ResourceManager.GetString("Overview_ForMonth", resourceCulture);
             }
         }
-        
+
         internal static string Overview_ForThreeMonths {
             get {
                 return ResourceManager.GetString("Overview_ForThreeMonths", resourceCulture);
             }
         }
-        
+
         internal static string Overview_ForSixMonths {
             get {
                 return ResourceManager.GetString("Overview_ForSixMonths", resourceCulture);
             }
         }
-        
+
         internal static string Pages_Profiles {
             get {
                 return ResourceManager.GetString("Pages_Profiles", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_GetProfileById {
             get {
                 return ResourceManager.GetString("CommonError_GetProfileById", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_ChangeAlert_Title {
             get {
                 return ResourceManager.GetString("ProfileSettings_ChangeAlert_Title", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_ChangeAlert_Desription {
             get {
                 return ResourceManager.GetString("ProfileSettings_ChangeAlert_Desription", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_ChangeAlert_Ok {
             get {
                 return ResourceManager.GetString("ProfileSettings_ChangeAlert_Ok", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_ChangeAlert_Cancel {
             get {
                 return ResourceManager.GetString("ProfileSettings_ChangeAlert_Cancel", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_USD {
             get {
                 return ResourceManager.GetString("Currencies_USD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_EUR {
             get {
                 return ResourceManager.GetString("Currencies_EUR", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_GBP {
             get {
                 return ResourceManager.GetString("Currencies_GBP", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_JPY {
             get {
                 return ResourceManager.GetString("Currencies_JPY", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_AUD {
             get {
                 return ResourceManager.GetString("Currencies_AUD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_CAD {
             get {
                 return ResourceManager.GetString("Currencies_CAD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_CHF {
             get {
                 return ResourceManager.GetString("Currencies_CHF", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_CNY {
             get {
                 return ResourceManager.GetString("Currencies_CNY", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_INR {
             get {
                 return ResourceManager.GetString("Currencies_INR", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_RUB {
             get {
                 return ResourceManager.GetString("Currencies_RUB", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_RSD {
             get {
                 return ResourceManager.GetString("Currencies_RSD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_SEK {
             get {
                 return ResourceManager.GetString("Currencies_SEK", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_NOK {
             get {
                 return ResourceManager.GetString("Currencies_NOK", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_DKK {
             get {
                 return ResourceManager.GetString("Currencies_DKK", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_HUF {
             get {
                 return ResourceManager.GetString("Currencies_HUF", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_PLN {
             get {
                 return ResourceManager.GetString("Currencies_PLN", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_BGN {
             get {
                 return ResourceManager.GetString("Currencies_BGN", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_CZK {
             get {
                 return ResourceManager.GetString("Currencies_CZK", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_RON {
             get {
                 return ResourceManager.GetString("Currencies_RON", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_MXN {
             get {
                 return ResourceManager.GetString("Currencies_MXN", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_BRL {
             get {
                 return ResourceManager.GetString("Currencies_BRL", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_CLP {
             get {
                 return ResourceManager.GetString("Currencies_CLP", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_ARS {
             get {
                 return ResourceManager.GetString("Currencies_ARS", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_COP {
             get {
                 return ResourceManager.GetString("Currencies_COP", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_PYG {
             get {
                 return ResourceManager.GetString("Currencies_PYG", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_VEF {
             get {
                 return ResourceManager.GetString("Currencies_VEF", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_KRW {
             get {
                 return ResourceManager.GetString("Currencies_KRW", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_THB {
             get {
                 return ResourceManager.GetString("Currencies_THB", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_PHP {
             get {
                 return ResourceManager.GetString("Currencies_PHP", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_TWD {
             get {
                 return ResourceManager.GetString("Currencies_TWD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_HKD {
             get {
                 return ResourceManager.GetString("Currencies_HKD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_IDR {
             get {
                 return ResourceManager.GetString("Currencies_IDR", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_VND {
             get {
                 return ResourceManager.GetString("Currencies_VND", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_MYR {
             get {
                 return ResourceManager.GetString("Currencies_MYR", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_SGD {
             get {
                 return ResourceManager.GetString("Currencies_SGD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_AED {
             get {
                 return ResourceManager.GetString("Currencies_AED", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_ILS {
             get {
                 return ResourceManager.GetString("Currencies_ILS", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_PKR {
             get {
                 return ResourceManager.GetString("Currencies_PKR", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_BDT {
             get {
                 return ResourceManager.GetString("Currencies_BDT", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_ZAR {
             get {
                 return ResourceManager.GetString("Currencies_ZAR", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_EGP {
             get {
                 return ResourceManager.GetString("Currencies_EGP", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_KES {
             get {
                 return ResourceManager.GetString("Currencies_KES", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_NGN {
             get {
                 return ResourceManager.GetString("Currencies_NGN", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_GHS {
             get {
                 return ResourceManager.GetString("Currencies_GHS", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_NZD {
             get {
                 return ResourceManager.GetString("Currencies_NZD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_FJD {
             get {
                 return ResourceManager.GetString("Currencies_FJD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_WST {
             get {
                 return ResourceManager.GetString("Currencies_WST", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_TRY {
             get {
                 return ResourceManager.GetString("Currencies_TRY", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_IQD {
             get {
                 return ResourceManager.GetString("Currencies_IQD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_OMR {
             get {
                 return ResourceManager.GetString("Currencies_OMR", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_SAR {
             get {
                 return ResourceManager.GetString("Currencies_SAR", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_KWD {
             get {
                 return ResourceManager.GetString("Currencies_KWD", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_BTC {
             get {
                 return ResourceManager.GetString("Currencies_BTC", resourceCulture);
             }
         }
-        
+
         internal static string Currencies_ETH {
             get {
                 return ResourceManager.GetString("Currencies_ETH", resourceCulture);
             }
         }
-        
+
         internal static string Settings_AboutApplication {
             get {
                 return ResourceManager.GetString("Settings_AboutApplication", resourceCulture);
             }
         }
-        
+
         internal static string Settings_Version {
             get {
                 return ResourceManager.GetString("Settings_Version", resourceCulture);
             }
         }
-        
+
         internal static string Settings_GitHub {
             get {
                 return ResourceManager.GetString("Settings_GitHub", resourceCulture);
             }
         }
-        
+
         internal static string CategoriesSettings_DeleteAlert_Title {
             get {
                 return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Title", resourceCulture);
             }
         }
-        
+
         internal static string CategoriesSettings_DeleteAlert_Ok {
             get {
                 return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Ok", resourceCulture);
             }
         }
-        
+
         internal static string CategoriesSettings_DeleteAlert_Cancel {
             get {
                 return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Cancel", resourceCulture);
             }
         }
-        
+
         internal static string CategoriesSettings_DeleteAlert_Description {
             get {
                 return ResourceManager.GetString("CategoriesSettings_DeleteAlert_Description", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_DeleteAlert_Cancel {
             get {
                 return ResourceManager.GetString("Transactions_DeleteAlert_Cancel", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_DeleteAlert_Ok {
             get {
                 return ResourceManager.GetString("Transactions_DeleteAlert_Ok", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_DeleteAlert_Title {
             get {
                 return ResourceManager.GetString("Transactions_DeleteAlert_Title", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_DeleteAlert_Description {
             get {
                 return ResourceManager.GetString("Transactions_DeleteAlert_Description", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_EditNotInPeriodAlert_Cancel {
             get {
                 return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Cancel", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_EditNotInPeriodAlert_Ok {
             get {
                 return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Ok", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_EditNotInPeriodAlert_Description {
             get {
                 return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Description", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_EditNotInPeriodAlert_Title {
             get {
                 return ResourceManager.GetString("Transactions_EditNotInPeriodAlert_Title", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_DeleteAlert_Cancel {
             get {
                 return ResourceManager.GetString("ProfileSettings_DeleteAlert_Cancel", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_DeleteAlert_Ok {
             get {
                 return ResourceManager.GetString("ProfileSettings_DeleteAlert_Ok", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_DeleteAlert_Description {
             get {
                 return ResourceManager.GetString("ProfileSettings_DeleteAlert_Description", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_DeleteAlert_Title {
             get {
                 return ResourceManager.GetString("ProfileSettings_DeleteAlert_Title", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_LastProfileErrorAlert_Title {
             get {
                 return ResourceManager.GetString("ProfileSettings_LastProfileErrorAlert_Title", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_LastProfileErrorAlert_Description {
             get {
                 return ResourceManager.GetString("ProfileSettings_LastProfileErrorAlert_Description", resourceCulture);
             }
         }
-        
+
         internal static string ProfileSettings_LastProfileErrorAlert_Ok {
             get {
                 return ResourceManager.GetString("ProfileSettings_LastProfileErrorAlert_Ok", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_Filters {
             get {
                 return ResourceManager.GetString("Transactions_Filters", resourceCulture);
             }
         }
-        
+
         internal static string Pages_TransactionsFilters {
             get {
                 return ResourceManager.GetString("Pages_TransactionsFilters", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_OpenTransactionsFiltersPage {
             get {
                 return ResourceManager.GetString("CommonError_OpenTransactionsFiltersPage", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_ApplyFilters {
             get {
                 return ResourceManager.GetString("TransactionsFilters_ApplyFilters", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_StartDate {
             get {
                 return ResourceManager.GetString("TransactionsFilters_StartDate", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_EndDate {
             get {
                 return ResourceManager.GetString("TransactionsFilters_EndDate", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_SpendingType {
             get {
                 return ResourceManager.GetString("TransactionsFilters_SpendingType", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_SearchByCurrency {
             get {
                 return ResourceManager.GetString("TransactionsFilters_SearchByCurrency", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_TransactionType {
             get {
                 return ResourceManager.GetString("TransactionsFilters_TransactionType", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_Category {
             get {
                 return ResourceManager.GetString("TransactionsFilters_Category", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_Description {
             get {
                 return ResourceManager.GetString("TransactionsFilters_Description", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_SearchByAmount {
             get {
                 return ResourceManager.GetString("TransactionsFilters_SearchByAmount", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_LessThan {
             get {
                 return ResourceManager.GetString("TransactionsFilters_LessThan", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_GreaterThan {
             get {
                 return ResourceManager.GetString("TransactionsFilters_GreaterThan", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_AmountToSearch {
             get {
                 return ResourceManager.GetString("TransactionsFilters_AmountToSearch", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_Currency {
             get {
                 return ResourceManager.GetString("TransactionsFilters_Currency", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_Pickers_Any {
             get {
                 return ResourceManager.GetString("TransactionsFilters_Pickers_Any", resourceCulture);
             }
         }
-        
+
         internal static string TransactionsFilters_ResetFilters {
             get {
                 return ResourceManager.GetString("TransactionsFilters_ResetFilters", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_Expense {
             get {
                 return ResourceManager.GetString("Transactions_Expense", resourceCulture);
             }
         }
-        
+
         internal static string Languages_French {
             get {
                 return ResourceManager.GetString("Languages_French", resourceCulture);
             }
         }
-        
+
         internal static string Languages_Spanish {
             get {
                 return ResourceManager.GetString("Languages_Spanish", resourceCulture);
             }
         }
-        
+
         internal static string Languages_SerbianCyrillic {
             get {
                 return ResourceManager.GetString("Languages_SerbianCyrillic", resourceCulture);
             }
         }
-        
+
         internal static string Languages_SerbianLatin {
             get {
                 return ResourceManager.GetString("Languages_SerbianLatin", resourceCulture);
             }
         }
-        
+
         internal static string Transactions_NoTransactions {
             get {
                 return ResourceManager.GetString("Transactions_NoTransactions", resourceCulture);
             }
         }
-        
+
         internal static string Languages_German {
             get {
                 return ResourceManager.GetString("Languages_German", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_OpenOverviewFiltersPage {
             get {
                 return ResourceManager.GetString("CommonError_OpenOverviewFiltersPage", resourceCulture);
             }
         }
-        
+
         internal static string Overview_Filters {
             get {
                 return ResourceManager.GetString("Overview_Filters", resourceCulture);
             }
         }
-        
+
         internal static string Pages_OverviewFilters {
             get {
                 return ResourceManager.GetString("Pages_OverviewFilters", resourceCulture);
             }
         }
-        
+
         internal static string OverviewFilters_StartDate {
             get {
                 return ResourceManager.GetString("OverviewFilters_StartDate", resourceCulture);
             }
         }
-        
+
         internal static string OverviewFilters_EndDate {
             get {
                 return ResourceManager.GetString("OverviewFilters_EndDate", resourceCulture);
             }
         }
-        
+
         internal static string Home_StartNewPeriod {
             get {
                 return ResourceManager.GetString("Home_StartNewPeriod", resourceCulture);
             }
         }
-        
+
         internal static string StartNewPeriod_StartNewPeriod {
             get {
                 return ResourceManager.GetString("StartNewPeriod_StartNewPeriod", resourceCulture);
             }
         }
-        
+
         internal static string StartNewPeriod_NewPeriod {
             get {
                 return ResourceManager.GetString("StartNewPeriod_NewPeriod", resourceCulture);
             }
         }
-        
+
         internal static string CommonError_OpenNewPeriodPage {
             get {
                 return ResourceManager.GetString("CommonError_OpenNewPeriodPage", resourceCulture);
             }
         }
-        
+
         internal static string StartNewPeriod_DateFrom {
             get {
                 return ResourceManager.GetString("StartNewPeriod_DateFrom", resourceCulture);
             }
         }
-        
+
         internal static string StartNewPeriod_DateTo {
             get {
                 return ResourceManager.GetString("StartNewPeriod_DateTo", resourceCulture);
             }
         }
-        
+
         internal static string Auth_Welcome {
             get {
                 return ResourceManager.GetString("Auth_Welcome", resourceCulture);
             }
         }
-        
+
         internal static string Settings_Authentication {
             get {
                 return ResourceManager.GetString("Settings_Authentication", resourceCulture);
             }
         }
-        
+
         internal static string Auth_InvalidPasswordAlert_Title {
             get {
                 return ResourceManager.GetString("Auth_InvalidPasswordAlert_Title", resourceCulture);
             }
         }
-        
+
         internal static string Auth_InvalidPasswordAlert_Ok {
             get {
                 return ResourceManager.GetString("Auth_InvalidPasswordAlert_Ok", resourceCulture);
             }
         }
-        
+
         internal static string Auth_InvalidPasswordAlert_Description {
             get {
                 return ResourceManager.GetString("Auth_InvalidPasswordAlert_Description", resourceCulture);
             }
         }
-        
+
         internal static string Pages_Authentication {
             get {
                 return ResourceManager.GetString("Pages_Authentication", resourceCulture);
             }
         }
-        
+
         internal static string AuthSettings_Enabled {
             get {
                 return ResourceManager.GetString("AuthSettings_Enabled", resourceCulture);
             }
         }
-        
+
         internal static string AuthSettings_UseBiometrics {
             get {
                 return ResourceManager.GetString("AuthSettings_UseBiometrics", resourceCulture);
             }
         }
-        
+
         internal static string AuthSettings_PassCode {
             get {
                 return ResourceManager.GetString("AuthSettings_PassCode", resourceCulture);
             }
         }
-        
+
         internal static string AuthSettings_Save {
             get {
                 return ResourceManager.GetString("AuthSettings_Save", resourceCulture);
             }
         }
-        
+
         internal static string AuthSettings_Error_PassCodeFormat {
             get {
                 return ResourceManager.GetString("AuthSettings_Error_PassCodeFormat", resourceCulture);
             }
         }
-        
+
         internal static string AuthSettings_SavedAlert_Title {
             get {
                 return ResourceManager.GetString("AuthSettings_SavedAlert_Title", resourceCulture);
             }
         }
-        
+
         internal static string AuthSettings_SavedAlert_Description {
             get {
                 return ResourceManager.GetString("AuthSettings_SavedAlert_Description", resourceCulture);
             }
         }
-        
+
         internal static string AuthSettings_SavedAlert_Ok {
             get {
                 return ResourceManager.GetString("AuthSettings_SavedAlert_Ok", resourceCulture);
             }
         }
-        
+
         internal static string AuthSettings_BiometricNotSupported {
             get {
                 return ResourceManager.GetString("AuthSettings_BiometricNotSupported", resourceCulture);
             }
         }
-        
+
         internal static string Auth_Biometric_Title {
             get {
                 return ResourceManager.GetString("Auth_Biometric_Title", resourceCulture);
             }
         }
-        
+
         internal static string Auth_Biometric_Description {
             get {
                 return ResourceManager.GetString("Auth_Biometric_Description", resourceCulture);
             }
         }
-        
+
         internal static string Auth_Biometric_NegativeText {
             get {
                 return ResourceManager.GetString("Auth_Biometric_NegativeText", resourceCulture);
             }
         }
-        
+
         internal static string Auth_Biometric_Subtitle {
             get {
                 return ResourceManager.GetString("Auth_Biometric_Subtitle", resourceCulture);
             }
         }
-        
+
         internal static string Auth_InvalidBiometricAlert_Description {
             get {
                 return ResourceManager.GetString("Auth_InvalidBiometricAlert_Description", resourceCulture);
             }
         }
-        
+
         internal static string Auth_InvalidBiometricAlert_Title {
             get {
                 return ResourceManager.GetString("Auth_InvalidBiometricAlert_Title", resourceCulture);
             }
         }
-        
+
         internal static string Auth_InvalidBiometricAlert_Ok {
             get {
                 return ResourceManager.GetString("Auth_InvalidBiometricAlert_Ok", resourceCulture);
             }
         }
-        
+
         internal static string Settings_RateTheApp {
             get {
                 return ResourceManager.GetString("Settings_RateTheApp", resourceCulture);
+            }
+        }
+
+        internal static string Settings_Notifications {
+            get {
+                return ResourceManager.GetString("Settings_Notifications", resourceCulture);
+            }
+        }
+
+        internal static string NotificationsSettings_Enabled {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_Enabled", resourceCulture);
+            }
+        }
+
+        internal static string NotificationsSettings_AddTransactionReminderEnabled {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_AddTransactionReminderEnabled", resourceCulture);
+            }
+        }
+
+        internal static string NotificationsSettings_AddTransactionReminderTime {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_AddTransactionReminderTime", resourceCulture);
+            }
+        }
+
+        internal static string NotificationsSettings_Save {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_Save", resourceCulture);
+            }
+        }
+
+        internal static string Notifications_AddTransactionReminder_Title {
+            get {
+                return ResourceManager.GetString("Notifications_AddTransactionReminder_Title", resourceCulture);
+            }
+        }
+
+        internal static string Notifications_AddTransactionReminder_Description {
+            get {
+                return ResourceManager.GetString("Notifications_AddTransactionReminder_Description", resourceCulture);
             }
         }
     }
