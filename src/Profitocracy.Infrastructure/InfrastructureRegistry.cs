@@ -57,6 +57,9 @@ public static class InfrastructureRegistry
             .AddTransient<ITransactionRepository, TransactionRepository>()
             .AddTransient<IProfileRepository, ProfileRepository>()
             .AddTransient<ICategoryRepository, CategoryRepository>()
+            .AddTransient<TransactionRepository>(sp => (TransactionRepository)sp.GetRequiredService<ITransactionRepository>())
+            .AddTransient<ProfileRepository>(sp => (ProfileRepository)sp.GetRequiredService<IProfileRepository>())
+            .AddTransient<CategoryRepository>(sp => (CategoryRepository)sp.GetRequiredService<ICategoryRepository>())
             .AddTransient<ISettingsRepository, SettingsRepository>();
     }
 }

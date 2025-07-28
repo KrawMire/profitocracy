@@ -2,7 +2,7 @@ using SQLite;
 
 namespace Profitocracy.Infrastructure.Persistence.Sqlite.Models.Profile;
 
-internal class ProfileModel
+public class ProfileModel
 {
     [PrimaryKey]
     public Guid Id { get; set; }

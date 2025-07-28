@@ -74,11 +74,7 @@ internal class ProfileRepository : IProfileRepository
 
     public async Task<List<Profile>> GetAllProfiles()
     {
-        await _dbConnection.Init();
-
-        var profiles = await _dbConnection.Database
-            .Table<ProfileModel>()
-            .ToListAsync();
+        var profiles = await GetAllProfilesInternal();
 
         return profiles
             .Select(_mapper.MapToDomain)
@@ -87,12 +83,7 @@ internal class ProfileRepository : IProfileRepository
 
     public async Task<Profile?> GetProfileById(Guid id)
     {
-        await _dbConnection.Init();
-
-        var profile = await _dbConnection.Database
-            .Table<ProfileModel>()
-            .Where(p => p.Id == id)
-            .FirstOrDefaultAsync();
+        var profile = await GetProfileByIdInternal(id);
 
         return profile is null
             ? null
@@ -101,15 +92,41 @@ internal class ProfileRepository : IProfileRepository
 
     public async Task<Profile?> GetCurrentProfile()
     {
-        await _dbConnection.Init();
-
-        var profile = await _dbConnection.Database
-            .Table<ProfileModel>()
-            .Where(p => p.IsCurrent)
-            .FirstOrDefaultAsync();
+        var profile = await GetCurrentProfileInternal();
 
         return profile is null
             ? null
             : _mapper.MapToDomain(profile);
+    }
+
+    public async Task<List<ProfileModel>> GetAllProfilesInternal()
+    {
+        await _dbConnection.Init();
+
+        var profiles = await _dbConnection.Database
+            .Table<ProfileModel>()
+            .ToListAsync();
+
+        return profiles ?? [];
+    }
+
+    public async Task<ProfileModel?> GetProfileByIdInternal(Guid id)
+    {
+        await _dbConnection.Init();
+
+        return await _dbConnection.Database
+            .Table<ProfileModel>()
+            .Where(p => p.Id == id)
+            .FirstOrDefaultAsync();
+    }
+
+    public async Task<ProfileModel?> GetCurrentProfileInternal()
+    {
+        await _dbConnection.Init();
+
+        return await _dbConnection.Database
+            .Table<ProfileModel>()
+            .Where(p => p.IsCurrent)
+            .FirstOrDefaultAsync();
     }
 }

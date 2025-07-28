@@ -1,22 +1,122 @@
 using Profitocracy.Core.Integrations;
-using System.Text;
+using Profitocracy.Infrastructure.Integrations.Models;
+using Profitocracy.Infrastructure.Persistence.Sqlite.Repositories;
+using System.Xml.Serialization;
 
 namespace Profitocracy.Infrastructure.Integrations;
 
 internal sealed class BackupProvider : IBackupProvider
 {
+    private readonly ProfileRepository _profileRepository;
+    private readonly CategoryRepository _categoryRepository;
+    private readonly TransactionRepository _transactionRepository;
+
     public string BackupFileExtension => "pfc.v1.backup";
 
-    public Task ImportDataAsync(Stream backupFileStream)
+    public BackupProvider(
+        ProfileRepository profileRepository,
+        CategoryRepository categoryRepository,
+        TransactionRepository transactionRepository)
     {
-        return Task.CompletedTask;
+        _profileRepository = profileRepository;
+        _categoryRepository = categoryRepository;
+        _transactionRepository = transactionRepository;
     }
 
-    public Task<Stream> ExportDataAsync(bool includeProfiles, bool includeCategories, bool includeTransactions)
+    public async IAsyncEnumerable<(int Current, int Total)> ImportDataAsync(Stream backupFileStream)
     {
-        const string testStr = "Hello, this is a test backup file.";
+        var serializer = new XmlSerializer(typeof(BackupModelV1));
 
-        var stream = new MemoryStream(Encoding.UTF8.GetBytes(testStr));
-        return Task.FromResult<Stream>(stream);
+        var abstractModel = serializer.Deserialize(backupFileStream);
+
+        if (abstractModel is null)
+        {
+            throw new Exception("Deserializing the backup file failed.");
+        }
+
+        var model = (BackupModelV1)abstractModel;
+
+        if (model.Profiles is null || model.Profiles.Count == 0)
+        {
+            yield break;
+        }
+
+        var totalObjects = model.Profiles.Count;
+        totalObjects += model.Categories?.Count ?? 0;
+        totalObjects += model.Transactions?.Count ?? 0;
+
+        var currentIndex = 0;
+
+        foreach (var profile in model.Profiles)
+        {
+            // TODO: Handle profile creation
+            currentIndex++;
+            yield return (currentIndex, totalObjects);
+        }
+
+        if (model.Categories is not null)
+        {
+            foreach (var category in model.Categories)
+            {
+                // TODO: Handle category creation
+                currentIndex++;
+                yield return (currentIndex, totalObjects);
+            }
+        }
+
+        if (model.Transactions is not null)
+        {
+            foreach (var transaction in model.Transactions)
+            {
+                // TODO: Handle transaction creation
+                currentIndex++;
+                yield return (currentIndex, totalObjects);
+            }
+        }
+    }
+
+    public async Task<Stream> ExportDataAsync(bool includeProfiles, bool includeCategories, bool includeTransactions)
+    {
+        if (!includeProfiles)
+        {
+            return Stream.Null;
+        }
+
+        var backupModel = new BackupModelV1
+        {
+            Profiles = await _profileRepository.GetAllProfilesInternal(),
+        };
+
+        if (includeCategories)
+        {
+            backupModel.Categories = [];
+
+            foreach (var profile in backupModel.Profiles)
+            {
+                var categories = await _categoryRepository.GetAllByProfileIdInternal(profile.Id);
+                backupModel.Categories.AddRange(categories);
+            }
+        }
+
+        if (includeTransactions)
+        {
+            backupModel.Transactions = [];
+
+            foreach (var profile in backupModel.Profiles)
+            {
+                var transactions = await _transactionRepository.GetAllByProfileIdInternal(profile.Id);
+                backupModel.Transactions.AddRange(transactions);
+            }
+        }
+
+        var ms = new MemoryStream();
+        var serializer = new XmlSerializer(typeof(BackupModelV1));
+
+        serializer.Serialize(ms, backupModel);
+
+        await ms.FlushAsync();
+        ms.Seek(0, SeekOrigin.Begin);
+
+        return ms;
     }
 }

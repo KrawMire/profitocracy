@@ -21,13 +21,7 @@ internal class CategoryRepository : ICategoryRepository
 
     public async Task<List<Category>> GetAllByProfileId(Guid profileId)
     {
-        await _dbConnection.Init();
-
-        var categories = await _dbConnection.Database
-            .Table<CategoryModel>()
-            .Where(c => c.ProfileId.Equals(profileId))
-            .OrderByDescending(c => c.PlannedAmount)
-            .ToListAsync();
+        var categories = await GetAllByProfileIdInternal(profileId);
 
         var domainCategories = categories
             .Select(_mapper.MapToDomain)
@@ -38,11 +32,7 @@ internal class CategoryRepository : ICategoryRepository
 
     public async Task<Category?> GetById(Guid categoryId)
     {
-        await _dbConnection.Init();
-
-        var category = await _dbConnection.Database
-            .Table<CategoryModel>()
-            .FirstOrDefaultAsync(c => c.Id == categoryId);
+        var category = await GetByIdInternal(categoryId);
 
         return category is not null
             ? _mapper.MapToDomain(category)
@@ -97,5 +87,27 @@ internal class CategoryRepository : ICategoryRepository
         await _dbConnection.Database
             .Table<CategoryModel>()
             .DeleteAsync(c => c.ProfileId == profileId);
+    }
+
+    public async Task<List<CategoryModel>> GetAllByProfileIdInternal(Guid profileId)
+    {
+        await _dbConnection.Init();
+
+        var categories = await _dbConnection.Database
+            .Table<CategoryModel>()
+            .Where(c => c.ProfileId.Equals(profileId))
+            .OrderByDescending(c => c.PlannedAmount)
+            .ToListAsync();
+
+        return categories ?? [];
+    }
+
+    public async Task<CategoryModel?> GetByIdInternal(Guid categoryId)
+    {
+        await _dbConnection.Init();
+
+        return await _dbConnection.Database
+            .Table<CategoryModel>()
+            .FirstOrDefaultAsync(c => c.Id == categoryId);
     }
 }

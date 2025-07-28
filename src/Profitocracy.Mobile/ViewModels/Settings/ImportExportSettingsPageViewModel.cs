@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Storage;
 using Profitocracy.Core.Integrations;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
+using System.Diagnostics;
 
 namespace Profitocracy.Mobile.ViewModels.Settings;
 
@@ -13,6 +14,10 @@ public class ImportExportSettingsPageViewModel : BaseNotifyObject
     private bool _isExportingProfiles;
     private bool _isExportingCategories;
     private bool _isExportingTransactions;
+    private bool _isShowImportProgress = false;
+    private int _currentImportIndex = 0;
+    private int _totalImportIndex = 0;
+    private float _importProgress = 0;
 
     public ImportExportSettingsPageViewModel(IBackupProvider backupProvider)
     {
@@ -81,6 +86,30 @@ public class ImportExportSettingsPageViewModel : BaseNotifyObject
         }
     }
 
+    public bool IsShowImportProgress
+    {
+        get => _isShowImportProgress;
+        set => SetProperty(ref _isShowImportProgress, value);
+    }
+
+    public int CurrentImportIndex
+    {
+        get => _currentImportIndex;
+        set => SetProperty(ref _currentImportIndex, value);
+    }
+
+    public int TotalImportIndex
+    {
+        get => _totalImportIndex;
+        set => SetProperty(ref _totalImportIndex, value);
+    }
+
+    public float ImportProgress
+    {
+        get => _importProgress;
+        set => SetProperty(ref _importProgress, value);
+    }
+
     public async Task ImportAsync()
     {
         var pickOptions = new PickOptions
@@ -104,8 +133,47 @@ public class ImportExportSettingsPageViewModel : BaseNotifyObject
             throw new Exception(AppResources.CommonError_WrongFileExtension);
         }
 
-        await using var backupFileStream = await result.OpenReadAsync();
-        await _backupProvider.ImportDataAsync(backupFileStream);
+        Exception? exception = null;
+
+        try
+        {
+            await MainThread.InvokeOnMainThreadAsync(() =>
+            {
+                IsShowImportProgress = true;
+            });
+
+            await using var backupFileStream = await result.OpenReadAsync();
+
+            await foreach (var (current, total) in _backupProvider.ImportDataAsync(backupFileStream))
+            {
+                await MainThread.InvokeOnMainThreadAsync(() =>
+                {
+                    CurrentImportIndex = current;
+                    TotalImportIndex = total;
+                    ImportProgress = total > 0 ? current / (float)total : 0;
+                });
+
+            }
+        }
+        catch (Exception ex)
+        {
+            exception = ex;
+        }
+        finally
+        {
+            await MainThread.InvokeOnMainThreadAsync(() =>
+            {
+                IsShowImportProgress = false;
+                CurrentImportIndex = 0;
+                TotalImportIndex = 0;
+                ImportProgress = 0;
+            });
+        }
+
+        if (exception is not null)
+        {
+            throw exception;
+        }
     }
 
     public async Task ExportAsync()

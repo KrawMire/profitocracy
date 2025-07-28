@@ -1,6 +1,6 @@
 namespace Profitocracy.Infrastructure.Persistence.Sqlite.Models.Profile;
 
-internal class ProfileCategoryModel
+public class ProfileCategoryModel
 {
     public Guid CategoryId { get; set; }
 

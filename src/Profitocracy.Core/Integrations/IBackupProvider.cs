@@ -18,9 +18,10 @@ public interface IBackupProvider
     /// The stream containing the backup data to import.
     /// </param>
     /// <returns>
-    /// A task representing the asynchronous operation.
+    /// Returns the current index of an importing object
+    /// and the total amount of objects to import on each iteration.
     /// </returns>
-    Task ImportDataAsync(Stream backupFileStream);
+    IAsyncEnumerable<(int Current, int Total)> ImportDataAsync(Stream backupFileStream);
 
     /// <summary>
     /// Asynchronously exports backup data to a stream based on the specified inclusion options.
