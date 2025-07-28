@@ -79,13 +79,15 @@ public class AuthSettingsPageViewModel : BaseNotifyObject
                 throw new Exception(AppResources.AuthSettings_Error_PassCodeFormat);
             }
 
-            settings.EnableAuthentication(
-                IsBiometricEnabled,
-                _securityProvider.HashPassword(Code));
+            settings.Authentication.IsAuthenticationEnabled = IsEnabled;
+            settings.Authentication.IsBiometricAuthEnabled = IsBiometricEnabled;
+            settings.Authentication.PasswordHash = _securityProvider.HashPassword(Code);
         }
         else
         {
-            settings.DisableAuthentication();
+            settings.Authentication.IsAuthenticationEnabled = IsEnabled;
+            settings.Authentication.IsBiometricAuthEnabled = false;
+            settings.Authentication.PasswordHash = null;
         }
 
         if (settings.Authentication.IsBiometricAuthEnabled)

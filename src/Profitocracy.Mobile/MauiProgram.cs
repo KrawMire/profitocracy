@@ -1,7 +1,6 @@
 ﻿using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.AppRating;
-using Plugin.LocalNotification;
 using Plugin.Maui.Biometric;
 using Profitocracy.Core;
 using Profitocracy.Infrastructure;
@@ -39,8 +38,8 @@ public static class MauiProgram
             })
             .RegisterAppServices()
             .RegisterViewModels()
-            .RegisterViews()
-            .UseLocalNotification();
+            .RegisterViews();
+
 
 #if DEBUG
         builder.Logging.AddDebug();
@@ -87,7 +86,6 @@ public static class MauiProgram
             .AddTransient<TransactionsFiltersPageViewModel>()
             .AddTransient<EditProfilePageViewModel>()
             .AddTransient<ThemeSettingsPageViewModel>()
-            .AddTransient<NotificationsSettingsPageViewModel>()
             .AddTransient<AuthSettingsPageViewModel>();
 
         return mauiAppBuilder;
@@ -107,7 +105,6 @@ public static class MauiProgram
             .AddTransient<OverviewPage>()
             .AddTransient<ProfilesSettingsPage>()
             .AddTransient<EditProfilePage>()
-            .AddTransient<NotificationsSettingsPage>()
             .AddTransient<ThemeSettingsPage>()
             .AddTransient<LanguageSettingsPage>()
             .AddTransient<AuthSettingsPage>();
