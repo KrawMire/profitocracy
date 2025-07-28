@@ -1,4 +1,5 @@
-﻿using LiveChartsCore.SkiaSharpView.Maui;
+﻿using CommunityToolkit.Maui;
+using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.AppRating;
 using Plugin.Maui.Biometric;
@@ -26,10 +27,12 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
 
+#pragma warning disable CA1416 // This call site is reachable on ....
         builder
             .UseSkiaSharp()
             .UseLiveCharts()
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -39,7 +42,7 @@ public static class MauiProgram
             .RegisterAppServices()
             .RegisterViewModels()
             .RegisterViews();
-
+#pragma warning restore CA1416
 
 #if DEBUG
         builder.Logging.AddDebug();

@@ -1502,5 +1502,59 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("Pages_ImportExport", resourceCulture);
             }
         }
+        
+        internal static string ImportExport_ExportProfiles {
+            get {
+                return ResourceManager.GetString("ImportExport_ExportProfiles", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_ExportCategories {
+            get {
+                return ResourceManager.GetString("ImportExport_ExportCategories", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_ExportTransactions {
+            get {
+                return ResourceManager.GetString("ImportExport_ExportTransactions", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_ChooseFile {
+            get {
+                return ResourceManager.GetString("ImportExport_ChooseFile", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_ExportFile {
+            get {
+                return ResourceManager.GetString("ImportExport_ExportFile", resourceCulture);
+            }
+        }
+        
+        internal static string CommonError_ExportDataIsEmpty {
+            get {
+                return ResourceManager.GetString("CommonError_ExportDataIsEmpty", resourceCulture);
+            }
+        }
+        
+        internal static string CommonError_NoDataToImport {
+            get {
+                return ResourceManager.GetString("CommonError_NoDataToImport", resourceCulture);
+            }
+        }
+        
+        internal static string CommonError_WrongFileExtension {
+            get {
+                return ResourceManager.GetString("CommonError_WrongFileExtension", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SelectBackupFile {
+            get {
+                return ResourceManager.GetString("ImportExport_SelectBackupFile", resourceCulture);
+            }
+        }
     }
 }

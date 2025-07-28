@@ -9,6 +9,12 @@ public partial class ImportExportSettingsPage
     public ImportExportSettingsPage(ImportExportSettingsPageViewModel viewModel)
     {
         InitializeComponent();
-        _viewModel = viewModel;
+        BindingContext = _viewModel = viewModel;
     }
+
+    private void ImportButton_OnClicked(object? sender, EventArgs e)
+        => ProcessAction(_viewModel.ImportAsync);
+
+    private void ExportButton_OnClicked(object? sender, EventArgs e)
+        => ProcessAction(_viewModel.ExportAsync);
 }

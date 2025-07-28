@@ -26,7 +26,6 @@
                 </controls:ContentSectionView>
 
                 <controls:ContentSectionView IsVisible="{Binding IsEnabled}"
-                                             Margin="0,16,0,0"
                                              Title="">
                     <StackLayout>
                         <FlexLayout JustifyContent="SpaceBetween">

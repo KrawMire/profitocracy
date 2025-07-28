@@ -5,20 +5,45 @@
              xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
              xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Settings"
              x:Class="Profitocracy.Mobile.Views.Settings.Pages.ImportExportSettingsPage"
+             x:DataType="viewmodel:ImportExportSettingsPageViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
              Title="{x:Static resx:AppResources.Pages_ImportExport}">
-    <ScrollView>
+    <ScrollView Padding="16,8,16,16">
         <StackLayout>
             <controls:ContentSectionView Title="{x:Static resx:AppResources.ImportExport_Import}">
                 <StackLayout>
                     <Button Margin="0,16,0,0"
-                            Text="Pick a file"/>
+                            Text="{x:Static resx:AppResources.ImportExport_ChooseFile}"
+                            Clicked="ImportButton_OnClicked"/>
                 </StackLayout>
             </controls:ContentSectionView>
             <controls:ContentSectionView Title="{x:Static resx:AppResources.ImportExport_Export}">
                 <StackLayout>
-                    
+                    <StackLayout>
+                        <FlexLayout JustifyContent="SpaceBetween"
+                                    Margin="0,16,0,0">
+                            <Label Text="{x:Static resx:AppResources.ImportExport_ExportProfiles}"
+                                   VerticalTextAlignment="Center"/>
+                            <Switch IsToggled="{Binding IsExportingProfiles, Mode=TwoWay}"/>
+                        </FlexLayout>
+                        <FlexLayout JustifyContent="SpaceBetween"
+                                    Margin="0,16,0,0">
+                            <Label Text="{x:Static resx:AppResources.ImportExport_ExportCategories}"
+                                   VerticalTextAlignment="Center"/>
+                            <Switch IsToggled="{Binding IsExportingCategories, Mode=TwoWay}"/>
+                        </FlexLayout>
+                        <FlexLayout JustifyContent="SpaceBetween"
+                                    Margin="0,16,0,0">
+                            <Label Text="{x:Static resx:AppResources.ImportExport_ExportTransactions}"
+                                   VerticalTextAlignment="Center"/>
+                            <Switch IsToggled="{Binding IsExportingTransactions, Mode=TwoWay}"/>
+                        </FlexLayout>
+                    </StackLayout>
+                    <Button Margin="0,16,0,0"
+                            Text="{x:Static resx:AppResources.ImportExport_ExportFile}"
+                            Clicked="ExportButton_OnClicked"/>
                 </StackLayout>
             </controls:ContentSectionView>
         </StackLayout>
