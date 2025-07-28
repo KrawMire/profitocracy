@@ -31,7 +31,8 @@ public static class InfrastructureRegistry
     private static IServiceCollection RegisterIntegrationsServices(this IServiceCollection services)
     {
         return services
-            .AddTransient<ISecurityProvider, SecurityProvider>();
+            .AddTransient<ISecurityProvider, SecurityProvider>()
+            .AddTransient<IBackupProvider, BackupProvider>();
     }
 
     private static IServiceCollection RegisterPersistence(this IServiceCollection services, InfrastructureConfiguration configuration)
