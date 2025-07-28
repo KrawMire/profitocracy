@@ -29,11 +29,6 @@
             <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Authentication}"
                                        Clicked="AuthenticationButton_OnClicked"
                                        Margin="0,8,0,0"/>
-
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Notifications}"
-                                       Clicked="NotificationsButton_OnClicked"
-                                       Margin="0,8,0,0"/>
-
             <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Theme}"
                                        Clicked="ThemeButton_OnClicked"
                                        Margin="0,8,0,0"/>

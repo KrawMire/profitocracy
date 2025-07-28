@@ -9,29 +9,11 @@ public class Settings : AggregateRoot<Guid>
         Guid id,
         Theme theme,
         string language,
-        AuthenticationSettings authSettings,
-        NotificationsSettings notifications) : base(id)
+        AuthenticationSettings authSettings) : base(id)
     {
         Theme = theme;
         Language = language;
-
-        if (!authSettings.IsAuthenticationEnabled)
-        {
-            authSettings.IsBiometricAuthEnabled = false;
-            authSettings.PasswordHash = null;
-        }
-
-        if (!notifications.IsEnabled)
-        {
-            notifications.AddTransactionReminder = new NotificationEventSettings
-            {
-                IsEnabled = false,
-                ScheduledTime = TimeSpan.Zero,
-            };
-        }
-
         Authentication = authSettings;
-        Notifications = notifications;
     }
 
     /// <summary>
@@ -49,11 +31,6 @@ public class Settings : AggregateRoot<Guid>
     /// Authentication-related settings.
     /// </summary>
     public AuthenticationSettings Authentication { get; private set; }
-
-    /// <summary>
-    /// Settings of notifications.
-    /// </summary>
-    public NotificationsSettings Notifications { get; set; }
 
     /// <summary>
     /// Enables authentication by configuring authentication settings.
@@ -80,28 +57,6 @@ public class Settings : AggregateRoot<Guid>
             IsAuthenticationEnabled = false,
             IsBiometricAuthEnabled = false,
             PasswordHash = null,
-        };
-    }
-
-    public void EnableNotifications(NotificationEventSettings addTransactionReminder)
-    {
-        Notifications = new NotificationsSettings
-        {
-            IsEnabled = true,
-            AddTransactionReminder = addTransactionReminder,
-        };
-    }
-
-    public void DisableNotifications()
-    {
-        Notifications = new NotificationsSettings
-        {
-            IsEnabled = false,
-            AddTransactionReminder = new NotificationEventSettings
-            {
-                IsEnabled = false,
-                ScheduledTime = TimeSpan.Zero,
-            },
         };
     }
 }

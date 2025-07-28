@@ -16,22 +16,19 @@ public partial class SettingsPage : BaseContentPage
     }
 
     private void ProfilesButton_OnClicked(object? sender, EventArgs e)
-        => NavigateToPage<ProfilesSettingsPage>();
+        => ProcessAction(NavigateToPage<ProfilesSettingsPage>);
 
     private void CategoriesButton_OnClicked(object? sender, EventArgs e)
-        => NavigateToPage<ExpenseCategoriesSettingsPage>();
-
-    private void NotificationsButton_OnClicked(object? sender, EventArgs e)
-        => NavigateToPage<NotificationsSettingsPage>();
+        => ProcessAction(NavigateToPage<ExpenseCategoriesSettingsPage>);
 
     private void AuthenticationButton_OnClicked(object? sender, EventArgs e)
-        => NavigateToPage<AuthSettingsPage>();
+        => ProcessAction(NavigateToPage<AuthSettingsPage>);
 
     private void ThemeButton_OnClicked(object? sender, EventArgs e)
-        => NavigateToPage<ThemeSettingsPage>();
+        => ProcessAction(NavigateToPage<ThemeSettingsPage>);
 
     private void LanguageButton_OnClicked(object? sender, EventArgs e)
-        => NavigateToPage<LanguageSettingsPage>();
+        => ProcessAction(NavigateToPage<LanguageSettingsPage>);
 
     private void GitHubButton_OnClicked(object? sender, EventArgs e)
     {
@@ -46,17 +43,14 @@ public partial class SettingsPage : BaseContentPage
         ProcessAction(RateAppAsync);
     }
 
-    private void NavigateToPage<T>() where T : Page
+    private async Task NavigateToPage<T>() where T : Page
     {
-        ProcessAction(async () =>
-        {
-            var page = Handler?.MauiContext?.Services.GetService<T>();
+        var page = Handler?.MauiContext?.Services.GetService<T>();
 
-            if (page is not null)
-            {
-                await Navigation.PushAsync(page);
-            }
-        });
+        if (page is not null)
+        {
+            await Navigation.PushAsync(page);
+        }
     }
 
 #if ANDROID

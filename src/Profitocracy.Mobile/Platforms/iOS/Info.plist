@@ -32,10 +32,5 @@
 	<string>Assets.xcassets/appicon.appiconset</string>
   <key>NSFaceIDUsageDescription</key>
   <string>Need access to the FaceID.</string>
-  <key>UIBackgroundModes</key>
-  <array>
-    <string>fetch</string>
-    <string>remote-notification</string>
-  </array>
 </dict>
 </plist>

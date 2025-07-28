@@ -16,8 +16,4 @@ internal class SettingsModel
 
     public bool IsAuthenticationEnabled { get; set; }
     public bool IsBiometricAuthEnabled { get; set; }
-    public bool IsNotificationsEnabled { get; set; }
-
-    public bool IsAddTransactionReminderEnabled { get; set; }
-    public TimeSpan AddTransactionReminderTime { get; set; }
 }

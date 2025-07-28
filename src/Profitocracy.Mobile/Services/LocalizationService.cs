@@ -1,7 +1,7 @@
-using Profitocracy.Mobile.Resources.Strings;
 using System.Globalization;
+using Profitocracy.Mobile.Resources.Strings;
 
-namespace Profitocracy.Mobile.Services.Static;
+namespace Profitocracy.Mobile.Services;
 
 public static class LocalizationService
 {

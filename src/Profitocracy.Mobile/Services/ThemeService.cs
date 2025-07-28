@@ -1,6 +1,6 @@
 using Profitocracy.Core.Domain.Model.Settings.ValueObjects;
 
-namespace Profitocracy.Mobile.Services.Static;
+namespace Profitocracy.Mobile.Services;
 
 public static class ThemeService
 {
