@@ -83,18 +83,17 @@
                     </CollectionView>
                 </controls:ContentSectionView>
 
-                <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_DailyAmounts}">
-                    <Grid Margin="0, 16, 0, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="64" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0">
-                            <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                   Text="{x:Static resx:AppResources.Home_TodayBalance}"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="8" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <controls:ContentSectionView Grid.Column="0"
+                                                 Title="{x:Static resx:AppResources.Home_TodayBalance}">
+                        <StackLayout Margin="0,16,0,0">
                             <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
-                                         Margin="0,8,0,0"
                                          Progress="{Binding TodayBalanceRatio}"/>
                             <FlexLayout JustifyContent="SpaceBetween">
                                 <Label Style="{StaticResource ExpenseCardProgressValue}"
@@ -103,15 +102,16 @@
                                        Text="{Binding TodayPlannedAmount}" />
                             </FlexLayout>
                         </StackLayout>
-                        <StackLayout Grid.Column="2">
+                    </controls:ContentSectionView>
+
+                    <controls:ContentSectionView Grid.Column="2"
+                                                 Title="{x:Static resx:AppResources.Home_TomorrowBalance}">
+                        <StackLayout Margin="0,12,0,0">
                             <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                   Text="{x:Static resx:AppResources.Home_TomorrowBalance}"/>
-                            <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                   Margin="0,8,0,0"
                                    Text="{Binding BalanceForTomorrow}"/>
                         </StackLayout>
-                    </Grid>
-                </controls:ContentSectionView>
+                    </controls:ContentSectionView>
+                </Grid>
 
                 <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_SpendingTypes}">
                     <StackLayout>
