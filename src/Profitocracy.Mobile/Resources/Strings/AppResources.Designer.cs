@@ -1478,5 +1478,29 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("Settings_RateTheApp", resourceCulture);
             }
         }
+        
+        internal static string Settings_ImportExport {
+            get {
+                return ResourceManager.GetString("Settings_ImportExport", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_Import {
+            get {
+                return ResourceManager.GetString("ImportExport_Import", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_Export {
+            get {
+                return ResourceManager.GetString("ImportExport_Export", resourceCulture);
+            }
+        }
+        
+        internal static string Pages_ImportExport {
+            get {
+                return ResourceManager.GetString("Pages_ImportExport", resourceCulture);
+            }
+        }
     }
 }

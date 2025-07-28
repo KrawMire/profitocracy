@@ -835,4 +835,16 @@
   <data name="Settings_RateTheApp" xml:space="preserve">
       <value>Rate the app</value>
   </data>
+  <data name="Settings_ImportExport" xml:space="preserve">
+      <value>Import/Export</value>
+  </data>
+  <data name="ImportExport_Import" xml:space="preserve">
+      <value>Import</value>
+  </data>
+  <data name="ImportExport_Export" xml:space="preserve">
+      <value>Export</value>
+  </data>
+  <data name="Pages_ImportExport" xml:space="preserve">
+      <value>Import/Export</value>
+  </data>
 </root>
