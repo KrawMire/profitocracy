@@ -874,4 +874,28 @@
   <data name="ImportExport_SelectBackupFile" xml:space="preserve">
       <value>Select a Profitocracy backup file</value>
   </data>
+  <data name="AuthSettings_General" xml:space="preserve">
+      <value>General</value>
+  </data>
+  <data name="AuthSettings_Authentication" xml:space="preserve">
+      <value>Authentication</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Description" xml:space="preserve">
+      <value>Data was successfully imported</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Description" xml:space="preserve">
+      <value>Data was successfully exported</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Title" xml:space="preserve">
+      <value>Success</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Ok" xml:space="preserve">
+      <value>OK</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Ok" xml:space="preserve">
+      <value>OK</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Title" xml:space="preserve">
+      <value>Success</value>
+  </data>
 </root>

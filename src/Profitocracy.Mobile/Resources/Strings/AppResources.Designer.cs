@@ -1556,5 +1556,53 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("ImportExport_SelectBackupFile", resourceCulture);
             }
         }
+        
+        internal static string AuthSettings_General {
+            get {
+                return ResourceManager.GetString("AuthSettings_General", resourceCulture);
+            }
+        }
+        
+        internal static string AuthSettings_Authentication {
+            get {
+                return ResourceManager.GetString("AuthSettings_Authentication", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessImportAlert_Description {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessImportAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessExportAlert_Description {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessExportAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessExportAlert_Title {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessExportAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessExportAlert_Ok {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessExportAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessImportAlert_Ok {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessImportAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessImportAlert_Title {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessImportAlert_Title", resourceCulture);
+            }
+        }
     }
 }

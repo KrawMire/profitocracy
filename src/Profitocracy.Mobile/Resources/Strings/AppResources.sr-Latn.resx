@@ -834,4 +834,67 @@
   <data name="Settings_RateTheApp" xml:space="preserve">
       <value>Ocenite aplikaciju</value>
   </data>
+  <data name="AuthSettings_General" xml:space="preserve">
+      <value>Opšte</value>
+  </data>
+  <data name="AuthSettings_Authentication" xml:space="preserve">
+      <value>Autentifikacija</value>
+  </data>
+  <data name="CommonError_ExportDataIsEmpty" xml:space="preserve">
+      <value>Nema podataka za izvoz</value>
+  </data>
+  <data name="CommonError_NoDataToImport" xml:space="preserve">
+      <value>Nema podataka za uvoz</value>
+  </data>
+  <data name="CommonError_WrongFileExtension" xml:space="preserve">
+      <value>Nepodržani tip datoteke</value>
+  </data>
+  <data name="ImportExport_ChooseFile" xml:space="preserve">
+      <value>Izaberite datoteku</value>
+  </data>
+  <data name="ImportExport_Export" xml:space="preserve">
+      <value>Izvoz</value>
+  </data>
+  <data name="ImportExport_ExportCategories" xml:space="preserve">
+      <value>Izvoz kategorija</value>
+  </data>
+  <data name="ImportExport_ExportFile" xml:space="preserve">
+      <value>Izvoz u datoteku</value>
+  </data>
+  <data name="ImportExport_ExportProfiles" xml:space="preserve">
+      <value>Izvoz profila</value>
+  </data>
+  <data name="ImportExport_ExportTransactions" xml:space="preserve">
+      <value>Izvoz transakcija</value>
+  </data>
+  <data name="ImportExport_Import" xml:space="preserve">
+      <value>Uvoz</value>
+  </data>
+  <data name="ImportExport_SelectBackupFile" xml:space="preserve">
+      <value>Izaberite Profitocracy rezervnu datoteku</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Description" xml:space="preserve">
+      <value>Podaci su uspešno izvezeni</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Description" xml:space="preserve">
+      <value>Podaci su uspešno uvezeni</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Title" xml:space="preserve">
+      <value>Uspeh</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Title" xml:space="preserve">
+      <value>Uspeh</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Ok" xml:space="preserve">
+      <value>U redu</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Ok" xml:space="preserve">
+      <value>U redu</value>
+  </data>
+  <data name="Pages_ImportExport" xml:space="preserve">
+      <value>Uvoz/Izvoz</value>
+  </data>
+  <data name="Settings_ImportExport" xml:space="preserve">
+      <value>Uvoz/Izvoz</value>
+  </data>
 </root>

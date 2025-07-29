@@ -834,4 +834,67 @@
   <data name="Settings_RateTheApp" xml:space="preserve">
       <value>Оцените приложение</value>
   </data>
+  <data name="AuthSettings_General" xml:space="preserve">
+      <value>Основные</value>
+  </data>
+  <data name="AuthSettings_Authentication" xml:space="preserve">
+      <value>Аутентификация</value>
+  </data>
+  <data name="CommonError_ExportDataIsEmpty" xml:space="preserve">
+      <value>Нет данных для экспорта</value>
+  </data>
+  <data name="CommonError_NoDataToImport" xml:space="preserve">
+      <value>Нет данных для импорта</value>
+  </data>
+  <data name="CommonError_WrongFileExtension" xml:space="preserve">
+      <value>Неподдерживаемый тип файла</value>
+  </data>
+  <data name="ImportExport_ChooseFile" xml:space="preserve">
+      <value>Выберите файл</value>
+  </data>
+  <data name="ImportExport_Export" xml:space="preserve">
+      <value>Экспорт</value>
+  </data>
+  <data name="ImportExport_ExportCategories" xml:space="preserve">
+      <value>Экспортировать категории</value>
+  </data>
+  <data name="ImportExport_ExportFile" xml:space="preserve">
+      <value>Экспортировать в файл</value>
+  </data>
+  <data name="ImportExport_ExportProfiles" xml:space="preserve">
+      <value>Экспортировать профили</value>
+  </data>
+  <data name="ImportExport_ExportTransactions" xml:space="preserve">
+      <value>Экспортировать транзакции</value>
+  </data>
+  <data name="ImportExport_Import" xml:space="preserve">
+      <value>Импорт</value>
+  </data>
+  <data name="ImportExport_SelectBackupFile" xml:space="preserve">
+      <value>Выберите файл резервной копии Profitocracy</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Description" xml:space="preserve">
+      <value>Данные успешно экспортированы</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Description" xml:space="preserve">
+      <value>Данные успешно импортированы</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Title" xml:space="preserve">
+      <value>Успех</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Title" xml:space="preserve">
+      <value>Успех</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Ok" xml:space="preserve">
+      <value>OK</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Ok" xml:space="preserve">
+      <value>OK</value>
+  </data>
+  <data name="Settings_ImportExport" xml:space="preserve">
+      <value>Импорт/Экспорт</value>
+  </data>
+  <data name="Pages_ImportExport" xml:space="preserve">
+      <value>Импорт/Экспорт</value>
+  </data>
 </root>
