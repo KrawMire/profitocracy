@@ -41,17 +41,21 @@ internal class CategoryRepository : ICategoryRepository
 
     public async Task<Category> Create(Category category)
     {
-        await _dbConnection.Init();
-
         var categoryToCreate = _mapper.MapToModel(category);
-        await _dbConnection.Database.InsertAsync(categoryToCreate);
-
-        var createdCategory = await _dbConnection.Database
-            .Table<CategoryModel>()
-            .Where(c => c.Id == categoryToCreate.Id)
-            .FirstAsync();
+        var createdCategory = await CreateInternal(categoryToCreate);
 
         return _mapper.MapToDomain(createdCategory);
+    }
+
+    internal async Task<CategoryModel> CreateInternal(CategoryModel category)
+    {
+        await _dbConnection.Init();
+        await _dbConnection.Database.InsertAsync(category);
+
+        return await _dbConnection.Database
+            .Table<CategoryModel>()
+            .Where(c => c.Id == category.Id)
+            .FirstAsync();
     }
 
     public async Task<Category> Update(Category category)

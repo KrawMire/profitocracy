@@ -14,7 +14,8 @@
         <StackLayout>
             <controls:ContentSectionView Title="{x:Static resx:AppResources.ImportExport_Import}">
                 <StackLayout>
-                    <StackLayout Margin="0,16,0,0">
+                    <StackLayout Margin="0,16,0,0"
+                                 IsVisible="{Binding IsShowImportProgress}">
                         <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
                                      Progress="{Binding ImportProgress}"/>
                         <FlexLayout JustifyContent="SpaceBetween"

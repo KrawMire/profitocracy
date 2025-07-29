@@ -21,17 +21,21 @@ internal class ProfileRepository : IProfileRepository
 
     public async Task<Profile> Create(Profile profile)
     {
-        await _dbConnection.Init();
-
         var profileToCreate = _mapper.MapToModel(profile);
-        _ = await _dbConnection.Database.InsertAsync(profileToCreate);
+        var createdProfile = await CreateInternal(profileToCreate);
 
-        var createdProfile = await _dbConnection.Database
+        return _mapper.MapToDomain(createdProfile);
+    }
+
+    internal async Task<ProfileModel> CreateInternal(ProfileModel profile)
+    {
+        await _dbConnection.Init();
+        await _dbConnection.Database.InsertAsync(profile);
+
+        return await _dbConnection.Database
             .Table<ProfileModel>()
             .Where(p => p.Id.Equals(profile.Id))
             .FirstAsync();
-
-        return _mapper.MapToDomain(createdProfile);
     }
 
     public async Task<Profile> Update(Profile profile)
@@ -99,7 +103,7 @@ internal class ProfileRepository : IProfileRepository
             : _mapper.MapToDomain(profile);
     }
 
-    public async Task<List<ProfileModel>> GetAllProfilesInternal()
+    internal async Task<List<ProfileModel>> GetAllProfilesInternal()
     {
         await _dbConnection.Init();
 
@@ -110,7 +114,7 @@ internal class ProfileRepository : IProfileRepository
         return profiles ?? [];
     }
 
-    public async Task<ProfileModel?> GetProfileByIdInternal(Guid id)
+    internal async Task<ProfileModel?> GetProfileByIdInternal(Guid id)
     {
         await _dbConnection.Init();
 
@@ -120,7 +124,7 @@ internal class ProfileRepository : IProfileRepository
             .FirstOrDefaultAsync();
     }
 
-    public async Task<ProfileModel?> GetCurrentProfileInternal()
+    internal async Task<ProfileModel?> GetCurrentProfileInternal()
     {
         await _dbConnection.Init();
 

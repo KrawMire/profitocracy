@@ -14,10 +14,10 @@ public class ImportExportSettingsPageViewModel : BaseNotifyObject
     private bool _isExportingProfiles;
     private bool _isExportingCategories;
     private bool _isExportingTransactions;
-    private bool _isShowImportProgress = false;
-    private int _currentImportIndex = 0;
-    private int _totalImportIndex = 0;
-    private float _importProgress = 0;
+    private bool _isShowImportProgress;
+    private int _currentImportIndex;
+    private int _totalImportIndex;
+    private float _importProgress;
 
     public ImportExportSettingsPageViewModel(IBackupProvider backupProvider)
     {
@@ -137,7 +137,7 @@ public class ImportExportSettingsPageViewModel : BaseNotifyObject
 
         try
         {
-            await MainThread.InvokeOnMainThreadAsync(() =>
+            MainThread.BeginInvokeOnMainThread(() =>
             {
                 IsShowImportProgress = true;
             });
@@ -146,13 +146,12 @@ public class ImportExportSettingsPageViewModel : BaseNotifyObject
 
             await foreach (var (current, total) in _backupProvider.ImportDataAsync(backupFileStream))
             {
-                await MainThread.InvokeOnMainThreadAsync(() =>
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
                     CurrentImportIndex = current;
                     TotalImportIndex = total;
                     ImportProgress = total > 0 ? current / (float)total : 0;
                 });
-
             }
         }
         catch (Exception ex)
@@ -161,7 +160,7 @@ public class ImportExportSettingsPageViewModel : BaseNotifyObject
         }
         finally
         {
-            await MainThread.InvokeOnMainThreadAsync(() =>
+            MainThread.BeginInvokeOnMainThread(() =>
             {
                 IsShowImportProgress = false;
                 CurrentImportIndex = 0;

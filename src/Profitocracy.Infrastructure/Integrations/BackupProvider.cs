@@ -1,5 +1,6 @@
 using Profitocracy.Core.Integrations;
 using Profitocracy.Infrastructure.Integrations.Models;
+using Profitocracy.Infrastructure.Persistence.Sqlite.Configuration;
 using Profitocracy.Infrastructure.Persistence.Sqlite.Repositories;
 using System.Xml.Serialization;
 
@@ -7,23 +8,26 @@ namespace Profitocracy.Infrastructure.Integrations;
 
 internal sealed class BackupProvider : IBackupProvider
 {
+    private readonly DbConnection _database;
     private readonly ProfileRepository _profileRepository;
     private readonly CategoryRepository _categoryRepository;
     private readonly TransactionRepository _transactionRepository;
 
-    public string BackupFileExtension => "pfc.v1.backup";
+    public string BackupFileExtension => "v1pfbkp";
 
     public BackupProvider(
+        DbConnection database,
         ProfileRepository profileRepository,
         CategoryRepository categoryRepository,
         TransactionRepository transactionRepository)
     {
+        _database = database;
         _profileRepository = profileRepository;
         _categoryRepository = categoryRepository;
         _transactionRepository = transactionRepository;
     }
 
-    public async IAsyncEnumerable<(int Current, int Total)> ImportDataAsync(Stream backupFileStream)
+    public IAsyncEnumerable<(int Current, int Total)> ImportDataAsync(Stream backupFileStream)
     {
         var serializer = new XmlSerializer(typeof(BackupModelV1));
 
@@ -36,6 +40,11 @@ internal sealed class BackupProvider : IBackupProvider
 
         var model = (BackupModelV1)abstractModel;
 
+        return LoadDataFromBackupAsync(model);
+    }
+
+    private async IAsyncEnumerable<(int Current, int Total)> LoadDataFromBackupAsync(BackupModelV1 model)
+    {
         if (model.Profiles is null || model.Profiles.Count == 0)
         {
             yield break;
@@ -47,19 +56,39 @@ internal sealed class BackupProvider : IBackupProvider
 
         var currentIndex = 0;
 
+        var newProfileIds = new Dictionary<Guid, Guid>();
+
         foreach (var profile in model.Profiles)
         {
-            // TODO: Handle profile creation
+            var newId = Guid.NewGuid();
+            newProfileIds.Add(profile.Id, newId);
+            profile.Id = newId;
+            profile.IsCurrent = false;
+
+            await _profileRepository.CreateInternal(profile);
+
             currentIndex++;
+
             yield return (currentIndex, totalObjects);
         }
+
+        var newCategoryIds = new Dictionary<Guid, Guid>();
 
         if (model.Categories is not null)
         {
             foreach (var category in model.Categories)
             {
-                // TODO: Handle category creation
+                var newId = Guid.NewGuid();
+                newCategoryIds.Add(category.Id, newId);
+
+                var profileId = newProfileIds[category.ProfileId];
+                category.Id = newId;
+                category.ProfileId = profileId;
+
+                await _categoryRepository.CreateInternal(category);
+
                 currentIndex++;
+
                 yield return (currentIndex, totalObjects);
             }
         }
@@ -68,7 +97,21 @@ internal sealed class BackupProvider : IBackupProvider
         {
             foreach (var transaction in model.Transactions)
             {
-                // TODO: Handle transaction creation
+                var newId = Guid.NewGuid();
+                var profileId = newProfileIds[transaction.ProfileId];
+
+                if (transaction.CategoryId is not null)
+                {
+                    var categoryId = newCategoryIds[transaction.CategoryId.Value];
+                    transaction.CategoryId = categoryId;
+                }
+
+                transaction.Id = newId;
+                transaction.ProfileId = profileId;
+
+                await _transactionRepository.CreateInternal(transaction);
+
+                await Task.Delay(5);
                 currentIndex++;
                 yield return (currentIndex, totalObjects);
             }

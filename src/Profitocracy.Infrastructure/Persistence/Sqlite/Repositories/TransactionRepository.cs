@@ -60,17 +60,21 @@ internal class TransactionRepository : ITransactionRepository
 
     public async Task<Transaction> Create(Transaction transaction)
     {
-        await _dbConnection.Init();
-
         var transactionToCreate = _mapper.MapToModel(transaction);
-        await _dbConnection.Database.InsertAsync(transactionToCreate);
+        var createdTransaction = await CreateInternal(transactionToCreate);
 
-        var createdTransaction = await _dbConnection.Database
+        return _mapper.MapToDomain(createdTransaction);
+    }
+
+    internal async Task<TransactionModel> CreateInternal(TransactionModel transaction)
+    {
+        await _dbConnection.Init();
+        await _dbConnection.Database.InsertAsync(transaction);
+
+        return await _dbConnection.Database
             .Table<TransactionModel>()
             .Where(t => t.Id.Equals(transaction.Id))
             .FirstOrDefaultAsync();
-
-        return _mapper.MapToDomain(createdTransaction);
     }
 
     public async Task<Transaction> Update(Transaction transaction)
@@ -147,7 +151,7 @@ internal class TransactionRepository : ITransactionRepository
             .DeleteAsync(t => t.ProfileId == profileId);
     }
 
-    public async Task<List<TransactionModel>> GetAllByProfileIdInternal(Guid profileId)
+    internal async Task<List<TransactionModel>> GetAllByProfileIdInternal(Guid profileId)
     {
         await _dbConnection.Init();
 
@@ -160,7 +164,7 @@ internal class TransactionRepository : ITransactionRepository
         return transactions ?? [];
     }
 
-    public async Task<TransactionModel?> GetByIdInternal(Guid transactionId)
+    internal async Task<TransactionModel?> GetByIdInternal(Guid transactionId)
     {
         await _dbConnection.Init();
 
@@ -170,7 +174,7 @@ internal class TransactionRepository : ITransactionRepository
             .FirstOrDefaultAsync();
     }
 
-    public async Task<List<TransactionModel>> GetForPeriodInternal(Guid profileId, DateTime dateFrom, DateTime dateTo)
+    internal async Task<List<TransactionModel>> GetForPeriodInternal(Guid profileId, DateTime dateFrom, DateTime dateTo)
     {
         await _dbConnection.Init();
 
@@ -184,7 +188,7 @@ internal class TransactionRepository : ITransactionRepository
         return transactions ?? [];
     }
 
-    public async Task<List<TransactionModel>> GetFilteredInternal(TransactionsSpecification spec)
+    internal async Task<List<TransactionModel>> GetFilteredInternal(TransactionsSpecification spec)
     {
         await _dbConnection.Init();
 
