@@ -1,9 +1,9 @@
-using System.Text.RegularExpressions;
 using Plugin.Maui.Biometric;
 using Profitocracy.Core.Integrations;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
+using System.Text.RegularExpressions;
 
 namespace Profitocracy.Mobile.ViewModels.Auth;
 

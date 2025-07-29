@@ -28,4 +28,3 @@ public partial class NewPeriodSelectionPage : BaseContentPage
         ProcessAction(Navigation.PopModalAsync);
     }
 }
-

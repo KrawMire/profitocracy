@@ -1,4 +1,3 @@
-using System.Globalization;
 using Profitocracy.Core.Domain.Model.Settings;
 using Profitocracy.Core.Domain.Model.Settings.ValueObjects;
 using Profitocracy.Core.Persistence;
@@ -6,6 +5,7 @@ using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Constants;
 using Profitocracy.Mobile.Services;
 using Profitocracy.Mobile.Views.Settings.Pages;
+using System.Globalization;
 
 namespace Profitocracy.Mobile;
 

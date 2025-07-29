@@ -1,8 +1,8 @@
-using System.Collections.ObjectModel;
 using Profitocracy.Core.Domain.Abstractions.Services;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Profiles;
+using System.Collections.ObjectModel;
 
 namespace Profitocracy.Mobile.ViewModels.Profiles;
 
