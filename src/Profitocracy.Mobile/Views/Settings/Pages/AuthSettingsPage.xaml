@@ -17,8 +17,9 @@
                     HorizontalScrollBarVisibility="Never"
                     Grid.Row="0">
             <StackLayout>
-                <controls:ContentSectionView Title="">
-                    <FlexLayout JustifyContent="SpaceBetween">
+                <controls:ContentSectionView Title="{x:Static resx:AppResources.AuthSettings_General}">
+                    <FlexLayout JustifyContent="SpaceBetween"
+                                Margin="0,16,0,0">
                         <Label Text="{x:Static resx:AppResources.AuthSettings_Enabled}"
                                VerticalTextAlignment="Center"/>
                         <Switch IsToggled="{Binding IsEnabled, Mode=TwoWay}"/>
@@ -26,10 +27,10 @@
                 </controls:ContentSectionView>
 
                 <controls:ContentSectionView IsVisible="{Binding IsEnabled}"
-                                             Margin="0,16,0,0"
-                                             Title="">
+                                             Title="{x:Static resx:AppResources.AuthSettings_Authentication}">
                     <StackLayout>
-                        <FlexLayout JustifyContent="SpaceBetween">
+                        <FlexLayout JustifyContent="SpaceBetween"
+                                    Margin="0,16,0,0">
                             <Label Text="{x:Static resx:AppResources.AuthSettings_UseBiometrics}"
                                    VerticalTextAlignment="Center"/>
                             <Switch IsToggled="{Binding IsBiometricEnabled, Mode=TwoWay}"/>

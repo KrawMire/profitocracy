@@ -31,7 +31,8 @@ public static class InfrastructureRegistry
     private static IServiceCollection RegisterIntegrationsServices(this IServiceCollection services)
     {
         return services
-            .AddTransient<ISecurityProvider, SecurityProvider>();
+            .AddTransient<ISecurityProvider, SecurityProvider>()
+            .AddTransient<IBackupProvider, BackupProvider>();
     }
 
     private static IServiceCollection RegisterPersistence(this IServiceCollection services, InfrastructureConfiguration configuration)
@@ -56,6 +57,9 @@ public static class InfrastructureRegistry
             .AddTransient<ITransactionRepository, TransactionRepository>()
             .AddTransient<IProfileRepository, ProfileRepository>()
             .AddTransient<ICategoryRepository, CategoryRepository>()
+            .AddTransient<TransactionRepository>(sp => (TransactionRepository)sp.GetRequiredService<ITransactionRepository>())
+            .AddTransient<ProfileRepository>(sp => (ProfileRepository)sp.GetRequiredService<IProfileRepository>())
+            .AddTransient<CategoryRepository>(sp => (CategoryRepository)sp.GetRequiredService<ICategoryRepository>())
             .AddTransient<ISettingsRepository, SettingsRepository>();
     }
 }

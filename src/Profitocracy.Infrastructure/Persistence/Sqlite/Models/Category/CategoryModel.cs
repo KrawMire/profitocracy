@@ -2,7 +2,7 @@ using SQLite;
 
 namespace Profitocracy.Infrastructure.Persistence.Sqlite.Models.Category;
 
-internal class CategoryModel
+public class CategoryModel
 {
     [PrimaryKey]
     public Guid Id { get; set; }

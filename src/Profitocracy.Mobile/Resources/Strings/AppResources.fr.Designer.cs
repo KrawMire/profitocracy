@@ -1478,5 +1478,131 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("Settings_RateTheApp", resourceCulture);
             }
         }
+        
+        internal static string AuthSettings_General {
+            get {
+                return ResourceManager.GetString("AuthSettings_General", resourceCulture);
+            }
+        }
+        
+        internal static string AuthSettings_Authentication {
+            get {
+                return ResourceManager.GetString("AuthSettings_Authentication", resourceCulture);
+            }
+        }
+        
+        internal static string CommonError_ExportDataIsEmpty {
+            get {
+                return ResourceManager.GetString("CommonError_ExportDataIsEmpty", resourceCulture);
+            }
+        }
+        
+        internal static string CommonError_NoDataToImport {
+            get {
+                return ResourceManager.GetString("CommonError_NoDataToImport", resourceCulture);
+            }
+        }
+        
+        internal static string CommonError_WrongFileExtension {
+            get {
+                return ResourceManager.GetString("CommonError_WrongFileExtension", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_ChooseFile {
+            get {
+                return ResourceManager.GetString("ImportExport_ChooseFile", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_Export {
+            get {
+                return ResourceManager.GetString("ImportExport_Export", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_ExportCategories {
+            get {
+                return ResourceManager.GetString("ImportExport_ExportCategories", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_ExportFile {
+            get {
+                return ResourceManager.GetString("ImportExport_ExportFile", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_ExportProfiles {
+            get {
+                return ResourceManager.GetString("ImportExport_ExportProfiles", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_ExportTransactions {
+            get {
+                return ResourceManager.GetString("ImportExport_ExportTransactions", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_Import {
+            get {
+                return ResourceManager.GetString("ImportExport_Import", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SelectBackupFile {
+            get {
+                return ResourceManager.GetString("ImportExport_SelectBackupFile", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessExportAlert_Description {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessExportAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessImportAlert_Description {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessImportAlert_Description", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessExportAlert_Title {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessExportAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessImportAlert_Title {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessImportAlert_Title", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessExportAlert_Ok {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessExportAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string ImportExport_SuccessImportAlert_Ok {
+            get {
+                return ResourceManager.GetString("ImportExport_SuccessImportAlert_Ok", resourceCulture);
+            }
+        }
+        
+        internal static string Pages_ImportExport {
+            get {
+                return ResourceManager.GetString("Pages_ImportExport", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_ImportExport {
+            get {
+                return ResourceManager.GetString("Settings_ImportExport", resourceCulture);
+            }
+        }
     }
 }

@@ -22,6 +22,9 @@
             <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Categories}"
                                        Clicked="CategoriesButton_OnClicked"
                                        Margin="0,8,0,0"/>
+            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_ImportExport}"
+                                       Clicked="ImportExportButton_OnClicked"
+                                       Margin="0,8,0,0"/>
 
             <Label Text="{x:Static resx:AppResources.Settings_General}"
                    Style="{StaticResource SettingsGroupTitle}"
