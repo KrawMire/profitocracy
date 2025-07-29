@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+             xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
+             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Settings"
+             x:Class="Profitocracy.Mobile.Views.Settings.Pages.ImportExportSettingsPage"
+             x:DataType="viewmodel:ImportExportSettingsPageViewModel"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+             Title="{x:Static resx:AppResources.Pages_ImportExport}">
+    <ScrollView Padding="16,8,16,16">
+        <StackLayout>
+            <controls:ContentSectionView Title="{x:Static resx:AppResources.ImportExport_Import}">
+                <StackLayout>
+                    <StackLayout Margin="0,16,0,0"
+                                 IsVisible="{Binding IsShowImportProgress}">
+                        <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
+                                     Progress="{Binding ImportProgress}"/>
+                        <FlexLayout JustifyContent="SpaceBetween"
+                                    Margin="0,4,0,0">
+                            <Label Style="{StaticResource ExpenseCardProgressValue}"
+                                   Text="{Binding CurrentImportIndex}"/>
+                            <Label Style="{StaticResource ExpenseCardProgressValue}"
+                                   Text="{Binding TotalImportIndex}" />
+                        </FlexLayout>
+                    </StackLayout>
+
+                    <Button Margin="0,16,0,0"
+                            Text="{x:Static resx:AppResources.ImportExport_ChooseFile}"
+                            Clicked="ImportButton_OnClicked"/>
+                </StackLayout>
+            </controls:ContentSectionView>
+            <controls:ContentSectionView Title="{x:Static resx:AppResources.ImportExport_Export}">
+                <StackLayout>
+                    <StackLayout>
+                        <FlexLayout JustifyContent="SpaceBetween"
+                                    Margin="0,16,0,0">
+                            <Label Text="{x:Static resx:AppResources.ImportExport_ExportProfiles}"
+                                   VerticalTextAlignment="Center"/>
+                            <Switch IsToggled="{Binding IsExportingProfiles, Mode=TwoWay}"/>
+                        </FlexLayout>
+                        <FlexLayout JustifyContent="SpaceBetween"
+                                    Margin="0,16,0,0">
+                            <Label Text="{x:Static resx:AppResources.ImportExport_ExportCategories}"
+                                   VerticalTextAlignment="Center"/>
+                            <Switch IsToggled="{Binding IsExportingCategories, Mode=TwoWay}"/>
+                        </FlexLayout>
+                        <FlexLayout JustifyContent="SpaceBetween"
+                                    Margin="0,16,0,0">
+                            <Label Text="{x:Static resx:AppResources.ImportExport_ExportTransactions}"
+                                   VerticalTextAlignment="Center"/>
+                            <Switch IsToggled="{Binding IsExportingTransactions, Mode=TwoWay}"/>
+                        </FlexLayout>
+                    </StackLayout>
+                    <Button Margin="0,16,0,0"
+                            Text="{x:Static resx:AppResources.ImportExport_ExportFile}"
+                            Clicked="ExportButton_OnClicked"/>
+                </StackLayout>
+            </controls:ContentSectionView>
+        </StackLayout>
+    </ScrollView>
+</abstractions:BaseContentPage>

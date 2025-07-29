@@ -21,6 +21,9 @@ public partial class SettingsPage : BaseContentPage
     private void CategoriesButton_OnClicked(object? sender, EventArgs e)
         => ProcessAction(NavigateToPage<ExpenseCategoriesSettingsPage>);
 
+    private void ImportExportButton_OnClicked(object? sender, EventArgs e)
+        => ProcessAction(NavigateToPage<ImportExportSettingsPage>);
+
     private void AuthenticationButton_OnClicked(object? sender, EventArgs e)
         => ProcessAction(NavigateToPage<AuthSettingsPage>);
 

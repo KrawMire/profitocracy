@@ -1,6 +1,6 @@
 namespace Profitocracy.Mobile.Views.Shared.Controls;
 
-public partial class ContentSectionView : ContentView
+public partial class ContentSectionView
 {
     public ContentSectionView()
     {
@@ -18,4 +18,6 @@ public partial class ContentSectionView : ContentView
         get => (string)GetValue(TitleProperty);
         set => SetValue(TitleProperty, value);
     }
+
+    public bool ShowTitle => !string.IsNullOrWhiteSpace(Title);
 }

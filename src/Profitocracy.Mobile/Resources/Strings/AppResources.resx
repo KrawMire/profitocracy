@@ -835,4 +835,67 @@
   <data name="Settings_RateTheApp" xml:space="preserve">
       <value>Rate the app</value>
   </data>
+  <data name="Settings_ImportExport" xml:space="preserve">
+      <value>Import/Export</value>
+  </data>
+  <data name="ImportExport_Import" xml:space="preserve">
+      <value>Import</value>
+  </data>
+  <data name="ImportExport_Export" xml:space="preserve">
+      <value>Export</value>
+  </data>
+  <data name="Pages_ImportExport" xml:space="preserve">
+      <value>Import/Export</value>
+  </data>
+  <data name="ImportExport_ExportProfiles" xml:space="preserve">
+      <value>Export profiles</value>
+  </data>
+  <data name="ImportExport_ExportCategories" xml:space="preserve">
+      <value>Export categories</value>
+  </data>
+  <data name="ImportExport_ExportTransactions" xml:space="preserve">
+      <value>Export transactions</value>
+  </data>
+  <data name="ImportExport_ChooseFile" xml:space="preserve">
+      <value>Select a file</value>
+  </data>
+  <data name="ImportExport_ExportFile" xml:space="preserve">
+      <value>Export to a file</value>
+  </data>
+  <data name="CommonError_ExportDataIsEmpty" xml:space="preserve">
+      <value>There is no data to export</value>
+  </data>
+  <data name="CommonError_NoDataToImport" xml:space="preserve">
+      <value>There is no data to import</value>
+  </data>
+  <data name="CommonError_WrongFileExtension" xml:space="preserve">
+      <value>Unsupported file type</value>
+  </data>
+  <data name="ImportExport_SelectBackupFile" xml:space="preserve">
+      <value>Select a Profitocracy backup file</value>
+  </data>
+  <data name="AuthSettings_General" xml:space="preserve">
+      <value>General</value>
+  </data>
+  <data name="AuthSettings_Authentication" xml:space="preserve">
+      <value>Authentication</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Description" xml:space="preserve">
+      <value>Data was successfully imported</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Description" xml:space="preserve">
+      <value>Data was successfully exported</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Title" xml:space="preserve">
+      <value>Success</value>
+  </data>
+  <data name="ImportExport_SuccessExportAlert_Ok" xml:space="preserve">
+      <value>OK</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Ok" xml:space="preserve">
+      <value>OK</value>
+  </data>
+  <data name="ImportExport_SuccessImportAlert_Title" xml:space="preserve">
+      <value>Success</value>
+  </data>
 </root>
