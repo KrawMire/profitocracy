@@ -23,6 +23,7 @@ public class TransactionModel
     public required int Type { get; set; }
     public required int? SpendingType { get; set; }
     public required DateTime Timestamp { get; set; }
+    public string? TimestampDisplay => Timestamp.ToString("g", CultureInfo.CurrentCulture);
     public TransactionCategoryModel? Category { get; set; }
     public string? Description { get; set; }
 
