@@ -1,6 +1,6 @@
-using System.Globalization;
 using Profitocracy.Core.Domain.Model.Transactions;
 using Profitocracy.Mobile.Resources.Strings;
+using System.Globalization;
 
 namespace Profitocracy.Mobile.Models.Transactions;
 

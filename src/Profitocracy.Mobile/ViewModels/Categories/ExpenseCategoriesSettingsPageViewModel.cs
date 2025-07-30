@@ -1,9 +1,9 @@
-using System.Collections.ObjectModel;
 using Profitocracy.Core.Domain.Abstractions.Services;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Categories;
 using Profitocracy.Mobile.Resources.Strings;
+using System.Collections.ObjectModel;
 
 namespace Profitocracy.Mobile.ViewModels.Categories;
 

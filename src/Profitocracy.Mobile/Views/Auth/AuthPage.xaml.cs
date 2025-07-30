@@ -102,4 +102,3 @@ public partial class AuthPage : BaseContentPage
         }
     }
 }
-

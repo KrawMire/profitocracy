@@ -1,5 +1,3 @@
-using System.Collections.ObjectModel;
-using System.Globalization;
 using Profitocracy.Core.Domain.Model.Profiles;
 using Profitocracy.Core.Domain.Model.Profiles.Factories;
 using Profitocracy.Core.Domain.Model.Profiles.ValueObjects;
@@ -8,6 +6,8 @@ using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.Utils;
+using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace Profitocracy.Mobile.ViewModels.Profiles;
 

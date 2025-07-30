@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Drawing.Geometries;
@@ -8,6 +7,7 @@ using Profitocracy.Core.Domain.Model.Summaries;
 using Profitocracy.Core.Domain.Model.Summaries.ValueObjects;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
+using System.Collections.ObjectModel;
 
 namespace Profitocracy.Mobile.ViewModels.Overview;
 

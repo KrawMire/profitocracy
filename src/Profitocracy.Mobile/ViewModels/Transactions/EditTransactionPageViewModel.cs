@@ -1,5 +1,3 @@
-using System.Collections.ObjectModel;
-using System.Globalization;
 using Profitocracy.Core.Domain.Model.Profiles;
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Core.Domain.Model.Transactions;
@@ -11,6 +9,8 @@ using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Categories;
 using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.Utils;
+using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace Profitocracy.Mobile.ViewModels.Transactions;
 
