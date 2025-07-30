@@ -1,5 +1,3 @@
-using System.Collections.ObjectModel;
-using System.Globalization;
 using Profitocracy.Core.Domain.Model.Profiles;
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Core.Domain.Model.Transactions;
@@ -11,6 +9,8 @@ using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Categories;
 using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.Utils;
+using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace Profitocracy.Mobile.ViewModels.Transactions;
 
@@ -30,6 +30,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     private Guid? _transactionId;
 
     private DateTime _timestamp = DateTime.Now;
+    private TimeSpan _time = DateTime.Now.TimeOfDay;
     private string _amount = string.Empty;
     private string _destinationAmount = string.Empty;
 
@@ -228,6 +229,12 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         set => SetProperty(ref _timestamp, value);
     }
 
+    public TimeSpan Time
+    {
+        get => _time;
+        set => SetProperty(ref _time, value);
+    }
+
     public string Description
     {
         get => _description ?? string.Empty;
@@ -311,7 +318,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
 
     private async Task CreateTransaction()
     {
-        var transaction = await BuildTransaction(null);
+        var transaction = await BuildTransaction(transactionId: null);
         await _transactionRepository.Create(transaction);
     }
 
@@ -357,13 +364,15 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             return BuildMultiCurrencyTransaction(transactionId, amount, currentProfile, category);
         }
 
+        var transactionTimestamp = _timestamp.Date.Add(_time);
+
         return TransactionFactory.CreateTransaction(
             id: transactionId,
             amount,
             currentProfile.Id,
             (TransactionType)_transactionType,
             _spendingType is null or -1 ? null : (SpendingType)_spendingType,
-            _timestamp,
+            transactionTimestamp,
             _description,
             geoTag: null,
             category);

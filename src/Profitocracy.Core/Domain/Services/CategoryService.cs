@@ -26,8 +26,8 @@ internal class CategoryService : ICategoryService
     public async Task<Guid> UpdateCategory(Category category)
     {
         await _transactionRepository.ChangeCategoryName(category.Id, category.Name);
-        var updatedCategody = await _categoryRepository.Update(category);
+        var updatedCategory = await _categoryRepository.Update(category);
 
-        return updatedCategody.Id;
+        return updatedCategory.Id;
     }
 }

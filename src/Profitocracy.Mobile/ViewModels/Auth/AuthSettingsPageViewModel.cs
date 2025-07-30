@@ -1,9 +1,9 @@
-using System.Text.RegularExpressions;
 using Plugin.Maui.Biometric;
 using Profitocracy.Core.Integrations;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
+using System.Text.RegularExpressions;
 
 namespace Profitocracy.Mobile.ViewModels.Auth;
 
@@ -79,15 +79,13 @@ public class AuthSettingsPageViewModel : BaseNotifyObject
                 throw new Exception(AppResources.AuthSettings_Error_PassCodeFormat);
             }
 
-            settings.Authentication.IsAuthenticationEnabled = IsEnabled;
-            settings.Authentication.IsBiometricAuthEnabled = IsBiometricEnabled;
-            settings.Authentication.PasswordHash = _securityProvider.HashPassword(Code);
+            settings.EnableAuthentication(
+                IsBiometricEnabled,
+                _securityProvider.HashPassword(Code));
         }
         else
         {
-            settings.Authentication.IsAuthenticationEnabled = IsEnabled;
-            settings.Authentication.IsBiometricAuthEnabled = false;
-            settings.Authentication.PasswordHash = null;
+            settings.DisableAuthentication();
         }
 
         if (settings.Authentication.IsBiometricAuthEnabled)

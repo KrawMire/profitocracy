@@ -31,4 +31,3 @@ public partial class AuthSettingsPage
         });
     }
 }
-

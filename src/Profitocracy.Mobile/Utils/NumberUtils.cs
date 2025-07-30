@@ -1,5 +1,5 @@
-using System.Globalization;
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
+using System.Globalization;
 
 namespace Profitocracy.Mobile.Utils;
 
