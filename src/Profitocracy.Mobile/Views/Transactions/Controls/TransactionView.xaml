@@ -68,7 +68,7 @@
                            Text="{Binding AdditionalDisplayAmount}" />
                     <Label Style="{StaticResource TransactionCardDate}"
                            Margin="0,4,0,0"
-                           Text="{Binding Timestamp, StringFormat='{0:dd/MM/yyyy hh:mm}'}"/>
+                           Text="{Binding TimestampDisplay}"/>
                 </StackLayout>
             </FlexLayout>
         </StackLayout>
