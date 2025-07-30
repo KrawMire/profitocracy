@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using Profitocracy.Core.Domain.Model.Profiles;
 using Profitocracy.Core.Domain.Model.Profiles.Factories;
+using Profitocracy.Core.Domain.Model.Profiles.ValueObjects;
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
@@ -18,6 +19,7 @@ public class EditProfilePageViewModel : BaseNotifyObject
     private Currency _currency;
     private bool _isCurrent;
     private bool _isNotFirstProfile = true;
+    private TimePeriod? _billingPeriod;
 
     private readonly IProfileRepository _profileRepository;
 
@@ -91,9 +93,10 @@ public class EditProfilePageViewModel : BaseNotifyObject
         Name = profile.Name;
         InitialBalance = profile.Balance.ToString(CultureInfo.CurrentCulture);
         SelectedCurrency = profile.Settings.Currency;
+        _billingPeriod = profile.BillingPeriod;
     }
 
-    public async Task CreateFirstProfile()
+    public async Task CreateProfile()
     {
         if (!NumberUtils.TryParseDecimal(_initialBalance, out var numValue))
         {
@@ -105,6 +108,11 @@ public class EditProfilePageViewModel : BaseNotifyObject
             .AddName(_name)
             .AddCurrency(_currency)
             .AddIsCurrent(_isCurrent);
+
+        if (_billingPeriod is not null)
+        {
+            profileBuilder.AddBillingPeriod(_billingPeriod.DateFrom, _billingPeriod.DateTo);
+        }
 
         if (_profileId is not null)
         {
