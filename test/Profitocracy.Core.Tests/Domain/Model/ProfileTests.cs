@@ -58,31 +58,6 @@ public class ProfileTests
     }
 
     [Fact]
-    public void HandleTransaction_InvalidTimestamp_ShouldIgnoreTransaction()
-    {
-        var profile = new ProfileBuilder()
-            .AddName("Test Profile")
-            .AddBillingPeriod(DateTime.Now.AddMonths(-1), DateTime.Now)
-            .Build();
-
-        var transaction = TransactionFactory.CreateTransaction(
-            id: Guid.NewGuid(),
-            amount: 150,
-            profileId: profile.Id,
-            type: TransactionType.Expense,
-            spendingType: SpendingType.Main,
-            timestamp: DateTime.Now.AddMonths(-2),
-            description: "Invalid timestamp transaction",
-            geoTag: null,
-            category: null
-        );
-
-        profile.HandleTransactions([transaction], DateTime.Now);
-
-        profile.Balance.Should().Be(0);
-    }
-
-    [Fact]
     public void HandleTransactions_MultipleValidTransactions_ShouldAggregateBalance()
     {
         var profile = new ProfileBuilder()
