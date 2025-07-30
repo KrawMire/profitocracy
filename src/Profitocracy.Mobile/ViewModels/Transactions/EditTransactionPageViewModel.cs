@@ -294,6 +294,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         SpendingType = isIncomeTransaction ? null : (int?)transaction.SpendingType;
         Amount = transaction.Amount.ToString(CultureInfo.CurrentCulture);
         Timestamp = transaction.Timestamp;
+        Time = transaction.Timestamp.TimeOfDay;
         Description = transaction.Description!;
 
         if (transaction.Category is not null)
