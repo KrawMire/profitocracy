@@ -38,23 +38,27 @@ Welcome to the source code of **Profitocracy**.
 ## Android Preview
 
 <p align="left">
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/transactions_banner.ap.png" alt="Transactions" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/categories_banner.ap.png" alt="Categories" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/multiprofiles_banner.ap.png" alt="Multi-Profiles" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/charts_banner.ap.png" alt="Charts" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/theme_banner.ap.png" alt="Theme" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/multicurrency_banner.ap.png" alt="Multi-Currency" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/authorization.ap.png" alt="Authorization" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/foss.ap.png" alt="FOSS" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/home.ap.png" alt="Home" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/home_spending.ap.png" alt="Home Page Spending" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/languages.ap.png" alt="Languages" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/overview.ap.png" alt="Overview" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/profiles.ap.png" alt="Profiles" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/transactions.ap.png" alt="Transactions" width="150"/>
 </p>
 
 ## iOS Preview
 
 <p align="left">
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/transactions_banner.png" alt="Transactions" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/categories_banner.png" alt="Categories" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/multiprofiles_banner.png" alt="Multi-Profiles" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/charts_banner.png" alt="Charts" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/theme_banner.png" alt="Theme" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/multicurrency_banner.png" alt="Multi-Currency" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/authorization.as_65.jpg" alt="Authorization" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/foss.as_65.jpg" alt="FOSS" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/home.as_65.jpg" alt="Home" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/home_spending.as_65.jpg" alt="Home Page Spending" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/languages.as_65.jpg" alt="Languages" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/overview.as_65.jpg" alt="Overview" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/profiles.as_65.jpg" alt="Profiles" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/transactions.as_65.jpg" alt="Transactions" width="150"/>
 </p>
 
 # Installation
