@@ -54,7 +54,7 @@ Welcome to the source code of **Profitocracy**.
     <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/authorization.as_65.jpg" alt="Authorization" width="150"/>
     <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/foss.as_65.jpg" alt="FOSS" width="150"/>
     <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/home.as_65.jpg" alt="Home" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/home_spending.as_65.jpg" alt="Home Page Spending" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/home_spendings.as_65.jpg" alt="Home Page Spending" width="150"/>
     <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/languages.as_65.jpg" alt="Languages" width="150"/>
     <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/overview.as_65.jpg" alt="Overview" width="150"/>
     <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/profiles.as_65.jpg" alt="Profiles" width="150"/>
