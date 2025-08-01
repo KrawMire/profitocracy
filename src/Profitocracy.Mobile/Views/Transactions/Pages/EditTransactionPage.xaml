@@ -127,8 +127,13 @@
 
                     <StackLayout Margin="0,16,0,0">
                         <Label Text="{x:Static resx:AppResources.AddTransaction_Date}"/>
-                        <DatePicker Margin="0,4,0,0"
-                                    Date="{Binding Timestamp, Mode=TwoWay}"/>
+                        <Grid ColumnDefinitions="*,8,*"
+                              Margin="0,4,0,0">
+                            <DatePicker Grid.Column="0"
+                                        Date="{Binding Timestamp, Mode=TwoWay}"/>
+                            <TimePicker Grid.Column="2"
+                                        Time="{Binding Time, Mode=TwoWay}"/>
+                        </Grid>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout IsVisible="{Binding IsExpense}">
