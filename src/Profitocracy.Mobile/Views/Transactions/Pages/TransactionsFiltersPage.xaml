@@ -107,7 +107,16 @@
                                    Text="{Binding DisplayAmount, Mode=TwoWay}"/>
                         </StackLayout>
                     </StackLayout>
-                    
+
+                    <StackLayout Margin="0,16,0,0">
+                        <Label Text="{x:Static resx:AppResources.TransactionsFilters_RecurringTransactionInterval}"/>
+                        <Picker Margin="0,4,0,0"
+                            x:Name="IntervalPicker"
+                            ItemsSource="{Binding AvailableIntervals}"
+                            SelectedItem="{Binding SelectedInterval}"
+                            ItemDisplayBinding="{Binding Name}"/>
+                    </StackLayout>
+
                 </StackLayout>
             </ScrollView>
             

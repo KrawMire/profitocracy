@@ -897,4 +897,52 @@
   <data name="Pages_ImportExport" xml:space="preserve">
       <value>Импорт/Экспорт</value>
   </data>
+  <data name="AddTransaction_RecurringTransactionInterval" xml:space="preserve">
+    <value>Интервал повторяющихся транзакций</value>
+  </data>
+  <data name="TransactionsFilters_RecurringTransactionInterval" xml:space="preserve">
+    <value>Интервал повторяющихся транзакций</value>
+  </data>
+  <data name="RecurringTransactionInterval_None" xml:space="preserve">
+    <value>Никто</value>
+  </data>
+  <data name="RecurringTransactionInterval_Daily" xml:space="preserve">
+    <value>Ежедневно</value>
+  </data>
+  <data name="RecurringTransactionInterval_Weekly" xml:space="preserve">
+    <value>Еженедельно</value>
+  </data>
+  <data name="RecurringTransactionInterval_Monthly" xml:space="preserve">
+    <value>Ежемесячно</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction" xml:space="preserve">
+    <value>Повторяющаяся транзакция</value>
+  </data>
+  <data name="TransactionsFilters_RecurringTransactionInterval_Any" xml:space="preserve">
+    <value>Любой</value>
+  </data>
+  <data name="RecurringTransactionInterval_Quarterly" xml:space="preserve">
+    <value>ежеквартальный</value>
+  </data>
+  <data name="RecurringTransactionInterval_EverySixMonths" xml:space="preserve">
+    <value>Каждые шесть месяцев</value>
+  </data>
+  <data name="RecurringTransactionInterval_Annually" xml:space="preserve">
+    <value>Ежегодно</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Title" xml:space="preserve">
+    <value>Уведомление о повторяющихся операциях</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Message" xml:space="preserve">
+    <value>Profitocracy автоматически создает транзакции для ваших повторяющихся транзакций в фоновом режиме и хотел бы информировать вас о них</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Ok" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Title" xml:space="preserve">
+    <value>Повторяющаяся транзакция</value>
+  </data>
+  <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Description" xml:space="preserve">
+    <value>{0} транзакций были созданы в фоновом режиме</value>
+  </data>
 </root>

@@ -2,6 +2,7 @@
 
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
              xmlns:models="clr-namespace:Profitocracy.Mobile.Models.Transactions"
              x:Class="Profitocracy.Mobile.Views.Transactions.Controls.TransactionView"
              x:DataType="models:TransactionModel">
@@ -69,6 +70,12 @@
                     <Label Style="{StaticResource TransactionCardDate}"
                            Margin="0,4,0,0"
                            Text="{Binding TimestampDisplay}"/>
+                    <Image Source="recurring.png"
+                           WidthRequest="20"
+                           HorizontalOptions="End"
+                           Margin="0,4,0,0"
+                           ToolTipProperties.Text="{x:Static resx:AppResources.AddTransaction_RecurringTransaction}"
+                           IsVisible="{Binding IsRecurring}"/>
                 </StackLayout>
             </FlexLayout>
         </StackLayout>

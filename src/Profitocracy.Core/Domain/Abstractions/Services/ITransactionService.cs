@@ -1,3 +1,5 @@
+using Profitocracy.Core.Domain.Model.Transactions;
+
 namespace Profitocracy.Core.Domain.Abstractions.Services;
 
 /// <summary>
@@ -12,4 +14,10 @@ public interface ITransactionService
     /// <param name="transactionId">The unique identifier of the transaction to check.</param>
     /// <returns>True if the transaction in the profile's current period, otherwise, false</returns>
     Task<bool> CheckTransactionInCurrentPeriod(Guid transactionId);
+    
+    /// <summary>
+    /// Creates new transactions for the configured recurring transactions for the current profile.
+    /// </summary>
+    /// <returns>A list of created transactions for recurred.</returns>
+    Task<List<Transaction>> CreateTransactionsForRecurred();
 }

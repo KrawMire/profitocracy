@@ -23,8 +23,9 @@ public class MultiCurrencyTransaction : Transaction
         DateTime timestamp,
         string? description,
         TransactionGeoTag? geoTag,
-        TransactionCategory? category) :
-        base(id, amount, profileId, type, spendingType, timestamp, description, geoTag, category)
+        TransactionCategory? category,
+        RecurringTransactionInfo? recurringTransactionInfo) :
+        base(id, amount, profileId, type, spendingType, timestamp, description, geoTag, category, recurringTransactionInfo)
     {
         SourceCurrency = sourceCurrency;
         DestinationCurrency = destinationCurrency;
