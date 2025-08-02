@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema
@@ -896,5 +896,53 @@
   </data>
   <data name="Settings_ImportExport" xml:space="preserve">
       <value>Importer/Exporter</value>
+  </data>
+  <data name="AddTransaction_RecurringTransactionInterval" xml:space="preserve">
+    <value>Intervalle de transaction récurrente</value>
+  </data>
+  <data name="TransactionsFilters_RecurringTransactionInterval" xml:space="preserve">
+    <value>Intervalle de transaction récurrente</value>
+  </data>
+  <data name="RecurringTransactionInterval_None" xml:space="preserve">
+    <value>Aucun</value>
+  </data>
+  <data name="RecurringTransactionInterval_Daily" xml:space="preserve">
+    <value>Tous les jours</value>
+  </data>
+  <data name="RecurringTransactionInterval_Weekly" xml:space="preserve">
+    <value>Hebdomadaire</value>
+  </data>
+  <data name="RecurringTransactionInterval_Monthly" xml:space="preserve">
+    <value>Mensuel</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction" xml:space="preserve">
+    <value>Transaction récurrente</value>
+  </data>
+  <data name="TransactionsFilters_RecurringTransactionInterval_Any" xml:space="preserve">
+    <value>N'importe lequel</value>
+  </data>
+  <data name="RecurringTransactionInterval_Quarterly" xml:space="preserve">
+    <value>trimestrielle</value>
+  </data>
+  <data name="RecurringTransactionInterval_EverySixMonths" xml:space="preserve">
+    <value>Tous les six mois</value>
+  </data>
+  <data name="RecurringTransactionInterval_Annually" xml:space="preserve">
+    <value>Annuellement</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Title" xml:space="preserve">
+    <value>Notification des transactions récurrentes</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Message" xml:space="preserve">
+    <value>Profitocracy crée automatiquement des transactions pour vos transactions récurrentes en arrière-plan et souhaite vous en informer</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Title" xml:space="preserve">
+    <value>Transaction récurrente</value>
+  </data>
+  <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Description" xml:space="preserve">
+    <value>{0} transactions ont été créées en arrière-plan</value>
   </data>
 </root>

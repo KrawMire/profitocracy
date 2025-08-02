@@ -17,6 +17,7 @@ public class TransactionTests
         const TransactionType type = TransactionType.Income;
         var spendingType = SpendingType.Main;
         var profileId = Guid.NewGuid();
+        var recurringTransactionInfo = new RecurringTransactionInfo { Interval = RecurringTransactionInterval.Daily };
 
         var transaction = TransactionFactory.CreateTransaction(
             id,
@@ -27,7 +28,8 @@ public class TransactionTests
             date,
             description,
             null,
-            null);
+            null,
+            recurringTransactionInfo);
 
         transaction.Id.Should().Be(id);
         transaction.Amount.Should().Be(amount);
@@ -35,6 +37,7 @@ public class TransactionTests
         transaction.Type.Should().Be(type);
         transaction.SpendingType.Should().Be(spendingType);
         transaction.ProfileId.Should().Be(profileId);
+        transaction.RecurringTransactionInfo.Should().Be(recurringTransactionInfo);
     }
 
     [Fact]
@@ -48,6 +51,7 @@ public class TransactionTests
         var date = DateTime.Now;
         const TransactionType type = TransactionType.Expense;
         var profileId = Guid.NewGuid();
+        var recurringTransactionInfo = new RecurringTransactionInfo { Interval = RecurringTransactionInterval.Daily };
 
         var multiCurrencyTransaction = TransactionFactory.CreateMultiCurrencyTransaction(
             id,
@@ -62,7 +66,8 @@ public class TransactionTests
             date,
             "MultiCurrency Transaction",
             null,
-            null);
+            null,
+            recurringTransactionInfo);
 
         // Assert
         multiCurrencyTransaction.Id.Should().Be(id);
@@ -72,5 +77,6 @@ public class TransactionTests
         multiCurrencyTransaction.DestinationCurrency.Should().Be(destinationCurrency);
         multiCurrencyTransaction.Type.Should().Be(type);
         multiCurrencyTransaction.ProfileId.Should().Be(profileId);
+        multiCurrencyTransaction.RecurringTransactionInfo.Should().Be(recurringTransactionInfo);
     }
 }

@@ -898,4 +898,52 @@
   <data name="ImportExport_SuccessImportAlert_Title" xml:space="preserve">
       <value>Success</value>
   </data>
+  <data name="AddTransaction_RecurringTransactionInterval" xml:space="preserve">
+    <value>Recurring Transaction interval</value>
+  </data>
+  <data name="TransactionsFilters_RecurringTransactionInterval" xml:space="preserve">
+    <value>Recurring Transaction interval</value>
+  </data>
+  <data name="RecurringTransactionInterval_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="RecurringTransactionInterval_Daily" xml:space="preserve">
+    <value>Daily</value>
+  </data>
+  <data name="RecurringTransactionInterval_Weekly" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
+  <data name="RecurringTransactionInterval_Monthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction" xml:space="preserve">
+    <value>Recurring Transaction</value>
+  </data>
+  <data name="TransactionsFilters_RecurringTransactionInterval_Any" xml:space="preserve">
+    <value>Any</value>
+  </data>
+  <data name="RecurringTransactionInterval_Quarterly" xml:space="preserve">
+    <value>Quarterly</value>
+  </data>
+  <data name="RecurringTransactionInterval_EverySixMonths" xml:space="preserve">
+    <value>Every six months</value>
+  </data>
+  <data name="RecurringTransactionInterval_Annually" xml:space="preserve">
+    <value>Annually</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Title" xml:space="preserve">
+    <value>Recurring Transaction notification</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Message" xml:space="preserve">
+    <value>Profitocracy automatically creates transactions for your recurring transactions in the background and would like to inform you about them</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Title" xml:space="preserve">
+    <value>Recurring Transaction</value>
+  </data>
+  <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Description" xml:space="preserve">
+    <value>{0} transactions were created in the background</value>
+  </data>
 </root>

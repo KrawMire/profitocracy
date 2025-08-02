@@ -897,4 +897,52 @@
   <data name="Settings_ImportExport" xml:space="preserve">
       <value>Uvoz/Izvoz</value>
   </data>
+  <data name="AddTransaction_RecurringTransactionInterval" xml:space="preserve">
+    <value>Interval ponavljajućih transakcija</value>
+  </data>
+  <data name="TransactionsFilters_RecurringTransactionInterval" xml:space="preserve">
+    <value>Interval ponavljajućih transakcija</value>
+  </data>
+  <data name="RecurringTransactionInterval_None" xml:space="preserve">
+    <value>Nijedan</value>
+  </data>
+  <data name="RecurringTransactionInterval_Daily" xml:space="preserve">
+    <value>Dnevno</value>
+  </data>
+  <data name="RecurringTransactionInterval_Weekly" xml:space="preserve">
+    <value>Nedeljno</value>
+  </data>
+  <data name="RecurringTransactionInterval_Monthly" xml:space="preserve">
+    <value>Mesečno</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction" xml:space="preserve">
+    <value>Ponavljajuća transakcija</value>
+  </data>
+  <data name="TransactionsFilters_RecurringTransactionInterval_Any" xml:space="preserve">
+    <value>Bilo koji</value>
+  </data>
+  <data name="RecurringTransactionInterval_Quarterly" xml:space="preserve">
+    <value>kvartalno</value>
+  </data>
+  <data name="RecurringTransactionInterval_EverySixMonths" xml:space="preserve">
+    <value>Svake šest meseci</value>
+  </data>
+  <data name="RecurringTransactionInterval_Annually" xml:space="preserve">
+    <value>Godišnje</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Title" xml:space="preserve">
+    <value>Obaveštenje o ponavljajućim transakcijama</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Message" xml:space="preserve">
+    <value>Profitokratija automatski kreira transakcije za vaše ponavljajuće transakcije u pozadini i želi da vas obavesti o njima</value>
+  </data>
+  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Ok" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Title" xml:space="preserve">
+    <value>Ponavljajuća transakcija</value>
+  </data>
+  <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Description" xml:space="preserve">
+    <value>{0} transakcija je kreirano u pozadini</value>
+  </data>
 </root>

@@ -75,10 +75,17 @@ public interface ITransactionRepository
     /// <returns>Deleted transaction ID</returns>
     Task<Guid> Delete(Guid transactionId);
 
-    /// <summary>
-    /// Deletes all transactions associated with a specific profile identifier.
-    /// </summary>
-    /// <param name="profileId">The identifier of the profile for which to delete transactions.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
-    Task DeleteByProfileId(Guid profileId);
+	/// <summary>
+	/// Deletes all transactions associated with a specific profile identifier.
+	/// </summary>
+	/// <param name="profileId">The identifier of the profile for which to delete transactions.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	Task DeleteByProfileId(Guid profileId);
+	
+	/// <summary>
+	/// Retrieves a list of recurring transactions for a specific profile.
+	/// </summary>
+	/// <param name="profileId">The identifier of the profile for which to retrieve recurring transactions.</param>
+	/// <returns>A list of recurring transactions.</returns>
+	Task<List<Transaction>> GetRecurringTransactions(Guid profileId);
 }

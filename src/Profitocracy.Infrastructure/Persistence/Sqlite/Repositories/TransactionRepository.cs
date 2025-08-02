@@ -197,6 +197,7 @@ internal class TransactionRepository : ITransactionRepository
             .Where(t => t.ProfileId == spec.ProfileId);
 
         var isMultiCurrency = spec.IsMultiCurrency is not null && spec.IsMultiCurrency.Value;
+        var isRecurring = spec.Interval is not null && spec.Interval >= 0;
 
         if (isMultiCurrency)
         {
@@ -254,10 +255,36 @@ internal class TransactionRepository : ITransactionRepository
                 : query.Where(t => t.Amount <= spec.Amount);
         }
 
+        if (isRecurring)
+        {
+            query = query.Where(t => t.Interval.Equals(spec.Interval));
+        }
+
         query = query.OrderByDescending(t => t.Timestamp);
 
         var transactions = await query.ToListAsync();
 
         return transactions ?? [];
     }
+
+	public async Task<List<Transaction>> GetRecurringTransactions(Guid profileId)
+	{
+		await _dbConnection.Init();
+
+		var transactions = await _dbConnection.Database
+			.Table<TransactionModel>()
+			.Where(t => t.ProfileId.Equals(profileId))
+			.Where(t => t.Interval != null && t.Interval > 0)
+			.OrderByDescending(t => t.Timestamp)
+			.ToListAsync();
+
+		if (transactions is null)
+		{
+			return [];
+		}
+
+		return transactions
+			.Select(_mapper.MapToDomain)
+			.ToList();
+	}
 }

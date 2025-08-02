@@ -64,29 +64,32 @@
 
     <ItemGroup>
         <EmbeddedResource Update="Resources\Strings\AppResources.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\Strings\AppResources.de.resx">
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>AppResources.de.Designer.cs</LastGenOutput>
         </EmbeddedResource>
         <EmbeddedResource Update="Resources\Strings\AppResources.es.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>AppResources.es.Designer.cs</LastGenOutput>
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>AppResources.es.Designer.cs</LastGenOutput>
         </EmbeddedResource>
         <EmbeddedResource Update="Resources\Strings\AppResources.fr.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>AppResources.fr.Designer.cs</LastGenOutput>
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>AppResources.fr.Designer.cs</LastGenOutput>
         </EmbeddedResource>
         <EmbeddedResource Update="Resources\Strings\AppResources.ru.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>AppResources.ru.Designer.cs</LastGenOutput>
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>AppResources.ru.Designer.cs</LastGenOutput>
         </EmbeddedResource>
         <EmbeddedResource Update="Resources\Strings\AppResources.sr.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>AppResources.sr.Designer.cs</LastGenOutput>
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>AppResources.sr.Designer.cs</LastGenOutput>
         </EmbeddedResource>
         <EmbeddedResource Update="Resources\Strings\AppResources.sr-Latn.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>AppResources.sr-Latn.Designer.cs</LastGenOutput>
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>AppResources.sr-Latn.Designer.cs</LastGenOutput>
         </EmbeddedResource>
     </ItemGroup>
 
@@ -96,16 +99,42 @@
           <AutoGen>True</AutoGen>
           <DependentUpon>AppResources.resx</DependentUpon>
         </Compile>
+        <Compile Update="Resources\Strings\AppResources.de.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>AppResources.de.resx</DependentUpon>
+        </Compile>
         <Compile Update="Resources\Strings\AppResources.es.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>AppResources.es.resx</DependentUpon>
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>AppResources.es.resx</DependentUpon>
         </Compile>
         <Compile Update="Resources\Strings\AppResources.fr.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>AppResources.fr.resx</DependentUpon>
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>AppResources.fr.resx</DependentUpon>
         </Compile>
+        <Compile Update="Resources\Strings\AppResources.ru.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>AppResources.ru.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Strings\AppResources.sr.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>AppResources.sr.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Strings\AppResources.sr-Latn.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>AppResources.sr-Latn.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+      <PackageReference Include="Xamarin.AndroidX.Work.Runtime">
+        <Version>2.10.2</Version>
+      </PackageReference>
     </ItemGroup>
 
 </Project>

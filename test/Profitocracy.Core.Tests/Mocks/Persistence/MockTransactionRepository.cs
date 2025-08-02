@@ -132,4 +132,12 @@ public class MockTransactionRepository : ITransactionRepository
         }
         return Task.CompletedTask;
     }
+
+    public Task<List<Transaction>> GetRecurringTransactions(Guid profileId)
+    {
+        return Task.FromResult(_transactions.Values
+            .Where(t => t.ProfileId == profileId && t.RecurringTransactionInfo is not null &&
+                        t.RecurringTransactionInfo.Interval > 0)
+            .ToList());
+    }
 }

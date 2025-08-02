@@ -50,7 +50,8 @@ public class ProfileTests
             timestamp: DateTime.Now,
             description: "Test transaction",
             geoTag: null,
-            category: null
+            category: null,
+            recurringTransactionInfo: null
         );
 
         profile.HandleTransactions([transaction], DateTime.Now);
@@ -76,7 +77,8 @@ public class ProfileTests
                 timestamp: DateTime.Now.AddDays(-10),
                 description: "Transaction 1",
                 geoTag: null,
-                category: null
+                category: null,
+                recurringTransactionInfo: null
             ),
             TransactionFactory.CreateTransaction(
                 id: Guid.NewGuid(),
@@ -87,7 +89,8 @@ public class ProfileTests
                 timestamp: DateTime.Now.AddDays(-5),
                 description: "Transaction 2",
                 geoTag: null,
-                category: null
+                category: null,
+                recurringTransactionInfo: null
             )
         };
 
@@ -122,7 +125,8 @@ public class ProfileTests
             category: new TransactionCategory(categoryId)
             {
                 Name = "Groceries",
-            }
+            },
+            recurringTransactionInfo: null
         );
 
         // Act
