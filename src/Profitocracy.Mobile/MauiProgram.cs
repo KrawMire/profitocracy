@@ -5,6 +5,7 @@ using Plugin.Maui.AppRating;
 using Plugin.Maui.Biometric;
 using Profitocracy.Core;
 using Profitocracy.Infrastructure;
+using Profitocracy.Mobile.Utils;
 using Profitocracy.Mobile.ViewModels.Auth;
 using Profitocracy.Mobile.ViewModels.Categories;
 using Profitocracy.Mobile.ViewModels.Home;
@@ -59,14 +60,16 @@ public static class MauiProgram
             .AddSingleton(BiometricAuthenticationService.Default)
             .AddSingleton(AppRating.Default!);
 
-        return builder.Build();
-    }
-
-    private static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
-    {
-        _ = mauiAppBuilder.Services
-            .AddSingleton<AppShell>()
-            .AddSingleton<AppInit>();
+		var app = builder.Build();
+		ServiceHelper.Initialize(app.Services);
+		return app;
+	}
+	
+	private static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+	{
+		_ = mauiAppBuilder.Services
+			.AddSingleton<AppShell>()
+			.AddSingleton<AppInit>();
 
         return mauiAppBuilder;
     }

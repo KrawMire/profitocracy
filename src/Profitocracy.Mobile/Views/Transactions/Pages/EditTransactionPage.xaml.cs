@@ -5,16 +5,17 @@ namespace Profitocracy.Mobile.Views.Transactions.Pages;
 
 public partial class EditTransactionPage : BaseContentPage
 {
-    private readonly EditTransactionPageViewModel _viewModel;
-
-    public EditTransactionPage(EditTransactionPageViewModel viewModel)
-    {
-        InitializeComponent();
-
-        BindingContext = _viewModel = viewModel;
-        CategoryPicker.ItemsSource = _viewModel.AvailableCategories;
-        IncomeCurrencyPicker.ItemsSource = _viewModel.AvailableCurrencies;
-        ExpenseCurrencyPicker.ItemsSource = _viewModel.AvailableCurrencies;
+	private readonly EditTransactionPageViewModel _viewModel;
+	
+	public EditTransactionPage(EditTransactionPageViewModel viewModel)
+	{
+		InitializeComponent();
+		
+		BindingContext = _viewModel = viewModel;
+		CategoryPicker.ItemsSource = _viewModel.AvailableCategories;
+		IncomeCurrencyPicker.ItemsSource = _viewModel.AvailableCurrencies;
+		ExpenseCurrencyPicker.ItemsSource = _viewModel.AvailableCurrencies;
+		IntervalPicker.ItemsSource = _viewModel.AvailableIntervals;
     }
 
     public void AddTransactionId(Guid transactionId)
@@ -22,25 +23,30 @@ public partial class EditTransactionPage : BaseContentPage
         _viewModel.TransactionId = transactionId;
     }
 
-    private void EditTransactionPage_OnLoaded(object? sender, EventArgs e)
-    {
-        ProcessAction(async () =>
-        {
-            await _viewModel.Initialize();
-            if (_viewModel.Category is not null)
-            {
-                CategoryPicker.SelectedItem = _viewModel.Category;
-            }
-        });
-    }
+	private void EditTransactionPage_OnLoaded(object? sender, EventArgs e)
+	{
+		ProcessAction(async () =>
+		{
+			await _viewModel.Initialize();
+			if (_viewModel.Category is not null)
+			{
+				CategoryPicker.SelectedItem = _viewModel.Category;	
+			}
 
-    private void CloseButton_OnClicked(object? sender, EventArgs e)
-    {
-        ProcessAction(async () =>
-        {
-            await Navigation.PopModalAsync();
-        });
-    }
+			if (_viewModel.SelectedInterval is not null)
+			{
+				IntervalPicker.SelectedItem = _viewModel.SelectedInterval;
+			}
+		});
+	}
+	
+	private void CloseButton_OnClicked(object? sender, EventArgs e)
+	{
+		ProcessAction(async () =>
+		{
+			await Navigation.PopModalAsync();
+		});
+	}
 
     private void EditTransactionButton_OnClicked(object? sender, EventArgs e)
     {

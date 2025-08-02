@@ -115,6 +115,7 @@ public class TransactionsPageViewModel : BaseNotifyObject
                 : null,
             IsGreaterThanAmount = filters.IsSearchByAmount && filters.IsGreaterThan,
             Amount = filters.IsSearchByAmount ? filters.Amount : null,
+            Interval = filters.SelectedInterval is null || filters.SelectedInterval.Value is -1 ? null : (RecurringTransactionInterval)filters.SelectedInterval.Value
         };
     }
 }

@@ -7,6 +7,7 @@ using Profitocracy.Core.Domain.Model.Transactions.ValueObjects;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Categories;
+using Profitocracy.Mobile.Models.Transactions;
 using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.Utils;
 using System.Collections.ObjectModel;
@@ -46,7 +47,8 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     private bool _isSaved;
 
     private bool _isMultiCurrency;
-
+    private RecurringTransactionIntervalModel? _selectedInterval;
+    
     public EditTransactionPageViewModel(
         IProfileRepository profileRepository,
         ITransactionRepository transactionRepository,
@@ -80,7 +82,13 @@ public class EditTransactionPageViewModel : BaseNotifyObject
 
     public ObservableCollection<Currency> AvailableCurrencies { get; } = [];
     public ObservableCollection<CategoryModel> AvailableCategories { get; } = [];
+    public List<RecurringTransactionIntervalModel> AvailableIntervals { get; } = [.. Enum.GetValues<RecurringTransactionInterval>().Cast<RecurringTransactionInterval>().Select(RecurringTransactionIntervalModel.FromDomain)];
     public CategoryModel? Category { get; set; }
+    public RecurringTransactionIntervalModel? SelectedInterval
+    {
+        get => _selectedInterval;
+        set => SetProperty(ref _selectedInterval, value);
+    }
 
     public Currency SelectedCurrency
     {
@@ -308,6 +316,12 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             SelectedCurrency = multiCurrencyTransaction.DestinationCurrency;
             DestinationAmount = multiCurrencyTransaction.DestinationAmount.ToString(CultureInfo.CurrentCulture);
         }
+
+        if (transaction.RecurringTransactionInfo is not null &&
+            transaction.RecurringTransactionInfo.Interval is not RecurringTransactionInterval.None)
+        {
+            SelectedInterval = AvailableIntervals.FirstOrDefault(i => i.Value == (short)transaction.RecurringTransactionInfo.Interval);
+        }
     }
 
     public Task SaveTransaction()
@@ -360,9 +374,19 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             };
         }
 
+        RecurringTransactionInfo? recurringTransactionInfo = null;
+
+        if (SelectedInterval is not null)
+        {
+            recurringTransactionInfo = new RecurringTransactionInfo() 
+            {
+                Interval = (RecurringTransactionInterval)SelectedInterval.Value
+            };
+        }
+
         if (IsMultiCurrency)
         {
-            return BuildMultiCurrencyTransaction(transactionId, amount, currentProfile, category);
+            return BuildMultiCurrencyTransaction(transactionId, amount, currentProfile, category, recurringTransactionInfo);
         }
 
         var transactionTimestamp = _timestamp.Date.Add(_time);
@@ -376,14 +400,16 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             transactionTimestamp,
             _description,
             geoTag: null,
-            category);
+            category,
+            recurringTransactionInfo);
     }
 
     private MultiCurrencyTransaction BuildMultiCurrencyTransaction(
         Guid? transactionId,
         decimal amount,
         Profile profile,
-        TransactionCategory? category)
+        TransactionCategory? category,
+        RecurringTransactionInfo? recurringTransactionInfo)
     {
         if (!NumberUtils.TryParseDecimal(_destinationAmount, out var destinationAmount))
         {
@@ -414,6 +440,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             _timestamp,
             _description,
             geoTag: null,
-            category);
+            category,
+            recurringTransactionInfo);
     }
 }

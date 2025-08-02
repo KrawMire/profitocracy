@@ -21,14 +21,14 @@ namespace Profitocracy.Mobile.Resources.Strings {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AppResources_ru {
+    internal class AppResources_de {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AppResources_ru() {
+        internal AppResources_de() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Profitocracy.Mobile.Resources.Strings.AppResources.ru", typeof(AppResources_ru).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Profitocracy.Mobile.Resources.Strings.AppResources.de", typeof(AppResources_de).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,7 +60,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Название категории.
+        ///   Looks up a localized string similar to Kategorie Name.
         /// </summary>
         internal static string AddCategory_CategoryName {
             get {
@@ -69,7 +69,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Планируемая сумма.
+        ///   Looks up a localized string similar to Geplanter Betrag.
         /// </summary>
         internal static string AddCategory_PlannedAmount {
             get {
@@ -78,7 +78,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сохранить категорию.
+        ///   Looks up a localized string similar to Kategorie speichern.
         /// </summary>
         internal static string AddCategory_SaveCategory {
             get {
@@ -87,7 +87,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Указать планируемую сумму.
+        ///   Looks up a localized string similar to Geplanter Betrag angeben.
         /// </summary>
         internal static string AddCategory_SpecifyPlannedAmount {
             get {
@@ -96,7 +96,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сумма в основной валюте.
+        ///   Looks up a localized string similar to Betrag in der Hauptwährung.
         /// </summary>
         internal static string AddTransaction_Amount {
             get {
@@ -105,7 +105,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Категория.
+        ///   Looks up a localized string similar to Kategorie.
         /// </summary>
         internal static string AddTransaction_Category {
             get {
@@ -114,7 +114,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дата.
+        ///   Looks up a localized string similar to Datum.
         /// </summary>
         internal static string AddTransaction_Date {
             get {
@@ -123,7 +123,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Описание.
+        ///   Looks up a localized string similar to Beschreibung.
         /// </summary>
         internal static string AddTransaction_Description {
             get {
@@ -132,7 +132,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Расход.
+        ///   Looks up a localized string similar to Ausgaben.
         /// </summary>
         internal static string AddTransaction_Expense {
             get {
@@ -141,7 +141,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Доход.
+        ///   Looks up a localized string similar to Einkommen.
         /// </summary>
         internal static string AddTransaction_Income {
             get {
@@ -150,7 +150,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Основные.
+        ///   Looks up a localized string similar to Haupt.
         /// </summary>
         internal static string AddTransaction_Main {
             get {
@@ -159,7 +159,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Мультивалютная транзакция.
+        ///   Looks up a localized string similar to Mehrwährung Transaktion.
         /// </summary>
         internal static string AddTransaction_MultiCurrencyTransaction {
             get {
@@ -168,7 +168,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Без категории.
+        ///   Looks up a localized string similar to Keine.
         /// </summary>
         internal static string AddTransaction_NoneCategory {
             get {
@@ -177,7 +177,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сумма в исходной валюте.
+        ///   Looks up a localized string similar to Betrag in der ursprünglichen Währung.
         /// </summary>
         internal static string AddTransaction_OriginalCurrencyAmount {
             get {
@@ -186,7 +186,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Повторяющаяся транзакция.
+        ///   Looks up a localized string similar to Wiederkehrende Transaktion.
         /// </summary>
         internal static string AddTransaction_RecurringTransaction {
             get {
@@ -195,7 +195,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profitocracy автоматически создает транзакции для ваших повторяющихся транзакций в фоновом режиме и хотел бы информировать вас о них.
+        ///   Looks up a localized string similar to Profitocracy erstellt im Hintergrund automatisch Transaktionen für Ihre wiederkehrenden Transaktionen und möchte Sie darüber informieren.
         /// </summary>
         internal static string AddTransaction_RecurringTransaction_PostNotificationAlert_Message {
             get {
@@ -204,7 +204,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Да.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string AddTransaction_RecurringTransaction_PostNotificationAlert_Ok {
             get {
@@ -213,7 +213,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Уведомление о повторяющихся операциях.
+        ///   Looks up a localized string similar to Wiederkehrende Transaktion Benachrichtigung.
         /// </summary>
         internal static string AddTransaction_RecurringTransaction_PostNotificationAlert_Title {
             get {
@@ -222,7 +222,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Интервал повторяющихся транзакций.
+        ///   Looks up a localized string similar to Wiederkehrende Transaktion Intervall.
         /// </summary>
         internal static string AddTransaction_RecurringTransactionInterval {
             get {
@@ -231,7 +231,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отложенные.
+        ///   Looks up a localized string similar to Gespart.
         /// </summary>
         internal static string AddTransaction_Saved {
             get {
@@ -240,7 +240,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сохранить транзакцию.
+        ///   Looks up a localized string similar to Transaktion speichern.
         /// </summary>
         internal static string AddTransaction_SaveTransaction {
             get {
@@ -249,7 +249,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Второстепенные.
+        ///   Looks up a localized string similar to Sekundär.
         /// </summary>
         internal static string AddTransaction_Secondary {
             get {
@@ -258,7 +258,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сумма выведения.
+        ///   Looks up a localized string similar to Betrag zum Abheben.
         /// </summary>
         internal static string AddTransaction_WithdrawAmount {
             get {
@@ -267,7 +267,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вывести с отложенных средств.
+        ///   Looks up a localized string similar to Von gesparten Geldern abheben.
         /// </summary>
         internal static string AddTransaction_WithdrawSavedFunds {
             get {
@@ -276,7 +276,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Давайте используем биометрию для вашей аутентификации.
+        ///   Looks up a localized string similar to Lassen Sie uns die Biometrie verwenden, um Sie zu authentifizieren.
         /// </summary>
         internal static string Auth_Biometric_Description {
             get {
@@ -285,7 +285,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сбой аутентификации.
+        ///   Looks up a localized string similar to Authentifizierung fehlgeschlagen.
         /// </summary>
         internal static string Auth_Biometric_NegativeText {
             get {
@@ -294,7 +294,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Использование биометрии для аутентификации.
+        ///   Looks up a localized string similar to Biometrie für die Authentifizierung verwenden.
         /// </summary>
         internal static string Auth_Biometric_Subtitle {
             get {
@@ -303,7 +303,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Аутентификация.
+        ///   Looks up a localized string similar to Authentifizierung.
         /// </summary>
         internal static string Auth_Biometric_Title {
             get {
@@ -312,7 +312,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сбой биометрической аутентификации.
+        ///   Looks up a localized string similar to Biometrische Authentifizierung fehlgeschlagen.
         /// </summary>
         internal static string Auth_InvalidBiometricAlert_Description {
             get {
@@ -330,7 +330,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сбой аутентификации.
+        ///   Looks up a localized string similar to Authentifizierung fehlgeschlagen.
         /// </summary>
         internal static string Auth_InvalidBiometricAlert_Title {
             get {
@@ -339,7 +339,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Пароль недействителен.
+        ///   Looks up a localized string similar to Das Passwort ist ungültig.
         /// </summary>
         internal static string Auth_InvalidPasswordAlert_Description {
             get {
@@ -348,7 +348,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Попробуйте снова.
+        ///   Looks up a localized string similar to Versuchen Sie es erneut.
         /// </summary>
         internal static string Auth_InvalidPasswordAlert_Ok {
             get {
@@ -357,7 +357,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сбой аутентификации.
+        ///   Looks up a localized string similar to Authentifizierung fehlgeschlagen.
         /// </summary>
         internal static string Auth_InvalidPasswordAlert_Title {
             get {
@@ -366,7 +366,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Добро пожаловать в Profitocracy.
+        ///   Looks up a localized string similar to Willkommen in der Profitocracy.
         /// </summary>
         internal static string Auth_Welcome {
             get {
@@ -375,7 +375,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Аутентификация.
+        ///   Looks up a localized string similar to Authentifizierung.
         /// </summary>
         internal static string AuthSettings_Authentication {
             get {
@@ -384,7 +384,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Биометрия не поддерживается на вашем устройстве.
+        ///   Looks up a localized string similar to Biometrie wird auf Ihrem Gerät nicht unterstützt.
         /// </summary>
         internal static string AuthSettings_BiometricNotSupported {
             get {
@@ -393,7 +393,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Включено.
+        ///   Looks up a localized string similar to Aktiviert.
         /// </summary>
         internal static string AuthSettings_Enabled {
             get {
@@ -402,7 +402,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Пароль должен содержать только 4 цифры.
+        ///   Looks up a localized string similar to Der Passcode sollte nur 4 Ziffern enthalten.
         /// </summary>
         internal static string AuthSettings_Error_PassCodeFormat {
             get {
@@ -411,7 +411,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Основные.
+        ///   Looks up a localized string similar to Allgemein.
         /// </summary>
         internal static string AuthSettings_General {
             get {
@@ -420,7 +420,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Пароль.
+        ///   Looks up a localized string similar to Passcode.
         /// </summary>
         internal static string AuthSettings_PassCode {
             get {
@@ -429,7 +429,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сохранить настройки.
+        ///   Looks up a localized string similar to Einstellungen speichern.
         /// </summary>
         internal static string AuthSettings_Save {
             get {
@@ -438,7 +438,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Настройки аутентификации успешно сохранены..
+        ///   Looks up a localized string similar to Authentifizierungseinstellungen wurden erfolgreich gespeichert..
         /// </summary>
         internal static string AuthSettings_SavedAlert_Description {
             get {
@@ -447,7 +447,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ОК.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string AuthSettings_SavedAlert_Ok {
             get {
@@ -456,7 +456,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Успех.
+        ///   Looks up a localized string similar to Erfolg.
         /// </summary>
         internal static string AuthSettings_SavedAlert_Title {
             get {
@@ -465,7 +465,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Биометрия (FaceID, Отпечаток пальца).
+        ///   Looks up a localized string similar to Biometrie (FaceID, Fingerabdruck).
         /// </summary>
         internal static string AuthSettings_UseBiometrics {
             get {
@@ -474,7 +474,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Без ограничений.
+        ///   Looks up a localized string similar to Kein Limit.
         /// </summary>
         internal static string Categories_NoLimits {
             get {
@@ -483,7 +483,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отмена.
+        ///   Looks up a localized string similar to Abbrechen.
         /// </summary>
         internal static string CategoriesSettings_DeleteAlert_Cancel {
             get {
@@ -492,7 +492,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вы уверены, что хотите удалить категорию &quot;{0}&quot;?.
+        ///   Looks up a localized string similar to Bist du sicher, dass du die Kategorie &quot;{0}&quot; löschen möchtest?.
         /// </summary>
         internal static string CategoriesSettings_DeleteAlert_Description {
             get {
@@ -501,7 +501,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Да.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string CategoriesSettings_DeleteAlert_Ok {
             get {
@@ -510,7 +510,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Удаление категории.
+        ///   Looks up a localized string similar to Kategorie löschen.
         /// </summary>
         internal static string CategoriesSettings_DeleteAlert_Title {
             get {
@@ -519,7 +519,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сумма должна быть числом.
+        ///   Looks up a localized string similar to Der Betrag muss eine Zahl sein.
         /// </summary>
         internal static string CommonError_AmountNumber {
             get {
@@ -528,7 +528,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Баланс должен быть числом.
+        ///   Looks up a localized string similar to Der Kontostand muss eine Zahl sein.
         /// </summary>
         internal static string CommonError_BalanceNumber {
             get {
@@ -537,7 +537,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Нет данных для экспорта.
+        ///   Looks up a localized string similar to Es gibt keine Daten zu exportieren.
         /// </summary>
         internal static string CommonError_ExportDataIsEmpty {
             get {
@@ -546,7 +546,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось найти категорию для удаления.
+        ///   Looks up a localized string similar to Es konnte keine Kategorie zum Löschen gefunden werden.
         /// </summary>
         internal static string CommonError_FindCategoryToDelete {
             get {
@@ -555,7 +555,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось найти категорию для редактирования.
+        ///   Looks up a localized string similar to Es konnte keine Kategorie zum Bearbeiten gefunden werden.
         /// </summary>
         internal static string CommonError_FindCategoryToEdit {
             get {
@@ -564,7 +564,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось найти транзакцию для удаления.
+        ///   Looks up a localized string similar to Es konnte keine Transaktion zum Löschen gefunden werden.
         /// </summary>
         internal static string CommonError_FindTransactionToDelete {
             get {
@@ -573,7 +573,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось найти транзакцию для редактирования.
+        ///   Looks up a localized string similar to Es konnte keine Transaktion zum Bearbeiten gefunden werden.
         /// </summary>
         internal static string CommonError_FindTransactionToEdit {
             get {
@@ -582,7 +582,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось получить информацию по категории.
+        ///   Looks up a localized string similar to Die Info über die Kategorie konnte nicht geladen werden.
         /// </summary>
         internal static string CommonError_GetCategoryInfo {
             get {
@@ -591,7 +591,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось получить текущий профиль.
+        ///   Looks up a localized string similar to Das aktuelle Profil konnte nicht geladen werden.
         /// </summary>
         internal static string CommonError_GetCurrentProfile {
             get {
@@ -600,7 +600,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось найти профиль с указанным ID.
+        ///   Looks up a localized string similar to Das Profil mit einer spezifischen ID konnte nicht gefunden werden.
         /// </summary>
         internal static string CommonError_GetProfileById {
             get {
@@ -609,7 +609,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось получить настройки.
+        ///   Looks up a localized string similar to Die Einstellungen wurden nicht gefunden.
         /// </summary>
         internal static string CommonError_GetSettings {
             get {
@@ -618,7 +618,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Произошла внутренняя ошибка. Попробуйте снова.
+        ///   Looks up a localized string similar to Es ist ein interner Fehler aufgetreten. Versuche es erneut.
         /// </summary>
         internal static string CommonError_InternalErrorTryAgain {
             get {
@@ -627,7 +627,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Нет данных для импорта.
+        ///   Looks up a localized string similar to Es gibt keine Daten zu importieren.
         /// </summary>
         internal static string CommonError_NoDataToImport {
             get {
@@ -636,7 +636,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось открыть страницу создания новой категории.
+        ///   Looks up a localized string similar to Die Seite zum Hinzufügen einer Kategorie konnte nicht geöffnet werden.
         /// </summary>
         internal static string CommonError_OpenAddCategoryPage {
             get {
@@ -645,7 +645,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось открыть страницу редактирования транзакции.
+        ///   Looks up a localized string similar to Die Seite zum Bearbeiten einer Transaktion konnte nicht geöffnet werden.
         /// </summary>
         internal static string CommonError_OpenEditTransactionPage {
             get {
@@ -654,7 +654,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удаётся открыть страницу нового периода.
+        ///   Looks up a localized string similar to Kann die Seite Neuer Zeitraum nicht öffnen.
         /// </summary>
         internal static string CommonError_OpenNewPeriodPage {
             get {
@@ -663,7 +663,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось открыть страницу фильтров сводки.
+        ///   Looks up a localized string similar to Die Seite zum Filtern von Übersicht konnte nicht geöffnet werden.
         /// </summary>
         internal static string CommonError_OpenOverviewFiltersPage {
             get {
@@ -672,7 +672,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось открыть страницу фильтров транзакций.
+        ///   Looks up a localized string similar to Die Seite zum Filtern von Transaktionen konnte nicht geöffnet werden.
         /// </summary>
         internal static string CommonError_OpenTransactionsFiltersPage {
             get {
@@ -681,7 +681,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сумма в исходной валюте должна быть числом.
+        ///   Looks up a localized string similar to Der Betrag in der ursprünglichen Währung muss eine Zahl sein.
         /// </summary>
         internal static string CommonError_OriginalCurrencyAmountNumber {
             get {
@@ -690,7 +690,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Планируемая сумма должна быть числом.
+        ///   Looks up a localized string similar to Der geplante Betrag muss eine Zahl sein.
         /// </summary>
         internal static string CommonError_PlannedAmountNumber {
             get {
@@ -699,7 +699,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не удалось открыть отфильтрованные транзакции.
+        ///   Looks up a localized string similar to Die gefilterten Transaktionen können nicht angezeigt werden.
         /// </summary>
         internal static string CommonError_ShowFilteredTransactions {
             get {
@@ -708,7 +708,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Неверный тип транзакции.
+        ///   Looks up a localized string similar to Ungültiger Transaktionstyp.
         /// </summary>
         internal static string CommonError_TransactionType {
             get {
@@ -717,7 +717,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Неподдерживаемый тип файла.
+        ///   Looks up a localized string similar to Nicht unterstützter Dateityp.
         /// </summary>
         internal static string CommonError_WrongFileExtension {
             get {
@@ -726,7 +726,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дирхам ОАЭ.
+        ///   Looks up a localized string similar to VAE-Dirham.
         /// </summary>
         internal static string Currencies_AED {
             get {
@@ -735,7 +735,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Аргентинский песо.
+        ///   Looks up a localized string similar to Argentinischer Peso.
         /// </summary>
         internal static string Currencies_ARS {
             get {
@@ -744,7 +744,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Австралийский доллар.
+        ///   Looks up a localized string similar to Australischer Dollar.
         /// </summary>
         internal static string Currencies_AUD {
             get {
@@ -753,7 +753,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Бангладешская така.
+        ///   Looks up a localized string similar to Bangladeschischer Taka.
         /// </summary>
         internal static string Currencies_BDT {
             get {
@@ -762,7 +762,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Болгарский лев.
+        ///   Looks up a localized string similar to Bulgarischer Lew.
         /// </summary>
         internal static string Currencies_BGN {
             get {
@@ -771,7 +771,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Бразильский реал.
+        ///   Looks up a localized string similar to Brasilianischer Real.
         /// </summary>
         internal static string Currencies_BRL {
             get {
@@ -780,7 +780,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Биткоин.
+        ///   Looks up a localized string similar to Bitcoin.
         /// </summary>
         internal static string Currencies_BTC {
             get {
@@ -789,7 +789,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Канадский доллар.
+        ///   Looks up a localized string similar to Kanadischer Dollar.
         /// </summary>
         internal static string Currencies_CAD {
             get {
@@ -798,7 +798,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Швейцарский франк.
+        ///   Looks up a localized string similar to Schweizer Franken.
         /// </summary>
         internal static string Currencies_CHF {
             get {
@@ -807,7 +807,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Чилийский песо.
+        ///   Looks up a localized string similar to Chilenischer Peso.
         /// </summary>
         internal static string Currencies_CLP {
             get {
@@ -816,7 +816,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Китайский юань.
+        ///   Looks up a localized string similar to Chinesischer Yuan.
         /// </summary>
         internal static string Currencies_CNY {
             get {
@@ -825,7 +825,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Колумбийский песо.
+        ///   Looks up a localized string similar to Kolumbianischer Peso.
         /// </summary>
         internal static string Currencies_COP {
             get {
@@ -834,7 +834,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Чешская крона.
+        ///   Looks up a localized string similar to Tschechische Krone.
         /// </summary>
         internal static string Currencies_CZK {
             get {
@@ -843,7 +843,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Датская крона.
+        ///   Looks up a localized string similar to Dänische Krone.
         /// </summary>
         internal static string Currencies_DKK {
             get {
@@ -852,7 +852,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Египетский фунт.
+        ///   Looks up a localized string similar to Ägyptisches Pfund.
         /// </summary>
         internal static string Currencies_EGP {
             get {
@@ -861,7 +861,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Эфир.
+        ///   Looks up a localized string similar to Ethereum.
         /// </summary>
         internal static string Currencies_ETH {
             get {
@@ -870,7 +870,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Евро.
+        ///   Looks up a localized string similar to Euro.
         /// </summary>
         internal static string Currencies_EUR {
             get {
@@ -879,7 +879,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Доллар Фиджи.
+        ///   Looks up a localized string similar to Fidschi-Dollar.
         /// </summary>
         internal static string Currencies_FJD {
             get {
@@ -888,7 +888,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Британский фунт.
+        ///   Looks up a localized string similar to Britischer Pfund.
         /// </summary>
         internal static string Currencies_GBP {
             get {
@@ -897,7 +897,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ганский седи.
+        ///   Looks up a localized string similar to Ghanaischer Cedi.
         /// </summary>
         internal static string Currencies_GHS {
             get {
@@ -906,7 +906,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Гонконгский доллар.
+        ///   Looks up a localized string similar to Hongkong-Dollar.
         /// </summary>
         internal static string Currencies_HKD {
             get {
@@ -915,7 +915,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Венгерский форинт.
+        ///   Looks up a localized string similar to Ungarischer Forint.
         /// </summary>
         internal static string Currencies_HUF {
             get {
@@ -924,7 +924,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Индонезийская рупия.
+        ///   Looks up a localized string similar to Indonesische Rupiah.
         /// </summary>
         internal static string Currencies_IDR {
             get {
@@ -933,7 +933,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Израильский новый шекель.
+        ///   Looks up a localized string similar to Israelischer Schekel.
         /// </summary>
         internal static string Currencies_ILS {
             get {
@@ -942,7 +942,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Индийская рупия.
+        ///   Looks up a localized string similar to Indische Rupie.
         /// </summary>
         internal static string Currencies_INR {
             get {
@@ -951,7 +951,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Иракский динар.
+        ///   Looks up a localized string similar to Irakischer Dinar.
         /// </summary>
         internal static string Currencies_IQD {
             get {
@@ -960,7 +960,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Японская иена.
+        ///   Looks up a localized string similar to Japanischer Yen.
         /// </summary>
         internal static string Currencies_JPY {
             get {
@@ -969,7 +969,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Кенийский шиллинг.
+        ///   Looks up a localized string similar to Kenia-Schilling.
         /// </summary>
         internal static string Currencies_KES {
             get {
@@ -978,7 +978,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Южнокорейская вона.
+        ///   Looks up a localized string similar to Südkoreanischer Won.
         /// </summary>
         internal static string Currencies_KRW {
             get {
@@ -987,7 +987,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Кувейтский динар.
+        ///   Looks up a localized string similar to Kuwait-Dinar.
         /// </summary>
         internal static string Currencies_KWD {
             get {
@@ -996,7 +996,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Мексиканский песо.
+        ///   Looks up a localized string similar to Mexikanischer Peso.
         /// </summary>
         internal static string Currencies_MXN {
             get {
@@ -1005,7 +1005,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Малайзийский ринггит.
+        ///   Looks up a localized string similar to Malaysischer Ringgit.
         /// </summary>
         internal static string Currencies_MYR {
             get {
@@ -1014,7 +1014,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Нигерийская найра.
+        ///   Looks up a localized string similar to Nigerianische Naira.
         /// </summary>
         internal static string Currencies_NGN {
             get {
@@ -1023,7 +1023,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Норвежская крона.
+        ///   Looks up a localized string similar to Norwegische Krone.
         /// </summary>
         internal static string Currencies_NOK {
             get {
@@ -1032,7 +1032,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Новозеландский доллар.
+        ///   Looks up a localized string similar to Neuseeland-Dollar.
         /// </summary>
         internal static string Currencies_NZD {
             get {
@@ -1041,7 +1041,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Оманский риал.
+        ///   Looks up a localized string similar to Omanischer Rial.
         /// </summary>
         internal static string Currencies_OMR {
             get {
@@ -1050,7 +1050,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Филиппинский песо.
+        ///   Looks up a localized string similar to Philippinischer Peso.
         /// </summary>
         internal static string Currencies_PHP {
             get {
@@ -1059,7 +1059,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Пакистанская рупия.
+        ///   Looks up a localized string similar to Pakistanische Rupie.
         /// </summary>
         internal static string Currencies_PKR {
             get {
@@ -1068,7 +1068,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Польский злотый.
+        ///   Looks up a localized string similar to Polnischer Zloty.
         /// </summary>
         internal static string Currencies_PLN {
             get {
@@ -1077,7 +1077,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Парагвайский гуарани.
+        ///   Looks up a localized string similar to Paraguayischer Guarani.
         /// </summary>
         internal static string Currencies_PYG {
             get {
@@ -1086,7 +1086,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Румынский лей.
+        ///   Looks up a localized string similar to Rumänischer Leu.
         /// </summary>
         internal static string Currencies_RON {
             get {
@@ -1095,7 +1095,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сербский динар.
+        ///   Looks up a localized string similar to Serbischer Dinar.
         /// </summary>
         internal static string Currencies_RSD {
             get {
@@ -1104,7 +1104,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Российский рубль.
+        ///   Looks up a localized string similar to Russischer Rubel.
         /// </summary>
         internal static string Currencies_RUB {
             get {
@@ -1113,7 +1113,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Саудовский риял.
+        ///   Looks up a localized string similar to Saudi-Riyal.
         /// </summary>
         internal static string Currencies_SAR {
             get {
@@ -1122,7 +1122,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Шведская крона.
+        ///   Looks up a localized string similar to Schwedische Krone.
         /// </summary>
         internal static string Currencies_SEK {
             get {
@@ -1131,7 +1131,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сингапурский доллар.
+        ///   Looks up a localized string similar to Singapur-Dollar.
         /// </summary>
         internal static string Currencies_SGD {
             get {
@@ -1140,7 +1140,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Тайский бат.
+        ///   Looks up a localized string similar to Thai Baht.
         /// </summary>
         internal static string Currencies_THB {
             get {
@@ -1149,7 +1149,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Турецкая лира.
+        ///   Looks up a localized string similar to Türkische Lira.
         /// </summary>
         internal static string Currencies_TRY {
             get {
@@ -1158,7 +1158,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Тайваньский доллар.
+        ///   Looks up a localized string similar to Taiwan-Dollar.
         /// </summary>
         internal static string Currencies_TWD {
             get {
@@ -1167,7 +1167,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Доллар США.
+        ///   Looks up a localized string similar to US-Dollar.
         /// </summary>
         internal static string Currencies_USD {
             get {
@@ -1176,7 +1176,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Венесуэльский боливар.
+        ///   Looks up a localized string similar to Venezolanischer Bolívar.
         /// </summary>
         internal static string Currencies_VEF {
             get {
@@ -1185,7 +1185,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вьетнамский донг.
+        ///   Looks up a localized string similar to Vietnamesischer Dong.
         /// </summary>
         internal static string Currencies_VND {
             get {
@@ -1194,7 +1194,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Самоанская тала.
+        ///   Looks up a localized string similar to Samoanischer Tala.
         /// </summary>
         internal static string Currencies_WST {
             get {
@@ -1203,7 +1203,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Южноафриканский рэнд.
+        ///   Looks up a localized string similar to Südafrikanischer Rand.
         /// </summary>
         internal static string Currencies_ZAR {
             get {
@@ -1212,7 +1212,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Начальный баланс.
+        ///   Looks up a localized string similar to Initialer Kontostand.
         /// </summary>
         internal static string EditProfile_InitialBalance {
             get {
@@ -1221,7 +1221,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Профиль.
+        ///   Looks up a localized string similar to Profil.
         /// </summary>
         internal static string EditProfile_Profile {
             get {
@@ -1230,7 +1230,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Название профиля.
+        ///   Looks up a localized string similar to Profilname.
         /// </summary>
         internal static string EditProfile_ProfileName {
             get {
@@ -1239,7 +1239,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сохранить профиль.
+        ///   Looks up a localized string similar to Profil speichern.
         /// </summary>
         internal static string EditProfile_SaveProfile {
             get {
@@ -1248,7 +1248,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Возникла ошибка.
+        ///   Looks up a localized string similar to Es ist ein Fehler aufgetreten.
         /// </summary>
         internal static string ErrorAlert_Description {
             get {
@@ -1257,7 +1257,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ОК.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string ErrorAlert_Ok {
             get {
@@ -1266,7 +1266,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ошибка.
+        ///   Looks up a localized string similar to Fehler.
         /// </summary>
         internal static string ErrorAlert_Title {
             get {
@@ -1275,7 +1275,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Баланс.
+        ///   Looks up a localized string similar to Kontostand.
         /// </summary>
         internal static string Home_Balance {
             get {
@@ -1284,7 +1284,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Расходы по категориям.
+        ///   Looks up a localized string similar to Ausgabenkategorien.
         /// </summary>
         internal static string Home_Categories {
             get {
@@ -1293,7 +1293,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дневные расходы.
+        ///   Looks up a localized string similar to Tägliche Beträge.
         /// </summary>
         internal static string Home_DailyAmounts {
             get {
@@ -1302,7 +1302,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Основные.
+        ///   Looks up a localized string similar to Haupt.
         /// </summary>
         internal static string Home_Main {
             get {
@@ -1311,7 +1311,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Пока что нет категорий.
+        ///   Looks up a localized string similar to Es gibt noch keine Kategorien.
         /// </summary>
         internal static string Home_NoCategories {
             get {
@@ -1320,7 +1320,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отложенные.
+        ///   Looks up a localized string similar to Gespart.
         /// </summary>
         internal static string Home_Saved {
             get {
@@ -1329,7 +1329,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отложенные суммы.
+        ///   Looks up a localized string similar to Gesparte Beträge.
         /// </summary>
         internal static string Home_SavedAmounts {
             get {
@@ -1338,7 +1338,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Второстепенные.
+        ///   Looks up a localized string similar to Sekundär.
         /// </summary>
         internal static string Home_Secondary {
             get {
@@ -1347,7 +1347,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Типы расходов.
+        ///   Looks up a localized string similar to Ausgabentypen.
         /// </summary>
         internal static string Home_SpendingTypes {
             get {
@@ -1356,7 +1356,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Начать новый период.
+        ///   Looks up a localized string similar to Neuen Zeitraum starten.
         /// </summary>
         internal static string Home_StartNewPeriod {
             get {
@@ -1365,7 +1365,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сегодня.
+        ///   Looks up a localized string similar to Heute.
         /// </summary>
         internal static string Home_TodayBalance {
             get {
@@ -1374,7 +1374,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Завтра.
+        ///   Looks up a localized string similar to Morgen.
         /// </summary>
         internal static string Home_TomorrowBalance {
             get {
@@ -1383,7 +1383,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Выберите файл.
+        ///   Looks up a localized string similar to Wählen Sie eine Datei.
         /// </summary>
         internal static string ImportExport_ChooseFile {
             get {
@@ -1392,7 +1392,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Экспорт.
+        ///   Looks up a localized string similar to Exportieren.
         /// </summary>
         internal static string ImportExport_Export {
             get {
@@ -1401,7 +1401,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Экспортировать категории.
+        ///   Looks up a localized string similar to Kategorien exportieren.
         /// </summary>
         internal static string ImportExport_ExportCategories {
             get {
@@ -1410,7 +1410,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Экспортировать в файл.
+        ///   Looks up a localized string similar to In eine Datei exportieren.
         /// </summary>
         internal static string ImportExport_ExportFile {
             get {
@@ -1419,7 +1419,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Экспортировать профили.
+        ///   Looks up a localized string similar to Profile exportieren.
         /// </summary>
         internal static string ImportExport_ExportProfiles {
             get {
@@ -1428,7 +1428,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Экспортировать транзакции.
+        ///   Looks up a localized string similar to Transaktionen exportieren.
         /// </summary>
         internal static string ImportExport_ExportTransactions {
             get {
@@ -1437,7 +1437,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Импорт.
+        ///   Looks up a localized string similar to Importieren.
         /// </summary>
         internal static string ImportExport_Import {
             get {
@@ -1446,7 +1446,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Выберите файл резервной копии Profitocracy.
+        ///   Looks up a localized string similar to Wählen Sie eine Profitocracy-Sicherungsdatei.
         /// </summary>
         internal static string ImportExport_SelectBackupFile {
             get {
@@ -1455,7 +1455,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Данные успешно экспортированы.
+        ///   Looks up a localized string similar to Daten wurden erfolgreich exportiert.
         /// </summary>
         internal static string ImportExport_SuccessExportAlert_Description {
             get {
@@ -1473,7 +1473,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Успех.
+        ///   Looks up a localized string similar to Erfolg.
         /// </summary>
         internal static string ImportExport_SuccessExportAlert_Title {
             get {
@@ -1482,7 +1482,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Данные успешно импортированы.
+        ///   Looks up a localized string similar to Daten wurden erfolgreich importiert.
         /// </summary>
         internal static string ImportExport_SuccessImportAlert_Description {
             get {
@@ -1500,7 +1500,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Успех.
+        ///   Looks up a localized string similar to Erfolg.
         /// </summary>
         internal static string ImportExport_SuccessImportAlert_Title {
             get {
@@ -1509,7 +1509,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Чтобы изменения вступили в силу, требуется перезапустить приложение..
+        ///   Looks up a localized string similar to Starte die Applikation neu, damit die Änderungen aktiv werden..
         /// </summary>
         internal static string InfoAlert_ChangeLanguage_Message {
             get {
@@ -1518,7 +1518,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Понятно.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string InfoAlert_ChangeLanguage_Ok {
             get {
@@ -1527,7 +1527,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Предупреждение.
+        ///   Looks up a localized string similar to Achtung.
         /// </summary>
         internal static string InfoAlert_ChangeLanguage_Title {
             get {
@@ -1536,7 +1536,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Эта функция пока не доступна. Но скоро мы её добавим.
+        ///   Looks up a localized string similar to Diese Funktion ist derzeit noch nicht verfügbar. Wir werden diese bald einbauen.
         /// </summary>
         internal static string InfoAlert_FeatureNotAvailable_Message {
             get {
@@ -1545,7 +1545,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Понятно.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string InfoAlert_FeatureNotAvailable_Ok {
             get {
@@ -1554,7 +1554,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Пока не доступно.
+        ///   Looks up a localized string similar to Derzeit noch nicht verfügbar.
         /// </summary>
         internal static string InfoAlert_FeatureNotAvailable_Title {
             get {
@@ -1626,7 +1626,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Расходы по категориям.
+        ///   Looks up a localized string similar to Ausgaben nach Kategorie.
         /// </summary>
         internal static string Overview_CategoriesExpenses {
             get {
@@ -1635,7 +1635,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ожидаемые и фактические расходы по категориям.
+        ///   Looks up a localized string similar to Geplante und Aktuelle Ausgaben nach Kategorie.
         /// </summary>
         internal static string Overview_CategoriesPlannedAndActual {
             get {
@@ -1644,7 +1644,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дневные расходы.
+        ///   Looks up a localized string similar to Tägliche Ausgaben.
         /// </summary>
         internal static string Overview_DailyExpenses {
             get {
@@ -1653,7 +1653,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Расходы.
+        ///   Looks up a localized string similar to Ausgaben.
         /// </summary>
         internal static string Overview_Expense {
             get {
@@ -1662,7 +1662,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Фильтры.
+        ///   Looks up a localized string similar to Filter.
         /// </summary>
         internal static string Overview_Filters {
             get {
@@ -1671,7 +1671,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to За текущий месяц.
+        ///   Looks up a localized string similar to Für den aktuellen Monat.
         /// </summary>
         internal static string Overview_ForMonth {
             get {
@@ -1680,7 +1680,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to За шесть месяцев.
+        ///   Looks up a localized string similar to Für sechs Monate.
         /// </summary>
         internal static string Overview_ForSixMonths {
             get {
@@ -1689,7 +1689,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to За три месяца.
+        ///   Looks up a localized string similar to Für drei Monate.
         /// </summary>
         internal static string Overview_ForThreeMonths {
             get {
@@ -1698,7 +1698,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Доход.
+        ///   Looks up a localized string similar to Einkommen.
         /// </summary>
         internal static string Overview_Income {
             get {
@@ -1707,7 +1707,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Доходы и расходы.
+        ///   Looks up a localized string similar to Einkommen und Ausgaben.
         /// </summary>
         internal static string Overview_IncomeExpense {
             get {
@@ -1716,7 +1716,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Основные.
+        ///   Looks up a localized string similar to Haupt.
         /// </summary>
         internal static string OverView_SpendingType_Main {
             get {
@@ -1725,7 +1725,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отложенные.
+        ///   Looks up a localized string similar to Gespart.
         /// </summary>
         internal static string Overview_SpendingType_Saved {
             get {
@@ -1734,7 +1734,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Второстепенные.
+        ///   Looks up a localized string similar to Sekundär.
         /// </summary>
         internal static string Overview_SpendingType_Secondary {
             get {
@@ -1743,7 +1743,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Расходы по типам.
+        ///   Looks up a localized string similar to Verteilung der Ausgabentypen.
         /// </summary>
         internal static string Overview_SpendingTypes {
             get {
@@ -1752,7 +1752,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Недельные расходы.
+        ///   Looks up a localized string similar to Wöchentliche Ausgaben.
         /// </summary>
         internal static string Overview_WeeklyExpenses {
             get {
@@ -1761,7 +1761,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Конечная дата.
+        ///   Looks up a localized string similar to Enddatum.
         /// </summary>
         internal static string OverviewFilters_EndDate {
             get {
@@ -1770,7 +1770,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Начальная дата.
+        ///   Looks up a localized string similar to Startdatum.
         /// </summary>
         internal static string OverviewFilters_StartDate {
             get {
@@ -1779,7 +1779,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Аутентификация.
+        ///   Looks up a localized string similar to Authentifizierung.
         /// </summary>
         internal static string Pages_Authentication {
             get {
@@ -1788,7 +1788,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Категории.
+        ///   Looks up a localized string similar to Kategorien.
         /// </summary>
         internal static string Pages_Categories {
             get {
@@ -1797,7 +1797,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Главная.
+        ///   Looks up a localized string similar to Start.
         /// </summary>
         internal static string Pages_Home {
             get {
@@ -1806,7 +1806,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Импорт/Экспорт.
+        ///   Looks up a localized string similar to Import/Export.
         /// </summary>
         internal static string Pages_ImportExport {
             get {
@@ -1815,7 +1815,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Язык.
+        ///   Looks up a localized string similar to Sprache.
         /// </summary>
         internal static string Pages_Language {
             get {
@@ -1824,7 +1824,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Категория.
+        ///   Looks up a localized string similar to Kategorie.
         /// </summary>
         internal static string Pages_NewCategory {
             get {
@@ -1833,7 +1833,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Транзакция.
+        ///   Looks up a localized string similar to Transaktion.
         /// </summary>
         internal static string Pages_NewTransaction {
             get {
@@ -1842,7 +1842,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сводка.
+        ///   Looks up a localized string similar to Übersicht.
         /// </summary>
         internal static string Pages_Overview {
             get {
@@ -1851,7 +1851,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Фильтры.
+        ///   Looks up a localized string similar to Filter.
         /// </summary>
         internal static string Pages_OverviewFilters {
             get {
@@ -1860,7 +1860,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Профили.
+        ///   Looks up a localized string similar to Profile.
         /// </summary>
         internal static string Pages_Profiles {
             get {
@@ -1869,7 +1869,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Настройки.
+        ///   Looks up a localized string similar to Einstellungen.
         /// </summary>
         internal static string Pages_Settings {
             get {
@@ -1878,7 +1878,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Тема.
+        ///   Looks up a localized string similar to Darstellung.
         /// </summary>
         internal static string Pages_Theme {
             get {
@@ -1887,7 +1887,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Транзакции.
+        ///   Looks up a localized string similar to Transaktionen.
         /// </summary>
         internal static string Pages_Transactions {
             get {
@@ -1896,7 +1896,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Фильтры транзакций.
+        ///   Looks up a localized string similar to Transaktion Filter.
         /// </summary>
         internal static string Pages_TransactionsFilters {
             get {
@@ -1905,7 +1905,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отмена.
+        ///   Looks up a localized string similar to Abbrechen.
         /// </summary>
         internal static string ProfileSettings_ChangeAlert_Cancel {
             get {
@@ -1914,7 +1914,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вы уверены, что хотите сделать профиль &quot;{0}&quot; текущим?.
+        ///   Looks up a localized string similar to Bist du sicher, dass du auf das Profil &quot;{0}&quot; wechseln möchtest?.
         /// </summary>
         internal static string ProfileSettings_ChangeAlert_Desription {
             get {
@@ -1923,7 +1923,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Да.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string ProfileSettings_ChangeAlert_Ok {
             get {
@@ -1932,7 +1932,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Смена текущего профиля.
+        ///   Looks up a localized string similar to Aktuelles Profil wechseln.
         /// </summary>
         internal static string ProfileSettings_ChangeAlert_Title {
             get {
@@ -1941,7 +1941,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отмена.
+        ///   Looks up a localized string similar to Abbrechen.
         /// </summary>
         internal static string ProfileSettings_DeleteAlert_Cancel {
             get {
@@ -1950,7 +1950,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вы уверены, что хотите удалить профиль &quot;{0}&quot;? Все транзакции и категории этого профиля также будут удалены..
+        ///   Looks up a localized string similar to Bist du sicher, dass du das Profil &quot;{0}&quot; löschen möchtest? Alle Kategorien und Transaktionen in diesem Profil werden ebenfalls gelöscht..
         /// </summary>
         internal static string ProfileSettings_DeleteAlert_Description {
             get {
@@ -1959,7 +1959,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Да.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string ProfileSettings_DeleteAlert_Ok {
             get {
@@ -1968,7 +1968,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Удаление профиля.
+        ///   Looks up a localized string similar to Profil löschen.
         /// </summary>
         internal static string ProfileSettings_DeleteAlert_Title {
             get {
@@ -1977,7 +1977,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Профиль &quot;{0}&quot; является последним профилем и не может быть удален..
+        ///   Looks up a localized string similar to Das Profil &quot;{0}&quot; ist dein letztes Profil und kann nicht gelöscht werden..
         /// </summary>
         internal static string ProfileSettings_LastProfileErrorAlert_Description {
             get {
@@ -1986,7 +1986,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ОК.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string ProfileSettings_LastProfileErrorAlert_Ok {
             get {
@@ -1995,7 +1995,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Последний профиль.
+        ///   Looks up a localized string similar to Letztes Profil.
         /// </summary>
         internal static string ProfileSettings_LastProfileErrorAlert_Title {
             get {
@@ -2004,7 +2004,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ежегодно.
+        ///   Looks up a localized string similar to Jährlich.
         /// </summary>
         internal static string RecurringTransactionInterval_Annually {
             get {
@@ -2013,7 +2013,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ежедневно.
+        ///   Looks up a localized string similar to Täglich.
         /// </summary>
         internal static string RecurringTransactionInterval_Daily {
             get {
@@ -2022,7 +2022,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Каждые шесть месяцев.
+        ///   Looks up a localized string similar to Alle sechs Monate.
         /// </summary>
         internal static string RecurringTransactionInterval_EverySixMonths {
             get {
@@ -2031,7 +2031,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ежемесячно.
+        ///   Looks up a localized string similar to Monatlich.
         /// </summary>
         internal static string RecurringTransactionInterval_Monthly {
             get {
@@ -2040,7 +2040,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Никто.
+        ///   Looks up a localized string similar to Keins.
         /// </summary>
         internal static string RecurringTransactionInterval_None {
             get {
@@ -2049,7 +2049,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ежеквартальный.
+        ///   Looks up a localized string similar to Vierteljährlich.
         /// </summary>
         internal static string RecurringTransactionInterval_Quarterly {
             get {
@@ -2058,7 +2058,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Еженедельно.
+        ///   Looks up a localized string similar to Wöchentlich.
         /// </summary>
         internal static string RecurringTransactionInterval_Weekly {
             get {
@@ -2067,7 +2067,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} транзакций были созданы в фоновом режиме.
+        ///   Looks up a localized string similar to Es wurden {0} Transaktionen im Hintergrund erstellt.
         /// </summary>
         internal static string RecurringTransactionWorker_CreateTransactionsForRecurred_Description {
             get {
@@ -2076,7 +2076,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Повторяющаяся транзакция.
+        ///   Looks up a localized string similar to Wiederkehrende Transaktion.
         /// </summary>
         internal static string RecurringTransactionWorker_CreateTransactionsForRecurred_Title {
             get {
@@ -2085,7 +2085,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to О приложении.
+        ///   Looks up a localized string similar to Über.
         /// </summary>
         internal static string Settings_AboutApplication {
             get {
@@ -2094,7 +2094,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Приложение.
+        ///   Looks up a localized string similar to Anwendung.
         /// </summary>
         internal static string Settings_Application {
             get {
@@ -2103,7 +2103,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Аутентификация.
+        ///   Looks up a localized string similar to Authentifizierung.
         /// </summary>
         internal static string Settings_Authentication {
             get {
@@ -2112,7 +2112,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Категории.
+        ///   Looks up a localized string similar to Kategorien.
         /// </summary>
         internal static string Settings_Categories {
             get {
@@ -2121,7 +2121,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Основные.
+        ///   Looks up a localized string similar to Allgemein.
         /// </summary>
         internal static string Settings_General {
             get {
@@ -2139,7 +2139,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Импорт/Экспорт.
+        ///   Looks up a localized string similar to Import/Export.
         /// </summary>
         internal static string Settings_ImportExport {
             get {
@@ -2148,7 +2148,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Язык.
+        ///   Looks up a localized string similar to Sprache.
         /// </summary>
         internal static string Settings_Language {
             get {
@@ -2157,7 +2157,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Профили.
+        ///   Looks up a localized string similar to Profile.
         /// </summary>
         internal static string Settings_Profiles {
             get {
@@ -2166,7 +2166,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Оцените приложение.
+        ///   Looks up a localized string similar to Bewerten Sie die App.
         /// </summary>
         internal static string Settings_RateTheApp {
             get {
@@ -2175,7 +2175,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Тема.
+        ///   Looks up a localized string similar to Darstellung.
         /// </summary>
         internal static string Settings_Theme {
             get {
@@ -2184,7 +2184,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Версия.
+        ///   Looks up a localized string similar to Version.
         /// </summary>
         internal static string Settings_Version {
             get {
@@ -2193,7 +2193,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дата с.
+        ///   Looks up a localized string similar to Datum von.
         /// </summary>
         internal static string StartNewPeriod_DateFrom {
             get {
@@ -2202,7 +2202,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Дата по.
+        ///   Looks up a localized string similar to Datum bis.
         /// </summary>
         internal static string StartNewPeriod_DateTo {
             get {
@@ -2211,7 +2211,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Новый период.
+        ///   Looks up a localized string similar to Neuer Zeitraum.
         /// </summary>
         internal static string StartNewPeriod_NewPeriod {
             get {
@@ -2220,7 +2220,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Начать новый период.
+        ///   Looks up a localized string similar to Neuen Zeitraum starten.
         /// </summary>
         internal static string StartNewPeriod_StartNewPeriod {
             get {
@@ -2229,7 +2229,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Темная.
+        ///   Looks up a localized string similar to Dunkel.
         /// </summary>
         internal static string ThemeSettings_Dark {
             get {
@@ -2238,7 +2238,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Светлая.
+        ///   Looks up a localized string similar to Hell.
         /// </summary>
         internal static string ThemeSettings_LightTheme {
             get {
@@ -2247,7 +2247,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Системная.
+        ///   Looks up a localized string similar to System.
         /// </summary>
         internal static string ThemeSettings_System {
             get {
@@ -2256,7 +2256,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отмена.
+        ///   Looks up a localized string similar to Abbrechen.
         /// </summary>
         internal static string Transactions_DeleteAlert_Cancel {
             get {
@@ -2265,7 +2265,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вы уверены, что хотите удалить транзакцию &quot;{0}&quot;?.
+        ///   Looks up a localized string similar to Bist du sicher, dass du die Transaktion&quot;{0}&quot; löschen möchtest?.
         /// </summary>
         internal static string Transactions_DeleteAlert_Description {
             get {
@@ -2274,7 +2274,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Да.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string Transactions_DeleteAlert_Ok {
             get {
@@ -2283,7 +2283,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Удаление транзакции.
+        ///   Looks up a localized string similar to Transaktion löschen.
         /// </summary>
         internal static string Transactions_DeleteAlert_Title {
             get {
@@ -2292,7 +2292,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отмена.
+        ///   Looks up a localized string similar to Abbrechen.
         /// </summary>
         internal static string Transactions_EditNotInPeriodAlert_Cancel {
             get {
@@ -2301,7 +2301,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вы уверены, что хотите отредактировать транзакцию &quot;{0}&quot;? Она не в текущем периоде профиля и не влияет на расчеты профиля..
+        ///   Looks up a localized string similar to Bist du sicher, dass du die Transaktion &quot;{0}&quot; bearbeiten möchtest? Diese ist nicht in dem aktuellen Zeitraum deines Profils enthalten und beeinflusst nicht die Berechnungen in deinem Profil..
         /// </summary>
         internal static string Transactions_EditNotInPeriodAlert_Description {
             get {
@@ -2310,7 +2310,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Да.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string Transactions_EditNotInPeriodAlert_Ok {
             get {
@@ -2319,7 +2319,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Транзакция не в периоде профиля.
+        ///   Looks up a localized string similar to Diese Transaktion ist nicht in dem Zeitraum deines Profils enthalten.
         /// </summary>
         internal static string Transactions_EditNotInPeriodAlert_Title {
             get {
@@ -2328,7 +2328,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Расход.
+        ///   Looks up a localized string similar to Ausgaben.
         /// </summary>
         internal static string Transactions_Expense {
             get {
@@ -2337,7 +2337,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Фильтры.
+        ///   Looks up a localized string similar to Filter.
         /// </summary>
         internal static string Transactions_Filters {
             get {
@@ -2346,7 +2346,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Доход.
+        ///   Looks up a localized string similar to Einkommen.
         /// </summary>
         internal static string Transactions_Income {
             get {
@@ -2355,7 +2355,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Основные.
+        ///   Looks up a localized string similar to Haupt.
         /// </summary>
         internal static string Transactions_Main {
             get {
@@ -2364,7 +2364,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to По указанным фильтрам не было найдено ни одной транзакции.
+        ///   Looks up a localized string similar to Es konnten keine Transaktionen für die angegebenen Filter gefunden werden.
         /// </summary>
         internal static string Transactions_NoTransactions {
             get {
@@ -2373,7 +2373,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отложенные.
+        ///   Looks up a localized string similar to Sparen.
         /// </summary>
         internal static string Transactions_Saved {
             get {
@@ -2382,7 +2382,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Второстепенные.
+        ///   Looks up a localized string similar to Sekundär.
         /// </summary>
         internal static string Transactions_Secondary {
             get {
@@ -2391,7 +2391,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сумма.
+        ///   Looks up a localized string similar to Betrag.
         /// </summary>
         internal static string TransactionsFilters_AmountToSearch {
             get {
@@ -2400,7 +2400,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Применить фильтры.
+        ///   Looks up a localized string similar to Filter anwenden.
         /// </summary>
         internal static string TransactionsFilters_ApplyFilters {
             get {
@@ -2409,7 +2409,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Категория.
+        ///   Looks up a localized string similar to Kategorie.
         /// </summary>
         internal static string TransactionsFilters_Category {
             get {
@@ -2418,7 +2418,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Валюта.
+        ///   Looks up a localized string similar to Währung.
         /// </summary>
         internal static string TransactionsFilters_Currency {
             get {
@@ -2427,7 +2427,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Описание.
+        ///   Looks up a localized string similar to Beschreibung.
         /// </summary>
         internal static string TransactionsFilters_Description {
             get {
@@ -2436,7 +2436,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Конечная дата.
+        ///   Looks up a localized string similar to Enddatum.
         /// </summary>
         internal static string TransactionsFilters_EndDate {
             get {
@@ -2445,7 +2445,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Больше чем.
+        ///   Looks up a localized string similar to Größer als.
         /// </summary>
         internal static string TransactionsFilters_GreaterThan {
             get {
@@ -2454,7 +2454,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Меньше чем.
+        ///   Looks up a localized string similar to Kleiner als.
         /// </summary>
         internal static string TransactionsFilters_LessThan {
             get {
@@ -2463,7 +2463,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Не важно.
+        ///   Looks up a localized string similar to Alle.
         /// </summary>
         internal static string TransactionsFilters_Pickers_Any {
             get {
@@ -2472,7 +2472,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Интервал повторяющихся транзакций.
+        ///   Looks up a localized string similar to Wiederkehrende Transaktion Intervall.
         /// </summary>
         internal static string TransactionsFilters_RecurringTransactionInterval {
             get {
@@ -2481,7 +2481,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Любой.
+        ///   Looks up a localized string similar to Alle.
         /// </summary>
         internal static string TransactionsFilters_RecurringTransactionInterval_Any {
             get {
@@ -2490,7 +2490,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сбросить фильтры.
+        ///   Looks up a localized string similar to Filter zurücksetzen.
         /// </summary>
         internal static string TransactionsFilters_ResetFilters {
             get {
@@ -2499,7 +2499,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Поиск по сумме.
+        ///   Looks up a localized string similar to Suche nach Menge.
         /// </summary>
         internal static string TransactionsFilters_SearchByAmount {
             get {
@@ -2508,7 +2508,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Поиск по валюте.
+        ///   Looks up a localized string similar to Suche nach Währung.
         /// </summary>
         internal static string TransactionsFilters_SearchByCurrency {
             get {
@@ -2517,7 +2517,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Тип траты.
+        ///   Looks up a localized string similar to Ausgabentyp.
         /// </summary>
         internal static string TransactionsFilters_SpendingType {
             get {
@@ -2526,7 +2526,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Начальная дата.
+        ///   Looks up a localized string similar to Startdatum.
         /// </summary>
         internal static string TransactionsFilters_StartDate {
             get {
@@ -2535,7 +2535,7 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Тип транзакции.
+        ///   Looks up a localized string similar to Transaktionstyp.
         /// </summary>
         internal static string TransactionsFilters_TransactionType {
             get {

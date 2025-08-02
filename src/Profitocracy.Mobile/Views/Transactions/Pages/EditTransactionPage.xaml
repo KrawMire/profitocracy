@@ -278,6 +278,13 @@
                         </Grid>
                     </StackLayout>
                 </StackLayout>
+                <StackLayout Margin="0,16,0,0">
+                    <Label Text="{x:Static resx:AppResources.AddTransaction_RecurringTransactionInterval}"/>
+                    <Picker Margin="0,4,0,0"
+                        x:Name="IntervalPicker"
+                        SelectedItem="{Binding SelectedInterval}"
+                        ItemDisplayBinding="{Binding Name}"/>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
         <Button Grid.Row="3"
