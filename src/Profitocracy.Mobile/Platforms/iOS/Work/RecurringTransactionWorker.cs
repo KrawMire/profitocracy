@@ -12,10 +12,7 @@ public static class RecurringTransactionWorker
 
     public static void RegisterBackgroundTask()
     {
-        var success = BGTaskScheduler.Shared.Register(BackgroundTaskIdentifier, null, task =>
-        {
-            ExecuteBackgroundTask(task);
-        });
+        var success = BGTaskScheduler.Shared.Register(BackgroundTaskIdentifier, null, ExecuteBackgroundTask);
 
         Console.WriteLine(success ?
             "Background task has been registered successfully."
