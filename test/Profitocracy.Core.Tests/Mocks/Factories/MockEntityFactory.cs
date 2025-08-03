@@ -112,6 +112,14 @@ public class MockEntityFactory
                 IsAuthenticationEnabled = false,
                 IsBiometricAuthEnabled = false,
                 PasswordHash = null,
+            },
+            new NotificationsSettings
+            {
+                IsEnabled = false,
+                AddTransactionReminder = new NotificationEventSettings
+                {
+                    IsEnabled = false
+                }
             });
     }
 
