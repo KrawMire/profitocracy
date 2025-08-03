@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema
@@ -907,13 +907,13 @@
     <value>Aucun</value>
   </data>
   <data name="RecurringTransactionInterval_Daily" xml:space="preserve">
-    <value>Tous les jours</value>
+      <value>Quotidiennement</value>
   </data>
   <data name="RecurringTransactionInterval_Weekly" xml:space="preserve">
-    <value>Hebdomadaire</value>
+      <value>Hebdomadairement</value>
   </data>
   <data name="RecurringTransactionInterval_Monthly" xml:space="preserve">
-    <value>Mensuel</value>
+      <value>Mensuellement</value>
   </data>
   <data name="AddTransaction_RecurringTransaction" xml:space="preserve">
     <value>Transaction récurrente</value>
@@ -922,7 +922,7 @@
     <value>N'importe lequel</value>
   </data>
   <data name="RecurringTransactionInterval_Quarterly" xml:space="preserve">
-    <value>trimestrielle</value>
+      <value>Trimestriellement</value>
   </data>
   <data name="RecurringTransactionInterval_EverySixMonths" xml:space="preserve">
     <value>Tous les six mois</value>

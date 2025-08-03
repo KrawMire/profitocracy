@@ -904,7 +904,7 @@
     <value>Интервал понављајућих трансакција</value>
   </data>
   <data name="RecurringTransactionInterval_None" xml:space="preserve">
-    <value>Ниједан</value>
+      <value>Ништа</value>
   </data>
   <data name="RecurringTransactionInterval_Daily" xml:space="preserve">
     <value>Дневно</value>
@@ -922,7 +922,7 @@
     <value>Било који</value>
   </data>
   <data name="RecurringTransactionInterval_Quarterly" xml:space="preserve">
-    <value>квартално</value>
+      <value>Квартално</value>
   </data>
   <data name="RecurringTransactionInterval_EverySixMonths" xml:space="preserve">
     <value>Сваких шест месеци</value>
