@@ -66,7 +66,7 @@ public static class MauiProgram
 		ServiceHelper.Initialize(app.Services);
 		return app;
 	}
-	
+
 	private static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
 	{
 		_ = mauiAppBuilder.Services
