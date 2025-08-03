@@ -34,5 +34,14 @@
   <string>Need access to the FaceID.</string>
   <key>com.apple.security.files.user-selected.read-only</key>
   <true/>
+  <key>BGTaskSchedulerPermittedIdentifiers</key>
+  <array>
+    <string>com.krawmire.profitocracy.recurring-transactions-worker</string>
+  </array>
+  <key>UIBackgroundModes</key>
+  <array>
+    <string>fetch</string>
+    <string>processing</string>
+  </array>
 </dict>
 </plist>

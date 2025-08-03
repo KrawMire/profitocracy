@@ -904,7 +904,7 @@
     <value>Интервал повторяющихся транзакций</value>
   </data>
   <data name="RecurringTransactionInterval_None" xml:space="preserve">
-    <value>Никто</value>
+      <value>Нет</value>
   </data>
   <data name="RecurringTransactionInterval_Daily" xml:space="preserve">
     <value>Ежедневно</value>
@@ -922,10 +922,10 @@
     <value>Любой</value>
   </data>
   <data name="RecurringTransactionInterval_Quarterly" xml:space="preserve">
-    <value>ежеквартальный</value>
+      <value>Каждые 3 месяца</value>
   </data>
   <data name="RecurringTransactionInterval_EverySixMonths" xml:space="preserve">
-    <value>Каждые шесть месяцев</value>
+      <value>Каждые полгода</value>
   </data>
   <data name="RecurringTransactionInterval_Annually" xml:space="preserve">
     <value>Ежегодно</value>
