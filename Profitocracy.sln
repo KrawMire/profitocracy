@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profitocracy.Infrastructure
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4177F8CC-8240-420B-9F67-3E849E1FCED0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9383FCE0-E21D-4D94-9644-17A4FF7287D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profitocracy.Core.Tests", "test\Profitocracy.Core.Tests\Profitocracy.Core.Tests.csproj", "{E1F6EEDB-0D30-46ED-8C0B-CE70E95A6D02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profitocracy.Infrastructure.Tests", "test\Profitocracy.Infrastructure.Tests\Profitocracy.Infrastructure.Tests.csproj", "{78B0DFBE-7257-452F-BD1B-C50EC572A4BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +36,14 @@ Global
 		{BB3C766A-E726-4559-8756-75A843678C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB3C766A-E726-4559-8756-75A843678C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB3C766A-E726-4559-8756-75A843678C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1F6EEDB-0D30-46ED-8C0B-CE70E95A6D02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F6EEDB-0D30-46ED-8C0B-CE70E95A6D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F6EEDB-0D30-46ED-8C0B-CE70E95A6D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F6EEDB-0D30-46ED-8C0B-CE70E95A6D02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B0DFBE-7257-452F-BD1B-C50EC572A4BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B0DFBE-7257-452F-BD1B-C50EC572A4BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B0DFBE-7257-452F-BD1B-C50EC572A4BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B0DFBE-7257-452F-BD1B-C50EC572A4BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,5 +52,7 @@ Global
 		{0AC9F184-8D37-4B34-A3B9-80ED5DA88AB9} = {4177F8CC-8240-420B-9F67-3E849E1FCED0}
 		{5079990A-238B-4730-9AD4-412C18BE2F6F} = {4177F8CC-8240-420B-9F67-3E849E1FCED0}
 		{BB3C766A-E726-4559-8756-75A843678C56} = {4177F8CC-8240-420B-9F67-3E849E1FCED0}
+		{E1F6EEDB-0D30-46ED-8C0B-CE70E95A6D02} = {9383FCE0-E21D-4D94-9644-17A4FF7287D6}
+		{78B0DFBE-7257-452F-BD1B-C50EC572A4BE} = {9383FCE0-E21D-4D94-9644-17A4FF7287D6}
 	EndGlobalSection
 EndGlobal

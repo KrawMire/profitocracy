@@ -1,5 +1,3 @@
-using System.Collections.ObjectModel;
-using System.Windows.Input;
 using Profitocracy.Core.Domain.Abstractions.Services;
 using Profitocracy.Core.Domain.Model.Profiles.Entities;
 using Profitocracy.Core.Domain.Model.Profiles.ValueObjects;
@@ -7,6 +5,8 @@ using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Categories;
 using Profitocracy.Mobile.Models.Profiles;
 using Profitocracy.Mobile.Utils;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Profitocracy.Mobile.ViewModels.Home;
 

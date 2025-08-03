@@ -11,6 +11,7 @@
                     Margin="0, 16, 0, 0">
                 <StackLayout>
                     <Label Style="{StaticResource ExpenseCardTitle}"
+                           IsVisible="{Binding ShowTitle}"
                            Text="{Binding Title, Source={RelativeSource AncestorType={x:Type controls:ContentSectionView}}}"/>
                     <StackLayout>
                         <ContentPresenter />

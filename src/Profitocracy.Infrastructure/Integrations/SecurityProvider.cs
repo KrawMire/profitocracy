@@ -1,5 +1,5 @@
-using System.Security.Cryptography;
 using Profitocracy.Core.Integrations;
+using System.Security.Cryptography;
 
 namespace Profitocracy.Infrastructure.Integrations;
 

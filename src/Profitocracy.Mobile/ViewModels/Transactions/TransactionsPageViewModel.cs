@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using Profitocracy.Core.Domain.Abstractions.Services;
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Core.Domain.Model.Transactions.ValueObjects;
@@ -7,6 +6,7 @@ using Profitocracy.Core.Specifications;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Transactions;
 using Profitocracy.Mobile.Resources.Strings;
+using System.Collections.ObjectModel;
 
 namespace Profitocracy.Mobile.ViewModels.Transactions;
 
@@ -115,6 +115,7 @@ public class TransactionsPageViewModel : BaseNotifyObject
                 : null,
             IsGreaterThanAmount = filters.IsSearchByAmount && filters.IsGreaterThan,
             Amount = filters.IsSearchByAmount ? filters.Amount : null,
+            Interval = filters.SelectedInterval is null || filters.SelectedInterval.Value is -1 ? null : (RecurringTransactionInterval)filters.SelectedInterval.Value
         };
     }
 }

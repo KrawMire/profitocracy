@@ -93,7 +93,7 @@ public class AuthPageViewModel : BaseNotifyObject
             return;
         }
 
-        PassCode[_currentIndex-1] = -1;
+        PassCode[_currentIndex - 1] = -1;
 
         if (_currentIndex > 0)
         {

@@ -25,7 +25,7 @@ public partial class EditProfilePage : BaseContentPage
     {
         ProcessAction(async () =>
         {
-            await _viewModel.CreateFirstProfile();
+            await _viewModel.CreateProfile();
             await Navigation.PopModalAsync();
         });
     }

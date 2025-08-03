@@ -24,6 +24,9 @@ public partial class SettingsPage : BaseContentPage
     private void NotificationsButton_OnClicked(object? sender, EventArgs e)
         => NavigateToPage<NotificationsSettingsPage>();
 
+    private void ImportExportButton_OnClicked(object? sender, EventArgs e)
+        => NavigateToPage<ImportExportSettingsPage>();
+
     private void AuthenticationButton_OnClicked(object? sender, EventArgs e)
         => NavigateToPage<AuthSettingsPage>();
 

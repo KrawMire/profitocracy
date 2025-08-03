@@ -10,77 +10,91 @@ namespace Profitocracy.Infrastructure.Persistence.Sqlite.Mappers;
 
 internal class TransactionMapper : IInfrastructureMapper<Transaction, TransactionModel>
 {
-    public Transaction MapToDomain(TransactionModel model)
-    {
-        TransactionGeoTag? geoTag = null;
-        TransactionCategory? category = null;
+	public Transaction MapToDomain(TransactionModel model)
+	{
+		TransactionGeoTag? geoTag = null;
+		TransactionCategory? category = null;
+		RecurringTransactionInfo? recurringTransactionInfo = null;
 
-        if (model.GeoTagLongitude is not null && model.GeoTagLatitude is not null)
-        {
-            geoTag = new TransactionGeoTag
-            {
-                Latitude = (double)model.GeoTagLatitude,
-                Longitude = (double)model.GeoTagLongitude
-            };
-        }
+		if (model.GeoTagLongitude is not null && model.GeoTagLatitude is not null)
+		{
+			geoTag = new TransactionGeoTag
+			{
+				Latitude = (double)model.GeoTagLatitude,
+				Longitude = (double)model.GeoTagLongitude
+			};
+		}
 
-        if (model.CategoryId is not null && model.CategoryName is not null)
-        {
-            category = new TransactionCategory((Guid)model.CategoryId)
-            {
-                Name = model.CategoryName
-            };
-        }
+		if (model.CategoryId is not null && model.CategoryName is not null)
+		{
+			category = new TransactionCategory((Guid)model.CategoryId)
+			{
+				Name = model.CategoryName
+			};
+		}
 
-        if (model.DestinationCurrencyCode is not null)
-        {
-            // The model is supposed to be a multi currency transaction,
-            // so we suppress warnings related to null reference with
-            // null-forgiving operator (!)
-            return TransactionFactory.CreateMultiCurrencyTransaction(
-                model.Id,
-                model.Amount,
-                (decimal)model.DestinationAmount!,
-                Currency.AvailableCurrencies.All[model.SourceCurrencyCode!],
-                Currency.AvailableCurrencies.All[model.DestinationCurrencyCode],
-                model.ProfileId,
-                (TransactionType)model.Type,
-                model.SpendingType is null ? null : (SpendingType)model.SpendingType,
-                (TransactionDestination)model.Destination!,
-                model.Timestamp,
-                model.Description,
-                geoTag,
-                category);
-        }
+		if (model.Interval is not null && model.Interval != -1)
+		{
+			recurringTransactionInfo = new RecurringTransactionInfo()
+			{
+				Interval = (RecurringTransactionInterval)model.Interval,
+				LastMaturityDate = model.LastMaturityDate
+			};
+		}
 
-        return TransactionFactory.CreateTransaction(
-            model.Id,
-            model.Amount,
-            model.ProfileId,
-            (TransactionType)model.Type,
-            model.SpendingType is null ? null : (SpendingType)model.SpendingType,
-            model.Timestamp,
-            model.Description,
-            geoTag,
-            category);
-    }
+		if (model.DestinationCurrencyCode is not null)
+		{
+			// The model is supposed to be a multi currency transaction,
+			// so we suppress warnings related to null reference with
+			// null-forgiving operator (!)
+			return TransactionFactory.CreateMultiCurrencyTransaction(
+				model.Id,
+				model.Amount,
+				(decimal)model.DestinationAmount!,
+				Currency.AvailableCurrencies.All[model.SourceCurrencyCode!],
+				Currency.AvailableCurrencies.All[model.DestinationCurrencyCode],
+				model.ProfileId,
+				(TransactionType)model.Type,
+				model.SpendingType is null ? null : (SpendingType)model.SpendingType,
+				(TransactionDestination)model.Destination!,
+				model.Timestamp,
+				model.Description,
+				geoTag,
+				category,
+				recurringTransactionInfo);
+		}
+		
+		return TransactionFactory.CreateTransaction(
+			model.Id,
+			model.Amount,
+			model.ProfileId,
+			(TransactionType)model.Type,
+			model.SpendingType is null ? null : (SpendingType)model.SpendingType,
+			model.Timestamp,
+			model.Description,
+			geoTag,
+			category,
+			recurringTransactionInfo);
+	}
 
-    public TransactionModel MapToModel(Transaction entity)
-    {
-        var model = new TransactionModel
-        {
-            Id = entity.Id,
-            Amount = entity.Amount,
-            ProfileId = entity.ProfileId,
-            Type = (short)entity.Type,
-            SpendingType = entity.SpendingType is null ? null : (short)entity.SpendingType,
-            Timestamp = entity.Timestamp,
-            Description = entity.Description,
-            GeoTagLatitude = entity.GeoTag?.Latitude,
-            GeoTagLongitude = entity.GeoTag?.Longitude,
-            CategoryId = entity.Category?.Id,
-            CategoryName = entity.Category?.Name
-        };
+	public TransactionModel MapToModel(Transaction entity)
+	{
+		var model = new TransactionModel
+		{
+			Id = entity.Id,
+			Amount = entity.Amount,
+			ProfileId = entity.ProfileId,
+			Type = (short)entity.Type,
+			SpendingType = entity.SpendingType is null ? null : (short)entity.SpendingType,
+			Timestamp = entity.Timestamp,
+			Description = entity.Description,
+			GeoTagLatitude = entity.GeoTag?.Latitude,
+			GeoTagLongitude = entity.GeoTag?.Longitude,
+			CategoryId = entity.Category?.Id,
+			CategoryName = entity.Category?.Name,
+			Interval = (short?)(entity.RecurringTransactionInfo?.Interval),
+			LastMaturityDate = entity.RecurringTransactionInfo?.LastMaturityDate
+		};
 
         if (entity is MultiCurrencyTransaction multiTransaction)
         {

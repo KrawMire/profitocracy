@@ -1,10 +1,12 @@
-﻿using LiveChartsCore.SkiaSharpView.Maui;
+﻿using CommunityToolkit.Maui;
+using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.AppRating;
 using Plugin.LocalNotification;
 using Plugin.Maui.Biometric;
 using Profitocracy.Core;
 using Profitocracy.Infrastructure;
+using Profitocracy.Mobile.Utils;
 using Profitocracy.Mobile.ViewModels.Auth;
 using Profitocracy.Mobile.ViewModels.Categories;
 using Profitocracy.Mobile.ViewModels.Home;
@@ -27,10 +29,12 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
 
+#pragma warning disable CA1416 // This call site is reachable on ....
         builder
             .UseSkiaSharp()
             .UseLiveCharts()
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -41,6 +45,7 @@ public static class MauiProgram
             .RegisterViewModels()
             .RegisterViews()
             .UseLocalNotification();
+#pragma warning restore CA1416
 
 #if DEBUG
         builder.Logging.AddDebug();
@@ -57,14 +62,16 @@ public static class MauiProgram
             .AddSingleton(BiometricAuthenticationService.Default)
             .AddSingleton(AppRating.Default!);
 
-        return builder.Build();
-    }
+		var app = builder.Build();
+		ServiceHelper.Initialize(app.Services);
+		return app;
+	}
 
-    private static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
-    {
-        _ = mauiAppBuilder.Services
-            .AddSingleton<AppShell>()
-            .AddSingleton<AppInit>();
+	private static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+	{
+		_ = mauiAppBuilder.Services
+			.AddSingleton<AppShell>()
+			.AddSingleton<AppInit>();
 
         return mauiAppBuilder;
     }
@@ -85,6 +92,7 @@ public static class MauiProgram
             .AddTransient<LanguageSettingsViewModel>()
             .AddTransient<ProfileSettingsPageViewModel>()
             .AddTransient<TransactionsFiltersPageViewModel>()
+            .AddTransient<ImportExportSettingsPageViewModel>()
             .AddTransient<EditProfilePageViewModel>()
             .AddTransient<ThemeSettingsPageViewModel>()
             .AddTransient<NotificationsSettingsPageViewModel>()
@@ -109,6 +117,7 @@ public static class MauiProgram
             .AddTransient<EditProfilePage>()
             .AddTransient<NotificationsSettingsPage>()
             .AddTransient<ThemeSettingsPage>()
+            .AddTransient<ImportExportSettingsPage>()
             .AddTransient<LanguageSettingsPage>()
             .AddTransient<AuthSettingsPage>();
 

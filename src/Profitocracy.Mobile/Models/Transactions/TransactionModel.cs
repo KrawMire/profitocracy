@@ -1,6 +1,6 @@
-using System.Globalization;
 using Profitocracy.Core.Domain.Model.Transactions;
 using Profitocracy.Mobile.Resources.Strings;
+using System.Globalization;
 
 namespace Profitocracy.Mobile.Models.Transactions;
 
@@ -23,6 +23,7 @@ public class TransactionModel
     public required int Type { get; set; }
     public required int? SpendingType { get; set; }
     public required DateTime Timestamp { get; set; }
+    public string? TimestampDisplay => Timestamp.ToString("g", CultureInfo.CurrentCulture);
     public TransactionCategoryModel? Category { get; set; }
     public string? Description { get; set; }
 
@@ -69,6 +70,10 @@ public class TransactionModel
         }
     }
 
+    public RecurringTransactionIntervalModel? Interval { get; set; }
+
+    public bool IsRecurring => Interval is not null && Interval.Value > 0;
+
     public static TransactionModel FromDomain(Transaction transaction)
     {
         TransactionCategoryModel? category = null;
@@ -80,6 +85,13 @@ public class TransactionModel
                 CategoryId = transaction.Category.Id,
                 Name = transaction.Category.Name
             };
+        }
+
+        RecurringTransactionIntervalModel? interval = null;
+
+        if (transaction.RecurringTransactionInfo is not null)
+        {
+            interval = RecurringTransactionIntervalModel.FromDomain(transaction.RecurringTransactionInfo.Interval);
         }
 
         var multiTransaction = transaction as MultiCurrencyTransaction;
@@ -97,7 +109,8 @@ public class TransactionModel
             SpendingType = transaction.SpendingType is null ? null : (int)transaction.SpendingType,
             Description = transaction.Description,
             Timestamp = transaction.Timestamp,
-            Category = category
+            Category = category,
+            Interval = interval
         };
     }
 }

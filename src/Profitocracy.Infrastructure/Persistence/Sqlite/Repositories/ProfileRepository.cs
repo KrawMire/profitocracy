@@ -21,17 +21,21 @@ internal class ProfileRepository : IProfileRepository
 
     public async Task<Profile> Create(Profile profile)
     {
-        await _dbConnection.Init();
-
         var profileToCreate = _mapper.MapToModel(profile);
-        _ = await _dbConnection.Database.InsertAsync(profileToCreate);
+        var createdProfile = await CreateInternal(profileToCreate);
 
-        var createdProfile = await _dbConnection.Database
+        return _mapper.MapToDomain(createdProfile);
+    }
+
+    internal async Task<ProfileModel> CreateInternal(ProfileModel profile)
+    {
+        await _dbConnection.Init();
+        await _dbConnection.Database.InsertAsync(profile);
+
+        return await _dbConnection.Database
             .Table<ProfileModel>()
             .Where(p => p.Id.Equals(profile.Id))
             .FirstAsync();
-
-        return _mapper.MapToDomain(createdProfile);
     }
 
     public async Task<Profile> Update(Profile profile)
@@ -74,11 +78,7 @@ internal class ProfileRepository : IProfileRepository
 
     public async Task<List<Profile>> GetAllProfiles()
     {
-        await _dbConnection.Init();
-
-        var profiles = await _dbConnection.Database
-            .Table<ProfileModel>()
-            .ToListAsync();
+        var profiles = await GetAllProfilesInternal();
 
         return profiles
             .Select(_mapper.MapToDomain)
@@ -87,12 +87,7 @@ internal class ProfileRepository : IProfileRepository
 
     public async Task<Profile?> GetProfileById(Guid id)
     {
-        await _dbConnection.Init();
-
-        var profile = await _dbConnection.Database
-            .Table<ProfileModel>()
-            .Where(p => p.Id == id)
-            .FirstOrDefaultAsync();
+        var profile = await GetProfileByIdInternal(id);
 
         return profile is null
             ? null
@@ -101,15 +96,41 @@ internal class ProfileRepository : IProfileRepository
 
     public async Task<Profile?> GetCurrentProfile()
     {
-        await _dbConnection.Init();
-
-        var profile = await _dbConnection.Database
-            .Table<ProfileModel>()
-            .Where(p => p.IsCurrent)
-            .FirstOrDefaultAsync();
+        var profile = await GetCurrentProfileInternal();
 
         return profile is null
             ? null
             : _mapper.MapToDomain(profile);
+    }
+
+    internal async Task<List<ProfileModel>> GetAllProfilesInternal()
+    {
+        await _dbConnection.Init();
+
+        var profiles = await _dbConnection.Database
+            .Table<ProfileModel>()
+            .ToListAsync();
+
+        return profiles ?? [];
+    }
+
+    internal async Task<ProfileModel?> GetProfileByIdInternal(Guid id)
+    {
+        await _dbConnection.Init();
+
+        return await _dbConnection.Database
+            .Table<ProfileModel>()
+            .Where(p => p.Id == id)
+            .FirstOrDefaultAsync();
+    }
+
+    internal async Task<ProfileModel?> GetCurrentProfileInternal()
+    {
+        await _dbConnection.Init();
+
+        return await _dbConnection.Database
+            .Table<ProfileModel>()
+            .Where(p => p.IsCurrent)
+            .FirstOrDefaultAsync();
     }
 }

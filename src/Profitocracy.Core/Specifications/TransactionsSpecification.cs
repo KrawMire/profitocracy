@@ -21,4 +21,5 @@ public record struct TransactionsSpecification
     public string? CurrencyCode { get; init; }
     public bool? IsGreaterThanAmount { get; init; }
     public decimal? Amount { get; init; }
+    public RecurringTransactionInterval? Interval { get; init; }
 }
