@@ -48,7 +48,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
 
     private bool _isMultiCurrency;
     private RecurringTransactionIntervalModel? _selectedInterval;
-    
+
     public EditTransactionPageViewModel(
         IProfileRepository profileRepository,
         ITransactionRepository transactionRepository,
@@ -370,7 +370,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         {
             category = new TransactionCategory((Guid)Category.Id)
             {
-                Name = Category.Name
+                Name = Category.Name,
             };
         }
 
@@ -378,7 +378,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
 
         if (SelectedInterval is not null)
         {
-            recurringTransactionInfo = new RecurringTransactionInfo() 
+            recurringTransactionInfo = new RecurringTransactionInfo
             {
                 Interval = (RecurringTransactionInterval)SelectedInterval.Value
             };
@@ -424,8 +424,10 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             // Transaction type is Expense, Multi-currency and spending
             // type is saved, so it is saving funds in another currency
             1 when _spendingType == 2 => TransactionDestination.SavingsBalance,
-            _ => TransactionDestination.Expense
+            _ => TransactionDestination.Expense,
         };
+
+        var transactionTimestamp = _timestamp.Date.Add(_time);
 
         return TransactionFactory.CreateMultiCurrencyTransaction(
             id: transactionId,
@@ -437,7 +439,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             (TransactionType)_transactionType,
             _spendingType is null or -1 ? null : (SpendingType)_spendingType,
             destination,
-            _timestamp,
+            transactionTimestamp,
             _description,
             geoTag: null,
             category,
