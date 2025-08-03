@@ -11,7 +11,7 @@ public class TransactionModel
         AppResources.Transactions_Main,
         AppResources.Transactions_Secondary,
         AppResources.Transactions_Saved,
-        AppResources.Transactions_Income
+        AppResources.Transactions_Income,
     ];
 
     public Guid? Id { get; set; }
@@ -23,7 +23,7 @@ public class TransactionModel
     public required int Type { get; set; }
     public required int? SpendingType { get; set; }
     public required DateTime Timestamp { get; set; }
-    public string? TimestampDisplay => Timestamp.ToString("g", CultureInfo.CurrentCulture);
+    public string TimestampDisplay => Timestamp.ToString("g", CultureInfo.CurrentCulture);
     public TransactionCategoryModel? Category { get; set; }
     public string? Description { get; set; }
 
@@ -73,6 +73,7 @@ public class TransactionModel
     public RecurringTransactionIntervalModel? Interval { get; set; }
 
     public bool IsRecurring => Interval is not null && Interval.Value > 0;
+    public string? DisplayInterval => Interval?.Name;
 
     public static TransactionModel FromDomain(Transaction transaction)
     {
@@ -83,7 +84,7 @@ public class TransactionModel
             category = new TransactionCategoryModel
             {
                 CategoryId = transaction.Category.Id,
-                Name = transaction.Category.Name
+                Name = transaction.Category.Name,
             };
         }
 
@@ -110,7 +111,7 @@ public class TransactionModel
             Description = transaction.Description,
             Timestamp = transaction.Timestamp,
             Category = category,
-            Interval = interval
+            Interval = interval,
         };
     }
 }
