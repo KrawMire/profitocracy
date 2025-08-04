@@ -134,22 +134,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     public bool IsMultiCurrency
     {
         get => _isMultiCurrency;
-        set
-        {
-            if (_isMultiCurrency == value)
-            {
-                return;
-            }
-
-            _isMultiCurrency = value;
-
-            if (!_isMultiCurrency)
-            {
-                SpendingType = 0;
-            }
-
-            OnPropertyChanged();
-        }
+        set => SetProperty(ref _isMultiCurrency, value);
     }
 
 
@@ -206,7 +191,6 @@ public class EditTransactionPageViewModel : BaseNotifyObject
                     IsMain = false;
                     IsSecondary = false;
                     IsSaved = true;
-                    IsMultiCurrency = true;
                     break;
                 default:
                     IsMain = true;
@@ -395,6 +379,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             id: transactionId,
             amount,
             currentProfile.Id,
+            currentProfile.Settings.Currency,
             (TransactionType)_transactionType,
             _spendingType is null or -1 ? null : (SpendingType)_spendingType,
             transactionTimestamp,
