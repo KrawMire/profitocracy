@@ -64,6 +64,7 @@ public class MockEntityFactory
             Guid.NewGuid(),
             amount,
             profileId,
+            Currency.AvailableCurrencies.DefaultCurrency,
             TransactionType.Expense,
             SpendingType.Secondary,
             DateTime.Now.AddDays(-5),
@@ -72,7 +73,7 @@ public class MockEntityFactory
             null,
             null);
     }
-    
+
     /// <summary>
     /// Creates a mock recurring transaction using the TransactionFactory.
     /// </summary>
@@ -88,6 +89,7 @@ public class MockEntityFactory
             Guid.NewGuid(),
             amount,
             profileId,
+            Currency.AvailableCurrencies.DefaultCurrency,
             TransactionType.Expense,
             SpendingType.Secondary,
             startDate,
