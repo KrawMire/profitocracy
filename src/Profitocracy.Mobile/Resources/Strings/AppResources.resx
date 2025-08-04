@@ -946,4 +946,7 @@
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Description" xml:space="preserve">
     <value>{0} transactions were created in the background</value>
   </data>
+  <data name="EditProfile_CurrencyAndBalanceCannotBeChanged" xml:space="preserve">
+      <value>The profile's currency and balance cannot be changed after creation. To make changes, please create a new profile instead.</value>
+  </data>
 </root>

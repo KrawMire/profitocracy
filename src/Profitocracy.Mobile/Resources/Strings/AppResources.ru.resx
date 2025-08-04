@@ -945,4 +945,7 @@
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Description" xml:space="preserve">
     <value>{0} транзакций были созданы в фоновом режиме</value>
   </data>
+  <data name="EditProfile_CurrencyAndBalanceCannotBeChanged" xml:space="preserve">
+      <value>Валюта и баланс профиля не могут быть изменены после создания. Создайте новый профиль вместо этого.</value>
+  </data>
 </root>

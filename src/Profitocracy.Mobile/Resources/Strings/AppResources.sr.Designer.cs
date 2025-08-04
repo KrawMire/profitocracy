@@ -1700,5 +1700,11 @@ namespace Profitocracy.Mobile.Resources.Strings {
                 return ResourceManager.GetString("RecurringTransactionWorker_CreateTransactionsForRecurred_Description", resourceCulture);
             }
         }
+        
+        internal static string EditProfile_CurrencyAndBalanceCannotBeChanged {
+            get {
+                return ResourceManager.GetString("EditProfile_CurrencyAndBalanceCannotBeChanged", resourceCulture);
+            }
+        }
     }
 }

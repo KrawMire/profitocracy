@@ -945,4 +945,7 @@
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Description" xml:space="preserve">
     <value>{0} трансакција је креирано у позадини</value>
   </data>
+  <data name="EditProfile_CurrencyAndBalanceCannotBeChanged" xml:space="preserve">
+      <value>Валута и стање профила не могу се мењати након креирања. Уместо тога, направите нови профил.</value>
+  </data>
 </root>

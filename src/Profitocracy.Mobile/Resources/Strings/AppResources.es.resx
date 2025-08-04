@@ -945,4 +945,7 @@
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Description" xml:space="preserve">
     <value>{0} transacciones se crearon en segundo plano</value>
   </data>
+  <data name="EditProfile_CurrencyAndBalanceCannotBeChanged" xml:space="preserve">
+      <value>La moneda y el saldo del perfil no se pueden cambiar después de la creación. En su lugar, cree un nuevo perfil.</value>
+  </data>
 </root>

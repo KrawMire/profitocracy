@@ -945,4 +945,7 @@
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Description" xml:space="preserve">
     <value>{0} transactions ont été créées en arrière-plan</value>
   </data>
+  <data name="EditProfile_CurrencyAndBalanceCannotBeChanged" xml:space="preserve">
+      <value>La devise et le solde du profil ne peuvent pas être modifiés après la création. Créez un nouveau profil à la place.</value>
+  </data>
 </root>
