@@ -44,7 +44,7 @@ internal class TransactionMapper : IInfrastructureMapper<Transaction, Transactio
 
 		if (model.DestinationCurrencyCode is not null)
 		{
-			// The model is supposed to be a multi currency transaction,
+			// The model is supposed to be a multicurrency transaction,
 			// so we suppress warnings related to null reference with
 			// null-forgiving operator (!)
 			return TransactionFactory.CreateMultiCurrencyTransaction(
@@ -63,11 +63,12 @@ internal class TransactionMapper : IInfrastructureMapper<Transaction, Transactio
 				category,
 				recurringTransactionInfo);
 		}
-		
+
 		return TransactionFactory.CreateTransaction(
 			model.Id,
 			model.Amount,
 			model.ProfileId,
+            Currency.AvailableCurrencies.All[model.SourceCurrencyCode],
 			(TransactionType)model.Type,
 			model.SpendingType is null ? null : (SpendingType)model.SpendingType,
 			model.Timestamp,
@@ -84,6 +85,7 @@ internal class TransactionMapper : IInfrastructureMapper<Transaction, Transactio
 			Id = entity.Id,
 			Amount = entity.Amount,
 			ProfileId = entity.ProfileId,
+            SourceCurrencyCode = entity.SourceCurrency.Code,
 			Type = (short)entity.Type,
 			SpendingType = entity.SpendingType is null ? null : (short)entity.SpendingType,
 			Timestamp = entity.Timestamp,

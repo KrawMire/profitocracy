@@ -12,6 +12,10 @@ public class TransactionModel
 	public Guid Id { get; set; }
 	public decimal Amount { get; set; }
 	public Guid ProfileId { get; set; }
+
+#pragma warning disable CS8618
+    public string SourceCurrencyCode { get; set; }
+#pragma warning restore CS8618
 	public short Type { get; set; }
 	public short? SpendingType { get; set; }
 	public DateTime Timestamp { get; set; }
@@ -20,10 +24,8 @@ public class TransactionModel
 	public double? GeoTagLatitude { get; set; }
 	public Guid? CategoryId { get; set; }
 	public string? CategoryName { get; set; }
-	
 	public short? Destination { get; set; }
 	public decimal? DestinationAmount { get; set; }
-	public string? SourceCurrencyCode { get; set; }
 	public string? DestinationCurrencyCode { get; set; }
 	public short? Interval { get; set; }
 	public DateTime? LastMaturityDate { get; set; }
