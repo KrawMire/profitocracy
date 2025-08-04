@@ -99,6 +99,7 @@ internal class TransactionService : ITransactionService
                         null,
                         recurringTransaction.Amount,
                         recurringTransaction.ProfileId,
+                        profile.Settings.Currency,
                         recurringTransaction.Type,
                         recurringTransaction.SpendingType,
                         nextMaturityDate,
