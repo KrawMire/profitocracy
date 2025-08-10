@@ -1626,6 +1626,168 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mantenga su presupuesto bajo control: ¡agregue sus transacciones de hoy antes de que termine el día!.
+        /// </summary>
+        internal static string Notifications_AddTransactionReminder_Description {
+            get {
+                return ResourceManager.GetString("Notifications_AddTransactionReminder_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ¡No olvides registrar los gastos de hoy!.
+        /// </summary>
+        internal static string Notifications_AddTransactionReminder_Title {
+            get {
+                return ResourceManager.GetString("Notifications_AddTransactionReminder_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se produjo un error al intentar registrar una notificación.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Failed_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Failed_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aceptar.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Failed_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Failed_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fallido.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Failed_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Failed_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se permiten notificaciones.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotPermitted_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotPermitted_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aceptar.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotPermitted_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotPermitted_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No permitido.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotPermitted_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotPermitted_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Este dispositivo no admite notificaciones.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotSupported_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotSupported_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aceptar.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotSupported_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotSupported_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No compatible.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotSupported_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotSupported_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La configuración se ha guardado correctamente.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Success_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Success_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aceptar.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Success_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Success_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Éxito.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Success_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Success_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recordatorio de transacción.
+        /// </summary>
+        internal static string NotificationsSettings_AddTransactionReminderEnabled {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_AddTransactionReminderEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hora del recordatorio.
+        /// </summary>
+        internal static string NotificationsSettings_AddTransactionReminderTime {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_AddTransactionReminderTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activado.
+        /// </summary>
+        internal static string NotificationsSettings_Enabled {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_Enabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ahorrar.
+        /// </summary>
+        internal static string NotificationsSettings_Save {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gastos por categoría.
         /// </summary>
         internal static string Overview_CategoriesExpenses {
@@ -2153,6 +2315,15 @@ namespace Profitocracy.Mobile.Resources.Strings {
         internal static string Settings_Language {
             get {
                 return ResourceManager.GetString("Settings_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notificaciones.
+        /// </summary>
+        internal static string Settings_Notifications {
+            get {
+                return ResourceManager.GetString("Settings_Notifications", resourceCulture);
             }
         }
         

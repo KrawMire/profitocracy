@@ -29,9 +29,12 @@ public static class NotificationService
         }
 
         var currentDate = DateTime.Now.Date;
-        var scheduledTime = currentDate
-            .AddDays(1)
-            .Add(scheduleTime);
+        var scheduledTime =
+# if DEBUG
+            currentDate.Add(scheduleTime);
+# else
+            currentDate.AddDays(1).Add(scheduleTime);
+# endif
 
         var notification = new NotificationRequest
         {
@@ -51,6 +54,16 @@ public static class NotificationService
         return success ?
             ScheduleNotificationResult.Success :
             ScheduleNotificationResult.Failed;
+    }
+    
+    public static void CancelScheduledAddTransactionReminderNotification()
+    {
+        var notificationService = LocalNotificationCenter.Current;
+
+        if (notificationService.IsSupported)
+        {
+            notificationService.Cancel(AddTransactionNotificationId);
+        }
     }
 }
 

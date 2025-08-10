@@ -104,7 +104,7 @@ public partial class AppInit : BaseContentPage
         LocalizationService.ChangeCurrentLanguage(settings.Language);
         ThemeService.ChangeTheme(settings.Theme);
 
-        if (settings.Notifications.IsEnabled)
+        if (settings.Notifications is { IsEnabled: true, AddTransactionReminder.IsEnabled: true })
         {
             await NotificationService.ScheduleAddTransactionReminderNotification(
                 settings.Notifications.AddTransactionReminder.ScheduledTime);
