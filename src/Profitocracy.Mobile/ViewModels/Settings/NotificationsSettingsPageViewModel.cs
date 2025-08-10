@@ -85,6 +85,11 @@ public class NotificationsSettingsPageViewModel : BaseNotifyObject
         {
             result = await NotificationService.ScheduleAddTransactionReminderNotification(AddTransactionReminderTime);
         }
+        else
+        {
+            // Cancel the scheduled notification if a user has activated it and immediately deactivated it again.
+            NotificationService.CancelScheduledAddTransactionReminderNotification();
+        }
 
         await _settingsRepository.CreateOrUpdate(settings);
 
