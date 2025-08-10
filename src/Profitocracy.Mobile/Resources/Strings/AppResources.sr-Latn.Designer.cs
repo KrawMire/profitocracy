@@ -1626,6 +1626,168 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pratite budžet - dodajte transakcije za danas pre nego što se dan završi!.
+        /// </summary>
+        internal static string Notifications_AddTransactionReminder_Description {
+            get {
+                return ResourceManager.GetString("Notifications_AddTransactionReminder_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ne zaboravite da evidentirate današnje troškove!.
+        /// </summary>
+        internal static string Notifications_AddTransactionReminder_Title {
+            get {
+                return ResourceManager.GetString("Notifications_AddTransactionReminder_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pokušaj registracije obaveštenja nije uspeo.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Failed_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Failed_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Da.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Failed_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Failed_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neuspešno.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Failed_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Failed_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obaveštenja nisu dozvoljena.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotPermitted_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotPermitted_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Da.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotPermitted_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotPermitted_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nije dozvoljeno.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotPermitted_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotPermitted_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ovaj uređaj ne podržava obaveštenja.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotSupported_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotSupported_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Da.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotSupported_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotSupported_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nije podržano.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotSupported_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotSupported_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podešavanja su uspešno sačuvana.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Success_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Success_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Da.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Success_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Success_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspeh.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Success_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Success_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podsetnik za transakciju.
+        /// </summary>
+        internal static string NotificationsSettings_AddTransactionReminderEnabled {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_AddTransactionReminderEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vreme podsetnika.
+        /// </summary>
+        internal static string NotificationsSettings_AddTransactionReminderTime {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_AddTransactionReminderTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Omogućeno.
+        /// </summary>
+        internal static string NotificationsSettings_Enabled {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_Enabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sačuvaj.
+        /// </summary>
+        internal static string NotificationsSettings_Save {
+            get {
+                return ResourceManager.GetString("NotificationsSettings_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Troškovi po kategorijama.
         /// </summary>
         internal static string Overview_CategoriesExpenses {
@@ -2153,6 +2315,15 @@ namespace Profitocracy.Mobile.Resources.Strings {
         internal static string Settings_Language {
             get {
                 return ResourceManager.GetString("Settings_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obaveštenja.
+        /// </summary>
+        internal static string Settings_Notifications {
+            get {
+                return ResourceManager.GetString("Settings_Notifications", resourceCulture);
             }
         }
         

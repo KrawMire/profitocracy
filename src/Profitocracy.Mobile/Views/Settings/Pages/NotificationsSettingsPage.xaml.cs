@@ -1,3 +1,4 @@
+using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.Services.Static;
 using Profitocracy.Mobile.ViewModels.Settings;
 
@@ -23,17 +24,25 @@ public partial class NotificationsSettingsPage
             switch (result)
             {
                 case ScheduleNotificationResult.Success:
-                    await DisplayAlert("Success", "Settings has been successfully saved", "OK");
+                    await DisplayAlert(AppResources.NotificationSettings_SavedAlert_Success_Title,
+                        AppResources.NotificationSettings_SavedAlert_Success_Description,
+                        AppResources.NotificationSettings_SavedAlert_Success_Ok);
                     await Navigation.PopAsync();
                     return;
                 case ScheduleNotificationResult.NotSupported:
-                    await DisplayAlert("Not supported", "This device does not support notifications", "OK");
+                    await DisplayAlert(AppResources.NotificationSettings_SavedAlert_NotSupported_Title,
+                        AppResources.NotificationSettings_SavedAlert_NotSupported_Description,
+                        AppResources.NotificationSettings_SavedAlert_NotSupported_Ok);
                     return;
                 case ScheduleNotificationResult.NotPermitted:
-                    await DisplayAlert("Not permitted", "Notifications are not permitted", "OK");
+                    await DisplayAlert(AppResources.NotificationSettings_SavedAlert_NotPermitted_Title,
+                        AppResources.NotificationSettings_SavedAlert_NotPermitted_Description,
+                        AppResources.NotificationSettings_SavedAlert_NotPermitted_Ok);
                     return;
                 case ScheduleNotificationResult.Failed:
-                    await DisplayAlert("Failed", "An attempt to register a notification failed", "OK");
+                    await DisplayAlert(AppResources.NotificationSettings_SavedAlert_Failed_Title,
+                        AppResources.NotificationSettings_SavedAlert_Failed_Description,
+                        AppResources.NotificationSettings_SavedAlert_Failed_Ok);
                     return;
                 default:
                     return;

@@ -1635,12 +1635,119 @@ namespace Profitocracy.Mobile.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Don&apos;t Forget to Log Today&apos;s Expenses!
-        ///.
+        ///   Looks up a localized string similar to Don&apos;t Forget to Log Today&apos;s Expenses!.
         /// </summary>
         internal static string Notifications_AddTransactionReminder_Title {
             get {
                 return ResourceManager.GetString("Notifications_AddTransactionReminder_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An attempt to register a notification failed.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Failed_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Failed_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Failed_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Failed_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Failed_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Failed_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications are not permitted.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotPermitted_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotPermitted_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotPermitted_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotPermitted_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not permitted.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotPermitted_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotPermitted_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This device does not support notifications.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotSupported_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotSupported_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotSupported_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotSupported_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not supported.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_NotSupported_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_NotSupported_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings has been successfully saved.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Success_Description {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Success_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Success_Ok {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Success_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        internal static string NotificationSettings_SavedAlert_Success_Title {
+            get {
+                return ResourceManager.GetString("NotificationSettings_SavedAlert_Success_Title", resourceCulture);
             }
         }
         
