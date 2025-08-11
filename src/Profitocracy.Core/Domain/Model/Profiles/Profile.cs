@@ -384,6 +384,18 @@ public class Profile : AggregateRoot<Guid>
 
     private void HandleSavingSpendingTransaction(Transaction transaction, DateTime currentDate)
     {
+        if (transaction is not MultiCurrencyTransaction)
+        {
+            if (SavedAmounts.ContainsKey(transaction.SourceCurrency))
+            {
+                SavedAmounts[transaction.SourceCurrency] += transaction.Amount;
+            }
+            else
+            {
+                SavedAmounts.Add(transaction.SourceCurrency, transaction.Amount);
+            }
+        }
+
         if (transaction.Timestamp.Month == currentDate.Month)
         {
             Expenses.Saved.ActualAmount += transaction.Amount;

@@ -23,6 +23,7 @@ public class TransactionTests
             id,
             amount,
             profileId,
+            Currency.AvailableCurrencies.DefaultCurrency,
             type,
             spendingType,
             date,

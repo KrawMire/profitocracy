@@ -8,5 +8,5 @@ public enum RecurringTransactionInterval
     Monthly,
     Quarterly,
     EverySixMonths,
-    Annually
+    Annually,
 }

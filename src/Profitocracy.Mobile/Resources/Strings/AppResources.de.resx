@@ -945,6 +945,9 @@
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Title" xml:space="preserve">
     <value>Wiederkehrende Transaktion</value>
   </data>
+  <data name="EditProfile_CurrencyAndBalanceCannotBeChanged" xml:space="preserve">
+      <value>Die Währung und der Kontostand des Profils können nach der Erstellung nicht mehr geändert werden. Erstellen Sie stattdessen ein neues Profil.</value>
+  </data>
   <data name="NotificationsSettings_AddTransactionReminderEnabled" xml:space="preserve">
     <value>Transaktionserinnerung</value>
   </data>

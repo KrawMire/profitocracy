@@ -17,6 +17,10 @@
 
         <ApplicationVersion>47</ApplicationVersion>
         <ApplicationDisplayVersion>1.13.4</ApplicationDisplayVersion>
+
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
+        <DefaultResourcesNamespace>Profitocracy.Mobile.Resources.Strings</DefaultResourcesNamespace>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
@@ -32,6 +36,10 @@
         <PackageReference Include="CommunityToolkit.Maui" Version="12.1.0" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
         <PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-rc5.4" />
+        <PackageReference Include="Meziantou.Framework.ResxSourceGenerator" Version="1.0.13">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.90" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.90" />
         <PackageReference Include="Plugin.Maui.AppRating" Version="1.2.1" />
@@ -64,72 +72,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Update="Resources\Strings\AppResources.de.resx">
-          <Generator>ResXFileCodeGenerator</Generator>
-          <LastGenOutput>AppResources.de.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-        <EmbeddedResource Update="Resources\Strings\AppResources.es.resx">
-          <Generator>ResXFileCodeGenerator</Generator>
-          <LastGenOutput>AppResources.es.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-        <EmbeddedResource Update="Resources\Strings\AppResources.fr.resx">
-          <Generator>ResXFileCodeGenerator</Generator>
-          <LastGenOutput>AppResources.fr.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-        <EmbeddedResource Update="Resources\Strings\AppResources.ru.resx">
-          <Generator>ResXFileCodeGenerator</Generator>
-          <LastGenOutput>AppResources.ru.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-        <EmbeddedResource Update="Resources\Strings\AppResources.sr.resx">
-          <Generator>ResXFileCodeGenerator</Generator>
-          <LastGenOutput>AppResources.sr.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-        <EmbeddedResource Update="Resources\Strings\AppResources.sr-Latn.resx">
-          <Generator>ResXFileCodeGenerator</Generator>
-          <LastGenOutput>AppResources.sr-Latn.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-        <EmbeddedResource Update="Resources\Strings\AppResources.resx">
-          <Generator>ResXFileCodeGenerator</Generator>
-          <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Compile Update="Resources\Strings\AppResources.de.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>AppResources.de.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Resources\Strings\AppResources.es.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>AppResources.es.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Resources\Strings\AppResources.fr.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>AppResources.fr.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Resources\Strings\AppResources.ru.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>AppResources.ru.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Resources\Strings\AppResources.sr.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>AppResources.sr.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Resources\Strings\AppResources.sr-Latn.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>AppResources.sr-Latn.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Resources\Strings\AppResources.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>AppResources.resx</DependentUpon>
-        </Compile>
+        <!-- Enable the source generator for all resx files in the project -->
+        <AdditionalFiles Include="**/*.resx" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">

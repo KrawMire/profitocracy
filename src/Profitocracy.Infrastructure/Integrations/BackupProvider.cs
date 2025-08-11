@@ -109,9 +109,15 @@ internal sealed class BackupProvider : IBackupProvider
                 transaction.Id = newId;
                 transaction.ProfileId = profileId;
 
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+                if (transaction.SourceCurrencyCode is null)
+                {
+                    var transactionProfile = model.Profiles.First(p => p.Id == profileId);
+                    transaction.SourceCurrencyCode = transactionProfile.CurrencyCode;
+                }
+
                 await _transactionRepository.CreateInternal(transaction);
 
-                await Task.Delay(5);
                 currentIndex++;
                 yield return (currentIndex, totalObjects);
             }
