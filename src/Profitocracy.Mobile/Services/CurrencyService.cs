@@ -12,7 +12,7 @@ public static class CurrencyService
         foreach (var currency in Currency.AvailableCurrencies.All.Values)
         {
             var resourceName = $"Currencies_{currency.Code}";
-            var currencyName = AppResources.ResourceManager.GetString(resourceName, AppResources.Culture);
+            var currencyName = AppResources.ResourceManager.GetString(resourceName, AppResources.CultureInfo);
 
             if (string.IsNullOrWhiteSpace(currencyName))
             {
