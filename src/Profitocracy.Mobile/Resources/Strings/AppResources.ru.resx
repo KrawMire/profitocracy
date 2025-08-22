@@ -930,15 +930,6 @@
   <data name="RecurringTransactionInterval_Annually" xml:space="preserve">
     <value>Ежегодно</value>
   </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Title" xml:space="preserve">
-    <value>Уведомление о повторяющихся операциях</value>
-  </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Message" xml:space="preserve">
-    <value>Profitocracy автоматически создает транзакции для ваших повторяющихся транзакций в фоновом режиме и хотел бы информировать вас о них</value>
-  </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Ok" xml:space="preserve">
-    <value>Да</value>
-  </data>
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Title" xml:space="preserve">
     <value>Повторяющаяся транзакция</value>
   </data>

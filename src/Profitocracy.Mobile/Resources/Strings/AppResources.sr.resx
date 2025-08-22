@@ -930,15 +930,6 @@
   <data name="RecurringTransactionInterval_Annually" xml:space="preserve">
     <value>Годишње</value>
   </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Title" xml:space="preserve">
-    <value>Обавештење о понављајућим трансакцијама</value>
-  </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Message" xml:space="preserve">
-    <value>Профитократија аутоматски креира трансакције за ваше понављајуће трансакције у позадини и жели да вас обавести о њима</value>
-  </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Ok" xml:space="preserve">
-    <value>Да</value>
-  </data>
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Title" xml:space="preserve">
     <value>Понављајућа трансакција</value>
   </data>
