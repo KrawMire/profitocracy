@@ -23,23 +23,23 @@ public partial class NotificationsSettingsPage
 
             switch (result)
             {
-                case ScheduleNotificationResult.Success:
+                case NotificationResult.Success:
                     await DisplayAlert(AppResources.NotificationSettings_SavedAlert_Success_Title,
                         AppResources.NotificationSettings_SavedAlert_Success_Description,
                         AppResources.NotificationSettings_SavedAlert_Success_Ok);
                     await Navigation.PopAsync();
                     return;
-                case ScheduleNotificationResult.NotSupported:
+                case NotificationResult.NotSupported:
                     await DisplayAlert(AppResources.NotificationSettings_SavedAlert_NotSupported_Title,
                         AppResources.NotificationSettings_SavedAlert_NotSupported_Description,
                         AppResources.NotificationSettings_SavedAlert_NotSupported_Ok);
                     return;
-                case ScheduleNotificationResult.NotPermitted:
+                case NotificationResult.NotPermitted:
                     await DisplayAlert(AppResources.NotificationSettings_SavedAlert_NotPermitted_Title,
                         AppResources.NotificationSettings_SavedAlert_NotPermitted_Description,
                         AppResources.NotificationSettings_SavedAlert_NotPermitted_Ok);
                     return;
-                case ScheduleNotificationResult.Failed:
+                case NotificationResult.Failed:
                     await DisplayAlert(AppResources.NotificationSettings_SavedAlert_Failed_Title,
                         AppResources.NotificationSettings_SavedAlert_Failed_Description,
                         AppResources.NotificationSettings_SavedAlert_Failed_Ok);

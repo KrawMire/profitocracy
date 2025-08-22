@@ -55,7 +55,7 @@ public class NotificationsSettingsPageViewModel : BaseNotifyObject
         }
     }
 
-    public async Task<ScheduleNotificationResult> SaveSettings()
+    public async Task<NotificationResult> SaveSettings()
     {
         var settings = await _settingsRepository.GetCurrentSettings();
 
@@ -79,7 +79,7 @@ public class NotificationsSettingsPageViewModel : BaseNotifyObject
             settings.DisableNotifications();
         }
 
-        var result = ScheduleNotificationResult.Success;
+        var result = NotificationResult.Success;
 
         if (IsEnabled && IsAddTransactionReminderEnabled)
         {
