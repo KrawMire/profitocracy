@@ -104,7 +104,10 @@ public partial class AppInit : BaseContentPage
         LocalizationService.ChangeCurrentLanguage(settings.Language);
         ThemeService.ChangeTheme(settings.Theme);
 
-        if (settings.Notifications is { IsEnabled: true, AddTransactionReminder.IsEnabled: true })
+        // Check if the transaction reminder notifications are enabled by a user and also check if notifications are
+        // enabled in general to avoid unnecessary notification permission requests on app start.
+        if (settings.Notifications is { IsEnabled: true, AddTransactionReminder.IsEnabled: true } &&
+            await NotificationService.AreNotificationsEnabled())
         {
             await NotificationService.ScheduleAddTransactionReminderNotification(
                 settings.Notifications.AddTransactionReminder.ScheduledTime);

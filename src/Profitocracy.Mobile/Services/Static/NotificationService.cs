@@ -6,14 +6,20 @@ namespace Profitocracy.Mobile.Services.Static;
 public static class NotificationService
 {
     private const int AddTransactionNotificationId = 100;
+    private const int CreateTransactionsForRecurredId = 200;
 
-    public static async Task<ScheduleNotificationResult> ScheduleAddTransactionReminderNotification(TimeSpan scheduleTime)
+    public static async Task<bool> AreNotificationsEnabled()
+    {
+        return await LocalNotificationCenter.Current.AreNotificationsEnabled();
+    }
+    
+    public static async Task<NotificationResult> ScheduleAddTransactionReminderNotification(TimeSpan scheduleTime)
     {
         var notificationService = LocalNotificationCenter.Current;
 
         if (!notificationService.IsSupported)
         {
-            return ScheduleNotificationResult.NotSupported;
+            return NotificationResult.NotSupported;
         }
 
         var enabled = await notificationService.AreNotificationsEnabled();
@@ -24,7 +30,7 @@ public static class NotificationService
 
             if (!permitted)
             {
-                return ScheduleNotificationResult.NotPermitted;
+                return NotificationResult.NotPermitted;
             }
         }
 
@@ -52,8 +58,8 @@ public static class NotificationService
         var success = await notificationService.Show(notification);
 
         return success ?
-            ScheduleNotificationResult.Success :
-            ScheduleNotificationResult.Failed;
+            NotificationResult.Success :
+            NotificationResult.Failed;
     }
     
     public static void CancelScheduledAddTransactionReminderNotification()
@@ -65,9 +71,53 @@ public static class NotificationService
             notificationService.Cancel(AddTransactionNotificationId);
         }
     }
+
+    public static async Task<NotificationResult> SendCreateTransactionsForRecurredNotification(
+        int createdTransactionsForRecurredCount)
+    {
+        if (createdTransactionsForRecurredCount <= 0)
+        {
+            return NotificationResult.Success;
+        }
+        
+        var notificationService = LocalNotificationCenter.Current;
+
+        if (!notificationService.IsSupported)
+        {
+            return NotificationResult.NotSupported;
+        }
+
+        var enabled = await notificationService.AreNotificationsEnabled();
+
+        if (!enabled)
+        {
+            var permitted = await notificationService.RequestNotificationPermission();
+
+            if (!permitted)
+            {
+                return NotificationResult.NotPermitted;
+            }
+        }
+
+        var notification = new NotificationRequest
+        {
+            NotificationId = CreateTransactionsForRecurredId,
+            Title = AppResources.RecurringTransactionWorker_CreateTransactionsForRecurred_Title,
+            Description =
+                string.Format(AppResources.RecurringTransactionWorker_CreateTransactionsForRecurred_Description,
+                    createdTransactionsForRecurredCount),
+            ReturningData = string.Empty
+        };
+
+        var success = await notificationService.Show(notification);
+
+        return success ?
+            NotificationResult.Success :
+            NotificationResult.Failed;
+    }
 }
 
-public enum ScheduleNotificationResult
+public enum NotificationResult
 {
     Success,
     NotSupported,

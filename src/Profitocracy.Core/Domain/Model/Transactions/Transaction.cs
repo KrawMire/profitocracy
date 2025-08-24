@@ -15,6 +15,7 @@ public class Transaction : AggregateRoot<Guid>
 		Guid id,
 		decimal amount,
 		Guid profileId,
+        Currency sourceCurrency,
 		TransactionType type,
 		SpendingType? spendingType,
 		DateTime timestamp,
@@ -27,9 +28,10 @@ public class Transaction : AggregateRoot<Guid>
 		{
 			throw new InvalidTransactionSpendingType("If transaction is expense then spendingType should be specified");
 		}
-		
+
 		Amount = amount;
 		ProfileId = profileId;
+        SourceCurrency = sourceCurrency;
 		Timestamp = timestamp;
 		Description = description;
 		GeoTag = geoTag;
@@ -38,9 +40,10 @@ public class Transaction : AggregateRoot<Guid>
 		SpendingType = spendingType;
 		RecurringTransactionInfo = recurringTransactionInfo;
 	}
-	
+
 	public decimal Amount { get; set; }
 	public Guid ProfileId { get; set; }
+    public Currency SourceCurrency { get; }
 	public TransactionType Type { get; set; }
 	public SpendingType? SpendingType { get; set; }
 	public DateTime Timestamp { get; set; }

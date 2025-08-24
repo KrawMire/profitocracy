@@ -11,7 +11,7 @@ namespace Profitocracy.Mobile.Models.Transactions
 
         public static RecurringTransactionIntervalModel FromDomain(RecurringTransactionInterval recurringTransactionInterval)
         {
-            var interval_i18n_name = "RecurringTransactionInterval_" + recurringTransactionInterval.ToString();
+            var interval_i18n_name = "RecurringTransactionInterval_" + recurringTransactionInterval;
             return new RecurringTransactionIntervalModel
             {
                 Name = AppResources.ResourceManager.GetString(interval_i18n_name, CultureInfo.CurrentCulture) ?? throw new ArgumentNullException("No resource string found for recurring transaction interval name " + interval_i18n_name),

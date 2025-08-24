@@ -18,6 +18,8 @@ public class EditProfilePageViewModel : BaseNotifyObject
     private string _initialBalance = "0";
     private Currency _currency;
     private bool _isCurrent;
+    private bool _isEditing;
+    private bool _isNewProfile = true;
     private bool _isNotFirstProfile = true;
     private TimePeriod? _billingPeriod;
 
@@ -27,6 +29,7 @@ public class EditProfilePageViewModel : BaseNotifyObject
     {
         _profileRepository = profileRepository;
         _isCurrent = false;
+        _isEditing = false;
 
         foreach (var currency in Currency.AvailableCurrencies.All.Values)
         {
@@ -39,6 +42,18 @@ public class EditProfilePageViewModel : BaseNotifyObject
     public Guid? ProfileId
     {
         set => _profileId = value;
+    }
+
+    public bool IsEditing
+    {
+        get => _isEditing;
+        set => SetProperty(ref _isEditing, value);
+    }
+
+    public bool IsNewProfile
+    {
+        get => _isNewProfile;
+        set => SetProperty(ref _isNewProfile, value);
     }
 
     public bool IsNotFirstProfile
@@ -93,6 +108,8 @@ public class EditProfilePageViewModel : BaseNotifyObject
         Name = profile.Name;
         InitialBalance = profile.Balance.ToString(CultureInfo.CurrentCulture);
         SelectedCurrency = profile.Settings.Currency;
+        IsEditing = true;
+        IsNewProfile = false;
         _billingPeriod = profile.BillingPeriod;
     }
 

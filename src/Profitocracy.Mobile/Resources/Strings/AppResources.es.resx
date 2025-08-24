@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -907,13 +907,13 @@
     <value>Ninguno</value>
   </data>
   <data name="RecurringTransactionInterval_Daily" xml:space="preserve">
-    <value>A diario</value>
+      <value>Diariamente</value>
   </data>
   <data name="RecurringTransactionInterval_Weekly" xml:space="preserve">
     <value>Semanalmente</value>
   </data>
   <data name="RecurringTransactionInterval_Monthly" xml:space="preserve">
-    <value>Mensual</value>
+      <value>Mensualmente</value>
   </data>
   <data name="AddTransaction_RecurringTransaction" xml:space="preserve">
     <value>Transacción recurrente</value>
@@ -922,7 +922,7 @@
     <value>Cualquier</value>
   </data>
   <data name="RecurringTransactionInterval_Quarterly" xml:space="preserve">
-    <value>trimestral</value>
+      <value>Trimestralmente</value>
   </data>
   <data name="RecurringTransactionInterval_EverySixMonths" xml:space="preserve">
     <value>Cada seis meses</value>
@@ -930,20 +930,14 @@
   <data name="RecurringTransactionInterval_Annually" xml:space="preserve">
     <value>Anualmente</value>
   </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Title" xml:space="preserve">
-    <value>Notificación de transacciones recurrentes</value>
-  </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Message" xml:space="preserve">
-    <value>Profitocracy crea automáticamente transacciones para sus transacciones recurrentes en segundo plano y le gustaría informarle sobre ellas</value>
-  </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Ok" xml:space="preserve">
-    <value>Aceptar</value>
-  </data>
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Title" xml:space="preserve">
     <value>Transacción recurrente</value>
   </data>
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Description" xml:space="preserve">
     <value>{0} transacciones se crearon en segundo plano</value>
+  </data>
+  <data name="EditProfile_CurrencyAndBalanceCannotBeChanged" xml:space="preserve">
+      <value>La moneda y el saldo del perfil no se pueden cambiar después de la creación. En su lugar, cree un nuevo perfil.</value>
   </data>
   <data name="NotificationsSettings_AddTransactionReminderEnabled" xml:space="preserve">
     <value>Recordatorio de transacción</value>
