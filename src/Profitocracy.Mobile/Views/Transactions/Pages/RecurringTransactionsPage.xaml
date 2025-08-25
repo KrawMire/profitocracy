@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                              xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
-                              xmlns:transactions="clr-namespace:Profitocracy.Mobile.Models.Transactions"
-                              xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
-                              xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Transactions"
-                              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Transactions.Controls"
-                              xmlns:sharedcontrols="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
-                              x:Class="Profitocracy.Mobile.Views.Transactions.Pages.TransactionsPage"
-                              x:DataType="viewmodel:TransactionsPageViewModel"
-                              Title="{x:Static resx:AppResources.Pages_Transactions}"
-                              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
-                              NavigatedTo="TransactionsPage_NavigatedTo"
-                              HideSoftInputOnTapped="True">
-    <abstractions:BaseContentPage.ToolbarItems>
-        <ToolbarItem Text="{x:Static resx:AppResources.Transactions_Filters}"
-                     Clicked="TransactionFilters_OnClicked"/>
-    </abstractions:BaseContentPage.ToolbarItems>
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+             xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
+             xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Transactions"
+             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Transactions.Controls"
+             xmlns:transactions="clr-namespace:Profitocracy.Mobile.Models.Transactions"
+             xmlns:sharedcontrols="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             x:Class="Profitocracy.Mobile.Views.Transactions.Pages.RecurringTransactionsPage"
+             Title="{x:Static resx:AppResources.Pages_Transactions}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+             x:DataType="viewmodel:RecurringTransactionsPageViewModel"
+             HideSoftInputOnTapped="True"
+             NavigatedTo="RecurringTransactionsPage_OnNavigatedTo">
     <Grid>
         <Label Style="{StaticResource ExpenseCardSubtitleSecondary}"
                IsVisible="{Binding IsTransactionsListEmpty}"
@@ -67,8 +63,8 @@
         </CollectionView>
 
         <sharedcontrols:AddNewButton HorizontalOptions="End"
-                                     VerticalOptions="End"
-                                     Margin="0,0,16,16"
-                                     Clicked="AddTransactionButton_OnClicked"/>
+                                VerticalOptions="End"
+                                Margin="0,0,16,16"
+                                Clicked="AddTransactionButton_OnClicked"/>
     </Grid>
 </abstractions:BaseContentPage>

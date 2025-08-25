@@ -997,4 +997,10 @@
   <data name="NotificationSettings_SavedAlert_Failed_Ok" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="Pages_Transactions_All" xml:space="preserve">
+      <value>All</value>
+  </data>
+  <data name="Pages_Transactions_Recurring" xml:space="preserve">
+      <value>Recurring</value>
+  </data>
 </root>
