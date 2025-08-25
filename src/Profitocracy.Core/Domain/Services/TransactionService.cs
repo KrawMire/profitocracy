@@ -50,13 +50,13 @@ internal class TransactionService : ITransactionService
 
         var createdTransactionsForRecurred = new List<Transaction>();
         var recurringTransactions = await _transactionRepository.GetRecurringTransactions(profile.Id);
-        var today = DateTime.Now;
+        var today = DateTime.Today;
 
         foreach (var recurringTransaction in recurringTransactions)
         {
             var recurringTransactionInfo = recurringTransaction.RecurringTransactionInfo;
             var lastMaturityDate = recurringTransactionInfo!.LastMaturityDate ?? recurringTransaction.Timestamp;
-            var hasMoreRecurringTransactions = lastMaturityDate <= today;
+            var hasMoreRecurringTransactions = lastMaturityDate.Date <= today;
 
             while (hasMoreRecurringTransactions)
             {
@@ -71,9 +71,14 @@ internal class TransactionService : ITransactionService
                     _ => throw new ArgumentOutOfRangeException(nameof(recurringTransactionInfo.Interval),
                         "Invalid recurring transaction interval")
                 };
-                lastMaturityDate = nextMaturityDate;
-                hasMoreRecurringTransactions = nextMaturityDate <= today;
+                hasMoreRecurringTransactions = nextMaturityDate.Date <= today;
 
+                if (!hasMoreRecurringTransactions)
+                {
+                    break;
+                }
+
+                lastMaturityDate = nextMaturityDate;
                 Transaction newTransaction;
                 if (recurringTransaction is MultiCurrencyTransaction recurringMultiCurrencyTransaction)
                 {

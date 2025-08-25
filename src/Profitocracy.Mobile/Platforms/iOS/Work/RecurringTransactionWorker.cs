@@ -1,6 +1,7 @@
 using BackgroundTasks;
 using Foundation;
 using Profitocracy.Core.Domain.Abstractions.Services;
+using Profitocracy.Mobile.Services.Static;
 using Profitocracy.Mobile.Utils;
 
 namespace Profitocracy.Mobile.Work;
@@ -59,6 +60,16 @@ public static class RecurringTransactionWorker
             if (createdTransactionsForRecurred.Count > 0)
             {
                 Console.WriteLine($"Created {createdTransactionsForRecurred.Count} transactions for recurred.");
+                MainThread.InvokeOnMainThreadAsync(async () =>
+                {
+                    // Check if the notifications are enabled in general to avoid unnecessary notification permission
+                    // requests.
+                    if (await NotificationService.AreNotificationsEnabled())
+                    {
+                        await NotificationService.SendCreateTransactionsForRecurredNotification(
+                            createdTransactionsForRecurred.Count);
+                    }
+                });
             }
             else
             {

@@ -931,15 +931,6 @@
   <data name="RecurringTransactionInterval_Annually" xml:space="preserve">
     <value>Annually</value>
   </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Title" xml:space="preserve">
-    <value>Recurring Transaction notification</value>
-  </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Message" xml:space="preserve">
-    <value>Profitocracy automatically creates transactions for your recurring transactions in the background and would like to inform you about them</value>
-  </data>
-  <data name="AddTransaction_RecurringTransaction_PostNotificationAlert_Ok" xml:space="preserve">
-    <value>OK</value>
-  </data>
   <data name="RecurringTransactionWorker_CreateTransactionsForRecurred_Title" xml:space="preserve">
     <value>Recurring Transaction</value>
   </data>
@@ -948,5 +939,68 @@
   </data>
   <data name="EditProfile_CurrencyAndBalanceCannotBeChanged" xml:space="preserve">
       <value>The profile's currency and balance cannot be changed after creation. To make changes, please create a new profile instead.</value>
+  </data>
+  <data name="Settings_Notifications" xml:space="preserve">
+      <value>Notifications</value>
+  </data>
+  <data name="NotificationsSettings_Enabled" xml:space="preserve">
+      <value>Enabled</value>
+  </data>
+  <data name="NotificationsSettings_AddTransactionReminderEnabled" xml:space="preserve">
+      <value>Transaction reminder</value>
+  </data>
+  <data name="NotificationsSettings_AddTransactionReminderTime" xml:space="preserve">
+      <value>Reminder time</value>
+  </data>
+  <data name="NotificationsSettings_Save" xml:space="preserve">
+      <value>Save</value>
+  </data>
+  <data name="Notifications_AddTransactionReminder_Title" xml:space="preserve">
+    <value>Don't Forget to Log Today's Expenses!</value>
+  </data>
+  <data name="Notifications_AddTransactionReminder_Description" xml:space="preserve">
+      <value>Keep your budget on track - add your transactions for today before the day ends!</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_Success_Title" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_Success_Description" xml:space="preserve">
+    <value>Settings has been successfully saved</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_Success_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_NotSupported_Title" xml:space="preserve">
+    <value>Not supported</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_NotPermitted_Title" xml:space="preserve">
+    <value>Not permitted</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_Failed_Title" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_NotSupported_Description" xml:space="preserve">
+    <value>This device does not support notifications</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_NotPermitted_Description" xml:space="preserve">
+    <value>Notifications are not permitted</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_Failed_Description" xml:space="preserve">
+    <value>An attempt to register a notification failed</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_NotSupported_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_NotPermitted_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_Failed_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Pages_Transactions_All" xml:space="preserve">
+      <value>All</value>
+  </data>
+  <data name="Pages_Transactions_Recurring" xml:space="preserve">
+      <value>Recurring</value>
   </data>
 </root>

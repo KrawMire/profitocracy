@@ -2,7 +2,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
-using Profitocracy.Mobile.Services;
+using Profitocracy.Mobile.Services.Static;
 using Profitocracy.Mobile.Views.Settings.Pages;
 using System.Collections.ObjectModel;
 using System.Windows.Input;

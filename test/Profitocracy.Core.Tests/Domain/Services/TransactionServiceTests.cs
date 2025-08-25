@@ -70,7 +70,7 @@ public class TransactionServiceTests
     }
     
     [Fact]
-    public async Task CheckRecurringTransactionIsExecutedDaily_ShouldCreateTransactionsForLastFourDaysAndToday()
+    public async Task CheckRecurringTransactionIsExecutedDaily_ShouldCreateTransactionsForLastFourDays()
     {
         var profile = await _profileRepository.Create(MockEntityFactory.CreateMockProfile());
         var recurringTransaction = MockEntityFactory.CreateMockRecurringTransaction(profile.Id, 100,
@@ -78,11 +78,11 @@ public class TransactionServiceTests
         await _transactionRepository.Create(recurringTransaction);
         var createdTransactionsForRecurred = await _transactionService.CreateTransactionsForRecurred();
 
-        Assert.Equal(5, createdTransactionsForRecurred.Count);
+        Assert.Equal(4, createdTransactionsForRecurred.Count);
     }
     
     [Fact]
-    public async Task CheckRecurringTransactionIsExecutedWeekly_ShouldCreateTransactionsForLastThreeWeeksAndToday()
+    public async Task CheckRecurringTransactionIsExecutedWeekly_ShouldCreateTransactionsForLastThreeWeeks()
     {
         var profile = await _profileRepository.Create(MockEntityFactory.CreateMockProfile());
         var recurringTransaction = MockEntityFactory.CreateMockRecurringTransaction(profile.Id, 100,
@@ -90,11 +90,11 @@ public class TransactionServiceTests
         await _transactionRepository.Create(recurringTransaction);
         var createdTransactionsForRecurred = await _transactionService.CreateTransactionsForRecurred();
 
-        Assert.Equal(4, createdTransactionsForRecurred.Count);
+        Assert.Equal(3, createdTransactionsForRecurred.Count);
     }
     
     [Fact]
-    public async Task CheckRecurringTransactionIsExecutedMonthly_ShouldCreateTransactionsForLastTwoMonthsAndToday()
+    public async Task CheckRecurringTransactionIsExecutedMonthly_ShouldCreateTransactionsForLastTwoMonths()
     {
         var profile = await _profileRepository.Create(MockEntityFactory.CreateMockProfile());
         var recurringTransaction = MockEntityFactory.CreateMockRecurringTransaction(profile.Id, 100,
@@ -102,11 +102,11 @@ public class TransactionServiceTests
         await _transactionRepository.Create(recurringTransaction);
         var createdTransactionsForRecurred = await _transactionService.CreateTransactionsForRecurred();
 
-        Assert.Equal(3, createdTransactionsForRecurred.Count);
+        Assert.Equal(2, createdTransactionsForRecurred.Count);
     }
     
     [Fact]
-    public async Task CheckRecurringTransactionIsExecutedQuarterly_ShouldCreateTransactionsForLastQuarterYearAndToday()
+    public async Task CheckRecurringTransactionIsExecutedQuarterly_ShouldCreateTransactionsForLastQuarterYear()
     {
         var profile = await _profileRepository.Create(MockEntityFactory.CreateMockProfile());
         var recurringTransaction = MockEntityFactory.CreateMockRecurringTransaction(profile.Id, 100,
@@ -114,11 +114,11 @@ public class TransactionServiceTests
         await _transactionRepository.Create(recurringTransaction);
         var createdTransactionsForRecurred = await _transactionService.CreateTransactionsForRecurred();
 
-        Assert.Equal(2, createdTransactionsForRecurred.Count);
+        Assert.Single(createdTransactionsForRecurred);
     }
     
     [Fact]
-    public async Task CheckRecurringTransactionIsExecutedEverySixMonths_ShouldCreateTransactionsForLastHalfYearAndToday()
+    public async Task CheckRecurringTransactionIsExecutedEverySixMonths_ShouldCreateTransactionsForLastHalfYear()
     {
         var profile = await _profileRepository.Create(MockEntityFactory.CreateMockProfile());
         var recurringTransaction = MockEntityFactory.CreateMockRecurringTransaction(profile.Id, 100,
@@ -126,11 +126,11 @@ public class TransactionServiceTests
         await _transactionRepository.Create(recurringTransaction);
         var createdTransactionsForRecurred = await _transactionService.CreateTransactionsForRecurred();
 
-        Assert.Equal(2, createdTransactionsForRecurred.Count);
+        Assert.Single(createdTransactionsForRecurred);
     }
     
     [Fact]
-    public async Task CheckRecurringTransactionIsExecutedAnnually_ShouldCreateTransactionsForLastTwoYearsAndToday()
+    public async Task CheckRecurringTransactionIsExecutedAnnually_ShouldCreateTransactionsForLastTwoYears()
     {
         var profile = await _profileRepository.Create(MockEntityFactory.CreateMockProfile());
         var recurringTransaction = MockEntityFactory.CreateMockRecurringTransaction(profile.Id, 100,
@@ -138,6 +138,6 @@ public class TransactionServiceTests
         await _transactionRepository.Create(recurringTransaction);
         var createdTransactionsForRecurred = await _transactionService.CreateTransactionsForRecurred();
 
-        Assert.Equal(3, createdTransactionsForRecurred.Count);
+        Assert.Equal(2, createdTransactionsForRecurred.Count);
     }
 }

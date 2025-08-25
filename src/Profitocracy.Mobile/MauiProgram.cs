@@ -2,6 +2,7 @@
 using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.AppRating;
+using Plugin.LocalNotification;
 using Plugin.Maui.Biometric;
 using Profitocracy.Core;
 using Profitocracy.Infrastructure;
@@ -42,7 +43,8 @@ public static class MauiProgram
             })
             .RegisterAppServices()
             .RegisterViewModels()
-            .RegisterViews();
+            .RegisterViews()
+            .UseLocalNotification();
 #pragma warning restore CA1416
 
 #if DEBUG
@@ -64,7 +66,7 @@ public static class MauiProgram
 		ServiceHelper.Initialize(app.Services);
 		return app;
 	}
-	
+
 	private static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
 	{
 		_ = mauiAppBuilder.Services
@@ -83,6 +85,7 @@ public static class MauiProgram
             .AddTransient<EditTransactionPageViewModel>()
             .AddTransient<FilteredTransactionsPageViewModel>()
             .AddTransient<TransactionsPageViewModel>()
+            .AddTransient<RecurringTransactionsPageViewModel>()
             .AddTransient<ExpenseCategoriesSettingsPageViewModel>()
             .AddTransient<EditExpenseCategoryPageViewModel>()
             .AddTransient<OverviewPageViewModel>()
@@ -93,6 +96,7 @@ public static class MauiProgram
             .AddTransient<ImportExportSettingsPageViewModel>()
             .AddTransient<EditProfilePageViewModel>()
             .AddTransient<ThemeSettingsPageViewModel>()
+            .AddTransient<NotificationsSettingsPageViewModel>()
             .AddTransient<AuthSettingsPageViewModel>();
 
         return mauiAppBuilder;
@@ -105,6 +109,7 @@ public static class MauiProgram
             .AddTransient<HomePage>()
             .AddTransient<NewPeriodSelectionPage>()
             .AddTransient<TransactionsPage>()
+            .AddTransient<RecurringTransactionsPage>()
             .AddTransient<FilteredTransactionsPage>()
             .AddTransient<EditTransactionPage>()
             .AddTransient<ExpenseCategoriesSettingsPage>()
@@ -112,6 +117,7 @@ public static class MauiProgram
             .AddTransient<OverviewPage>()
             .AddTransient<ProfilesSettingsPage>()
             .AddTransient<EditProfilePage>()
+            .AddTransient<NotificationsSettingsPage>()
             .AddTransient<ThemeSettingsPage>()
             .AddTransient<ImportExportSettingsPage>()
             .AddTransient<LanguageSettingsPage>()
