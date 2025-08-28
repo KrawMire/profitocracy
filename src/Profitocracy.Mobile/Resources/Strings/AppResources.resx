@@ -1003,4 +1003,10 @@
   <data name="Pages_Transactions_Recurring" xml:space="preserve">
       <value>Recurring</value>
   </data>
+  <data name="NotificationsSettings_General" xml:space="preserve">
+      <value>General</value>
+  </data>
+  <data name="NotificationsSettings_Reminder" xml:space="preserve">
+      <value>Reminders</value>
+  </data>
 </root>

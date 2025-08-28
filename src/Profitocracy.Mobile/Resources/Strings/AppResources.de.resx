@@ -972,9 +972,6 @@
   <data name="NotificationSettings_SavedAlert_NotSupported_Ok" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="NotificationSettings_SavedAlert_Success_Ok" xml:space="preserve">
-    <value>OK</value>
-  </data>
   <data name="NotificationSettings_SavedAlert_Failed_Title" xml:space="preserve">
     <value>Fehlgeschlagen</value>
   </data>
@@ -1001,5 +998,14 @@
   </data>
   <data name="Pages_Transactions_Recurring" xml:space="preserve">
       <value>Wiederkehrend</value>
+  </data>
+  <data name="NotificationsSettings_General" xml:space="preserve">
+      <value>Allgemein</value>
+  </data>
+  <data name="NotificationsSettings_Reminder" xml:space="preserve">
+      <value>Erinnerungen</value>
+  </data>
+  <data name="NotificationSettings_SavedAlert_Success_Ok" xml:space="preserve">
+      <value>OK</value>
   </data>
 </root>

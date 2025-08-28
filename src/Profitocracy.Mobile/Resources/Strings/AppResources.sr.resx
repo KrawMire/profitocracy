@@ -1002,4 +1002,10 @@
   <data name="Pages_Transactions_Recurring" xml:space="preserve">
       <value>Понављајући</value>
   </data>
+  <data name="NotificationsSettings_General" xml:space="preserve">
+      <value>Опште</value>
+  </data>
+  <data name="NotificationsSettings_Reminder" xml:space="preserve">
+      <value>Подсетници</value>
+  </data>
 </root>

@@ -949,7 +949,7 @@
     <value>Включено</value>
   </data>
   <data name="NotificationsSettings_Save" xml:space="preserve">
-    <value>Сохранять</value>
+      <value>Сохранить</value>
   </data>
   <data name="Notifications_AddTransactionReminder_Description" xml:space="preserve">
     <value>Следите за своим бюджетом — добавляйте сегодняшние транзакции до конца дня!</value>
@@ -1001,5 +1001,11 @@
   </data>
   <data name="Pages_Transactions_Recurring" xml:space="preserve">
       <value>Повторяющиеся</value>
+  </data>
+  <data name="NotificationsSettings_General" xml:space="preserve">
+      <value>Основные</value>
+  </data>
+  <data name="NotificationsSettings_Reminder" xml:space="preserve">
+      <value>Напоминания</value>
   </data>
 </root>
