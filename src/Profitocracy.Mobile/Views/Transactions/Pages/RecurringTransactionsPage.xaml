@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+             xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
+             xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Transactions"
+             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Transactions.Controls"
+             xmlns:transactions="clr-namespace:Profitocracy.Mobile.Models.Transactions"
+             xmlns:sharedcontrols="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             x:Class="Profitocracy.Mobile.Views.Transactions.Pages.RecurringTransactionsPage"
+             Title="{x:Static resx:AppResources.Pages_Transactions}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+             x:DataType="viewmodel:RecurringTransactionsPageViewModel"
+             HideSoftInputOnTapped="True"
+             NavigatedTo="RecurringTransactionsPage_OnNavigatedTo">
+    <Grid>
+        <Label Style="{StaticResource ExpenseCardSubtitleSecondary}"
+               IsVisible="{Binding IsTransactionsListEmpty}"
+               Text="{x:Static resx:AppResources.Transactions_NoTransactions}"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               Padding="16, 0"/>
+
+        <CollectionView x:Name="TransactionsCollectionView"
+                        VerticalScrollBarVisibility="Default">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="transactions:TransactionModel">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItemView x:Name="DeleteTransactionSwipeItem"
+                                               Width="56"
+                                               Padding="24"
+                                               BackgroundColor="{StaticResource DangerRed}"
+                                               Invoked="DeleteTransactionSwipeItem_OnInvoked">
+                                    <VerticalStackLayout VerticalOptions="Center">
+                                        <Image Source="bin.png"
+                                               Width="10" />
+                                    </VerticalStackLayout>
+                                </SwipeItemView>
+                                <SwipeItemView x:Name="EditTransactionSwipeItem"
+                                               Width="56"
+                                               Padding="24"
+                                               BackgroundColor="{StaticResource InfoBlue}"
+                                               Invoked="EditTransactionSwipeItem_OnInvoked">
+                                    <VerticalStackLayout VerticalOptions="Center">
+                                        <Image Source="edit.png"
+                                               Width="10" />
+                                    </VerticalStackLayout>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <controls:TransactionView Transaction="{Binding}"/>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <Grid HeightRequest="92"
+                      BackgroundColor="Transparent"/>
+            </CollectionView.Footer>
+        </CollectionView>
+
+        <sharedcontrols:AddNewButton HorizontalOptions="End"
+                                VerticalOptions="End"
+                                Margin="0,0,16,16"
+                                Clicked="AddTransactionButton_OnClicked"/>
+    </Grid>
+</abstractions:BaseContentPage>

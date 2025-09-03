@@ -64,12 +64,39 @@ public class MockEntityFactory
             Guid.NewGuid(),
             amount,
             profileId,
+            Currency.AvailableCurrencies.DefaultCurrency,
             TransactionType.Expense,
             SpendingType.Secondary,
             DateTime.Now.AddDays(-5),
             "Test transaction",
             null,
+            null,
             null);
+    }
+
+    /// <summary>
+    /// Creates a mock recurring transaction using the TransactionFactory.
+    /// </summary>
+    /// <param name="profileId">The ID of the profile the recurring transaction is associated with.</param>
+    /// <param name="amount">The amount for the recurring transaction.</param>
+    /// <param name="startDate">The start date for the recurring transaction.</param>
+    /// <param name="interval">The interval for the recurring transaction.</param>
+    /// <returns>A newly created recurring Transaction instance.</returns>
+    public static Transaction CreateMockRecurringTransaction(Guid profileId, decimal amount, DateTime startDate,
+        RecurringTransactionInterval? interval)
+    {
+        return TransactionFactory.CreateTransaction(
+            Guid.NewGuid(),
+            amount,
+            profileId,
+            Currency.AvailableCurrencies.DefaultCurrency,
+            TransactionType.Expense,
+            SpendingType.Secondary,
+            startDate,
+            "Test recurring transaction",
+            null,
+            null,
+            interval is null ? null : new RecurringTransactionInfo {Interval = (RecurringTransactionInterval)interval});
     }
 
     /// <summary>
@@ -87,6 +114,14 @@ public class MockEntityFactory
                 IsAuthenticationEnabled = false,
                 IsBiometricAuthEnabled = false,
                 PasswordHash = null,
+            },
+            new NotificationsSettings
+            {
+                IsEnabled = false,
+                AddTransactionReminder = new NotificationEventSettings
+                {
+                    IsEnabled = false
+                }
             });
     }
 

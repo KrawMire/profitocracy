@@ -17,6 +17,7 @@ public partial class TransactionsFiltersPage : BaseContentPage
         CurrencyPicker.ItemsSource = TransactionsFiltersPageViewModel.AvailableCurrencies;
         TransactionTypePicker.ItemsSource = TransactionsFiltersPageViewModel.TransactionTypes;
         SpendingTypePicker.ItemsSource = TransactionsFiltersPageViewModel.SpendingTypes;
+        IntervalPicker.ItemsSource = _viewModel.AvailableIntervals;
     }
 
     private void CloseButton_OnClicked(object? sender, EventArgs e)

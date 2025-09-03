@@ -3,7 +3,7 @@ using Profitocracy.Core.Domain.Model.Settings.ValueObjects;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Constants;
-using Profitocracy.Mobile.Services;
+using Profitocracy.Mobile.Services.Static;
 using Profitocracy.Mobile.Views.Settings.Pages;
 using System.Globalization;
 
@@ -40,6 +40,7 @@ public partial class AppInit : BaseContentPage
     private async Task<InitEventArgs> InitializeApplication()
     {
         var settings = await InitializeSettings();
+
         var initArgs = new InitEventArgs
         {
             RequireAuthentication = settings.Authentication.IsAuthenticationEnabled,
@@ -53,38 +54,63 @@ public partial class AppInit : BaseContentPage
         var settings = await _settingsRepository.GetCurrentSettings();
         var theme = settings?.Theme ?? Theme.System;
 
-        ThemeService.ChangeTheme(theme);
+        settings ??= BuildDefaultSettings(theme);
 
-        if (settings is not null)
-        {
-            LocalizationService.ChangeCurrentLanguage(settings.Language);
-            return settings;
-        }
+        await _settingsRepository.CreateOrUpdate(settings);
 
+        await BootstrapAppWithSettings(settings);
+
+        return settings;
+    }
+
+    private static Settings BuildDefaultSettings(Theme theme)
+    {
         var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 
-        if (LocalizationService.SupportedLanguages.Contains(lang))
-        {
-            LocalizationService.ChangeCurrentLanguage(lang);
-        }
-        else
+        if (!LocalizationService.SupportedLanguages.Contains(lang))
         {
             lang = LocalizationService.CurrentLanguage;
         }
 
-        var authSettings = settings?.Authentication ?? new AuthenticationSettings
+        var authSettings = new AuthenticationSettings
         {
             IsAuthenticationEnabled = false,
             IsBiometricAuthEnabled = false,
             PasswordHash = null,
         };
 
-        settings = new Settings(
+        var notificationSettings = new NotificationsSettings
+        {
+            IsEnabled = false,
+            AddTransactionReminder = new NotificationEventSettings
+            {
+                IsEnabled = false,
+                ScheduledTime = TimeSpan.Zero,
+            },
+        };
+
+        var settings = new Settings(
             Guid.NewGuid(),
             theme,
             lang,
-            authSettings);
+            authSettings,
+            notificationSettings);
 
-        return await _settingsRepository.CreateOrUpdate(settings);
+        return settings;
+    }
+
+    private static async Task BootstrapAppWithSettings(Settings settings)
+    {
+        LocalizationService.ChangeCurrentLanguage(settings.Language);
+        ThemeService.ChangeTheme(settings.Theme);
+
+        // Check if the transaction reminder notifications are enabled by a user and also check if notifications are
+        // enabled in general to avoid unnecessary notification permission requests on app start.
+        if (settings.Notifications is { IsEnabled: true, AddTransactionReminder.IsEnabled: true } &&
+            await NotificationService.AreNotificationsEnabled())
+        {
+            await NotificationService.ScheduleAddTransactionReminderNotification(
+                settings.Notifications.AddTransactionReminder.ScheduledTime);
+        }
     }
 }

@@ -19,13 +19,13 @@
                      Clicked="TransactionFilters_OnClicked"/>
     </abstractions:BaseContentPage.ToolbarItems>
     <Grid>
-        <Label Style="{StaticResource ExpenseCardSubtitleSecondary}" 
-               IsVisible="{Binding IsTransactionsListEmpty}" 
+        <Label Style="{StaticResource ExpenseCardSubtitleSecondary}"
+               IsVisible="{Binding IsTransactionsListEmpty}"
                Text="{x:Static resx:AppResources.Transactions_NoTransactions}"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                Padding="16, 0"/>
-        
+
         <CollectionView x:Name="TransactionsCollectionView"
                         VerticalScrollBarVisibility="Default">
             <CollectionView.ItemTemplate>
@@ -39,7 +39,7 @@
                                                BackgroundColor="{StaticResource DangerRed}"
                                                Invoked="DeleteTransactionSwipeItem_OnInvoked">
                                     <VerticalStackLayout VerticalOptions="Center">
-                                        <Image Source="bin.png" 
+                                        <Image Source="bin.png"
                                                Width="10" />
                                     </VerticalStackLayout>
                                 </SwipeItemView>
@@ -49,23 +49,23 @@
                                                BackgroundColor="{StaticResource InfoBlue}"
                                                Invoked="EditTransactionSwipeItem_OnInvoked">
                                     <VerticalStackLayout VerticalOptions="Center">
-                                        <Image Source="edit.png" 
+                                        <Image Source="edit.png"
                                                Width="10" />
                                     </VerticalStackLayout>
                                 </SwipeItemView>
                             </SwipeItems>
                         </SwipeView.RightItems>
-                        
+
                         <controls:TransactionView Transaction="{Binding}"/>
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
             <CollectionView.Footer>
-                <Grid HeightRequest="92" 
+                <Grid HeightRequest="92"
                       BackgroundColor="Transparent"/>
             </CollectionView.Footer>
         </CollectionView>
-        
+
         <sharedcontrols:AddNewButton HorizontalOptions="End"
                                      VerticalOptions="End"
                                      Margin="0,0,16,16"

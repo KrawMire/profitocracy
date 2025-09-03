@@ -16,11 +16,22 @@ internal class SettingsMapper : IInfrastructureMapper<Settings, SettingsModel>
             PasswordHash = model.Password,
         };
 
+        var notifySettings = new NotificationsSettings
+        {
+            IsEnabled = model.IsNotificationsEnabled,
+            AddTransactionReminder = new NotificationEventSettings
+            {
+                IsEnabled = model.IsAddTransactionReminderEnabled,
+                ScheduledTime = model.AddTransactionReminderTime,
+            },
+        };
+
         return new Settings(
             model.Id,
             (Theme)model.Theme,
             model.Language,
-            authSettings);
+            authSettings,
+            notifySettings);
     }
 
     public SettingsModel MapToModel(Settings entity)
@@ -33,6 +44,9 @@ internal class SettingsMapper : IInfrastructureMapper<Settings, SettingsModel>
             IsAuthenticationEnabled = entity.Authentication.IsAuthenticationEnabled,
             IsBiometricAuthEnabled = entity.Authentication.IsBiometricAuthEnabled,
             Password = entity.Authentication.PasswordHash,
+            IsNotificationsEnabled = entity.Notifications.IsEnabled,
+            IsAddTransactionReminderEnabled = entity.Notifications.AddTransactionReminder.IsEnabled,
+            AddTransactionReminderTime = entity.Notifications.AddTransactionReminder.ScheduledTime,
         };
     }
 }

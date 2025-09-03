@@ -45,12 +45,14 @@ public class ProfileTests
             id: Guid.NewGuid(),
             amount: 150,
             profileId: profile.Id,
+            profile.Settings.Currency,
             type: TransactionType.Income,
             spendingType: null,
             timestamp: DateTime.Now,
             description: "Test transaction",
             geoTag: null,
-            category: null
+            category: null,
+            recurringTransactionInfo: null
         );
 
         profile.HandleTransactions([transaction], DateTime.Now);
@@ -71,23 +73,27 @@ public class ProfileTests
                 id: Guid.NewGuid(),
                 amount: 100,
                 profileId: profile.Id,
+                profile.Settings.Currency,
                 type: TransactionType.Income,
                 spendingType: null,
                 timestamp: DateTime.Now.AddDays(-10),
                 description: "Transaction 1",
                 geoTag: null,
-                category: null
+                category: null,
+                recurringTransactionInfo: null
             ),
             TransactionFactory.CreateTransaction(
                 id: Guid.NewGuid(),
                 amount: 200,
                 profileId: profile.Id,
+                profile.Settings.Currency,
                 type: TransactionType.Income,
                 spendingType: null,
                 timestamp: DateTime.Now.AddDays(-5),
                 description: "Transaction 2",
                 geoTag: null,
-                category: null
+                category: null,
+                recurringTransactionInfo: null
             )
         };
 
@@ -114,6 +120,7 @@ public class ProfileTests
             id: Guid.NewGuid(),
             amount: 500,
             profileId: profile.Id,
+            profile.Settings.Currency,
             type: TransactionType.Expense,
             spendingType: SpendingType.Main,
             timestamp: DateTime.Now,
@@ -122,7 +129,8 @@ public class ProfileTests
             category: new TransactionCategory(categoryId)
             {
                 Name = "Groceries",
-            }
+            },
+            recurringTransactionInfo: null
         );
 
         // Act

@@ -1,8 +1,10 @@
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
+using Profitocracy.Core.Domain.Model.Transactions.ValueObjects;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Constants;
 using Profitocracy.Mobile.Models.Categories;
+using Profitocracy.Mobile.Models.Transactions;
 using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.Utils;
 using System.Collections.ObjectModel;
@@ -26,6 +28,12 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
         Name = AppResources.TransactionsFilters_Pickers_Any
     };
 
+    private static readonly RecurringTransactionIntervalModel AnyInterval = new()
+    {
+        Name = AppResources.TransactionsFilters_RecurringTransactionInterval_Any,
+        Value = -1
+    };
+    
     private Currency _selectedCurrency = AvailableCurrencies[0];
 
     private bool _isSearchByCurrency;
@@ -44,7 +52,8 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
     private int _selectedTransactionTypeIndex = -1;
     private int _selectedSpendingTypeIndex = -1;
     private CategoryModel? _selectedCategory;
-
+    private RecurringTransactionIntervalModel? _selectedInterval;
+    
     private readonly IProfileRepository _profileRepository;
     private readonly ICategoryRepository _categoryRepository;
 
@@ -78,6 +87,13 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
 
     public static List<Currency> AvailableCurrencies { get; } = Currency.AvailableCurrencies.All.Values.ToList();
     public ObservableCollection<CategoryModel> AvailableCategories { get; } = [];
+
+    public List<RecurringTransactionIntervalModel> AvailableIntervals { get; } = [AnyInterval, .. Enum.GetValues<RecurringTransactionInterval>().Cast<RecurringTransactionInterval>().Select(RecurringTransactionIntervalModel.FromDomain)];
+    public RecurringTransactionIntervalModel? SelectedInterval
+    {
+        get => _selectedInterval;
+        set => SetProperty(ref _selectedInterval, value);
+    }
 
     public bool IsApplied { get; private set; }
 
@@ -206,6 +222,8 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
         set => SetProperty(ref _displayAmount, value);
     }
 
+    public bool IsRecurring => SelectedInterval is not null && SelectedInterval.Value > 0;
+
     public void CopyFrom(TransactionsFiltersPageViewModel other)
     {
         FromDate = other.FromDate;
@@ -220,6 +238,7 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
         SelectedCategory = other.SelectedCategory;
         Description = other.Description;
         DisplayAmount = other.Amount.ToString(CultureInfo.InvariantCulture);
+        SelectedInterval = other.SelectedInterval;
     }
 
     public void Reset()
@@ -250,6 +269,8 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
             minute: TimeConstants.MaxMinutes,
             second: TimeConstants.MaxSeconds,
             millisecond: TimeConstants.MaxMilliseconds);
+
+        SelectedInterval = AvailableIntervals[0];
     }
 
     public async Task Initialize()
@@ -298,10 +319,23 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
         FromDate = (DateTime)_profileDateFrom;
         ToDate = (DateTime)_profileDateTo;
 
+        if (SelectedInterval is not null && SelectedInterval.Value != AnyInterval.Value)
+        {
+            SelectedInterval = AvailableIntervals
+                .FirstOrDefault(
+                    i => i.Value == SelectedInterval.Value,
+                    AvailableIntervals[0]);
+        }
+        else
+        {
+            SelectedInterval = AvailableIntervals[0];
+        }
+
         OnPropertyChanged(nameof(SelectedCategory));
         OnPropertyChanged(nameof(SelectedTransactionTypeIndex));
         OnPropertyChanged(nameof(SelectedSpendingTypeIndex));
         OnPropertyChanged(nameof(SelectedCurrency));
+        OnPropertyChanged(nameof(SelectedInterval));
     }
 
     public void Apply()
@@ -342,6 +376,11 @@ public class TransactionsFiltersPageViewModel : BaseNotifyObject
             TimeConstants.MaxMinutes,
             TimeConstants.MaxSeconds,
             TimeConstants.MaxMilliseconds);
+
+        if (SelectedInterval is not null && SelectedInterval.Value == AnyInterval.Value)
+        {
+            SelectedInterval = null;
+        }
 
         IsApplied = true;
     }

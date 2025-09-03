@@ -69,6 +69,19 @@
                     <Label Style="{StaticResource TransactionCardDate}"
                            Margin="0,4,0,0"
                            Text="{Binding TimestampDisplay}"/>
+                    <HorizontalStackLayout HorizontalOptions="End"
+                                           IsVisible="{Binding IsRecurring}">
+                        <Label Style="{StaticResource TransactionCardDate}"
+                               VerticalTextAlignment="Center"
+                               Margin="0,4,0,0"
+                               Text="{Binding DisplayInterval}" />
+                        <Label Style="{StaticResource TransactionCardDate}"
+                               VerticalTextAlignment="Center"
+                               FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"
+                               FontSize="20"
+                               Margin="8,4,0,0"
+                               Text="&#xf201;" />
+                    </HorizontalStackLayout>
                 </StackLayout>
             </FlexLayout>
         </StackLayout>

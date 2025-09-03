@@ -7,6 +7,7 @@ using Profitocracy.Core.Domain.Model.Transactions.ValueObjects;
 using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Categories;
+using Profitocracy.Mobile.Models.Transactions;
 using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.Utils;
 using System.Collections.ObjectModel;
@@ -46,6 +47,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     private bool _isSaved;
 
     private bool _isMultiCurrency;
+    private RecurringTransactionIntervalModel? _selectedInterval;
 
     public EditTransactionPageViewModel(
         IProfileRepository profileRepository,
@@ -80,7 +82,13 @@ public class EditTransactionPageViewModel : BaseNotifyObject
 
     public ObservableCollection<Currency> AvailableCurrencies { get; } = [];
     public ObservableCollection<CategoryModel> AvailableCategories { get; } = [];
+    public List<RecurringTransactionIntervalModel> AvailableIntervals { get; } = [.. Enum.GetValues<RecurringTransactionInterval>().Cast<RecurringTransactionInterval>().Select(RecurringTransactionIntervalModel.FromDomain)];
     public CategoryModel? Category { get; set; }
+    public RecurringTransactionIntervalModel? SelectedInterval
+    {
+        get => _selectedInterval;
+        set => SetProperty(ref _selectedInterval, value);
+    }
 
     public Currency SelectedCurrency
     {
@@ -126,22 +134,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     public bool IsMultiCurrency
     {
         get => _isMultiCurrency;
-        set
-        {
-            if (_isMultiCurrency == value)
-            {
-                return;
-            }
-
-            _isMultiCurrency = value;
-
-            if (!_isMultiCurrency)
-            {
-                SpendingType = 0;
-            }
-
-            OnPropertyChanged();
-        }
+        set => SetProperty(ref _isMultiCurrency, value);
     }
 
 
@@ -198,7 +191,6 @@ public class EditTransactionPageViewModel : BaseNotifyObject
                     IsMain = false;
                     IsSecondary = false;
                     IsSaved = true;
-                    IsMultiCurrency = true;
                     break;
                 default:
                     IsMain = true;
@@ -308,6 +300,12 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             SelectedCurrency = multiCurrencyTransaction.DestinationCurrency;
             DestinationAmount = multiCurrencyTransaction.DestinationAmount.ToString(CultureInfo.CurrentCulture);
         }
+
+        if (transaction.RecurringTransactionInfo is not null &&
+            transaction.RecurringTransactionInfo.Interval is not RecurringTransactionInterval.None)
+        {
+            SelectedInterval = AvailableIntervals.FirstOrDefault(i => i.Value == (short)transaction.RecurringTransactionInfo.Interval);
+        }
     }
 
     public Task SaveTransaction()
@@ -356,13 +354,23 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         {
             category = new TransactionCategory((Guid)Category.Id)
             {
-                Name = Category.Name
+                Name = Category.Name,
+            };
+        }
+
+        RecurringTransactionInfo? recurringTransactionInfo = null;
+
+        if (SelectedInterval is not null)
+        {
+            recurringTransactionInfo = new RecurringTransactionInfo
+            {
+                Interval = (RecurringTransactionInterval)SelectedInterval.Value
             };
         }
 
         if (IsMultiCurrency)
         {
-            return BuildMultiCurrencyTransaction(transactionId, amount, currentProfile, category);
+            return BuildMultiCurrencyTransaction(transactionId, amount, currentProfile, category, recurringTransactionInfo);
         }
 
         var transactionTimestamp = _timestamp.Date.Add(_time);
@@ -371,19 +379,22 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             id: transactionId,
             amount,
             currentProfile.Id,
+            currentProfile.Settings.Currency,
             (TransactionType)_transactionType,
             _spendingType is null or -1 ? null : (SpendingType)_spendingType,
             transactionTimestamp,
             _description,
             geoTag: null,
-            category);
+            category,
+            recurringTransactionInfo);
     }
 
     private MultiCurrencyTransaction BuildMultiCurrencyTransaction(
         Guid? transactionId,
         decimal amount,
         Profile profile,
-        TransactionCategory? category)
+        TransactionCategory? category,
+        RecurringTransactionInfo? recurringTransactionInfo)
     {
         if (!NumberUtils.TryParseDecimal(_destinationAmount, out var destinationAmount))
         {
@@ -398,8 +409,10 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             // Transaction type is Expense, Multi-currency and spending
             // type is saved, so it is saving funds in another currency
             1 when _spendingType == 2 => TransactionDestination.SavingsBalance,
-            _ => TransactionDestination.Expense
+            _ => TransactionDestination.Expense,
         };
+
+        var transactionTimestamp = _timestamp.Date.Add(_time);
 
         return TransactionFactory.CreateMultiCurrencyTransaction(
             id: transactionId,
@@ -411,9 +424,10 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             (TransactionType)_transactionType,
             _spendingType is null or -1 ? null : (SpendingType)_spendingType,
             destination,
-            _timestamp,
+            transactionTimestamp,
             _description,
             geoTag: null,
-            category);
+            category,
+            recurringTransactionInfo);
     }
 }

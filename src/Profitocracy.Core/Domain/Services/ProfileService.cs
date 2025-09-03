@@ -62,16 +62,15 @@ internal class ProfileService : IProfileService
             throw new InvalidOperationException("Current profile was not found");
         }
 
-        var startPeriodDate = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day);
-        var endPeriodDate = new DateTime(endDate.Year, endDate.Month, endDate.Day);
+        var startPeriodDate = currentDate.Date;
+        var endPeriodDate = endDate.Date;
 
         endPeriodDate = endPeriodDate.Add(DateTime.MaxValue.TimeOfDay);
 
         profile = await _calculationService.PopulateAndProcessProfile(
             profile,
             profile.BillingPeriod.DateFrom,
-            startPeriodDate.AddDays(-1));
-
+            startPeriodDate);
         profile.StartNewBillingPeriod(startPeriodDate, endPeriodDate);
 
         return await _profileRepository.Update(profile);

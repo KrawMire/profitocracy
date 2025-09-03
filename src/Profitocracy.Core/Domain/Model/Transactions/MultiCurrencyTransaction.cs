@@ -23,17 +23,18 @@ public class MultiCurrencyTransaction : Transaction
         DateTime timestamp,
         string? description,
         TransactionGeoTag? geoTag,
-        TransactionCategory? category) :
-        base(id, amount, profileId, type, spendingType, timestamp, description, geoTag, category)
+        TransactionCategory? category,
+        RecurringTransactionInfo? recurringTransactionInfo) :
+        base(id, amount, profileId, sourceCurrency, type, spendingType, timestamp, description, geoTag, category, recurringTransactionInfo)
     {
-        SourceCurrency = sourceCurrency;
         DestinationCurrency = destinationCurrency;
         DestinationAmount = destinationAmount;
         Destination = destination;
     }
 
-    public Currency SourceCurrency { get; }
-
+    /// <summary>
+    /// Target currency.
+    /// </summary>
     public Currency DestinationCurrency { get; }
 
     /// <summary>
@@ -48,7 +49,7 @@ public class MultiCurrencyTransaction : Transaction
 
     /// <summary>
     /// The ratio between amount of transaction
-    /// and destination currency amount. 
+    /// and destination currency amount.
     /// </summary>
     public decimal Rate => Amount / DestinationAmount;
 }
