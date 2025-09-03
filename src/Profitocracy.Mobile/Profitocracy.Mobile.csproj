@@ -15,8 +15,8 @@
         <ApplicationTitle>Profitocracy</ApplicationTitle>
         <ApplicationId>com.krawmire.profitocracy</ApplicationId>
 
-        <ApplicationVersion>49</ApplicationVersion>
-        <ApplicationDisplayVersion>1.14.1</ApplicationDisplayVersion>
+        <ApplicationVersion>50</ApplicationVersion>
+        <ApplicationDisplayVersion>1.14.2</ApplicationDisplayVersion>
 
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
