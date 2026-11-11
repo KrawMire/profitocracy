@@ -38,10 +38,10 @@ public static class DateUtils
         => Capitalize(date.ToString("MMMM", CultureInfo.CurrentCulture));
 
     /// <summary>
-    /// Serial number printed on "the note", e.g. "№ 03·2025 · EUR".
+    /// Serial number printed on "the note", e.g. "03·2025 · EUR".
     /// </summary>
     public static string NoteSerial(DateTime date, string currencyCode)
-        => $"№ {date:MM}·{date:yyyy} · {currencyCode}";
+        => $"{date:MM}·{date:yyyy} · {currencyCode}";
 
     /// <summary>
     /// Short relative day: "Today", "Yesterday" or e.g. "Sat 8 Mar".

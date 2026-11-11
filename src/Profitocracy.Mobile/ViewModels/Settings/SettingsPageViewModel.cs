@@ -45,7 +45,7 @@ public class SettingsPageViewModel : BaseNotifyObject
     }
 
     /// <summary>
-    /// Serial number on the note of the current profile, e.g. "№ 01 · EUR".
+    /// Serial number on the note of the current profile, e.g. "01 · EUR".
     /// </summary>
     public string CurrentProfileSerial
     {
@@ -86,7 +86,7 @@ public class SettingsPageViewModel : BaseNotifyObject
             CurrentProfile = currentModel;
 
             var number = profiles.FindIndex(p => p.Id == current.Id) + 1;
-            CurrentProfileSerial = $"№ {number:00} · {currentModel.CurrencyCode}";
+            CurrentProfileSerial = $"{number:00} · {currentModel.CurrencyCode}";
 
             await InitializeCategoriesSummary(current.Id, currentModel.CurrencySymbol);
         }
