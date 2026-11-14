@@ -149,16 +149,11 @@
                                              Spacing="8">
                             <Grid ColumnDefinitions="*,auto"
                                   Margin="4,0">
-                                <HorizontalStackLayout Grid.Column="0"
-                                                       Spacing="8">
-                                    <Label Style="{StaticResource TextBodyStrong}"
-                                           VerticalTextAlignment="End"
-                                           Text="{Binding DayName}"/>
-                                    <Label Style="{StaticResource TextSerial}"
-                                           VerticalTextAlignment="End"
-                                           Margin="0,0,0,2"
-                                           Text="{Binding ShortDate}"/>
-                                </HorizontalStackLayout>
+                                <Label Grid.Column="0"
+                                       Style="{StaticResource TextBodyStrong}"
+                                       VerticalTextAlignment="End"
+                                       LineBreakMode="TailTruncation"
+                                       Text="{Binding Title}"/>
                                 <Label Grid.Column="1"
                                        Style="{StaticResource TextLabelSoft}"
                                        VerticalTextAlignment="End"

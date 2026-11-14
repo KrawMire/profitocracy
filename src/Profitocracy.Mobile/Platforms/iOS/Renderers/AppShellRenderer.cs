@@ -17,9 +17,8 @@ public class AppShellRenderer : ShellRenderer
 }
 
 /// <summary>
-/// The tab bar floats over the content, so instead of the solid Nav background of Android
-/// it keeps the default system background. The item colors of the Shell style are made for
-/// the dark Nav bar, so the items are tinted with the page colors of the current theme.
+/// The tab bar floats over the content, so instead of the solid Surface background of Android
+/// it keeps the default system background, with the items tinted with the colors of the current theme.
 /// </summary>
 internal sealed class GlassTabBarAppearanceTracker(IShellTabBarAppearanceTracker inner) : IShellTabBarAppearanceTracker
 {
@@ -51,8 +50,8 @@ internal sealed class GlassTabBarAppearanceTracker(IShellTabBarAppearanceTracker
             itemAppearance.Selected.TitleTextAttributes = new UIStringAttributes { ForegroundColor = selected };
         }
 
-        // Shell paints the bar with the dark Nav color outside of the appearance as well,
-        // which left the theme-tinted items dark on dark, so those leftovers are cleared.
+        // Shell paints the bar with its own background color outside of the appearance as well,
+        // which hides the system material, so those leftovers are cleared.
         var tabBar = controller.TabBar;
         tabBar.OverrideUserInterfaceStyle = UIUserInterfaceStyle.Unspecified;
         tabBar.BackgroundColor = null;
@@ -91,7 +90,7 @@ internal sealed class GlassTabBarAppearanceTracker(IShellTabBarAppearanceTracker
     }
 
     /// <summary>
-    /// The "+" tab in the middle of the bar is a chartreuse circle, so its image is drawn as is
+    /// The "+" tab in the middle of the bar is a green rounded square, so its image is drawn as is
     /// instead of being tinted. Shell scales tab icons down to the size of the regular icons,
     /// so the image is taken from the bundle at its own (bigger) size.
     /// </summary>

@@ -27,7 +27,6 @@ public class HomePageViewModel : BaseNotifyObject
     private string _todayLeft = string.Empty;
     private string _todayLeftOf = string.Empty;
     private string _tomorrow = string.Empty;
-    private string _noteSerial = string.Empty;
     private string _spreadHint = string.Empty;
     private string _emptyPeriodText = string.Empty;
     private string _recalculatingText = string.Empty;
@@ -144,12 +143,6 @@ public class HomePageViewModel : BaseNotifyObject
     {
         get => _tomorrow;
         private set => SetProperty(ref _tomorrow, value);
-    }
-
-    public string NoteSerial
-    {
-        get => _noteSerial;
-        private set => SetProperty(ref _noteSerial, value);
     }
 
     public string SpreadHint
@@ -363,7 +356,6 @@ public class HomePageViewModel : BaseNotifyObject
         ProfileName = profile.Name;
         PeriodTitle = DateUtils.PeriodTitle(period.DateFrom, period.DateTo);
         BalanceCaption = isMonth ? AppResources.Home_LeftThisMonth : AppResources.Home_LeftThisPeriod;
-        NoteSerial = DateUtils.NoteSerial(period.DateFrom, currency.Code);
         SpreadHint = string.Format(AppResources.Home_SpreadHint, DateUtils.MonthName(period.DateFrom));
         EmptyPeriodText = string.Format(AppResources.Home_EmptyMonthText, DateUtils.MonthName(period.DateFrom));
         RecalculatingText = string.Format(AppResources.Home_Recalculating, DateUtils.MonthName(period.DateFrom));

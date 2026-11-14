@@ -133,7 +133,7 @@
                                         </VerticalStackLayout>
                                         <controls:IconView Grid.Column="3"
                                                            Data="{x:Static controls:Icons.ChevronRight}"
-                                                           Size="16"
+                                                           Size="18"
                                                            VerticalOptions="Center"
                                                            Color="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
                                     </Grid>
@@ -163,23 +163,19 @@
                    Text="{x:Static resx:AppResources.Home_NoCategoriesText}"/>
 
             <!-- Add a category -->
-            <Border Margin="0,24,0,0"
-                    MinimumHeightRequest="48"
-                    StrokeThickness="1.5"
-                    StrokeDashArray="3,2"
-                    StrokeShape="RoundRectangle 12"
-                    Stroke="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"
-                    BackgroundColor="Transparent">
+            <Border Style="{StaticResource Card}"
+                    Margin="0,24,0,0"
+                    MinimumHeightRequest="48">
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="AddCategoryButton_OnClicked"/>
                 </Border.GestureRecognizers>
                 <HorizontalStackLayout Spacing="8"
                                        HorizontalOptions="Center">
                     <controls:IconView Data="{x:Static controls:Icons.Plus}"
+                                       Size="20"
                                        VerticalOptions="Center"
-                                       Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
-                    <Label Style="{StaticResource TextBodyStrong}"
-                           VerticalTextAlignment="Center"
+                                       Color="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource Chartreuse}}"/>
+                    <Label Style="{StaticResource LinkLabel}"
                            Text="{x:Static resx:AppResources.Categories_Add}"/>
                 </HorizontalStackLayout>
             </Border>

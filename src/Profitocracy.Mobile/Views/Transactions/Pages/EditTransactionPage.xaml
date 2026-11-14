@@ -13,6 +13,7 @@
                               Loaded="EditTransactionPage_OnLoaded"
                               Shell.PresentationMode="ModalAnimated"
                               ios:Page.ModalPresentationStyle="PageSheet"
+                              SafeAreaEdges="All"
                               HideSoftInputOnTapped="True">
     <abstractions:BaseContentPage.Resources>
         <!-- Spending type card: dot, name and the word of the split -->
@@ -32,23 +33,6 @@
             <Setter Property="StrokeThickness" Value="0"/>
             <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}"/>
         </Style>
-        <!-- Keypad key -->
-        <Style TargetType="Border" x:Key="Key">
-            <Setter Property="HeightRequest" Value="48"/>
-            <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
-            <Setter Property="StrokeThickness" Value="0"/>
-            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}"/>
-        </Style>
-        <Style TargetType="Border" x:Key="FlatKey" BasedOn="{StaticResource Key}">
-            <Setter Property="BackgroundColor" Value="Transparent"/>
-        </Style>
-        <Style TargetType="Label" x:Key="KeyText">
-            <Setter Property="FontFamily" Value="SansSemiBold"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            <Setter Property="VerticalTextAlignment" Value="Center"/>
-            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
-        </Style>
     </abstractions:BaseContentPage.Resources>
 
     <Grid RowDefinitions="auto,*,auto"
@@ -56,23 +40,22 @@
 
         <!-- Header -->
         <Grid Grid.Row="0"
-              ColumnDefinitions="44,*,44"
+              ColumnDefinitions="88,*,88"
               Padding="8,0">
-            <Grid Grid.Column="0"
-                  HeightRequest="44">
-                <Grid.GestureRecognizers>
+            <Label Grid.Column="0"
+                   Style="{StaticResource LinkLabel}"
+                   HorizontalOptions="Start"
+                   Padding="8,0"
+                   Text="{x:Static resx:AppResources.Common_Cancel}">
+                <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="CloseButton_OnClicked"/>
-                </Grid.GestureRecognizers>
-                <controls:IconView Data="{x:Static controls:Icons.Close}"
-                                   Size="22"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
-            </Grid>
+                </Label.GestureRecognizers>
+            </Label>
             <Label Grid.Column="1"
                    Style="{StaticResource TextBodyStrong}"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
+                   LineBreakMode="TailTruncation"
                    Text="{Binding Title}"/>
         </Grid>
 
@@ -97,48 +80,61 @@
                     </Grid>
                 </Border>
 
-                <!-- The note: the amount -->
-                <Border Style="{StaticResource NoteCard}"
-                        Padding="0">
-                    <Grid>
-                        <controls:NotePatternView RosetteRings="0"/>
-                        <VerticalStackLayout Padding="20,12,20,20">
-                            <Grid ColumnDefinitions="auto,*">
-                                <HorizontalStackLayout Grid.Column="0"
-                                                       Spacing="6"
-                                                       Padding="8,0"
-                                                       Margin="-8,0,0,0"
-                                                       MinimumHeightRequest="44">
-                                    <HorizontalStackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="CurrencyButton_OnTapped"/>
-                                    </HorizontalStackLayout.GestureRecognizers>
-                                    <Label Style="{StaticResource NoteSerialText}"
+                <!-- The amount, typed with the system number pad -->
+                <Border Style="{StaticResource Card}"
+                        Padding="16,12,16,14"
+                        StrokeThickness="2"
+                        Stroke="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AmountCard_OnTapped"/>
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="4">
+                        <Grid ColumnDefinitions="auto,*"
+                              ColumnSpacing="8">
+                            <Border Grid.Column="0"
+                                    Padding="10,0"
+                                    HeightRequest="44"
+                                    VerticalOptions="Center"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 8"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource Ground}, Dark={StaticResource DarkGround}}"
+                                    SemanticProperties.Description="{x:Static resx:AppResources.NewTransaction_Currency}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CurrencyButton_OnTapped"/>
+                                </Border.GestureRecognizers>
+                                <HorizontalStackLayout Spacing="4">
+                                    <Label Style="{StaticResource TextBodyStrong}"
                                            VerticalTextAlignment="Center"
-                                           Text="{Binding CurrencyText}"/>
+                                           Text="{Binding EditedCurrencyCode}"/>
                                     <controls:IconView Data="{x:Static controls:Icons.ChevronDown}"
-                                                       Size="14"
+                                                       Size="16"
                                                        VerticalOptions="Center"
-                                                       Color="{StaticResource SageText}"/>
+                                                       Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
                                 </HorizontalStackLayout>
-                                <Label Grid.Column="1"
-                                       Style="{StaticResource NoteSerialText}"
-                                       HorizontalTextAlignment="End"
-                                       VerticalTextAlignment="Center"
-                                       Text="{Binding RateText}"/>
-                            </Grid>
-                            <Label Style="{StaticResource NoteHeroAmount}"
-                                   Margin="0,4,0,0"
-                                   Text="{Binding HeroAmount}"/>
-                            <Label Style="{StaticResource NoteLabel}"
-                                   Margin="0,4,0,0"
-                                   IsVisible="{Binding IsMultiCurrency}"
-                                   Text="{Binding ConvertedText}">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ConvertedAmount_OnTapped"/>
-                                </Label.GestureRecognizers>
-                            </Label>
-                        </VerticalStackLayout>
-                    </Grid>
+                            </Border>
+                            <controls:BorderlessEntry x:Name="AmountEntry"
+                                                      Grid.Column="1"
+                                                      BackgroundColor="Transparent"
+                                                      VerticalOptions="Center"
+                                                      HorizontalTextAlignment="End"
+                                                      Keyboard="Numeric"
+                                                      FontFamily="SansBold"
+                                                      FontSize="36"
+                                                      CharacterSpacing="-0.72"
+                                                      Placeholder="0.00"
+                                                      MinimumHeightRequest="44"
+                                                      SemanticProperties.Description="{x:Static resx:AppResources.NewTransaction_Amount}"
+                                                      Text="{Binding EditedAmount, Mode=TwoWay}"/>
+                        </Grid>
+                        <Label Style="{StaticResource TextLabelSoft}"
+                               HorizontalTextAlignment="End"
+                               IsVisible="{Binding IsMultiCurrency}"
+                               Text="{Binding ConvertedText}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ConvertedAmount_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </VerticalStackLayout>
                 </Border>
 
                 <!-- Expense: 50 / 30 / 20 spending type -->
@@ -269,21 +265,12 @@
 
                 <!-- Note -->
                 <Border Style="{StaticResource FieldTile}">
-                    <Grid ColumnDefinitions="auto,*"
-                          ColumnSpacing="8">
-                        <controls:IconView Grid.Column="0"
-                                           Data="{x:Static controls:Icons.Pencil}"
-                                           Size="18"
-                                           VerticalOptions="Center"
-                                           Color="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
-                        <controls:BorderlessEntry Grid.Column="1"
-                               BackgroundColor="Transparent"
-                               MinimumHeightRequest="44"
-                               VerticalOptions="Center"
-                               FontSize="15"
-                               Placeholder="{x:Static resx:AppResources.NewTransaction_Note}"
-                               Text="{Binding Description, Mode=TwoWay}"/>
-                    </Grid>
+                    <controls:BorderlessEntry BackgroundColor="Transparent"
+                                              MinimumHeightRequest="44"
+                                              VerticalOptions="Center"
+                                              FontSize="15"
+                                              Placeholder="{x:Static resx:AppResources.NewTransaction_Note}"
+                                              Text="{Binding Description, Mode=TwoWay}"/>
                 </Border>
 
                 <!-- Date and time -->
@@ -292,17 +279,12 @@
                     <Border Grid.Column="0"
                             Style="{StaticResource FieldTile}">
                         <Grid>
-                            <HorizontalStackLayout Spacing="8"
-                                                   HorizontalOptions="Center"
-                                                   InputTransparent="True">
-                                <controls:IconView Data="{x:Static controls:Icons.Calendar}"
-                                                   Size="18"
-                                                   VerticalOptions="Center"
-                                                   Color="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
-                                <Label Style="{StaticResource TextBodyStrong}"
-                                       VerticalTextAlignment="Center"
-                                       Text="{Binding DateText}"/>
-                            </HorizontalStackLayout>
+                            <Label Style="{StaticResource TextBodyStrong}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation"
+                                   InputTransparent="True"
+                                   Text="{Binding DateText}"/>
                             <!-- Invisible native picker over the tile opens the system date picker -->
                             <DatePicker Opacity="0.02"
                                         TextColor="Transparent"
@@ -313,17 +295,11 @@
                     <Border Grid.Column="1"
                             Style="{StaticResource FieldTile}">
                         <Grid>
-                            <HorizontalStackLayout Spacing="8"
-                                                   HorizontalOptions="Center"
-                                                   InputTransparent="True">
-                                <controls:IconView Data="{x:Static controls:Icons.Clock}"
-                                                   Size="18"
-                                                   VerticalOptions="Center"
-                                                   Color="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
-                                <Label Style="{StaticResource TextBodyStrong}"
-                                       VerticalTextAlignment="Center"
-                                       Text="{Binding TimeText}"/>
-                            </HorizontalStackLayout>
+                            <Label Style="{StaticResource TextBodyStrong}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   InputTransparent="True"
+                                   Text="{Binding TimeText}"/>
                             <!-- Invisible native picker over the tile opens the system time picker -->
                             <TimePicker Opacity="0.02"
                                         TextColor="Transparent"
@@ -333,23 +309,19 @@
                     </Border>
                 </Grid>
 
-                <!-- Recurring interval -->
+                <!-- Repeat -->
                 <Border Style="{StaticResource FieldTile}">
                     <Grid>
-                        <Grid ColumnDefinitions="auto,*,auto"
-                              ColumnSpacing="8"
+                        <Grid ColumnDefinitions="*,auto"
+                              ColumnSpacing="4"
                               InputTransparent="True"
                               CascadeInputTransparent="True">
-                            <controls:IconView Grid.Column="0"
-                                               Data="{x:Static controls:Icons.Repeat}"
-                                               Size="18"
-                                               VerticalOptions="Center"
-                                               Color="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
-                            <Label Grid.Column="1"
-                                   Style="{StaticResource TextBody}"
+                            <Label Grid.Column="0"
+                                   Style="{StaticResource TextBodyStrong}"
                                    VerticalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation"
                                    Text="{Binding IntervalText}"/>
-                            <controls:IconView Grid.Column="2"
+                            <controls:IconView Grid.Column="1"
                                                Data="{x:Static controls:Icons.ChevronDown}"
                                                Size="16"
                                                VerticalOptions="Center"
@@ -367,43 +339,11 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- Keypad and save -->
-        <VerticalStackLayout Grid.Row="2"
-                             Padding="16,12,16,16"
-                             Spacing="12">
-            <Grid ColumnDefinitions="*,*,*"
-                  RowDefinitions="48,48,48,48"
-                  ColumnSpacing="8"
-                  RowSpacing="8">
-                <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource Key}" ClassId="1"><Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers><Label Style="{StaticResource KeyText}" Text="1"/></Border>
-                <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource Key}" ClassId="2"><Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers><Label Style="{StaticResource KeyText}" Text="2"/></Border>
-                <Border Grid.Row="0" Grid.Column="2" Style="{StaticResource Key}" ClassId="3"><Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers><Label Style="{StaticResource KeyText}" Text="3"/></Border>
-                <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource Key}" ClassId="4"><Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers><Label Style="{StaticResource KeyText}" Text="4"/></Border>
-                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource Key}" ClassId="5"><Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers><Label Style="{StaticResource KeyText}" Text="5"/></Border>
-                <Border Grid.Row="1" Grid.Column="2" Style="{StaticResource Key}" ClassId="6"><Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers><Label Style="{StaticResource KeyText}" Text="6"/></Border>
-                <Border Grid.Row="2" Grid.Column="0" Style="{StaticResource Key}" ClassId="7"><Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers><Label Style="{StaticResource KeyText}" Text="7"/></Border>
-                <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource Key}" ClassId="8"><Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers><Label Style="{StaticResource KeyText}" Text="8"/></Border>
-                <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource Key}" ClassId="9"><Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers><Label Style="{StaticResource KeyText}" Text="9"/></Border>
-                <Border Grid.Row="3" Grid.Column="0" Style="{StaticResource FlatKey}" ClassId="."
-                        SemanticProperties.Description="{x:Static resx:AppResources.NewTransaction_DecimalPoint}">
-                    <Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers>
-                    <Label Style="{StaticResource KeyText}" Text="."/>
-                </Border>
-                <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource Key}" ClassId="0"><Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers><Label Style="{StaticResource KeyText}" Text="0"/></Border>
-                <Border Grid.Row="3" Grid.Column="2" Style="{StaticResource FlatKey}" ClassId="back"
-                        SemanticProperties.Description="{x:Static resx:AppResources.NewTransaction_Delete}">
-                    <Border.GestureRecognizers><TapGestureRecognizer Tapped="Key_OnTapped"/></Border.GestureRecognizers>
-                    <controls:IconView Data="{x:Static controls:Icons.Backspace}"
-                                       Size="22"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Center"
-                                       Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
-                </Border>
-            </Grid>
-
-            <Button Style="{StaticResource AccentButton}"
-                    Text="{Binding SaveText}"
-                    Clicked="EditTransactionButton_OnClicked"/>
-        </VerticalStackLayout>
+        <!-- Save -->
+        <Button Grid.Row="2"
+                Margin="16,12,16,16"
+                Style="{StaticResource AccentButton}"
+                Text="{Binding SaveText}"
+                Clicked="EditTransactionButton_OnClicked"/>
     </Grid>
 </abstractions:BaseContentPage>

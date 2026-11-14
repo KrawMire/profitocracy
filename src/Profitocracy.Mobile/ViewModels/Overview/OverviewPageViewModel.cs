@@ -27,9 +27,6 @@ public enum InsightsPeriod
 
 public class OverviewPageViewModel : BaseNotifyObject
 {
-    private const decimal MainShare = 0.5m;
-    private const decimal SecondaryShare = 0.3m;
-    private const decimal SavedShare = 0.2m;
     private const int MaxDailyBars = 62;
     private const int MaxNoteCategories = 2;
 
@@ -53,18 +50,22 @@ public class OverviewPageViewModel : BaseNotifyObject
     private double _putAsideRatio;
 
     private string _usedTotal = string.Empty;
-    private int _mainSeats;
-    private int _secondarySeats;
-    private int _savedSeats;
-    private string _mainLegend = string.Empty;
-    private string _secondaryLegend = string.Empty;
-    private string _savedLegend = string.Empty;
+    private double _mainShare;
+    private double _secondaryShare;
+    private double _savedShare;
+    private string _mainAmount = string.Empty;
+    private string _secondaryAmount = string.Empty;
+    private string _savedAmount = string.Empty;
+    private string _mainPercent = string.Empty;
+    private string _secondaryPercent = string.Empty;
+    private string _savedPercent = string.Empty;
 
     private string _barsTitle = AppResources.Insights_DayByDay;
     private IReadOnlyList<SpendingBar> _bars = [];
     private decimal _barsAverage;
     private string _barsAverageText = string.Empty;
     private string _barsNote = string.Empty;
+    private bool _hasClippedBars;
 
     private bool _hasLimits;
 
@@ -179,46 +180,67 @@ public class OverviewPageViewModel : BaseNotifyObject
         private set => SetProperty(ref _putAsideRatio, value);
     }
 
+    /// <summary>
+    /// Spent and saved in the period, in the middle of the gauge.
+    /// </summary>
     public string UsedTotal
     {
         get => _usedTotal;
         private set => SetProperty(ref _usedTotal, value);
     }
 
-    public int MainSeats
+    public double MainShare
     {
-        get => _mainSeats;
-        private set => SetProperty(ref _mainSeats, value);
+        get => _mainShare;
+        private set => SetProperty(ref _mainShare, value);
     }
 
-    public int SecondarySeats
+    public double SecondaryShare
     {
-        get => _secondarySeats;
-        private set => SetProperty(ref _secondarySeats, value);
+        get => _secondaryShare;
+        private set => SetProperty(ref _secondaryShare, value);
     }
 
-    public int SavedSeats
+    public double SavedShare
     {
-        get => _savedSeats;
-        private set => SetProperty(ref _savedSeats, value);
+        get => _savedShare;
+        private set => SetProperty(ref _savedShare, value);
     }
 
-    public string MainLegend
+    public string MainAmount
     {
-        get => _mainLegend;
-        private set => SetProperty(ref _mainLegend, value);
+        get => _mainAmount;
+        private set => SetProperty(ref _mainAmount, value);
     }
 
-    public string SecondaryLegend
+    public string SecondaryAmount
     {
-        get => _secondaryLegend;
-        private set => SetProperty(ref _secondaryLegend, value);
+        get => _secondaryAmount;
+        private set => SetProperty(ref _secondaryAmount, value);
     }
 
-    public string SavedLegend
+    public string SavedAmount
     {
-        get => _savedLegend;
-        private set => SetProperty(ref _savedLegend, value);
+        get => _savedAmount;
+        private set => SetProperty(ref _savedAmount, value);
+    }
+
+    public string MainPercent
+    {
+        get => _mainPercent;
+        private set => SetProperty(ref _mainPercent, value);
+    }
+
+    public string SecondaryPercent
+    {
+        get => _secondaryPercent;
+        private set => SetProperty(ref _secondaryPercent, value);
+    }
+
+    public string SavedPercent
+    {
+        get => _savedPercent;
+        private set => SetProperty(ref _savedPercent, value);
     }
 
     public string BarsTitle
@@ -249,6 +271,15 @@ public class OverviewPageViewModel : BaseNotifyObject
     {
         get => _barsNote;
         private set => SetProperty(ref _barsNote, value);
+    }
+
+    /// <summary>
+    /// Some bars are taller than the scale and are cut short.
+    /// </summary>
+    public bool HasClippedBars
+    {
+        get => _hasClippedBars;
+        private set => SetProperty(ref _hasClippedBars, value);
     }
 
     public bool HasLimits
@@ -317,9 +348,7 @@ public class OverviewPageViewModel : BaseNotifyObject
         }
 
         var lastShownDay = DateTo.Date > today && DateFrom.Date <= today ? today : DateTo.Date;
-        DateRange = DateFrom.Year == lastShownDay.Year
-            ? $"{DateFrom:dd.MM}–{lastShownDay:dd.MM.yyyy}"
-            : $"{DateFrom:dd.MM.yyyy}–{lastShownDay:dd.MM.yyyy}";
+        DateRange = FormatDateRange(DateFrom.Date, lastShownDay);
 
         var symbol = profile.Settings.Currency.Symbol;
         var transactions = await _transactionRepository.GetForPeriod(profile.Id, DateFrom, DateTo);
@@ -338,7 +367,7 @@ public class OverviewPageViewModel : BaseNotifyObject
             : income;
 
         InitializeKept(budget, income, spent, saved, symbol);
-        InitializeChamber(budget, main, secondary, saved, symbol);
+        InitializeSplit(main, secondary, saved, symbol);
         InitializeBars(transactions, budget, symbol);
         InitializeLimits(transactions, categories, symbol);
     }
@@ -352,7 +381,10 @@ public class OverviewPageViewModel : BaseNotifyObject
 
         KeptPercent = HasIncome ? keptPercent : "—";
         KeptText = HasIncome
-            ? string.Format(AppResources.Insights_KeptText, keptPercent)
+            ? string.Format(
+                AppResources.Insights_StillYours,
+                NumberUtils.FormatMoney(budget - spent - saved, symbol),
+                NumberUtils.FormatMoney(budget, symbol))
             : AppResources.Insights_NoIncome;
 
         Income = NumberUtils.FormatMoney(income, symbol);
@@ -364,21 +396,27 @@ public class OverviewPageViewModel : BaseNotifyObject
         PutAsideRatio = HasIncome ? (double)(saved / budget) : 0;
     }
 
-    private void InitializeChamber(decimal budget, decimal main, decimal secondary, decimal saved, string symbol)
+    private void InitializeSplit(decimal main, decimal secondary, decimal saved, string symbol)
     {
-        UsedTotal = string.Format(AppResources.Insights_Used, NumberUtils.FormatMoney(main + secondary + saved, symbol));
+        var used = main + secondary + saved;
 
-        var mainShare = Share(main, budget * MainShare);
-        var secondaryShare = Share(secondary, budget * SecondaryShare);
-        var savedShare = Share(saved, budget * SavedShare);
+        UsedTotal = NumberUtils.FormatMoney(used, symbol);
 
-        MainSeats = Seats(mainShare, ChamberChartView.MainSeats);
-        SecondarySeats = Seats(secondaryShare, ChamberChartView.SecondarySeats);
-        SavedSeats = Seats(savedShare, ChamberChartView.SavedSeats);
+        var mainShare = used > 0 ? main / used : 0;
+        var secondaryShare = used > 0 ? secondary / used : 0;
+        var savedShare = used > 0 ? saved / used : 0;
 
-        MainLegend = string.Format(AppResources.Insights_OfNeeds, NumberUtils.FormatMoney(main, symbol), FormatPercent(mainShare));
-        SecondaryLegend = string.Format(AppResources.Insights_OfWants, NumberUtils.FormatMoney(secondary, symbol), FormatPercent(secondaryShare));
-        SavedLegend = string.Format(AppResources.Insights_OfGoal, NumberUtils.FormatMoney(saved, symbol), FormatPercent(savedShare));
+        MainShare = (double)mainShare;
+        SecondaryShare = (double)secondaryShare;
+        SavedShare = (double)savedShare;
+
+        MainAmount = NumberUtils.FormatMoney(main, symbol);
+        SecondaryAmount = NumberUtils.FormatMoney(secondary, symbol);
+        SavedAmount = NumberUtils.FormatMoney(saved, symbol);
+
+        MainPercent = FormatPercent(mainShare);
+        SecondaryPercent = FormatPercent(secondaryShare);
+        SavedPercent = FormatPercent(savedShare);
     }
 
     private void InitializeBars(List<Transaction> transactions, decimal budget, string symbol)
@@ -422,6 +460,8 @@ public class OverviewPageViewModel : BaseNotifyObject
                 isDaily ? AppResources.Insights_PerDay : AppResources.Insights_PerWeek,
                 NumberUtils.FormatMoney(BarsAverage, symbol, decimals: 0))
             : string.Empty;
+
+        HasClippedBars = BarsAverage > 0 && bars.Any(b => b.Amount > BarsAverage * SpendingBarsView.CapAverages);
 
         var biggest = bars.Select((b, i) => (Bar: b, Index: i)).MaxBy(b => b.Bar.Amount);
         BarsNote = biggest.Bar is not null && biggest.Bar.Amount > BarsAverage && BarsAverage > 0
@@ -492,11 +532,27 @@ public class OverviewPageViewModel : BaseNotifyObject
     private static decimal Sum(List<Transaction> transactions, Func<Transaction, bool> predicate)
         => transactions.Where(predicate).Sum(t => t.Amount);
 
-    private static decimal Share(decimal actual, decimal planned)
-        => planned > 0 ? actual / planned : 0;
+    /// <summary>
+    /// Covered days, e.g. "1–11 March", "24 February – 2 March" or "1 January 2025 – 11 March 2026".
+    /// </summary>
+    private static string FormatDateRange(DateTime from, DateTime to)
+    {
+        var culture = CultureInfo.CurrentCulture;
 
-    private static int Seats(decimal share, int seats)
-        => (int)Math.Round(Math.Clamp(share, 0, 1) * seats, MidpointRounding.AwayFromZero);
+        if (from.Year != to.Year)
+        {
+            return $"{from.ToString("d MMM yyyy", culture)} – {to.ToString("d MMM yyyy", culture)}";
+        }
+
+        if (from.Month != to.Month)
+        {
+            return $"{from.ToString("d MMM", culture)} – {to.ToString("d MMM", culture)}";
+        }
+
+        return from.Day == to.Day
+            ? to.ToString("d MMMM", culture)
+            : $"{from.Day}–{to.ToString("d MMMM", culture)}";
+    }
 
     private static string FormatPercent(decimal ratio)
         => ratio.ToString("P0", CultureInfo.CurrentCulture);

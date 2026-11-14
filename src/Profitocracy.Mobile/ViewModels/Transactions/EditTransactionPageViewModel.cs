@@ -18,10 +18,9 @@ namespace Profitocracy.Mobile.ViewModels.Transactions;
 public class EditTransactionPageViewModel : BaseNotifyObject
 {
     /// <summary>
-    /// Keys of the amount keypad besides the digits
+    /// Decimal separator of the stored amounts (invariant culture)
     /// </summary>
-    public const string DecimalKey = ".";
-    public const string BackspaceKey = "back";
+    private const string DecimalPoint = ".";
 
     private const int MaxDigits = 8;
     private const int MaxDecimals = 2;
@@ -43,8 +42,8 @@ public class EditTransactionPageViewModel : BaseNotifyObject
 
     private DateTime _timestamp = DateTime.Now;
     private TimeSpan _time = DateTime.Now.TimeOfDay;
-    private string _amount = "0";
-    private string _destinationAmount = "0";
+    private string _amount = string.Empty;
+    private string _destinationAmount = string.Empty;
 
     private Currency _selectedCurrency;
     private string? _description;
@@ -124,6 +123,8 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     {
         set => _transactionId = value;
     }
+
+    public bool IsEditing => _transactionId is not null;
 
     public string Title => _transactionId is null
         ? AppResources.NewTransaction_Title
@@ -246,7 +247,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     }
 
     /// <summary>
-    /// Amount in the currency of the profile, typed with the keypad (invariant culture).
+    /// Amount in the currency of the profile, as typed (invariant culture).
     /// </summary>
     public string Amount
     {
@@ -302,16 +303,90 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     }
 
     /// <summary>
-    /// Currency button on the note, e.g. "USD → EUR" for a multi-currency transaction.
+    /// The amount in the field, in the currency of <see cref="EditedCurrencyCode"/>:
+    /// the other currency of a multi-currency transaction, or the currency of the profile.
+    /// Typed with the system number pad, both "." and "," are taken as the decimal separator.
     /// </summary>
-    public string CurrencyText => IsMultiCurrency
-        ? $"{SelectedCurrency.Code} → {_profileCurrency.Code}"
-        : _profileCurrency.Code;
+    public string EditedAmount
+    {
+        get
+        {
+            var value = IsEditingProfileAmount ? _amount : _destinationAmount;
+            return value.Replace(DecimalPoint, CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+        }
+        set
+        {
+            var normalized = NormalizeTyped(value);
+
+            if (normalized is null)
+            {
+                // Not an amount: the field goes back to the previous value
+                OnPropertyChanged();
+                return;
+            }
+
+            if (IsEditingProfileAmount)
+            {
+                Amount = normalized;
+            }
+            else
+            {
+                DestinationAmount = normalized;
+            }
+        }
+    }
 
     /// <summary>
-    /// Exchange rate that follows from the two typed amounts, e.g. "1 USD = 0.9567".
+    /// Code of the currency the field is typed in, e.g. "USD".
     /// </summary>
-    public string RateText
+    public string EditedCurrencyCode => IsEditingProfileAmount
+        ? _profileCurrency.Code
+        : SelectedCurrency.Code;
+
+    /// <summary>
+    /// The other side of a multi-currency transaction with the exchange rate,
+    /// e.g. "= €287.01 in EUR Profile · 1 USD = 0.9567 EUR". Tapping it moves the field there.
+    /// </summary>
+    public string ConvertedText
+    {
+        get
+        {
+            if (!IsMultiCurrency)
+            {
+                return string.Empty;
+            }
+
+            string converted;
+
+            if (_isEditingProfileAmount)
+            {
+                converted = string.Format(
+                    AppResources.NewTransaction_InProfile,
+                    FormatTyped(_destinationAmount, SelectedCurrency.Symbol),
+                    SelectedCurrency.Code);
+            }
+            else if (NumberUtils.TryParseDecimal(_amount, out var amount) && amount > 0)
+            {
+                converted = string.Format(
+                    AppResources.NewTransaction_InProfile,
+                    FormatTyped(_amount, _profileCurrency.Symbol),
+                    _profileName);
+            }
+            else
+            {
+                return string.Format(AppResources.NewTransaction_EnterProfileAmount, _profileCurrency.Code);
+            }
+
+            var rate = RateText;
+
+            return string.IsNullOrEmpty(rate) ? converted : $"{converted} · {rate}";
+        }
+    }
+
+    /// <summary>
+    /// Exchange rate that follows from the two typed amounts, e.g. "1 USD = 0.9567 EUR".
+    /// </summary>
+    private string RateText
     {
         get
         {
@@ -329,42 +404,11 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             return string.Format(
                 AppResources.NewTransaction_Rate,
                 SelectedCurrency.Code,
-                rate.ToString("0.####", CultureInfo.CurrentCulture));
+                $"{rate.ToString("0.####", CultureInfo.CurrentCulture)} {_profileCurrency.Code}");
         }
     }
 
-    /// <summary>
-    /// The big amount on the note: the one the keypad types into.
-    /// </summary>
-    public string HeroAmount => IsMultiCurrency && !_isEditingProfileAmount
-        ? FormatTyped(_destinationAmount, SelectedCurrency.Symbol)
-        : FormatTyped(_amount, _profileCurrency.Symbol);
-
-    /// <summary>
-    /// The other side of a multi-currency transaction, tapping it moves the keypad there.
-    /// </summary>
-    public string ConvertedText
-    {
-        get
-        {
-            if (!IsMultiCurrency)
-            {
-                return string.Empty;
-            }
-
-            if (_isEditingProfileAmount)
-            {
-                return string.Format(
-                    AppResources.NewTransaction_InProfile,
-                    FormatTyped(_destinationAmount, SelectedCurrency.Symbol),
-                    SelectedCurrency.Code);
-            }
-
-            return NumberUtils.TryParseDecimal(_amount, out var amount) && amount > 0
-                ? string.Format(AppResources.NewTransaction_InProfile, FormatTyped(_amount, _profileCurrency.Symbol), _profileName)
-                : string.Format(AppResources.NewTransaction_EnterProfileAmount, _profileCurrency.Code);
-        }
-    }
+    private bool IsEditingProfileAmount => !IsMultiCurrency || _isEditingProfileAmount;
 
     public string SaveText => string.Format(
         AppResources.NewTransaction_Save,
@@ -377,8 +421,8 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         : AppResources.NewTransaction_IncomeHint;
 
     public string DateText => _timestamp.Date == DateTime.Today
-        ? AppResources.Common_Today
-        : _timestamp.ToString("d MMM", CultureInfo.CurrentCulture);
+        ? $"{AppResources.Common_Today}, {_timestamp.ToString("d MMM", CultureInfo.CurrentCulture)}"
+        : _timestamp.ToString("ddd, d MMM", CultureInfo.CurrentCulture);
 
     public string TimeText => DateTime.Today.Add(_time).ToString("t", CultureInfo.CurrentCulture);
 
@@ -428,7 +472,6 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         }
 
         OnPropertyChanged(nameof(Title));
-        OnPropertyChanged(nameof(CurrencyText));
         OnAmountsChanged();
     }
 
@@ -458,11 +501,11 @@ public class EditTransactionPageViewModel : BaseNotifyObject
             IsMultiCurrency = true;
         }
 
-        OnPropertyChanged(nameof(CurrencyText));
+        OnAmountsChanged();
     }
 
     /// <summary>
-    /// Moves the keypad between the two amounts of a multi-currency transaction.
+    /// Moves the amount field between the two amounts of a multi-currency transaction.
     /// </summary>
     public void SwitchEditedAmount()
     {
@@ -476,45 +519,41 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     }
 
     /// <summary>
-    /// Applies a keypad key to the edited amount: a digit, <see cref="DecimalKey"/> or <see cref="BackspaceKey"/>.
+    /// Brings a typed amount to the invariant culture and checks it: digits with
+    /// one decimal separator, at most <see cref="MaxDigits"/> digits and <see cref="MaxDecimals"/> decimals.
     /// </summary>
-    public void ApplyKey(string key)
+    /// <returns>The amount with "." as the decimal separator, or null if it is not an amount</returns>
+    private static string? NormalizeTyped(string? value)
     {
-        var isProfileAmount = !IsMultiCurrency || _isEditingProfileAmount;
-        var value = isProfileAmount ? _amount : _destinationAmount;
-
-        value = key switch
+        if (string.IsNullOrWhiteSpace(value))
         {
-            BackspaceKey => value.Length > 1 ? value[..^1] : "0",
-            DecimalKey => value.Contains(DecimalKey) ? value : value + DecimalKey,
-            _ => AppendDigit(value, key)
-        };
-
-        if (isProfileAmount)
-        {
-            Amount = value;
-        }
-        else
-        {
-            DestinationAmount = value;
-        }
-    }
-
-    private static string AppendDigit(string value, string digit)
-    {
-        var parts = value.Split(DecimalKey);
-
-        if (parts.Length > 1 && parts[1].Length >= MaxDecimals)
-        {
-            return value;
+            return string.Empty;
         }
 
-        if (value.Replace(DecimalKey, string.Empty).Length >= MaxDigits)
+        var normalized = value
+            .Trim()
+            .Replace(",", DecimalPoint);
+
+        var parts = normalized.Split(DecimalPoint);
+
+        if (parts.Length > 2
+            || !parts.All(p => p.All(char.IsAsciiDigit))
+            || (parts.Length == 2 && parts[1].Length > MaxDecimals)
+            || normalized.Replace(DecimalPoint, string.Empty).Length > MaxDigits)
         {
-            return value;
+            return null;
         }
 
-        return value == "0" ? digit : value + digit;
+        // "05" is typed as "5", a lone separator as "0."
+        var integer = parts[0].TrimStart('0');
+        integer = integer.Length == 0 ? "0" : integer;
+
+        if (parts.Length == 1)
+        {
+            return parts[0].Length == 0 ? string.Empty : integer;
+        }
+
+        return $"{integer}{DecimalPoint}{parts[1]}";
     }
 
     /// <summary>
@@ -523,7 +562,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
     /// </summary>
     private static string FormatTyped(string value, string symbol)
     {
-        var parts = value.Split(DecimalKey);
+        var parts = value.Split(DecimalPoint);
         var integer = long.TryParse(parts[0], NumberStyles.None, CultureInfo.InvariantCulture, out var number)
             ? number.ToString("N0", CultureInfo.CurrentCulture)
             : "0";
@@ -535,11 +574,10 @@ public class EditTransactionPageViewModel : BaseNotifyObject
 
     private void OnAmountsChanged()
     {
-        OnPropertyChanged(nameof(HeroAmount));
+        OnPropertyChanged(nameof(EditedAmount));
+        OnPropertyChanged(nameof(EditedCurrencyCode));
         OnPropertyChanged(nameof(ConvertedText));
-        OnPropertyChanged(nameof(RateText));
         OnPropertyChanged(nameof(SaveText));
-        OnPropertyChanged(nameof(CurrencyText));
         OnPropertyChanged(nameof(IncomeHint));
     }
 
@@ -564,7 +602,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
 
         TransactionType = (int)transaction.Type;
         SpendingType = isIncomeTransaction ? null : (int?)transaction.SpendingType;
-        Amount = FormatForKeypad(transaction.Amount);
+        Amount = FormatForField(transaction.Amount);
         Timestamp = transaction.Timestamp;
         Time = transaction.Timestamp.TimeOfDay;
         Description = transaction.Description!;
@@ -577,7 +615,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         if (transaction is MultiCurrencyTransaction multiCurrencyTransaction)
         {
             SelectedCurrency = multiCurrencyTransaction.DestinationCurrency;
-            DestinationAmount = FormatForKeypad(multiCurrencyTransaction.DestinationAmount);
+            DestinationAmount = FormatForField(multiCurrencyTransaction.DestinationAmount);
             IsMultiCurrency = true;
         }
 
@@ -588,7 +626,7 @@ public class EditTransactionPageViewModel : BaseNotifyObject
         }
     }
 
-    private static string FormatForKeypad(decimal amount)
+    private static string FormatForField(decimal amount)
         => Math.Round(amount, MaxDecimals).ToString("0.##", CultureInfo.InvariantCulture);
 
     public Task SaveTransaction()

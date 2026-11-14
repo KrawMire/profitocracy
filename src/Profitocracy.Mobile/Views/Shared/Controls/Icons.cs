@@ -12,6 +12,7 @@ public static class Icons
     public const string Settings = "M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1M15 4v4M9 10v4M17 16v4";
 
     public const string Plus = "M12 5v14M5 12h14";
+    public const string Check = "m5 12 5 5 9-10";
     public const string Close = "M6 6l12 12M18 6 6 18";
     public const string ChevronDown = "m6 9 6 6 6-6";
     public const string ChevronLeft = "m15 6-6 6 6 6";

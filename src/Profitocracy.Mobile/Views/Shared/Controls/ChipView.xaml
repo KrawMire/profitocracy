@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
              x:Class="Profitocracy.Mobile.Views.Shared.Controls.ChipView">
-    <!-- Filter / choice chip: surface when idle, ink with chartreuse text when selected -->
+    <!-- Filter / choice chip: surface when idle, ink with white text when selected -->
     <Border x:Name="Root"
             x:DataType="controls:ChipView"
             Style="{StaticResource Chip}">
@@ -24,7 +24,7 @@
                 <DataTrigger TargetType="Label"
                              Binding="{Binding IsSelected}"
                              Value="True">
-                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Chartreuse}, Dark={StaticResource Ink}}"/>
+                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Ink}}"/>
                 </DataTrigger>
             </Label.Triggers>
         </Label>

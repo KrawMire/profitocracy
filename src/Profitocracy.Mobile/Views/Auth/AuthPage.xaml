@@ -43,7 +43,9 @@
                        Style="{StaticResource AuthCodeDigitText}"/>
             </Border>
         </Grid>
+        <!-- Kept clear of the bottom edge and the system navigation bar -->
         <Grid Grid.Row="2"
+              Margin="0,0,0,32"
               ColumnDefinitions="*,8,*,8,*"
               RowDefinitions="*,8,*,8,*,8,*" >
             <Border Style="{StaticResource AuthCodeDigitInput}"

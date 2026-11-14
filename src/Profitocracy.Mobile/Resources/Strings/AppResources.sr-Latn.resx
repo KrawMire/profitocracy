@@ -1225,10 +1225,10 @@
     <value>bez ušteđevine</value>
   </data>
   <data name="Insights_PerDay" xml:space="preserve">
-    <value>{0}/DAN</value>
+    <value>{0} dnevno</value>
   </data>
   <data name="Insights_PerWeek" xml:space="preserve">
-    <value>{0}/NED</value>
+    <value>{0} nedeljno</value>
   </data>
   <data name="Insights_TodayMark" xml:space="preserve">
     <value>danas</value>
@@ -1264,7 +1264,7 @@
     <value>Uzima se iz ušteđevine u {0} i dodaje na stanje.</value>
   </data>
   <data name="NewTransaction_Note" xml:space="preserve">
-    <value>Beleška</value>
+    <value>Dodaj belešku</value>
   </data>
   <data name="NewTransaction_Save" xml:space="preserve">
     <value>Sačuvaj · {0}</value>
@@ -1297,7 +1297,7 @@
     <value>Svaki profil ima svoju valutu, budžet i istoriju.</value>
   </data>
   <data name="Settings_NewProfile" xml:space="preserve">
-    <value>+ Novi profil</value>
+    <value>Novi profil</value>
   </data>
   <data name="Settings_InUse" xml:space="preserve">
     <value>Aktivan</value>
@@ -1358,5 +1358,20 @@
   </data>
   <data name="Common_Cancel" xml:space="preserve">
     <value>Otkaži</value>
+  </data>
+  <data name="Insights_StillYours" xml:space="preserve">
+    <value>{0} od {1} prihoda je još uvek vaše.</value>
+  </data>
+  <data name="Insights_BySpendingType" xml:space="preserve">
+    <value>po vrsti troškova</value>
+  </data>
+  <data name="Insights_SpentAndSaved" xml:space="preserve">
+    <value>potrošeno i ušteđeno</value>
+  </data>
+  <data name="Insights_BarsCut" xml:space="preserve">
+    <value>Stubići iznad dvostrukog limita su skraćeni.</value>
+  </data>
+  <data name="NewTransaction_Amount" xml:space="preserve">
+    <value>Iznos</value>
   </data>
 </root>

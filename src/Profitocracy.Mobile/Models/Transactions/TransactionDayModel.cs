@@ -11,6 +11,8 @@ public class TransactionDayModel
     public required List<TransactionModel> Transactions { get; init; }
     public required string Total { get; init; }
 
-    public string DayName => DateUtils.DayName(Date);
-    public string ShortDate => Date.ToString("dd.MM");
+    /// <summary>
+    /// Header of the card, e.g. "Today, 11 March".
+    /// </summary>
+    public string Title => DateUtils.DayTitle(Date);
 }

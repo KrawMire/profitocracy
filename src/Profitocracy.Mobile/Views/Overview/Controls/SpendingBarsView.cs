@@ -14,14 +14,23 @@ public record SpendingBar(decimal Amount, bool IsFuture, string Label);
 /// <summary>
 /// Spending by day (or week) with the affordable average as a dashed line.
 /// Bars above the average are red, the biggest one gets a note on top.
+/// The scale ends at twice the average: taller bars are cut short with a break near their top.
 /// </summary>
 public class SpendingBarsView : GraphicsView
 {
-    private const float ChartHeight = 170;
+    /// <summary>
+    /// Bars above this many averages are cut short.
+    /// </summary>
+    public const decimal CapAverages = 2;
+
+    private const float ChartHeight = 176;
     private const float AxisHeight = 24;
-    private const float NoteHeight = 24;
+    private const float NoteHeight = 30;
     private const float BarGap = 3;
     private const float MinBarHeight = 2;
+    private const float ClippedOverhang = 6;
+    private const float ClippedTop = 12;
+    private const float ClippedBreak = 4;
 
     public SpendingBarsView()
     {
@@ -122,8 +131,8 @@ public class SpendingBarsView : GraphicsView
     private sealed class BarsDrawable(SpendingBarsView view) : IDrawable
     {
         private static readonly Font SansFont = new("SchibstedGrotesk-Regular");
+        private static readonly Font SansMediumFont = new("SchibstedGrotesk-Medium");
         private static readonly Font SansStrongFont = new("SchibstedGrotesk-SemiBold");
-        private static readonly Font MonoFont = new("IBMPlexMono-Medium");
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
@@ -137,14 +146,14 @@ public class SpendingBarsView : GraphicsView
             var width = dirtyRect.Width;
             var chartBottom = ChartHeight;
             var plotHeight = ChartHeight - NoteHeight;
-            var max = Math.Max(bars.Max(b => b.Amount), view.Average);
+            var max = view.Average > 0
+                ? view.Average * CapAverages
+                : bars.Max(b => b.Amount);
             max = max <= 0 ? 1 : max;
 
-            // Grid lines and the baseline
+            // Baseline
             canvas.StrokeColor = view.EmptyColor;
             canvas.StrokeSize = 1;
-            canvas.DrawLine(0, NoteHeight, width, NoteHeight);
-            canvas.DrawLine(0, NoteHeight + plotHeight / 2, width, NoteHeight + plotHeight / 2);
             canvas.DrawLine(0, chartBottom, width, chartBottom);
 
             // Bars
@@ -154,17 +163,33 @@ public class SpendingBarsView : GraphicsView
             for (var i = 0; i < bars.Count; i++)
             {
                 var bar = bars[i];
-                var height = bar.IsFuture || bar.Amount <= 0
+                var isEmpty = bar.IsFuture || bar.Amount <= 0;
+                var isClipped = !isEmpty && bar.Amount > max;
+                var height = isEmpty
                     ? MinBarHeight
-                    : Math.Max(MinBarHeight, (float)(bar.Amount / max) * plotHeight);
+                    : isClipped
+                        ? plotHeight + ClippedOverhang
+                        : Math.Max(MinBarHeight, (float)(bar.Amount / max) * plotHeight);
                 var x = i * (barWidth + BarGap);
+                var top = chartBottom - height;
 
-                canvas.FillColor = bar.IsFuture || bar.Amount <= 0
+                canvas.FillColor = isEmpty
                     ? view.EmptyColor
                     : view.Average > 0 && bar.Amount > view.Average
                         ? view.OverColor
                         : view.BarColor;
-                canvas.FillRoundedRectangle(x, chartBottom - height, barWidth, height, 2, 2, 0, 0);
+
+                if (isClipped)
+                {
+                    var restTop = top + ClippedTop + ClippedBreak;
+
+                    canvas.FillRoundedRectangle(x, top, barWidth, ClippedTop, 2, 2, 0, 0);
+                    canvas.FillRectangle(x, restTop, barWidth, chartBottom - restTop);
+                }
+                else
+                {
+                    canvas.FillRoundedRectangle(x, top, barWidth, height, 2, 2, 0, 0);
+                }
             }
 
             // Average line with its label on the right
@@ -180,10 +205,10 @@ public class SpendingBarsView : GraphicsView
 
                 if (!string.IsNullOrEmpty(view.AverageText))
                 {
-                    canvas.Font = MonoFont;
-                    canvas.FontSize = 11;
+                    canvas.Font = SansMediumFont;
+                    canvas.FontSize = 12;
 
-                    var size = canvas.GetStringSize(view.AverageText, MonoFont, 11);
+                    var size = canvas.GetStringSize(view.AverageText, SansMediumFont, 12);
                     var labelRect = new RectF(width - size.Width - 4, y - 18, size.Width + 4, 16);
 
                     canvas.FillColor = view.SurfaceColor;
@@ -204,7 +229,7 @@ public class SpendingBarsView : GraphicsView
                 var x = biggest.Index * (barWidth + BarGap) + barWidth + 6;
                 x = Math.Clamp(x, 0, Math.Max(0, width - size.Width));
 
-                canvas.DrawString(view.NoteText, new RectF(x, 2, width - x, 18), HorizontalAlignment.Left, VerticalAlignment.Center, TextFlow.ClipBounds);
+                canvas.DrawString(view.NoteText, new RectF(x, 0, width - x, 16), HorizontalAlignment.Left, VerticalAlignment.Center, TextFlow.ClipBounds);
             }
 
             // Captions of the axis

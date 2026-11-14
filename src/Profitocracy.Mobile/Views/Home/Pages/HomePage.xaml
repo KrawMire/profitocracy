@@ -106,68 +106,60 @@
                 <!-- The note: balance of the period -->
                 <VerticalStackLayout IsVisible="{Binding IsShowFilledPeriod}">
                     <Border Style="{StaticResource NoteCard}"
-                            Margin="0,12,0,0"
-                            Padding="0">
-                        <Grid>
-                            <controls:NotePatternView/>
-                            <VerticalStackLayout Padding="20">
-                                <Grid ColumnDefinitions="*,auto">
-                                    <Label Grid.Column="0"
-                                           Style="{StaticResource NoteLabel}"
-                                           Text="{Binding BalanceCaption}"/>
-                                    <Label Grid.Column="1"
-                                           Style="{StaticResource NoteLabel}"
-                                           Text="{Binding DaysToGo}"/>
-                                </Grid>
-                                <Label Style="{StaticResource NoteHeroAmount}"
-                                       Margin="0,8,0,0"
-                                       Text="{Binding Balance}"/>
-                                <Label Style="{StaticResource NoteLabel}"
-                                       Margin="0,4,0,0"
-                                       Text="{Binding UsedOfIncome}"/>
-                                <controls:MeterView Margin="0,16,0,0"
-                                                    BarHeight="6"
-                                                    TrackColor="{AppThemeBinding Light={StaticResource NoteTrack}, Dark={StaticResource DarkNoteTrack}}"
-                                                    FillColor="{StaticResource Chartreuse}"
-                                                    Progress="{Binding UsedRatio}"/>
+                            Margin="0,12,0,0">
+                        <VerticalStackLayout>
+                            <Grid ColumnDefinitions="*,auto">
+                                <Label Grid.Column="0"
+                                       Style="{StaticResource NoteLabel}"
+                                       Text="{Binding BalanceCaption}"/>
+                                <Label Grid.Column="1"
+                                       Style="{StaticResource NoteLabel}"
+                                       Text="{Binding DaysToGo}"/>
+                            </Grid>
+                            <Label Style="{StaticResource NoteHeroAmount}"
+                                   Margin="0,8,0,0"
+                                   Text="{Binding Balance}"/>
+                            <Label Style="{StaticResource NoteLabel}"
+                                   Margin="0,4,0,0"
+                                   Text="{Binding UsedOfIncome}"/>
+                            <controls:MeterView Margin="0,16,0,0"
+                                                BarHeight="6"
+                                                TrackColor="{AppThemeBinding Light={StaticResource NoteTrack}, Dark={StaticResource DarkNoteTrack}}"
+                                                FillColor="{StaticResource Chartreuse}"
+                                                Progress="{Binding UsedRatio}"/>
 
-                                <BoxView Style="{StaticResource NoteDivider}"
-                                         Margin="0,20,0,0"/>
+                            <BoxView Style="{StaticResource NoteDivider}"
+                                     Margin="0,20,0,0"/>
 
-                                <Grid ColumnDefinitions="*,1,*"
-                                      Margin="0,16,0,0">
-                                    <VerticalStackLayout Grid.Column="0"
-                                                         Spacing="4">
-                                        <Label Style="{StaticResource NoteLabel}"
-                                               Text="{x:Static resx:AppResources.Common_Today}"/>
-                                        <Label Style="{StaticResource NoteAmount}"
-                                               Text="{Binding TodayLeft}"/>
-                                        <Label Style="{StaticResource NoteCaptionSmall}"
-                                               Text="{Binding TodayLeftOf}"/>
-                                    </VerticalStackLayout>
+                            <Grid ColumnDefinitions="*,1,*"
+                                  Margin="0,16,0,0">
+                                <VerticalStackLayout Grid.Column="0"
+                                                     Spacing="4">
+                                    <Label Style="{StaticResource NoteLabel}"
+                                           Text="{x:Static resx:AppResources.Common_Today}"/>
+                                    <Label Style="{StaticResource NoteAmount}"
+                                           Text="{Binding TodayLeft}"/>
+                                    <Label Style="{StaticResource NoteCaptionSmall}"
+                                           Text="{Binding TodayLeftOf}"/>
+                                </VerticalStackLayout>
 
-                                    <BoxView Grid.Column="1"
-                                             Style="{StaticResource NoteDivider}"
-                                             HeightRequest="-1"
-                                             WidthRequest="1"/>
+                                <BoxView Grid.Column="1"
+                                         Style="{StaticResource NoteDivider}"
+                                         HeightRequest="-1"
+                                         WidthRequest="1"/>
 
-                                    <VerticalStackLayout Grid.Column="2"
-                                                         Spacing="4"
-                                                         Padding="16,0,0,0">
-                                        <Label Style="{StaticResource NoteLabel}"
-                                               Text="{x:Static resx:AppResources.Home_TomorrowBalance}"/>
-                                        <Label Style="{StaticResource NoteAmount}"
-                                               Text="{Binding Tomorrow}"/>
-                                        <Label Style="{StaticResource NoteCaptionSmall}"
-                                               Text="{x:Static resx:AppResources.Home_IfYouStopHere}"/>
-                                    </VerticalStackLayout>
-                                </Grid>
-
-                                <Label Style="{StaticResource NoteSerialText}"
-                                       Margin="0,16,0,0"
-                                       Text="{Binding NoteSerial}"/>
-                            </VerticalStackLayout>
-                        </Grid>
+                                <VerticalStackLayout Grid.Column="2"
+                                                     Spacing="4"
+                                                     Padding="16,0,0,0">
+                                    <Label Style="{StaticResource NoteLabel}"
+                                           Text="{x:Static resx:AppResources.Home_TomorrowBalance}"/>
+                                    <Label Style="{StaticResource NoteAmount}"
+                                           Text="{Binding Tomorrow}"/>
+                                    <Label Style="{StaticResource NoteCaptionSmall}"
+                                           Text="{x:Static resx:AppResources.Home_IfYouStopHere}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
                     </Border>
                     <Label Style="{StaticResource TextBodySoft}"
                            Margin="4,8,4,0"
@@ -177,48 +169,41 @@
                 <!-- The note: new period without income -->
                 <Border Style="{StaticResource NoteCard}"
                         IsVisible="{Binding IsShowEmptyPeriod}"
-                        Margin="0,12,0,0"
-                        Padding="0">
-                    <Grid>
-                        <controls:NotePatternView/>
-                        <VerticalStackLayout Padding="20">
-                            <Label Style="{StaticResource NoteLabel}"
-                                   Text="{Binding BalanceCaption}"/>
-                            <Label Style="{StaticResource NoteHeroAmount}"
-                                   TextColor="{StaticResource SageText}"
-                                   Margin="0,8,0,0"
-                                   Text="{Binding Balance}"/>
-                            <Label Style="{StaticResource TextBody}"
-                                   TextColor="{StaticResource OnNote}"
-                                   Margin="0,12,0,0"
-                                   Text="{Binding EmptyPeriodText}"/>
-                            <Border Margin="0,16,0,0"
-                                    Padding="16,0"
-                                    HeightRequest="44"
-                                    HorizontalOptions="Start"
-                                    StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 12"
-                                    BackgroundColor="{StaticResource Chartreuse}">
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="AddIncomeButton_OnTapped"/>
-                                </Border.GestureRecognizers>
-                                <HorizontalStackLayout Spacing="8">
-                                    <controls:IconView Data="{x:Static controls:Icons.Plus}"
-                                                       Size="18"
-                                                       StrokeWidth="2"
-                                                       VerticalOptions="Center"
-                                                       Color="{StaticResource Ink}"/>
-                                    <Label Style="{StaticResource TextBodyStrong}"
-                                           TextColor="{StaticResource Ink}"
-                                           VerticalTextAlignment="Center"
-                                           Text="{x:Static resx:AppResources.Home_AddIncome}"/>
-                                </HorizontalStackLayout>
-                            </Border>
-                            <Label Style="{StaticResource NoteSerialText}"
-                                   Margin="0,16,0,0"
-                                   Text="{Binding NoteSerial}"/>
-                        </VerticalStackLayout>
-                    </Grid>
+                        Margin="0,12,0,0">
+                    <VerticalStackLayout>
+                        <Label Style="{StaticResource NoteLabel}"
+                               Text="{Binding BalanceCaption}"/>
+                        <Label Style="{StaticResource NoteHeroAmount}"
+                               TextColor="{StaticResource SageText}"
+                               Margin="0,8,0,0"
+                               Text="{Binding Balance}"/>
+                        <Label Style="{StaticResource TextBody}"
+                               TextColor="{StaticResource OnNote}"
+                               Margin="0,12,0,0"
+                               Text="{Binding EmptyPeriodText}"/>
+                        <Border Margin="0,16,0,0"
+                                Padding="16,0"
+                                HeightRequest="44"
+                                HorizontalOptions="Start"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="{StaticResource Chartreuse}">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AddIncomeButton_OnTapped"/>
+                            </Border.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="8">
+                                <controls:IconView Data="{x:Static controls:Icons.Plus}"
+                                                   Size="18"
+                                                   StrokeWidth="2"
+                                                   VerticalOptions="Center"
+                                                   Color="{StaticResource Ink}"/>
+                                <Label Style="{StaticResource TextBodyStrong}"
+                                       TextColor="{StaticResource Ink}"
+                                       VerticalTextAlignment="Center"
+                                       Text="{x:Static resx:AppResources.Home_AddIncome}"/>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
                 </Border>
 
                 <!-- Over the limit -->
@@ -367,8 +352,8 @@
                     </Border>
                 </VerticalStackLayout>
 
-                <!-- Categories -->
                 <VerticalStackLayout IsVisible="{Binding IsLoaded}">
+                    <!-- Categories -->
                     <Grid ColumnDefinitions="*,auto"
                           Margin="4,24,4,0">
                         <Label Grid.Column="0"
@@ -472,7 +457,7 @@
                     <!-- No categories yet -->
                     <Border Style="{StaticResource Card}"
                             Margin="0,12,0,0"
-                            Padding="16,16,16,8"
+                            Padding="16,14,16,6"
                             IsVisible="{Binding IsDisplayNoCategories}">
                         <VerticalStackLayout Spacing="4">
                             <Label Style="{StaticResource TextBodyStrong}"
@@ -490,43 +475,39 @@
                     </Border>
 
                     <!-- Recent transactions -->
-                    <Grid ColumnDefinitions="*,auto"
-                          Margin="4,24,4,0">
-                        <Label Grid.Column="0"
-                               Style="{StaticResource TextTitleM}"
-                               VerticalTextAlignment="Center"
-                               Text="{x:Static resx:AppResources.Home_Recent}"/>
-                        <Label Grid.Column="1"
-                               Style="{StaticResource LinkLabel}"
-                               Padding="8,0"
-                               Margin="0,0,-8,0"
-                               Text="{x:Static resx:AppResources.Home_SeeAll}">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="SeeAllButton_OnTapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </Grid>
+                    <VerticalStackLayout IsVisible="{Binding HasRecent}">
+                        <Grid ColumnDefinitions="*,auto"
+                              Margin="4,24,4,0">
+                            <Label Grid.Column="0"
+                                   Style="{StaticResource TextTitleM}"
+                                   VerticalTextAlignment="Center"
+                                   Text="{x:Static resx:AppResources.Home_Recent}"/>
+                            <Label Grid.Column="1"
+                                   Style="{StaticResource LinkLabel}"
+                                   Padding="8,0"
+                                   Margin="0,0,-8,0"
+                                   Text="{x:Static resx:AppResources.Home_SeeAll}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="SeeAllButton_OnTapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
 
-                    <Border Style="{StaticResource Card}"
-                            Margin="0,4,0,0"
-                            IsVisible="{Binding HasRecent}">
-                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding RecentTransactions}">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate x:DataType="transactions:TransactionModel">
-                                    <VerticalStackLayout>
-                                        <controls:ListDivider/>
-                                        <transactioncontrols:TransactionRowView Transaction="{Binding}"
-                                                                                ShowDay="True"/>
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <Label Style="{StaticResource TextBodySoft}"
-                           Margin="4,8,4,0"
-                           IsVisible="{Binding HasNoRecent}"
-                           Text="{x:Static resx:AppResources.Home_NoRecent}"/>
+                        <Border Style="{StaticResource Card}"
+                                Margin="0,4,0,0">
+                            <VerticalStackLayout BindableLayout.ItemsSource="{Binding RecentTransactions}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="transactions:TransactionModel">
+                                        <VerticalStackLayout>
+                                            <controls:ListDivider/>
+                                            <transactioncontrols:TransactionRowView Transaction="{Binding}"
+                                                                                    ShowDay="True"/>
+                                        </VerticalStackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>

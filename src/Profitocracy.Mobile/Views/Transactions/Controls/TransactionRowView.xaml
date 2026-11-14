@@ -23,7 +23,7 @@
                 <DataTrigger TargetType="Border"
                              Binding="{Binding IsIncome}"
                              Value="True">
-                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource NoteGreen}}"/>
+                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource MainTint}, Dark={StaticResource DarkMainTint}}"/>
                 </DataTrigger>
             </Border.Triggers>
             <controls:IconView Data="{Binding IconData}"
@@ -40,7 +40,7 @@
                     <DataTrigger TargetType="controls:IconView"
                                  Binding="{Binding IsIncome}"
                                  Value="True">
-                        <Setter Property="Color" Value="{StaticResource Chartreuse}"/>
+                        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource DarkMainColor}}"/>
                     </DataTrigger>
                 </controls:IconView.Triggers>
             </controls:IconView>

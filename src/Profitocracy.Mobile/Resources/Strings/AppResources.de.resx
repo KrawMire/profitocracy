@@ -1225,10 +1225,10 @@
     <value>ohne Ersparnisse</value>
   </data>
   <data name="Insights_PerDay" xml:space="preserve">
-    <value>{0}/TAG</value>
+    <value>{0} pro Tag</value>
   </data>
   <data name="Insights_PerWeek" xml:space="preserve">
-    <value>{0}/WOCHE</value>
+    <value>{0} pro Woche</value>
   </data>
   <data name="Insights_TodayMark" xml:space="preserve">
     <value>heute</value>
@@ -1264,7 +1264,7 @@
     <value>Wird deinen Ersparnissen in {0} entnommen und dem Guthaben hinzugefügt.</value>
   </data>
   <data name="NewTransaction_Note" xml:space="preserve">
-    <value>Notiz</value>
+    <value>Notiz hinzufügen</value>
   </data>
   <data name="NewTransaction_Save" xml:space="preserve">
     <value>Speichern · {0}</value>
@@ -1297,7 +1297,7 @@
     <value>Jedes Profil hat seine eigene Währung, sein Budget und seinen Verlauf.</value>
   </data>
   <data name="Settings_NewProfile" xml:space="preserve">
-    <value>+ Neues Profil</value>
+    <value>Neues Profil</value>
   </data>
   <data name="Settings_InUse" xml:space="preserve">
     <value>Aktiv</value>
@@ -1358,5 +1358,20 @@
   </data>
   <data name="Common_Cancel" xml:space="preserve">
     <value>Abbrechen</value>
+  </data>
+  <data name="Insights_StillYours" xml:space="preserve">
+    <value>{0} von {1} Einkommen gehören noch dir.</value>
+  </data>
+  <data name="Insights_BySpendingType" xml:space="preserve">
+    <value>nach Ausgabenart</value>
+  </data>
+  <data name="Insights_SpentAndSaved" xml:space="preserve">
+    <value>ausgegeben und gespart</value>
+  </data>
+  <data name="Insights_BarsCut" xml:space="preserve">
+    <value>Balken über dem Doppelten des Budgets werden gekürzt.</value>
+  </data>
+  <data name="NewTransaction_Amount" xml:space="preserve">
+    <value>Betrag</value>
   </data>
 </root>

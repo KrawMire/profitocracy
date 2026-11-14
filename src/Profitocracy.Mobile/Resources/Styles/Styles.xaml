@@ -390,10 +390,10 @@
         <Setter Property="DisabledColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
         <Setter Property="UnselectedColor" Value="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}" />
         <Setter Property="NavBarHasShadow" Value="False" />
-        <Setter Property="TabBarBackgroundColor" Value="{AppThemeBinding Light={StaticResource Nav}, Dark={StaticResource DarkNav}}" />
-        <Setter Property="TabBarForegroundColor" Value="{StaticResource Chartreuse}" />
-        <Setter Property="TabBarTitleColor" Value="{StaticResource Chartreuse}" />
-        <Setter Property="TabBarUnselectedColor" Value="{StaticResource OnNav}" />
+        <Setter Property="TabBarBackgroundColor" Value="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}" />
+        <Setter Property="TabBarForegroundColor" Value="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource Chartreuse}}" />
+        <Setter Property="TabBarTitleColor" Value="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource Chartreuse}}" />
+        <Setter Property="TabBarUnselectedColor" Value="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}" />
     </Style>
 
     <Style TargetType="NavigationPage">
@@ -716,7 +716,7 @@
     </Style>
 
     <Style TargetType="Border" x:Key="Chip">
-        <Setter Property="HeightRequest" Value="36"/>
+        <Setter Property="HeightRequest" Value="44"/>
         <Setter Property="Padding" Value="14,0"/>
         <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
         <Setter Property="StrokeThickness" Value="0"/>

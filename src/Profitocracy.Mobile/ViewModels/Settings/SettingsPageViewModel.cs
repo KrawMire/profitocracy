@@ -18,7 +18,6 @@ public class SettingsPageViewModel : BaseNotifyObject
     private readonly ISettingsRepository _settingsRepository;
 
     private ProfileModel? _currentProfile;
-    private string _currentProfileSerial = string.Empty;
     private string _categoriesSummary = string.Empty;
     private string _appearance = string.Empty;
 
@@ -42,15 +41,6 @@ public class SettingsPageViewModel : BaseNotifyObject
     {
         get => _currentProfile;
         private set => SetProperty(ref _currentProfile, value);
-    }
-
-    /// <summary>
-    /// Serial number on the note of the current profile, e.g. "01 · EUR".
-    /// </summary>
-    public string CurrentProfileSerial
-    {
-        get => _currentProfileSerial;
-        private set => SetProperty(ref _currentProfileSerial, value);
     }
 
     /// <summary>
@@ -84,9 +74,6 @@ public class SettingsPageViewModel : BaseNotifyObject
                 NumberUtils.FormatMoney(current.Balance, currentModel.CurrencySymbol));
 
             CurrentProfile = currentModel;
-
-            var number = profiles.FindIndex(p => p.Id == current.Id) + 1;
-            CurrentProfileSerial = $"{number:00} · {currentModel.CurrencyCode}";
 
             await InitializeCategoriesSummary(current.Id, currentModel.CurrencySymbol);
         }

@@ -40,6 +40,12 @@ public partial class EditTransactionPage : BaseContentPage
 			{
 				IntervalPicker.SelectedItem = _viewModel.SelectedInterval;
 			}
+
+			// A new transaction starts with the amount, so the number pad is opened right away
+			if (!_viewModel.IsEditing)
+			{
+				AmountEntry.Focus();
+			}
 		});
 	}
 
@@ -88,14 +94,12 @@ public partial class EditTransactionPage : BaseContentPage
     private void ConvertedAmount_OnTapped(object? sender, TappedEventArgs e)
     {
         _viewModel.SwitchEditedAmount();
+        AmountEntry.Focus();
     }
 
-    private void Key_OnTapped(object? sender, TappedEventArgs e)
+    private void AmountCard_OnTapped(object? sender, TappedEventArgs e)
     {
-        if (sender is Element { ClassId: { } key })
-        {
-            _viewModel.ApplyKey(key);
-        }
+        AmountEntry.Focus();
     }
 
     private void CategoryChip_OnTapped(object? sender, EventArgs e)

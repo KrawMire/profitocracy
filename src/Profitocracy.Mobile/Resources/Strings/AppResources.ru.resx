@@ -1225,10 +1225,10 @@
     <value>без накоплений</value>
   </data>
   <data name="Insights_PerDay" xml:space="preserve">
-    <value>{0}/ДЕНЬ</value>
+    <value>{0} в день</value>
   </data>
   <data name="Insights_PerWeek" xml:space="preserve">
-    <value>{0}/НЕД</value>
+    <value>{0} в неделю</value>
   </data>
   <data name="Insights_TodayMark" xml:space="preserve">
     <value>сегодня</value>
@@ -1264,7 +1264,7 @@
     <value>Берётся из накоплений в {0} и добавляется на баланс.</value>
   </data>
   <data name="NewTransaction_Note" xml:space="preserve">
-    <value>Заметка</value>
+    <value>Добавить заметку</value>
   </data>
   <data name="NewTransaction_Save" xml:space="preserve">
     <value>Сохранить · {0}</value>
@@ -1297,7 +1297,7 @@
     <value>У каждого профиля своя валюта, бюджет и история.</value>
   </data>
   <data name="Settings_NewProfile" xml:space="preserve">
-    <value>+ Новый профиль</value>
+    <value>Новый профиль</value>
   </data>
   <data name="Settings_InUse" xml:space="preserve">
     <value>Активен</value>
@@ -1358,5 +1358,20 @@
   </data>
   <data name="Common_Cancel" xml:space="preserve">
     <value>Отмена</value>
+  </data>
+  <data name="Insights_StillYours" xml:space="preserve">
+    <value>{0} из {1} дохода всё ещё ваши.</value>
+  </data>
+  <data name="Insights_BySpendingType" xml:space="preserve">
+    <value>по типу расходов</value>
+  </data>
+  <data name="Insights_SpentAndSaved" xml:space="preserve">
+    <value>потрачено и отложено</value>
+  </data>
+  <data name="Insights_BarsCut" xml:space="preserve">
+    <value>Столбцы выше двойного лимита обрезаны.</value>
+  </data>
+  <data name="NewTransaction_Amount" xml:space="preserve">
+    <value>Сумма</value>
   </data>
 </root>

@@ -1,8 +1,7 @@
 ﻿using CommunityToolkit.Maui;
-using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Maui.Platform;
-using Plugin.Maui.AppRating;
 using Plugin.LocalNotification;
+using Plugin.Maui.AppRating;
 using Plugin.Maui.Biometric;
 using Profitocracy.Core;
 using Profitocracy.Infrastructure;
@@ -20,7 +19,9 @@ using Profitocracy.Mobile.Views.Overview.Pages;
 using Profitocracy.Mobile.Views.Settings.Pages;
 using Profitocracy.Mobile.Views.Shared.Controls;
 using Profitocracy.Mobile.Views.Transactions.Pages;
-using SkiaSharp.Views.Maui.Controls.Hosting;
+#if DEBUG
+using Microsoft.Extensions.Logging;
+#endif
 
 namespace Profitocracy.Mobile;
 
@@ -32,8 +33,6 @@ public static class MauiProgram
 
 #pragma warning disable CA1416 // This call site is reachable on ....
         builder
-            .UseSkiaSharp()
-            .UseLiveCharts()
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>

@@ -27,7 +27,7 @@
                        VerticalTextAlignment="Center"
                        Text="{x:Static resx:AppResources.Pages_Insights}"/>
                 <Label Grid.Column="1"
-                       Style="{StaticResource TextSerial}"
+                       Style="{StaticResource TextLabelSoft}"
                        VerticalTextAlignment="Center"
                        Text="{Binding DateRange}"/>
             </Grid>
@@ -57,76 +57,71 @@
                 </Grid>
             </Border>
 
-            <!-- The note: how much of the income is kept -->
-            <Border Style="{StaticResource NoteCard}"
+            <!-- How much of the income is kept -->
+            <Border Style="{StaticResource Card}"
                     Margin="0,12,0,0"
-                    Padding="0">
-                <Grid>
-                    <controls:NotePatternView/>
-                    <VerticalStackLayout Padding="20">
-                        <Label Style="{StaticResource NoteLabel}"
-                               Text="{x:Static resx:AppResources.Insights_KeptSoFar}"/>
-                        <Label Style="{StaticResource NoteHeroAmount}"
-                               Margin="0,8,0,0"
-                               Text="{Binding KeptPercent}"/>
-                        <Label Style="{StaticResource TextBody}"
-                               TextColor="{StaticResource OnNote}"
-                               Margin="0,4,0,0"
-                               Text="{Binding KeptText}"/>
+                    Padding="16">
+                <VerticalStackLayout>
+                    <Label Style="{StaticResource TextLabelSoft}"
+                           Text="{x:Static resx:AppResources.Insights_KeptSoFar}"/>
+                    <Label Style="{StaticResource TextHero}"
+                           Margin="0,4,0,0"
+                           Text="{Binding KeptPercent}"/>
+                    <Label Style="{StaticResource TextBodySoft}"
+                           Margin="0,4,0,0"
+                           Text="{Binding KeptText}"/>
 
-                        <BoxView Style="{StaticResource NoteDivider}"
-                                 Margin="0,16,0,0"/>
+                    <BoxView Style="{StaticResource Divider}"
+                             Margin="0,16,0,0"/>
 
-                        <VerticalStackLayout Margin="0,16,0,0"
-                                             Spacing="12">
-                            <VerticalStackLayout Spacing="6">
-                                <Grid ColumnDefinitions="*,auto">
-                                    <Label Grid.Column="0"
-                                           Style="{StaticResource NoteLabel}"
-                                           Text="{x:Static resx:AppResources.Insights_Income}"/>
-                                    <Label Grid.Column="1"
-                                           Style="{StaticResource TextLabel}"
-                                           TextColor="{StaticResource OnNote}"
-                                           Text="{Binding Income}"/>
-                                </Grid>
-                                <controls:MeterView BarHeight="6"
-                                                    Progress="{Binding IncomeRatio}"
-                                                    TrackColor="{AppThemeBinding Light={StaticResource NoteTrack}, Dark={StaticResource DarkNoteTrack}}"
-                                                    FillColor="{StaticResource Chartreuse}"/>
-                            </VerticalStackLayout>
-                            <VerticalStackLayout Spacing="6">
-                                <Grid ColumnDefinitions="*,auto">
-                                    <Label Grid.Column="0"
-                                           Style="{StaticResource NoteLabel}"
-                                           Text="{x:Static resx:AppResources.Insights_Spent}"/>
-                                    <Label Grid.Column="1"
-                                           Style="{StaticResource TextLabel}"
-                                           TextColor="{StaticResource OnNote}"
-                                           Text="{Binding Spent}"/>
-                                </Grid>
-                                <controls:MeterView BarHeight="6"
-                                                    Progress="{Binding SpentRatio}"
-                                                    TrackColor="{AppThemeBinding Light={StaticResource NoteTrack}, Dark={StaticResource DarkNoteTrack}}"
-                                                    FillColor="{StaticResource OnNote}"/>
-                            </VerticalStackLayout>
-                            <VerticalStackLayout Spacing="6">
-                                <Grid ColumnDefinitions="*,auto">
-                                    <Label Grid.Column="0"
-                                           Style="{StaticResource NoteLabel}"
-                                           Text="{x:Static resx:AppResources.Insights_PutAside}"/>
-                                    <Label Grid.Column="1"
-                                           Style="{StaticResource TextLabel}"
-                                           TextColor="{StaticResource OnNote}"
-                                           Text="{Binding PutAside}"/>
-                                </Grid>
-                                <controls:MeterView BarHeight="6"
-                                                    Progress="{Binding PutAsideRatio}"
-                                                    TrackColor="{AppThemeBinding Light={StaticResource NoteTrack}, Dark={StaticResource DarkNoteTrack}}"
-                                                    FillColor="{StaticResource SageText}"/>
-                            </VerticalStackLayout>
+                    <VerticalStackLayout Margin="0,14,0,0"
+                                         Spacing="12">
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,auto">
+                                <Label Grid.Column="0"
+                                       Style="{StaticResource TextLabelSoft}"
+                                       VerticalTextAlignment="Center"
+                                       Text="{x:Static resx:AppResources.Insights_Income}"/>
+                                <Label Grid.Column="1"
+                                       Style="{StaticResource TextAmountM}"
+                                       TextColor="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource DarkMainColor}}"
+                                       Text="{Binding Income}"/>
+                            </Grid>
+                            <controls:MeterView Progress="{Binding IncomeRatio}"
+                                                TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
+                                                FillColor="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource DarkMainColor}}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,auto">
+                                <Label Grid.Column="0"
+                                       Style="{StaticResource TextLabelSoft}"
+                                       VerticalTextAlignment="Center"
+                                       Text="{x:Static resx:AppResources.Insights_Spent}"/>
+                                <Label Grid.Column="1"
+                                       Style="{StaticResource TextAmountM}"
+                                       Text="{Binding Spent}"/>
+                            </Grid>
+                            <controls:MeterView Progress="{Binding SpentRatio}"
+                                                TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
+                                                FillColor="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,auto">
+                                <Label Grid.Column="0"
+                                       Style="{StaticResource TextLabelSoft}"
+                                       VerticalTextAlignment="Center"
+                                       Text="{x:Static resx:AppResources.Insights_PutAside}"/>
+                                <Label Grid.Column="1"
+                                       Style="{StaticResource TextAmountM}"
+                                       TextColor="{AppThemeBinding Light={StaticResource SavedText}, Dark={StaticResource DarkSavedText}}"
+                                       Text="{Binding PutAside}"/>
+                            </Grid>
+                            <controls:MeterView Progress="{Binding PutAsideRatio}"
+                                                TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
+                                                FillColor="{StaticResource SavedColor}"/>
                         </VerticalStackLayout>
                     </VerticalStackLayout>
-                </Grid>
+                </VerticalStackLayout>
             </Border>
 
             <!-- Where it went -->
@@ -139,62 +134,137 @@
                 <Label Grid.Column="1"
                        Style="{StaticResource TextLabelSoft}"
                        VerticalTextAlignment="End"
-                       Text="{Binding UsedTotal}"/>
+                       Text="{x:Static resx:AppResources.Insights_BySpendingType}"/>
             </Grid>
             <Border Style="{StaticResource Card}"
                     Margin="0,12,0,0"
-                    Padding="16">
-                <Grid ColumnDefinitions="auto,*"
-                      ColumnSpacing="16">
-                    <overviewcontrols:ChamberChartView Grid.Column="0"
-                                                       VerticalOptions="Center"
-                                                       MainUsed="{Binding MainSeats}"
-                                                       SecondaryUsed="{Binding SecondarySeats}"
-                                                       SavedUsed="{Binding SavedSeats}"
-                                                       MainColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"
-                                                       MainTint="{AppThemeBinding Light={StaticResource MainTint}, Dark={StaticResource DarkMainTint}}"
-                                                       SecondaryColor="{StaticResource SecondaryColor}"
-                                                       SecondaryTint="{AppThemeBinding Light={StaticResource SecondaryTint}, Dark={StaticResource DarkSecondaryTint}}"
-                                                       SavedColor="{StaticResource SavedColor}"
-                                                       SavedTint="{AppThemeBinding Light={StaticResource SavedTint}, Dark={StaticResource DarkSavedTint}}"/>
-                    <VerticalStackLayout Grid.Column="1"
-                                         Spacing="12"
-                                         VerticalOptions="Center">
-                        <VerticalStackLayout Spacing="2">
-                            <HorizontalStackLayout Spacing="6">
-                                <Ellipse Style="{StaticResource SpendingDot}"
-                                         Fill="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"/>
-                                <Label Style="{StaticResource TextBodyStrong}"
-                                       Text="{x:Static resx:AppResources.Home_Main}"/>
-                            </HorizontalStackLayout>
+                    Padding="16,20,16,4">
+                <VerticalStackLayout>
+                    <Grid HorizontalOptions="Center"
+                          WidthRequest="240"
+                          HeightRequest="128">
+                        <overviewcontrols:HalfDonutView MainShare="{Binding MainShare}"
+                                                        SecondaryShare="{Binding SecondaryShare}"
+                                                        SavedShare="{Binding SavedShare}"
+                                                        MainColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"
+                                                        SecondaryColor="{StaticResource SecondaryColor}"
+                                                        SavedColor="{StaticResource SavedColor}"
+                                                        TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"/>
+                        <VerticalStackLayout VerticalOptions="End"
+                                             Margin="0,0,0,6"
+                                             Spacing="2">
+                            <Label Style="{StaticResource TextAmountL}"
+                                   TextColor="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"
+                                   HorizontalTextAlignment="Center"
+                                   Text="{Binding UsedTotal}"/>
                             <Label Style="{StaticResource TextCaption}"
-                                   Margin="14,0,0,0"
-                                   Text="{Binding MainLegend}"/>
+                                   HorizontalTextAlignment="Center"
+                                   Text="{x:Static resx:AppResources.Insights_SpentAndSaved}"/>
                         </VerticalStackLayout>
-                        <VerticalStackLayout Spacing="2">
-                            <HorizontalStackLayout Spacing="6">
-                                <Ellipse Style="{StaticResource SpendingDot}"
-                                         Fill="{StaticResource SecondaryColor}"/>
-                                <Label Style="{StaticResource TextBodyStrong}"
-                                       Text="{x:Static resx:AppResources.Home_Secondary}"/>
-                            </HorizontalStackLayout>
-                            <Label Style="{StaticResource TextCaption}"
-                                   Margin="14,0,0,0"
-                                   Text="{Binding SecondaryLegend}"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout Spacing="2">
-                            <HorizontalStackLayout Spacing="6">
-                                <Ellipse Style="{StaticResource SpendingDot}"
-                                         Fill="{StaticResource SavedColor}"/>
-                                <Label Style="{StaticResource TextBodyStrong}"
-                                       Text="{x:Static resx:AppResources.Home_Saved}"/>
-                            </HorizontalStackLayout>
-                            <Label Style="{StaticResource TextCaption}"
-                                   Margin="14,0,0,0"
-                                   Text="{Binding SavedLegend}"/>
-                        </VerticalStackLayout>
+                    </Grid>
+
+                    <VerticalStackLayout Margin="0,16,0,0">
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <Grid ColumnDefinitions="auto,*,auto,40"
+                              ColumnSpacing="8"
+                              Padding="0,14">
+                            <Ellipse Grid.Column="0"
+                                     Style="{StaticResource SpendingDot}"
+                                     Fill="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"/>
+                            <Label Grid.Column="1"
+                                   Style="{StaticResource TextBodyStrong}"
+                                   VerticalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static resx:AppResources.Home_Main}"/>
+                                        <Span Text=" · "
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                        <Span Text="{x:Static resx:AppResources.Common_NeedsWord}"
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Grid.Column="2"
+                                   Style="{StaticResource TextAmountM}"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding MainAmount}"/>
+                            <Label Grid.Column="3"
+                                   Style="{StaticResource TextLabelSoft}"
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding MainPercent}"/>
+                        </Grid>
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <Grid ColumnDefinitions="auto,*,auto,40"
+                              ColumnSpacing="8"
+                              Padding="0,14">
+                            <Ellipse Grid.Column="0"
+                                     Style="{StaticResource SpendingDot}"
+                                     Fill="{StaticResource SecondaryColor}"/>
+                            <Label Grid.Column="1"
+                                   Style="{StaticResource TextBodyStrong}"
+                                   VerticalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static resx:AppResources.Home_Secondary}"/>
+                                        <Span Text=" · "
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                        <Span Text="{x:Static resx:AppResources.Common_WantsWord}"
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Grid.Column="2"
+                                   Style="{StaticResource TextAmountM}"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding SecondaryAmount}"/>
+                            <Label Grid.Column="3"
+                                   Style="{StaticResource TextLabelSoft}"
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding SecondaryPercent}"/>
+                        </Grid>
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <Grid ColumnDefinitions="auto,*,auto,40"
+                              ColumnSpacing="8"
+                              Padding="0,14">
+                            <Ellipse Grid.Column="0"
+                                     Style="{StaticResource SpendingDot}"
+                                     Fill="{StaticResource SavedColor}"/>
+                            <Label Grid.Column="1"
+                                   Style="{StaticResource TextBodyStrong}"
+                                   VerticalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static resx:AppResources.Home_Saved}"/>
+                                        <Span Text=" · "
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                        <Span Text="{x:Static resx:AppResources.Common_SavingsWord}"
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Grid.Column="2"
+                                   Style="{StaticResource TextAmountM}"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding SavedAmount}"/>
+                            <Label Grid.Column="3"
+                                   Style="{StaticResource TextLabelSoft}"
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding SavedPercent}"/>
+                        </Grid>
                     </VerticalStackLayout>
-                </Grid>
+                </VerticalStackLayout>
             </Border>
 
             <!-- Day by day -->
@@ -212,16 +282,21 @@
             <Border Style="{StaticResource Card}"
                     Margin="0,12,0,0"
                     Padding="16">
-                <overviewcontrols:SpendingBarsView Bars="{Binding Bars}"
-                                                   Average="{Binding BarsAverage}"
-                                                   AverageText="{Binding BarsAverageText}"
-                                                   NoteText="{Binding BarsNote}"
-                                                   BarColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"
-                                                   OverColor="{StaticResource OverLimit}"
-                                                   NoteColor="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"
-                                                   EmptyColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
-                                                   TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"
-                                                   SurfaceColor="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}"/>
+                <VerticalStackLayout Spacing="8">
+                    <overviewcontrols:SpendingBarsView Bars="{Binding Bars}"
+                                                       Average="{Binding BarsAverage}"
+                                                       AverageText="{Binding BarsAverageText}"
+                                                       NoteText="{Binding BarsNote}"
+                                                       BarColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"
+                                                       OverColor="{StaticResource OverLimit}"
+                                                       NoteColor="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"
+                                                       EmptyColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
+                                                       TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"
+                                                       SurfaceColor="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}"/>
+                    <Label Style="{StaticResource TextCaption}"
+                           IsVisible="{Binding HasClippedBars}"
+                           Text="{x:Static resx:AppResources.Insights_BarsCut}"/>
+                </VerticalStackLayout>
             </Border>
 
             <!-- Against your limits -->
@@ -281,7 +356,7 @@
                                     <controls:MeterView Progress="{Binding Progress}"
                                                         Mark="{Binding Mark}"
                                                         FillColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"
-                                                        TrackColor="{AppThemeBinding Light={StaticResource MainTint}, Dark={StaticResource DarkMainTint}}"
+                                                        TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
                                                         MarkColor="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}">
                                         <controls:MeterView.Triggers>
                                             <DataTrigger TargetType="controls:MeterView"
