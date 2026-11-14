@@ -6,7 +6,7 @@
                               x:Class="Profitocracy.Mobile.AppInit"
                               Loaded="AppInit_OnLoaded">
     <abstractions:BaseContentPage.Content>
-        <Grid BackgroundColor="#FFFFFF"
+        <Grid BackgroundColor="#0B1712"
               ColumnDefinitions="32,*,32"
               RowDefinitions="32,*,32">
             <Image Grid.Column="1"

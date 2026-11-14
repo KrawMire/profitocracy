@@ -46,7 +46,9 @@
                 </StackLayout>
             </ScrollView>
             
+            <!-- Kept clear of the bottom edge and the system navigation bar -->
             <Button Grid.Row="2"
+                    Margin="0,0,0,32"
                     Text="{x:Static resx:AppResources.AddCategory_SaveCategory}"
                     x:Name="AddCategoryButton"
                     VerticalOptions="End"
