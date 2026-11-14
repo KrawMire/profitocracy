@@ -3,6 +3,7 @@ using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Categories;
 using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.ViewModels.Home;
+using Profitocracy.Mobile.Views.Settings.Pages;
 using Profitocracy.Mobile.Views.Transactions.Pages;
 
 namespace Profitocracy.Mobile.Views.Home.Pages;
@@ -16,11 +17,6 @@ public partial class HomePage : BaseContentPage
         InitializeComponent();
 
         BindingContext = _viewModel = viewModel;
-        SavedAmountsCollectionView.ItemsSource = _viewModel.SavedAmounts;
-        // This is a hot fix of a known issue related to collection view in iOS
-        SavedAmountsCollectionView.ItemSizingStrategy = ItemSizingStrategy.MeasureFirstItem;
-
-        CategoriesExpensesCollectionView.ItemsSource = _viewModel.CategoriesExpenses;
     }
 
     private void HomePage_OnNavigated(object? sender, EventArgs e)
@@ -31,7 +27,15 @@ public partial class HomePage : BaseContentPage
         });
     }
 
-    private void StartNewPeriodButton_OnClicked(object? sender, EventArgs e)
+    private void ProfileButton_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            await Shell.Current.GoToAsync("//" + nameof(SettingsPage));
+        });
+    }
+
+    private void PeriodButton_OnTapped(object? sender, TappedEventArgs e)
     {
         ProcessAction(async () =>
         {
@@ -46,11 +50,53 @@ public partial class HomePage : BaseContentPage
         });
     }
 
+    private void AddIncomeButton_OnTapped(object? sender, TappedEventArgs e)
+    {
+        (Shell.Current as AppShell)?.OpenNewTransactionPage(isIncome: true);
+    }
+
+    private void OverLimitBanner_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            if (_viewModel.OverLimitCategory is not null)
+            {
+                await OpenFilteredTransactionsByCategoryPage(_viewModel.OverLimitCategory);
+            }
+        });
+    }
+
+    private void EditLimitsButton_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            var categoriesPage = Handler?.MauiContext?.Services.GetService<ExpenseCategoriesSettingsPage>();
+
+            if (categoriesPage is not null)
+            {
+                await Navigation.PushAsync(categoriesPage);
+            }
+        });
+    }
+
+    private void SeeAllButton_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            await Shell.Current.GoToAsync("//" + nameof(TransactionsPage));
+        });
+    }
+
     private void CategoryLayout_OnTapped(object? sender, EventArgs e)
     {
         ProcessAction(async () =>
         {
-            await OpenFilteredTransactionsByCategoryPage(sender);
+            if ((sender as BindableObject)?.BindingContext is not CategoryExpenseModel category)
+            {
+                throw new Exception(AppResources.CommonError_GetCategoryInfo);
+            }
+
+            await OpenFilteredTransactionsByCategoryPage(category);
         });
     }
 
@@ -77,13 +123,8 @@ public partial class HomePage : BaseContentPage
         });
     }
 
-    private async Task OpenFilteredTransactionsByCategoryPage(object? sender)
+    private async Task OpenFilteredTransactionsByCategoryPage(CategoryExpenseModel category)
     {
-        if ((sender as StackLayout)?.BindingContext is not CategoryExpenseModel category)
-        {
-            throw new Exception(AppResources.CommonError_GetCategoryInfo);
-        }
-
         var filteredPage = Handler?.MauiContext?.Services.GetService<FilteredTransactionsPage>();
 
         if (filteredPage is null)
@@ -95,8 +136,8 @@ public partial class HomePage : BaseContentPage
             _viewModel.ProfileId,
             category.Id,
             spendingType: null,
-            dateFrom: DateTime.Parse(_viewModel.DateFrom),
-            dateTo: DateTime.Parse(_viewModel.DateTo));
+            dateFrom: _viewModel.DateFrom,
+            dateTo: _viewModel.DateTo);
 
         await Navigation.PushModalAsync(filteredPage);
     }
@@ -114,8 +155,8 @@ public partial class HomePage : BaseContentPage
             _viewModel.ProfileId,
             categoryId: null,
             type,
-            dateFrom: DateTime.Parse(_viewModel.DateFrom),
-            dateTo: DateTime.Parse(_viewModel.DateTo));
+            dateFrom: _viewModel.DateFrom,
+            dateTo: _viewModel.DateTo);
 
         await Navigation.PushModalAsync(filteredPage);
     }

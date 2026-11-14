@@ -15,8 +15,8 @@
         <ScrollView Padding="16,8,16,16"
                 VerticalScrollBarVisibility="Never">
             <StackLayout>
-                <CollectionView ItemsSource="{Binding AvailableLanguages}">
-                    <CollectionView.ItemTemplate>
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding AvailableLanguages}">
+                    <BindableLayout.ItemTemplate>
                         <DataTemplate x:DataType="viewmodel:LanguageOption">
                             <Grid>
                                 <Border Style="{StaticResource ThemeSettingsButton}"
@@ -58,8 +58,8 @@
                                 </Border>
                             </Grid>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
             </StackLayout>
         </ScrollView>
     </abstractions:BaseContentPage.Content>

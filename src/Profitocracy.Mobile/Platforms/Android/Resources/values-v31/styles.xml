@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Android 12+ ignores the MAUI splash image and builds the launch screen from the launcher icon,
+        which the system caches and may keep showing an outdated icon. The splash is described explicitly instead.
+        Overrides Maui.SplashTheme from MAUI, so the attributes of the base theme are kept here as well.
+    -->
+    <style name="Maui.SplashTheme" parent="Maui.MainTheme.NoActionBar">
+        <item name="maui_splash">true</item>
+        <item name="android:windowBackground">@drawable/maui_splash</item>
+        <item name="android:windowSplashScreenBackground">@color/splashBackground</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/appicon_foreground</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/colorPrimary</item>
+    </style>
+</resources>

@@ -1,64 +1,111 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <?xaml-comp compile="true" ?>
-<ResourceDictionary 
+<ResourceDictionary
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
-    <!-- Common app colors -->
-    <Color x:Key="Primary">#67A35F</Color>
-    <Color x:Key="PrimaryDark">#467140</Color>
+    <!-- Design tokens (light theme, as defined by the design) -->
+    <Color x:Key="Ground">#EDEFE7</Color>
+    <Color x:Key="Surface">#FBFCF8</Color>
+    <Color x:Key="Line">#E4E8DD</Color>
+    <Color x:Key="Ink">#10241B</Color>
+    <Color x:Key="InkSoft">#5A6B61</Color>
+    <Color x:Key="NoteGreen">#0E4A33</Color>
+    <Color x:Key="OnNote">#FFFFFF</Color>
+    <Color x:Key="SageText">#BFD8C9</Color>
+    <Color x:Key="NoteTrack">#2E6A50</Color>
+    <Color x:Key="Chartreuse">#C8F169</Color>
+    <Color x:Key="Nav">#10241B</Color>
+    <Color x:Key="OnNav">#9FB2A7</Color>
+
+    <!-- 50 / 30 / 20 -->
+    <Color x:Key="MainColor">#0E4A33</Color>
+    <Color x:Key="MainTint">#BFD8C9</Color>
+    <Color x:Key="SecondaryColor">#F2A65A</Color>
+    <Color x:Key="SecondaryTint">#FBE3CB</Color>
+    <Color x:Key="SecondaryTextColor">#A3570F</Color>
+    <Color x:Key="SavedColor">#5B7BE8</Color>
+    <Color x:Key="SavedTint">#DCE3FA</Color>
+    <Color x:Key="SavedText">#3753B8</Color>
+
+    <!-- Feedback -->
+    <Color x:Key="OverLimit">#D9442B</Color>
+    <Color x:Key="OverText">#B8331C</Color>
+    <Color x:Key="OverTint">#FBE2DC</Color>
+
+    <!-- Dark theme counterparts (the design only defines the light theme) -->
+    <Color x:Key="DarkGround">#0B1712</Color>
+    <Color x:Key="DarkSurface">#15251D</Color>
+    <Color x:Key="DarkInk">#EDEFE7</Color>
+    <Color x:Key="DarkInkSoft">#9DB0A5</Color>
+    <Color x:Key="DarkLine">#24372D</Color>
+    <Color x:Key="DarkNoteGreen">#0F3D2B</Color>
+    <Color x:Key="DarkNoteTrack">#2A5A45</Color>
+    <Color x:Key="DarkNav">#15251D</Color>
+    <Color x:Key="DarkMainColor">#5FBF8C</Color>
+    <Color x:Key="DarkMainTint">#1E3A2C</Color>
+    <Color x:Key="DarkSecondaryTint">#3D2E1E</Color>
+    <Color x:Key="DarkSecondaryTextColor">#F2A65A</Color>
+    <Color x:Key="DarkSavedTint">#1F2A4D</Color>
+    <Color x:Key="DarkSavedText">#8CA3F2</Color>
+    <Color x:Key="DarkOverText">#F0806B</Color>
+    <Color x:Key="DarkOverTint">#3A1F19</Color>
+
+    <!-- Common app colors (legacy keys mapped onto the design palette) -->
+    <Color x:Key="Primary">#0E4A33</Color>
+    <Color x:Key="PrimaryDark">#10241B</Color>
     <Color x:Key="SpecialPrimaryText">#FFFFFF</Color>
-    <Color x:Key="SecondaryText">#AAAAAA</Color>
-    
+    <Color x:Key="SecondaryText">#5A6B61</Color>
+
     <!-- Colors for light theme -->
-    <Color x:Key="SecondaryLight">#93BC8E</Color>
-    <Color x:Key="LightContent">#FFFFFF</Color>
-    <Color x:Key="LightBackground">#EEEEEE</Color>
-    
-    <Color x:Key="LightMenuContent">#3F3F3F</Color>
-    <Color x:Key="LightMenuBackground">#FFFFFF</Color>
-    
-    <Color x:Key="LightPrimaryText">#4E4E4E</Color>
-    <Color x:Key="LightSpecialSecondaryText">#5D7159</Color>
-    
+    <Color x:Key="SecondaryLight">#0E4A33</Color>
+    <Color x:Key="LightContent">#FBFCF8</Color>
+    <Color x:Key="LightBackground">#EDEFE7</Color>
+
+    <Color x:Key="LightMenuContent">#9FB2A7</Color>
+    <Color x:Key="LightMenuBackground">#10241B</Color>
+
+    <Color x:Key="LightPrimaryText">#10241B</Color>
+    <Color x:Key="LightSpecialSecondaryText">#BFD8C9</Color>
+
     <!-- Colors for dark theme -->
-    <Color x:Key="SecondaryDark">#598254</Color>
-    <Color x:Key="DarkContent">#444444</Color>
-    <Color x:Key="DarkBackground">#303030</Color>
-    
-    <Color x:Key="DarkMenuContent">#CDCDCD</Color>
-    <Color x:Key="DarkEntryBackground">#5E5E5E</Color>
-    <Color x:Key="DarkMenuBackground">#3D3D3D</Color>
-    
-    <Color x:Key="DarkPrimaryText">#FFFFFF</Color>
-    <Color x:Key="DarkSpecialSecondaryText">#E8E8E8</Color>
+    <Color x:Key="SecondaryDark">#0F3D2B</Color>
+    <Color x:Key="DarkContent">#15251D</Color>
+    <Color x:Key="DarkBackground">#0B1712</Color>
+
+    <Color x:Key="DarkMenuContent">#9FB2A7</Color>
+    <Color x:Key="DarkEntryBackground">#1C2F25</Color>
+    <Color x:Key="DarkMenuBackground">#15251D</Color>
+
+    <Color x:Key="DarkPrimaryText">#EDEFE7</Color>
+    <Color x:Key="DarkSpecialSecondaryText">#BFD8C9</Color>
 
     <!-- Common colors -->
     <Color x:Key="Transparent">Transparent</Color>
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
     <Color x:Key="Magenta">#D600AA</Color>
-    <Color x:Key="MainGreen">#00b51b</Color>
-    <Color x:Key="SecondaryGreen">#17b802</Color>
+    <Color x:Key="MainGreen">#0E4A33</Color>
+    <Color x:Key="SecondaryGreen">#C8F169</Color>
     <Color x:Key="MidnightBlue">#190649</Color>
-    <Color x:Key="OffBlack">#1f1f1f</Color>
-    <Color x:Key="DangerRed">#FF6752</Color>
-    <Color x:Key="InfoBlue">#5B8FFF</Color>
+    <Color x:Key="OffBlack">#10241B</Color>
+    <Color x:Key="DangerRed">#D9442B</Color>
+    <Color x:Key="InfoBlue">#5B7BE8</Color>
 
-    <!-- Gray colors -->
-    <Color x:Key="Gray50">#F7F7F7</Color>
-    <Color x:Key="Gray100">#E1E1E1</Color>
-    <Color x:Key="Gray200">#C8C8C8</Color>
-    <Color x:Key="Gray300">#ACACAC</Color>
-    <Color x:Key="Gray400">#919191</Color>
-    <Color x:Key="Gray500">#6E6E6E</Color>
-    <Color x:Key="Gray600">#404040</Color>
-    <Color x:Key="Gray900">#212121</Color>
-    <Color x:Key="Gray950">#141414</Color>
+    <!-- Gray colors (tinted towards the green ink of the palette) -->
+    <Color x:Key="Gray50">#FBFCF8</Color>
+    <Color x:Key="Gray100">#EDEFE7</Color>
+    <Color x:Key="Gray200">#E4E8DD</Color>
+    <Color x:Key="Gray300">#C5CCC0</Color>
+    <Color x:Key="Gray400">#9DB0A5</Color>
+    <Color x:Key="Gray500">#5A6B61</Color>
+    <Color x:Key="Gray600">#2E4036</Color>
+    <Color x:Key="Gray900">#10241B</Color>
+    <Color x:Key="Gray950">#0B1712</Color>
 
-    
+
     <!-- Brushes -->
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>

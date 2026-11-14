@@ -2,234 +2,513 @@
 
 <abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                               xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
                               xmlns:categories="clr-namespace:Profitocracy.Mobile.Models.Categories"
+                              xmlns:transactions="clr-namespace:Profitocracy.Mobile.Models.Transactions"
+                              xmlns:profiles="clr-namespace:Profitocracy.Mobile.Models.Profiles"
                               xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
                               xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Home"
-                              xmlns:profile="clr-namespace:Profitocracy.Mobile.Models.Profiles"
                               xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+                              xmlns:transactioncontrols="clr-namespace:Profitocracy.Mobile.Views.Transactions.Controls"
                               x:Class="Profitocracy.Mobile.Views.Home.Pages.HomePage"
                               x:DataType="viewmodel:HomePageViewModel"
                               Title="{x:Static resx:AppResources.Pages_Home}"
-                              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+                              Shell.NavBarIsVisible="False"
+                              ios:Page.UseSafeArea="True"
                               NavigatedTo="HomePage_OnNavigated"
                               HideSoftInputOnTapped="True">
     <RefreshView IsRefreshing="{Binding IsRefreshing}"
                  Command="{Binding RefreshCommand}">
         <ScrollView VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Padding="8, 16">
+            <VerticalStackLayout Padding="16,0,16,32">
 
-                <Border Style="{StaticResource ProfileExpenseCard}">
-                    <Border.Shadow>
-                        <Shadow Brush="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray950}}"
-                                Offset="0,8"
-                                Radius="16"
-                                Opacity="0.9" />
-                    </Border.Shadow>
-                    <StackLayout>
-                        <FlexLayout JustifyContent="SpaceBetween">
-                            <Label Style="{StaticResource ProfileExpenseCardTitle}"
-                                   Text="{Binding ProfileName}"/>
-                            <Label Style="{StaticResource ProfileExpenseCardPeriod}"
-                                   VerticalTextAlignment="End">
-                                <Label.Text>
-                                    <MultiBinding StringFormat="{}{0} - {1}">
-                                        <Binding Path="DateFrom"/>
-                                        <Binding Path="DateTo"/>
-                                    </MultiBinding>
-                                </Label.Text>
-                            </Label>
-                        </FlexLayout>
-                        <FlexLayout JustifyContent="SpaceBetween"
-                                    Margin="0, 16, 0, 0">
-                            <Label Style="{StaticResource ProfileExpenseCardSubtitle}"
-                                   Text="{x:Static resx:AppResources.Home_Balance}"/>
-                            <Label Style="{StaticResource ProfileExpenseCardBalance}"
-                                   Text="{Binding Balance}"/>
-                        </FlexLayout>
-                        <StackLayout Margin="0, 16, 0, 0">
-                            <ProgressBar Style="{StaticResource ProfileExpenseCardProgressBar}"
-                                         Progress="{Binding TotalBalanceRatio}"/>
-                            <FlexLayout JustifyContent="SpaceBetween">
-                                <Label Style="{StaticResource ProfileExpenseCardProgressValue}"
-                                       Text="{Binding TotalActualAmount}"/>
-                                <Label Style="{StaticResource ProfileExpenseCardProgressValue}"
-                                       Text="{Binding TotalPlannedAmount}" />
-                            </FlexLayout>
-                        </StackLayout>
-
-                        <Button Text="{x:Static resx:AppResources.Home_StartNewPeriod}"
-                                Margin="0,16,0,0"
-                                VerticalOptions="End"
-                                Clicked="StartNewPeriodButton_OnClicked"/>
-                    </StackLayout>
-                </Border>
-
-                <controls:ContentSectionView IsVisible="{Binding IsShowSavedAmounts}"
-                                             Title="{x:Static resx:AppResources.Home_SavedAmounts}">
-                    <CollectionView x:Name="SavedAmountsCollectionView"
-                                    Margin="0,16,0,0">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="profile:SavedAmountModel">
-                                <FlexLayout JustifyContent="SpaceBetween"
-                                            Margin="0,8,0,0">
-                                    <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                           Text="{Binding CurrencyName}"/>
-                                    <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                           Text="{Binding Amount}"/>
-                                </FlexLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </controls:ContentSectionView>
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="8" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <controls:ContentSectionView Grid.Column="0"
-                                                 Title="{x:Static resx:AppResources.Home_TodayBalance}">
-                        <StackLayout Margin="0,16,0,0">
-                            <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
-                                         Progress="{Binding TodayBalanceRatio}"/>
-                            <FlexLayout JustifyContent="SpaceBetween">
-                                <Label Style="{StaticResource ExpenseCardProgressValue}"
-                                       Text="{Binding TodayActualAmount}"/>
-                                <Label Style="{StaticResource ExpenseCardProgressValue}"
-                                       Text="{Binding TodayPlannedAmount}" />
-                            </FlexLayout>
-                        </StackLayout>
-                    </controls:ContentSectionView>
-
-                    <controls:ContentSectionView Grid.Column="2"
-                                                 Title="{x:Static resx:AppResources.Home_TomorrowBalance}">
-                        <StackLayout Margin="0,12,0,0">
-                            <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                   Text="{Binding BalanceForTomorrow}"/>
-                        </StackLayout>
-                    </controls:ContentSectionView>
+                <!-- Header: profile and period -->
+                <Grid ColumnDefinitions="*,auto"
+                      Margin="0,0,-8,0"
+                      ColumnSpacing="8">
+                    <HorizontalStackLayout Grid.Column="0"
+                                           Spacing="4"
+                                           MinimumHeightRequest="44">
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ProfileButton_OnTapped"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource TextBodyStrong}"
+                               VerticalTextAlignment="Center"
+                               LineBreakMode="TailTruncation"
+                               Text="{Binding ProfileName}"/>
+                        <controls:IconView Data="{x:Static controls:Icons.ChevronDown}"
+                                           Size="16"
+                                           VerticalOptions="Center"
+                                           Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Grid.Column="1"
+                                           Spacing="4"
+                                           Padding="8,0"
+                                           MinimumHeightRequest="44">
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PeriodButton_OnTapped"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource TextBodyStrong}"
+                               VerticalTextAlignment="Center"
+                               Text="{Binding PeriodTitle}"/>
+                        <controls:IconView Data="{x:Static controls:Icons.ChevronDown}"
+                                           Size="16"
+                                           VerticalOptions="Center"
+                                           Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                    </HorizontalStackLayout>
                 </Grid>
 
-                <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_SpendingTypes}">
-                    <StackLayout>
-                        <StackLayout Margin="0,16,0,0">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="MainSpendingTypeLayout_OnTapped" />
-                            </StackLayout.GestureRecognizers>
-                            <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                   Text="{x:Static resx:AppResources.Home_Main}"/>
-                            <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
-                                         Margin="0,8,0,0"
-                                         Progress="{Binding MainExpensesRatio}"/>
-                            <FlexLayout JustifyContent="SpaceBetween">
-                                <Label Style="{StaticResource ExpenseCardProgressValue}"
-                                       Text="{Binding MainActualAmount}"/>
-                                <Label Style="{StaticResource ExpenseCardProgressValue}"
-                                       Text="{Binding MainPlannedAmount}" />
-                            </FlexLayout>
-                        </StackLayout>
+                <!-- The note: loading placeholder -->
+                <VerticalStackLayout IsVisible="{Binding IsLoading}">
+                    <Border Style="{StaticResource NoteCard}"
+                            Margin="0,12,0,0">
+                        <VerticalStackLayout>
+                            <Label Style="{StaticResource NoteLabel}"
+                                   Text="{Binding BalanceCaption}"/>
+                            <BoxView Style="{StaticResource NoteSkeleton}"
+                                     Margin="0,8,0,0"
+                                     WidthRequest="196"
+                                     HeightRequest="40"
+                                     CornerRadius="8"/>
+                            <BoxView Style="{StaticResource NoteSkeleton}"
+                                     Margin="0,4,0,0"
+                                     WidthRequest="230"
+                                     HeightRequest="18"/>
+                            <BoxView Style="{StaticResource NoteSkeleton}"
+                                     Margin="0,16,0,0"
+                                     HorizontalOptions="Fill"
+                                     HeightRequest="6"
+                                     CornerRadius="3"/>
+                            <BoxView Style="{StaticResource NoteDivider}"
+                                     Margin="0,20,0,0"/>
+                            <Grid ColumnDefinitions="*,*"
+                                  ColumnSpacing="16"
+                                  Margin="0,16,0,0">
+                                <BoxView Grid.Column="0"
+                                         Style="{StaticResource NoteSkeleton}"
+                                         HorizontalOptions="Fill"
+                                         HeightRequest="56"
+                                         CornerRadius="8"/>
+                                <BoxView Grid.Column="1"
+                                         Style="{StaticResource NoteSkeleton}"
+                                         HorizontalOptions="Fill"
+                                         HeightRequest="56"
+                                         CornerRadius="8"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Label Style="{StaticResource TextBodySoft}"
+                           Margin="4,8,4,0"
+                           Text="{Binding RecalculatingText}"/>
+                </VerticalStackLayout>
 
-                        <StackLayout Margin="0,16,0,0">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="SecondarySpendingTypeLayout_OnTapped" />
-                            </StackLayout.GestureRecognizers>
-                            <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                   Text="{x:Static resx:AppResources.Home_Secondary}"/>
-                            <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
-                                         Margin="0,8,0,0"
-                                         Progress="{Binding SecondaryExpensesRatio}"/>
-                            <FlexLayout JustifyContent="SpaceBetween">
-                                <Label Style="{StaticResource ExpenseCardProgressValue}"
-                                       Text="{Binding SecondaryActualAmount}"/>
-                                <Label Style="{StaticResource ExpenseCardProgressValue}"
-                                       Text="{Binding SecondaryPlannedAmount}" />
-                            </FlexLayout>
-                        </StackLayout>
+                <!-- The note: balance of the period -->
+                <VerticalStackLayout IsVisible="{Binding IsShowFilledPeriod}">
+                    <Border Style="{StaticResource NoteCard}"
+                            Margin="0,12,0,0">
+                        <VerticalStackLayout>
+                            <Grid ColumnDefinitions="*,auto">
+                                <Label Grid.Column="0"
+                                       Style="{StaticResource NoteLabel}"
+                                       Text="{Binding BalanceCaption}"/>
+                                <Label Grid.Column="1"
+                                       Style="{StaticResource NoteLabel}"
+                                       Text="{Binding DaysToGo}"/>
+                            </Grid>
+                            <Label Style="{StaticResource NoteHeroAmount}"
+                                   Margin="0,8,0,0"
+                                   Text="{Binding Balance}"/>
+                            <Label Style="{StaticResource NoteLabel}"
+                                   Margin="0,4,0,0"
+                                   Text="{Binding UsedOfIncome}"/>
+                            <controls:MeterView Margin="0,16,0,0"
+                                                BarHeight="6"
+                                                TrackColor="{AppThemeBinding Light={StaticResource NoteTrack}, Dark={StaticResource DarkNoteTrack}}"
+                                                FillColor="{StaticResource Chartreuse}"
+                                                Progress="{Binding UsedRatio}"/>
 
-                        <StackLayout Margin="0,16,0,0">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="SavedSpendingTypeLayout_OnTapped" />
-                            </StackLayout.GestureRecognizers>
-                            <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                   Text="{x:Static resx:AppResources.Home_Saved}"/>
-                            <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
-                                         Margin="0,8,0,0"
-                                         Progress="{Binding SavedRatio}"/>
-                            <FlexLayout JustifyContent="SpaceBetween">
-                                <Label Style="{StaticResource ExpenseCardProgressValue}"
-                                       Text="{Binding SavedActualAmount}"/>
-                                <Label Style="{StaticResource ExpenseCardProgressValue}"
-                                       Text="{Binding SavedPlannedAmount}" />
-                            </FlexLayout>
-                        </StackLayout>
-                    </StackLayout>
-                </controls:ContentSectionView>
+                            <BoxView Style="{StaticResource NoteDivider}"
+                                     Margin="0,20,0,0"/>
 
-                <controls:ContentSectionView Title="{x:Static resx:AppResources.Home_Categories}">
-                    <StackLayout>
-                        <Label Style="{StaticResource ExpenseCardSubtitleSecondary}"
-                               IsVisible="{Binding IsDisplayNoCategories}"
-                               Text="{x:Static resx:AppResources.Home_NoCategories}"
-                               Margin="0,16,0,0"
-                               HorizontalTextAlignment="Center"/>
-                        <CollectionView x:Name="CategoriesExpensesCollectionView">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="categories:CategoryExpenseModel">
-                                    <StackLayout>
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="CategoryLayout_OnTapped" />
-                                        </StackLayout.GestureRecognizers>
+                            <Grid ColumnDefinitions="*,1,*"
+                                  Margin="0,16,0,0">
+                                <VerticalStackLayout Grid.Column="0"
+                                                     Spacing="4">
+                                    <Label Style="{StaticResource NoteLabel}"
+                                           Text="{x:Static resx:AppResources.Common_Today}"/>
+                                    <Label Style="{StaticResource NoteAmount}"
+                                           Text="{Binding TodayLeft}"/>
+                                    <Label Style="{StaticResource NoteCaptionSmall}"
+                                           Text="{Binding TodayLeftOf}"/>
+                                </VerticalStackLayout>
 
-                                        <StackLayout Margin="0,16,0,0"
-                                                     IsVisible="{Binding IsShowRatio}">
-                                            <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                                   Text="{Binding Name}" />
-                                            <ProgressBar Style="{StaticResource ExpenseCardProgressBar}"
-                                                         Progress="{Binding Ratio}"
-                                                         Margin="0, 8,0,0"/>
-                                            <FlexLayout JustifyContent="SpaceBetween">
-                                                <Label Style="{StaticResource ExpenseCardProgressValue}">
-                                                    <Label.Text>
-                                                        <MultiBinding StringFormat="{}{0}{1}">
-                                                            <Binding Path="CurrencySymbol"/>
-                                                            <Binding Path="ActualAmount"/>
-                                                        </MultiBinding>
-                                                    </Label.Text>
-                                                </Label>
-                                                <Label Style="{StaticResource ExpenseCardProgressValue}">
-                                                    <Label.Text>
-                                                        <MultiBinding StringFormat="{}{0}{1}">
-                                                            <Binding Path="CurrencySymbol"/>
-                                                            <Binding Path="PlannedAmount"/>
-                                                        </MultiBinding>
-                                                    </Label.Text>
-                                                </Label>
-                                            </FlexLayout>
-                                        </StackLayout>
+                                <BoxView Grid.Column="1"
+                                         Style="{StaticResource NoteDivider}"
+                                         HeightRequest="-1"
+                                         WidthRequest="1"/>
 
-                                        <FlexLayout JustifyContent="SpaceBetween"
-                                                    Margin="0,16,0,0"
-                                                    IsVisible="{Binding IsNotShowRatio}">
-                                            <Label Style="{StaticResource ExpenseCardSubtitle}"
-                                                   Text="{Binding Name}"/>
-                                            <Label Style="{StaticResource ExpenseCardSubtitle}">
-                                                <Label.Text>
-                                                    <MultiBinding StringFormat="{}{0}{1}">
-                                                        <Binding Path="CurrencySymbol"/>
-                                                        <Binding Path="ActualAmount"/>
-                                                    </MultiBinding>
-                                                </Label.Text>
-                                            </Label>
-                                        </FlexLayout>
-                                    </StackLayout>
+                                <VerticalStackLayout Grid.Column="2"
+                                                     Spacing="4"
+                                                     Padding="16,0,0,0">
+                                    <Label Style="{StaticResource NoteLabel}"
+                                           Text="{x:Static resx:AppResources.Home_TomorrowBalance}"/>
+                                    <Label Style="{StaticResource NoteAmount}"
+                                           Text="{Binding Tomorrow}"/>
+                                    <Label Style="{StaticResource NoteCaptionSmall}"
+                                           Text="{x:Static resx:AppResources.Home_IfYouStopHere}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Label Style="{StaticResource TextBodySoft}"
+                           Margin="4,8,4,0"
+                           Text="{Binding SpreadHint}"/>
+                </VerticalStackLayout>
+
+                <!-- The note: new period without income -->
+                <Border Style="{StaticResource NoteCard}"
+                        IsVisible="{Binding IsShowEmptyPeriod}"
+                        Margin="0,12,0,0">
+                    <VerticalStackLayout>
+                        <Label Style="{StaticResource NoteLabel}"
+                               Text="{Binding BalanceCaption}"/>
+                        <Label Style="{StaticResource NoteHeroAmount}"
+                               TextColor="{StaticResource SageText}"
+                               Margin="0,8,0,0"
+                               Text="{Binding Balance}"/>
+                        <Label Style="{StaticResource TextBody}"
+                               TextColor="{StaticResource OnNote}"
+                               Margin="0,12,0,0"
+                               Text="{Binding EmptyPeriodText}"/>
+                        <Border Margin="0,16,0,0"
+                                Padding="16,0"
+                                HeightRequest="44"
+                                HorizontalOptions="Start"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="{StaticResource Chartreuse}">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="AddIncomeButton_OnTapped"/>
+                            </Border.GestureRecognizers>
+                            <HorizontalStackLayout Spacing="8">
+                                <controls:IconView Data="{x:Static controls:Icons.Plus}"
+                                                   Size="18"
+                                                   StrokeWidth="2"
+                                                   VerticalOptions="Center"
+                                                   Color="{StaticResource Ink}"/>
+                                <Label Style="{StaticResource TextBodyStrong}"
+                                       TextColor="{StaticResource Ink}"
+                                       VerticalTextAlignment="Center"
+                                       Text="{x:Static resx:AppResources.Home_AddIncome}"/>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Over the limit -->
+                <Border IsVisible="{Binding HasOverLimit}"
+                        Margin="0,12,0,0"
+                        Padding="16,14,12,14"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource OverTint}, Dark={StaticResource DarkOverTint}}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OverLimitBanner_OnTapped"/>
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="auto,*,auto"
+                          ColumnSpacing="12">
+                        <controls:IconView Grid.Column="0"
+                                           Data="{x:Static controls:Icons.Alert}"
+                                           Size="20"
+                                           VerticalOptions="Center"
+                                           Color="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"/>
+                        <VerticalStackLayout Grid.Column="1"
+                                             Spacing="4">
+                            <Label Style="{StaticResource TextBodyStrong}"
+                                   TextColor="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"
+                                   Text="{Binding OverLimitTitle}"/>
+                            <Label Style="{StaticResource TextLabel}"
+                                   TextColor="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"
+                                   Text="{Binding OverLimitDetail}"/>
+                        </VerticalStackLayout>
+                        <controls:IconView Grid.Column="2"
+                                           Data="{x:Static controls:Icons.ChevronRight}"
+                                           Size="18"
+                                           VerticalOptions="Center"
+                                           Color="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"/>
+                    </Grid>
+                </Border>
+
+                <!-- Budget split -->
+                <Grid ColumnDefinitions="*,auto"
+                      Margin="4,24,4,0">
+                    <Label Grid.Column="0"
+                           Style="{StaticResource TextTitleM}"
+                           VerticalTextAlignment="End"
+                           Text="{x:Static resx:AppResources.Home_BudgetSplit}"/>
+                    <Label Grid.Column="1"
+                           Style="{StaticResource TextLabelSoft}"
+                           VerticalTextAlignment="End"
+                           Text="{x:Static resx:AppResources.Home_BudgetSplitCaption}"/>
+                </Grid>
+
+                <!-- Budget split: loading placeholder -->
+                <Border Style="{StaticResource Card}"
+                        IsVisible="{Binding IsLoading}"
+                        Margin="0,12,0,0">
+                    <VerticalStackLayout>
+                        <controls:SkeletonRow/>
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <controls:SkeletonRow/>
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <controls:SkeletonRow/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Budget split: nothing to split yet -->
+                <Border Style="{StaticResource Card}"
+                        IsVisible="{Binding IsShowEmptyPeriod}"
+                        Margin="0,12,0,0">
+                    <VerticalStackLayout>
+                        <controls:SpendingTypeEmptyRow Title="{x:Static resx:AppResources.Home_Main}"
+                                                       Word="{x:Static resx:AppResources.Common_NeedsWord}"
+                                                       DotColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"/>
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <controls:SpendingTypeEmptyRow Title="{x:Static resx:AppResources.Home_Secondary}"
+                                                       Word="{x:Static resx:AppResources.Common_WantsWord}"
+                                                       DotColor="{StaticResource SecondaryColor}"/>
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <controls:SpendingTypeEmptyRow Title="{x:Static resx:AppResources.Home_Saved}"
+                                                       Word="{x:Static resx:AppResources.Common_SavingsWord}"
+                                                       DotColor="{StaticResource SavedColor}"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Budget split: 50 / 30 / 20 -->
+                <Border Style="{StaticResource Card}"
+                        IsVisible="{Binding IsShowFilledPeriod}"
+                        Margin="0,12,0,0">
+                    <VerticalStackLayout>
+                        <controls:SpendingTypeRow Title="{x:Static resx:AppResources.Home_Main}"
+                                                  Amount="{Binding MainSpent}"
+                                                  Detail="{Binding MainDetail}"
+                                                  Remaining="{Binding MainRemaining}"
+                                                  Progress="{Binding MainRatio}"
+                                                  DotColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"
+                                                  TintColor="{AppThemeBinding Light={StaticResource MainTint}, Dark={StaticResource DarkMainTint}}"
+                                                  Tapped="MainSpendingTypeLayout_OnTapped"/>
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <controls:SpendingTypeRow Title="{x:Static resx:AppResources.Home_Secondary}"
+                                                  Amount="{Binding SecondarySpent}"
+                                                  Detail="{Binding SecondaryDetail}"
+                                                  Remaining="{Binding SecondaryRemaining}"
+                                                  Progress="{Binding SecondaryRatio}"
+                                                  DotColor="{StaticResource SecondaryColor}"
+                                                  TintColor="{AppThemeBinding Light={StaticResource SecondaryTint}, Dark={StaticResource DarkSecondaryTint}}"
+                                                  Tapped="SecondarySpendingTypeLayout_OnTapped"/>
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <controls:SpendingTypeRow Title="{x:Static resx:AppResources.Home_Saved}"
+                                                  Amount="{Binding SavedSpent}"
+                                                  Detail="{Binding SavedDetail}"
+                                                  Remaining="{Binding SavedRemaining}"
+                                                  Progress="{Binding SavedRatio}"
+                                                  DotColor="{StaticResource SavedColor}"
+                                                  TintColor="{AppThemeBinding Light={StaticResource SavedTint}, Dark={StaticResource DarkSavedTint}}"
+                                                  Tapped="SavedSpendingTypeLayout_OnTapped"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Saved amounts -->
+                <VerticalStackLayout IsVisible="{Binding HasSavedAmounts}">
+                    <Label Style="{StaticResource TextTitleM}"
+                           Margin="4,24,4,0"
+                           Text="{x:Static resx:AppResources.Home_SavedAmounts}"/>
+
+                    <Border Style="{StaticResource Card}"
+                            Margin="0,12,0,0">
+                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding SavedAmounts}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="profiles:SavedAmountModel">
+                                    <VerticalStackLayout>
+                                        <controls:ListDivider/>
+                                        <Grid ColumnDefinitions="*,auto"
+                                              ColumnSpacing="8"
+                                              Padding="16,14">
+                                            <Label Grid.Column="0"
+                                                   Style="{StaticResource TextBodyStrong}"
+                                                   VerticalTextAlignment="Center"
+                                                   LineBreakMode="TailTruncation"
+                                                   Text="{Binding CurrencyName}"/>
+                                            <Label Grid.Column="1"
+                                                   Style="{StaticResource TextAmountM}"
+                                                   VerticalTextAlignment="Center"
+                                                   Text="{Binding Amount}"/>
+                                        </Grid>
+                                    </VerticalStackLayout>
                                 </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                </controls:ContentSectionView>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout IsVisible="{Binding IsLoaded}">
+                    <!-- Categories -->
+                    <Grid ColumnDefinitions="*,auto"
+                          Margin="4,24,4,0">
+                        <Label Grid.Column="0"
+                               Style="{StaticResource TextTitleM}"
+                               VerticalTextAlignment="Center"
+                               Text="{x:Static resx:AppResources.Pages_Categories}"/>
+                        <Label Grid.Column="1"
+                               Style="{StaticResource LinkLabel}"
+                               IsVisible="{Binding HasCategories}"
+                               Padding="8,0"
+                               Margin="0,0,-8,0"
+                               Text="{x:Static resx:AppResources.Home_EditLimits}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="EditLimitsButton_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+
+                    <Border Style="{StaticResource Card}"
+                            Margin="0,4,0,0"
+                            IsVisible="{Binding HasCategories}">
+                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding CategoriesExpenses}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="categories:CategoryExpenseModel">
+                                    <VerticalStackLayout>
+                                        <VerticalStackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CategoryLayout_OnTapped"/>
+                                        </VerticalStackLayout.GestureRecognizers>
+                                        <controls:ListDivider/>
+                                        <VerticalStackLayout Padding="16,14">
+                                            <Grid ColumnDefinitions="*,auto"
+                                                  ColumnSpacing="8">
+                                                <Label Grid.Column="0"
+                                                       Style="{StaticResource TextBodyStrong}"
+                                                       LineBreakMode="TailTruncation"
+                                                       Text="{Binding Name}"/>
+                                                <Label Grid.Column="1"
+                                                       Style="{StaticResource TextAmountM}"
+                                                       Text="{Binding Value}">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label"
+                                                                     Binding="{Binding IsOver}"
+                                                                     Value="True">
+                                                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Label"
+                                                                     Binding="{Binding HasNoLimit}"
+                                                                     Value="True">
+                                                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </Grid>
+                                            <Grid ColumnDefinitions="*,auto"
+                                                  ColumnSpacing="8"
+                                                  Margin="0,4,0,0">
+                                                <Label Grid.Column="0"
+                                                       Style="{StaticResource TextCaption}"
+                                                       Text="{Binding Detail}">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label"
+                                                                     Binding="{Binding IsOver}"
+                                                                     Value="True">
+                                                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"/>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                                <Label Grid.Column="1"
+                                                       Style="{StaticResource TextCaption}"
+                                                       Text="{Binding Caption}">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label"
+                                                                     Binding="{Binding IsOver}"
+                                                                     Value="True">
+                                                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"/>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </Grid>
+                                            <controls:MeterView Margin="0,8,0,0"
+                                                                IsVisible="{Binding HasLimit}"
+                                                                Progress="{Binding Ratio}"
+                                                                TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
+                                                                FillColor="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}">
+                                                <controls:MeterView.Triggers>
+                                                    <DataTrigger TargetType="controls:MeterView"
+                                                                 Binding="{Binding IsOver}"
+                                                                 Value="True">
+                                                        <Setter Property="FillColor" Value="{StaticResource OverLimit}"/>
+                                                        <Setter Property="TrackColor" Value="{AppThemeBinding Light={StaticResource OverTint}, Dark={StaticResource DarkOverTint}}"/>
+                                                    </DataTrigger>
+                                                </controls:MeterView.Triggers>
+                                            </controls:MeterView>
+                                        </VerticalStackLayout>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- No categories yet -->
+                    <Border Style="{StaticResource Card}"
+                            Margin="0,12,0,0"
+                            Padding="16,14,16,6"
+                            IsVisible="{Binding IsDisplayNoCategories}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Style="{StaticResource TextBodyStrong}"
+                                   Text="{x:Static resx:AppResources.Home_NoCategoriesTitle}"/>
+                            <Label Style="{StaticResource TextBodySoft}"
+                                   Text="{x:Static resx:AppResources.Home_NoCategoriesText}"/>
+                            <Label Style="{StaticResource LinkLabel}"
+                                   HorizontalOptions="Start"
+                                   Text="{x:Static resx:AppResources.Home_CreateCategory}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="EditLimitsButton_OnTapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Recent transactions -->
+                    <VerticalStackLayout IsVisible="{Binding HasRecent}">
+                        <Grid ColumnDefinitions="*,auto"
+                              Margin="4,24,4,0">
+                            <Label Grid.Column="0"
+                                   Style="{StaticResource TextTitleM}"
+                                   VerticalTextAlignment="Center"
+                                   Text="{x:Static resx:AppResources.Home_Recent}"/>
+                            <Label Grid.Column="1"
+                                   Style="{StaticResource LinkLabel}"
+                                   Padding="8,0"
+                                   Margin="0,0,-8,0"
+                                   Text="{x:Static resx:AppResources.Home_SeeAll}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="SeeAllButton_OnTapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+
+                        <Border Style="{StaticResource Card}"
+                                Margin="0,4,0,0">
+                            <VerticalStackLayout BindableLayout.ItemsSource="{Binding RecentTransactions}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="transactions:TransactionModel">
+                                        <VerticalStackLayout>
+                                            <controls:ListDivider/>
+                                            <transactioncontrols:TransactionRowView Transaction="{Binding}"
+                                                                                    ShowDay="True"/>
+                                        </VerticalStackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
     </RefreshView>

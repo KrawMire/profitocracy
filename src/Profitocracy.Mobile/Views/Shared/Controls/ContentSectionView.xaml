@@ -8,12 +8,13 @@
     <ContentView.ControlTemplate>
         <ControlTemplate>
             <Border Style="{StaticResource ExpenseCard}"
-                    Margin="0, 16, 0, 0">
+                    Padding="20"
+                    Margin="0,16,0,0">
                 <StackLayout>
                     <Label Style="{StaticResource ExpenseCardTitle}"
                            IsVisible="{Binding ShowTitle}"
                            Text="{Binding Title, Source={RelativeSource AncestorType={x:Type controls:ContentSectionView}}}"/>
-                    <StackLayout>
+                    <StackLayout Margin="0,8,0,0">
                         <ContentPresenter />
                     </StackLayout>
                 </StackLayout>

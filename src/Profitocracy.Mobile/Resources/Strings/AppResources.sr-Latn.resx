@@ -1008,4 +1008,370 @@
   <data name="NotificationsSettings_Reminder" xml:space="preserve">
       <value>Podsetnici</value>
   </data>
+  <data name="Pages_Activity" xml:space="preserve">
+    <value>Aktivnost</value>
+  </data>
+  <data name="Pages_Insights" xml:space="preserve">
+    <value>Analiza</value>
+  </data>
+  <data name="Common_Today" xml:space="preserve">
+    <value>Danas</value>
+  </data>
+  <data name="Common_Yesterday" xml:space="preserve">
+    <value>Juče</value>
+  </data>
+  <data name="Common_NeedsWord" xml:space="preserve">
+    <value>potrebe</value>
+  </data>
+  <data name="Common_WantsWord" xml:space="preserve">
+    <value>želje</value>
+  </data>
+  <data name="Common_SavingsWord" xml:space="preserve">
+    <value>ušteđevina</value>
+  </data>
+  <data name="Common_Needs" xml:space="preserve">
+    <value>Potrebe</value>
+  </data>
+  <data name="Common_Wants" xml:space="preserve">
+    <value>Želje</value>
+  </data>
+  <data name="Common_Savings" xml:space="preserve">
+    <value>Ušteđevina</value>
+  </data>
+  <data name="Common_Left" xml:space="preserve">
+    <value>ostalo</value>
+  </data>
+  <data name="Common_Over" xml:space="preserve">
+    <value>preko</value>
+  </data>
+  <data name="Common_NoLimit" xml:space="preserve">
+    <value>Bez limita</value>
+  </data>
+  <data name="Home_LeftThisMonth" xml:space="preserve">
+    <value>Ostalo ovog meseca</value>
+  </data>
+  <data name="Home_LeftThisPeriod" xml:space="preserve">
+    <value>Ostalo u ovom periodu</value>
+  </data>
+  <data name="Home_DaysToGo" xml:space="preserve">
+    <value>Još {0} dana</value>
+  </data>
+  <data name="Home_LastDay" xml:space="preserve">
+    <value>Poslednji dan</value>
+  </data>
+  <data name="Home_UsedOfIncome" xml:space="preserve">
+    <value>{0} potrošeno od {1} prihoda</value>
+  </data>
+  <data name="Home_LeftOf" xml:space="preserve">
+    <value>ostalo od {0}</value>
+  </data>
+  <data name="Home_IfYouStopHere" xml:space="preserve">
+    <value>ako tu stanete</value>
+  </data>
+  <data name="Home_SpreadHint" xml:space="preserve">
+    <value>Ono što danas ne potrošite raspoređuje se na preostale dane.</value>
+  </data>
+  <data name="Home_OverLimitTitle" xml:space="preserve">
+    <value>{0}: prekoračenje limita za {1}</value>
+  </data>
+  <data name="Home_OverLimitDetail" xml:space="preserve">
+    <value>Potrošeno {0} od {1}</value>
+  </data>
+  <data name="Home_BudgetSplit" xml:space="preserve">
+    <value>Podela budžeta</value>
+  </data>
+  <data name="Home_BudgetSplitCaption" xml:space="preserve">
+    <value>50 / 30 / 20 od prihoda</value>
+  </data>
+  <data name="Home_TypeBudget" xml:space="preserve">
+    <value>{0} · budžet {1}</value>
+  </data>
+  <data name="Home_AmountLeft" xml:space="preserve">
+    <value>Ostalo {0}</value>
+  </data>
+  <data name="Home_AmountOver" xml:space="preserve">
+    <value>{0} preko</value>
+  </data>
+  <data name="Home_ToGoal" xml:space="preserve">
+    <value>{0} do cilja</value>
+  </data>
+  <data name="Home_GoalReached" xml:space="preserve">
+    <value>Cilj dostignut</value>
+  </data>
+  <data name="Home_EditLimits" xml:space="preserve">
+    <value>Izmeni limite</value>
+  </data>
+  <data name="Home_CategoryOf" xml:space="preserve">
+    <value>{0} od {1}</value>
+  </data>
+  <data name="Home_CategorySpent" xml:space="preserve">
+    <value>Potrošeno {0}</value>
+  </data>
+  <data name="Home_Recent" xml:space="preserve">
+    <value>Nedavno</value>
+  </data>
+  <data name="Home_SeeAll" xml:space="preserve">
+    <value>Sve</value>
+  </data>
+  <data name="Home_NoRecent" xml:space="preserve">
+    <value>U ovom periodu još nema transakcija.</value>
+  </data>
+  <data name="Home_EmptyMonthText" xml:space="preserve">
+    <value>Prvo dodajte prihod za ovaj mesec. Profitocracy ga deli 50/30/20 i računa koliko možete da trošite svakog dana.</value>
+  </data>
+  <data name="Home_AddIncome" xml:space="preserve">
+    <value>Dodaj prihod</value>
+  </data>
+  <data name="Home_NoCategoriesTitle" xml:space="preserve">
+    <value>U ovom profilu nema kategorija</value>
+  </data>
+  <data name="Home_NoCategoriesText" xml:space="preserve">
+    <value>Kategorije ograničavaju troškove poput hrane ili prevoza unutar podele 50/30/20.</value>
+  </data>
+  <data name="Home_CreateCategory" xml:space="preserve">
+    <value>Napravi kategoriju</value>
+  </data>
+  <data name="Home_Recalculating" xml:space="preserve">
+    <value>Ponovo računamo nakon poslednje izmene…</value>
+  </data>
+  <data name="Activity_All" xml:space="preserve">
+    <value>Sve</value>
+  </data>
+  <data name="Activity_Spent" xml:space="preserve">
+    <value>Troškovi</value>
+  </data>
+  <data name="Activity_Income" xml:space="preserve">
+    <value>Prihodi</value>
+  </data>
+  <data name="Activity_Saved" xml:space="preserve">
+    <value>Ušteđeno</value>
+  </data>
+  <data name="Activity_SoFar" xml:space="preserve">
+    <value>Do sada:</value>
+  </data>
+  <data name="Activity_In" xml:space="preserve">
+    <value>prihod,</value>
+  </data>
+  <data name="Activity_OutAnd" xml:space="preserve">
+    <value>trošak i</value>
+  </data>
+  <data name="Activity_PutAside" xml:space="preserve">
+    <value>ušteđeno.</value>
+  </data>
+  <data name="Activity_End" xml:space="preserve">
+    <value>To je sve od {0}.</value>
+  </data>
+  <data name="Activity_Empty" xml:space="preserve">
+    <value>Za ovaj period ovde još nema ničega.</value>
+  </data>
+  <data name="Activity_Filtered" xml:space="preserve">
+    <value>Filteri primenjeni</value>
+  </data>
+  <data name="Activity_ResetFilters" xml:space="preserve">
+    <value>Resetuj</value>
+  </data>
+  <data name="Insights_Week" xml:space="preserve">
+    <value>Nedelja</value>
+  </data>
+  <data name="Insights_Month" xml:space="preserve">
+    <value>Mesec</value>
+  </data>
+  <data name="Insights_Year" xml:space="preserve">
+    <value>Godina</value>
+  </data>
+  <data name="Insights_Custom" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="Insights_KeptSoFar" xml:space="preserve">
+    <value>Sačuvano</value>
+  </data>
+  <data name="Insights_KeptText" xml:space="preserve">
+    <value>Sačuvali ste {0} prihoda.</value>
+  </data>
+  <data name="Insights_NoIncome" xml:space="preserve">
+    <value>U ovom periodu još nema prihoda.</value>
+  </data>
+  <data name="Insights_Income" xml:space="preserve">
+    <value>Prihod</value>
+  </data>
+  <data name="Insights_Spent" xml:space="preserve">
+    <value>Potrošeno</value>
+  </data>
+  <data name="Insights_PutAside" xml:space="preserve">
+    <value>Ušteđeno</value>
+  </data>
+  <data name="Insights_WhereItWent" xml:space="preserve">
+    <value>Gde je otišlo</value>
+  </data>
+  <data name="Insights_Used" xml:space="preserve">
+    <value>{0} potrošeno</value>
+  </data>
+  <data name="Insights_OfNeeds" xml:space="preserve">
+    <value>{0} · {1} potreba</value>
+  </data>
+  <data name="Insights_OfWants" xml:space="preserve">
+    <value>{0} · {1} želja</value>
+  </data>
+  <data name="Insights_OfGoal" xml:space="preserve">
+    <value>{0} · {1} cilja</value>
+  </data>
+  <data name="Insights_DayByDay" xml:space="preserve">
+    <value>Dan po dan</value>
+  </data>
+  <data name="Insights_WeekByWeek" xml:space="preserve">
+    <value>Nedelju po nedelju</value>
+  </data>
+  <data name="Insights_SavingsNotCounted" xml:space="preserve">
+    <value>bez ušteđevine</value>
+  </data>
+  <data name="Insights_PerDay" xml:space="preserve">
+    <value>{0} dnevno</value>
+  </data>
+  <data name="Insights_PerWeek" xml:space="preserve">
+    <value>{0} nedeljno</value>
+  </data>
+  <data name="Insights_TodayMark" xml:space="preserve">
+    <value>danas</value>
+  </data>
+  <data name="Insights_AgainstLimits" xml:space="preserve">
+    <value>U odnosu na limite</value>
+  </data>
+  <data name="Insights_Limit" xml:space="preserve">
+    <value>limit</value>
+  </data>
+  <data name="Insights_OfLimit" xml:space="preserve">
+    <value>od {0}</value>
+  </data>
+  <data name="Insights_NoLimitLower" xml:space="preserve">
+    <value>bez limita</value>
+  </data>
+  <data name="Insights_NoCategories" xml:space="preserve">
+    <value>U ovom periodu nema troškova po kategorijama.</value>
+  </data>
+  <data name="NewTransaction_Title" xml:space="preserve">
+    <value>Nova transakcija</value>
+  </data>
+  <data name="NewTransaction_EditTitle" xml:space="preserve">
+    <value>Izmeni transakciju</value>
+  </data>
+  <data name="NewTransaction_NoCategory" xml:space="preserve">
+    <value>Bez kategorije</value>
+  </data>
+  <data name="NewTransaction_IncomeHint" xml:space="preserve">
+    <value>Prihod ide direktno na stanje i povećava budžete 50/30/20 za ovaj mesec.</value>
+  </data>
+  <data name="NewTransaction_WithdrawHint" xml:space="preserve">
+    <value>Uzima se iz ušteđevine u {0} i dodaje na stanje.</value>
+  </data>
+  <data name="NewTransaction_Note" xml:space="preserve">
+    <value>Dodaj belešku</value>
+  </data>
+  <data name="NewTransaction_Save" xml:space="preserve">
+    <value>Sačuvaj · {0}</value>
+  </data>
+  <data name="NewTransaction_InProfile" xml:space="preserve">
+    <value>= {0} u profilu {1}</value>
+  </data>
+  <data name="NewTransaction_EnterProfileAmount" xml:space="preserve">
+    <value>Dodirnite da unesete iznos u {0}</value>
+  </data>
+  <data name="NewTransaction_Rate" xml:space="preserve">
+    <value>1 {0} = {1}</value>
+  </data>
+  <data name="NewTransaction_Currency" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="NewTransaction_Repeat" xml:space="preserve">
+    <value>Ponavljanje</value>
+  </data>
+  <data name="NewTransaction_NoRepeat" xml:space="preserve">
+    <value>Ne ponavlja se</value>
+  </data>
+  <data name="NewTransaction_Delete" xml:space="preserve">
+    <value>Obriši</value>
+  </data>
+  <data name="NewTransaction_DecimalPoint" xml:space="preserve">
+    <value>Decimalna tačka</value>
+  </data>
+  <data name="Settings_Subtitle" xml:space="preserve">
+    <value>Svaki profil ima svoju valutu, budžet i istoriju.</value>
+  </data>
+  <data name="Settings_NewProfile" xml:space="preserve">
+    <value>Novi profil</value>
+  </data>
+  <data name="Settings_InUse" xml:space="preserve">
+    <value>Aktivan</value>
+  </data>
+  <data name="Settings_Switch" xml:space="preserve">
+    <value>Izaberi</value>
+  </data>
+  <data name="Settings_ProfileLeft" xml:space="preserve">
+    <value>{0} · ostalo {1}</value>
+  </data>
+  <data name="Settings_Budget" xml:space="preserve">
+    <value>Budžet</value>
+  </data>
+  <data name="Settings_CategoriesLimits" xml:space="preserve">
+    <value>Kategorije i limiti</value>
+  </data>
+  <data name="Settings_CategoriesSummary" xml:space="preserve">
+    <value>{0} · {1} mesečno</value>
+  </data>
+  <data name="Settings_BudgetSplit" xml:space="preserve">
+    <value>Podela budžeta</value>
+  </data>
+  <data name="Settings_BudgetSplitInfo" xml:space="preserve">
+    <value>Profitocracy deli svaki prihod 50/30/20: polovina za potrebe, 30% za želje i 20% za ušteđevinu.</value>
+  </data>
+  <data name="Settings_Appearance" xml:space="preserve">
+    <value>Izgled</value>
+  </data>
+  <data name="Settings_Footer" xml:space="preserve">
+    <value>Sve ostaje na ovom uređaju. Profitocracy je otvorenog koda — bez naloga i praćenja.</value>
+  </data>
+  <data name="Categories_Subtitle" xml:space="preserve">
+    <value>Mesečni limiti za {0}. Dodirnite da izmenite.</value>
+  </data>
+  <data name="Categories_SpentThisMonth" xml:space="preserve">
+    <value>{0} potrošeno ovog meseca</value>
+  </data>
+  <data name="Categories_OverSpent" xml:space="preserve">
+    <value>{0} preko · potrošeno {1}</value>
+  </data>
+  <data name="Categories_AMonth" xml:space="preserve">
+    <value>mesečno</value>
+  </data>
+  <data name="Categories_SetOne" xml:space="preserve">
+    <value>postavi</value>
+  </data>
+  <data name="Categories_LimitsAddUp" xml:space="preserve">
+    <value>Zbir limita</value>
+  </data>
+  <data name="Categories_LimitsTotal" xml:space="preserve">
+    <value>{0} mesečno · {1} prihoda</value>
+  </data>
+  <data name="Categories_LimitsTotalNoIncome" xml:space="preserve">
+    <value>{0} mesečno</value>
+  </data>
+  <data name="Categories_Add" xml:space="preserve">
+    <value>Dodaj kategoriju</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Otkaži</value>
+  </data>
+  <data name="Insights_StillYours" xml:space="preserve">
+    <value>{0} od {1} prihoda je još uvek vaše.</value>
+  </data>
+  <data name="Insights_BySpendingType" xml:space="preserve">
+    <value>po vrsti troškova</value>
+  </data>
+  <data name="Insights_SpentAndSaved" xml:space="preserve">
+    <value>potrošeno i ušteđeno</value>
+  </data>
+  <data name="Insights_BarsCut" xml:space="preserve">
+    <value>Stubići iznad dvostrukog limita su skraćeni.</value>
+  </data>
+  <data name="NewTransaction_Amount" xml:space="preserve">
+    <value>Iznos</value>
+  </data>
 </root>

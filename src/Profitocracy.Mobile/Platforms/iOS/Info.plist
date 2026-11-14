@@ -28,10 +28,33 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
+					<key>UISceneDelegateClassName</key>
+					<string>SceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
   <key>NSFaceIDUsageDescription</key>
   <string>Need access to the FaceID.</string>
+  <!-- Profitocracy never requests the location. These keys are required only because
+       the bundled MAUI Essentials library references the CoreLocation APIs. -->
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Profitocracy does not use your location. All your data stays on this device.</string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>Profitocracy does not use your location. All your data stays on this device.</string>
   <key>com.apple.security.files.user-selected.read-only</key>
   <true/>
   <key>BGTaskSchedulerPermittedIdentifiers</key>

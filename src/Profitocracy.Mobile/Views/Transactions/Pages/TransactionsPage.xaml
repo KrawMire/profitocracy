@@ -2,73 +2,211 @@
 
 <abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                               xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
                               xmlns:transactions="clr-namespace:Profitocracy.Mobile.Models.Transactions"
                               xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
                               xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Transactions"
-                              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Transactions.Controls"
-                              xmlns:sharedcontrols="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+                              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+                              xmlns:transactioncontrols="clr-namespace:Profitocracy.Mobile.Views.Transactions.Controls"
                               x:Class="Profitocracy.Mobile.Views.Transactions.Pages.TransactionsPage"
                               x:DataType="viewmodel:TransactionsPageViewModel"
-                              Title="{x:Static resx:AppResources.Pages_Transactions}"
-                              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+                              Title="{x:Static resx:AppResources.Pages_Activity}"
+                              Shell.NavBarIsVisible="False"
+                              ios:Page.UseSafeArea="True"
                               NavigatedTo="TransactionsPage_NavigatedTo"
                               HideSoftInputOnTapped="True">
-    <abstractions:BaseContentPage.ToolbarItems>
-        <ToolbarItem Text="{x:Static resx:AppResources.Transactions_Filters}"
-                     Clicked="TransactionFilters_OnClicked"/>
-    </abstractions:BaseContentPage.ToolbarItems>
-    <Grid>
-        <Label Style="{StaticResource ExpenseCardSubtitleSecondary}"
-               IsVisible="{Binding IsTransactionsListEmpty}"
-               Text="{x:Static resx:AppResources.Transactions_NoTransactions}"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Padding="16, 0"/>
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout Padding="16,0,16,32">
 
-        <CollectionView x:Name="TransactionsCollectionView"
-                        VerticalScrollBarVisibility="Default">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="transactions:TransactionModel">
-                    <SwipeView>
-                        <SwipeView.RightItems>
-                            <SwipeItems>
-                                <SwipeItemView x:Name="DeleteTransactionSwipeItem"
-                                               Width="56"
-                                               Padding="24"
-                                               BackgroundColor="{StaticResource DangerRed}"
-                                               Invoked="DeleteTransactionSwipeItem_OnInvoked">
-                                    <VerticalStackLayout VerticalOptions="Center">
-                                        <Image Source="bin.png"
-                                               Width="10" />
-                                    </VerticalStackLayout>
-                                </SwipeItemView>
-                                <SwipeItemView x:Name="EditTransactionSwipeItem"
-                                               Width="56"
-                                               Padding="24"
-                                               BackgroundColor="{StaticResource InfoBlue}"
-                                               Invoked="EditTransactionSwipeItem_OnInvoked">
-                                    <VerticalStackLayout VerticalOptions="Center">
-                                        <Image Source="edit.png"
-                                               Width="10" />
-                                    </VerticalStackLayout>
-                                </SwipeItemView>
-                            </SwipeItems>
-                        </SwipeView.RightItems>
+            <!-- Title with recurring transactions and search -->
+            <Grid ColumnDefinitions="*,auto,auto"
+                  Margin="0,0,-10,0"
+                  MinimumHeightRequest="44">
+                <Label Grid.Column="0"
+                       Style="{StaticResource TextTitleL}"
+                       VerticalTextAlignment="Center"
+                       Text="{x:Static resx:AppResources.Pages_Activity}"/>
+                <Grid Grid.Column="1"
+                      WidthRequest="44"
+                      HeightRequest="44">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="RecurringButton_OnTapped"/>
+                    </Grid.GestureRecognizers>
+                    <controls:IconView Data="{x:Static controls:Icons.Repeat}"
+                                       Size="22"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                </Grid>
+                <Grid Grid.Column="2"
+                      WidthRequest="44"
+                      HeightRequest="44">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TransactionFilters_OnClicked"/>
+                    </Grid.GestureRecognizers>
+                    <controls:IconView Data="{x:Static controls:Icons.Search}"
+                                       Size="22"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                </Grid>
+            </Grid>
 
-                        <controls:TransactionView Transaction="{Binding}"/>
-                    </SwipeView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            <CollectionView.Footer>
-                <Grid HeightRequest="92"
-                      BackgroundColor="Transparent"/>
-            </CollectionView.Footer>
-        </CollectionView>
+            <!-- Month switcher -->
+            <Border Style="{StaticResource Card}"
+                    Margin="0,16,0,0">
+                <Grid ColumnDefinitions="44,*,44"
+                      HeightRequest="44">
+                    <Grid Grid.Column="0"
+                          IsVisible="{Binding IsMonthMode}">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PreviousMonthButton_OnTapped"/>
+                        </Grid.GestureRecognizers>
+                        <controls:IconView Data="{x:Static controls:Icons.ChevronLeft}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                    </Grid>
+                    <Label Grid.Column="1"
+                           Style="{StaticResource TextBodyStrong}"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Text="{Binding MonthTitle}"/>
+                    <Grid Grid.Column="2"
+                          IsVisible="{Binding IsMonthMode}">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NextMonthButton_OnTapped"/>
+                        </Grid.GestureRecognizers>
+                        <controls:IconView Data="{x:Static controls:Icons.ChevronRight}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                    </Grid>
+                    <Grid Grid.Column="2"
+                          IsVisible="{Binding IsFiltered}">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ResetFiltersButton_OnTapped"/>
+                        </Grid.GestureRecognizers>
+                        <controls:IconView Data="{x:Static controls:Icons.Close}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                    </Grid>
+                </Grid>
+            </Border>
 
-        <sharedcontrols:AddNewButton HorizontalOptions="End"
-                                     VerticalOptions="End"
-                                     Margin="0,0,16,16"
-                                     Clicked="AddTransactionButton_OnClicked"/>
-    </Grid>
+            <!-- Quick filters -->
+            <HorizontalStackLayout Margin="0,12,0,0"
+                                   Spacing="8">
+                <controls:ChipView Text="{x:Static resx:AppResources.Activity_All}"
+                                   IsSelected="{Binding IsAll}"
+                                   Tapped="AllChip_OnTapped"/>
+                <controls:ChipView Text="{x:Static resx:AppResources.Activity_Spent}"
+                                   IsSelected="{Binding IsSpent}"
+                                   Tapped="SpentChip_OnTapped"/>
+                <controls:ChipView Text="{x:Static resx:AppResources.Activity_Income}"
+                                   IsSelected="{Binding IsIncome}"
+                                   Tapped="IncomeChip_OnTapped"/>
+                <controls:ChipView Text="{x:Static resx:AppResources.Activity_Saved}"
+                                   IsSelected="{Binding IsSaved}"
+                                   Tapped="SavedChip_OnTapped"/>
+            </HorizontalStackLayout>
+
+            <!-- Summary of the period -->
+            <Label Style="{StaticResource TextBodySoft}"
+                   Margin="4,16,4,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{x:Static resx:AppResources.Activity_SoFar}"/>
+                        <Span Text=" "/>
+                        <Span Text="{Binding IncomeTotal}"
+                              FontFamily="SansSemiBold"
+                              TextColor="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource DarkMainColor}}"/>
+                        <Span Text=" "/>
+                        <Span Text="{x:Static resx:AppResources.Activity_In}"/>
+                        <Span Text=" "/>
+                        <Span Text="{Binding SpentTotal}"
+                              FontFamily="SansSemiBold"
+                              TextColor="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                        <Span Text=" "/>
+                        <Span Text="{x:Static resx:AppResources.Activity_OutAnd}"/>
+                        <Span Text=" "/>
+                        <Span Text="{Binding SavedTotal}"
+                              FontFamily="SansSemiBold"
+                              TextColor="{AppThemeBinding Light={StaticResource SavedText}, Dark={StaticResource DarkSavedText}}"/>
+                        <Span Text=" "/>
+                        <Span Text="{x:Static resx:AppResources.Activity_PutAside}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <!-- Days -->
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Days}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="transactions:TransactionDayModel">
+                        <VerticalStackLayout Margin="0,24,0,0"
+                                             Spacing="8">
+                            <Grid ColumnDefinitions="*,auto"
+                                  Margin="4,0">
+                                <Label Grid.Column="0"
+                                       Style="{StaticResource TextBodyStrong}"
+                                       VerticalTextAlignment="End"
+                                       LineBreakMode="TailTruncation"
+                                       Text="{Binding Title}"/>
+                                <Label Grid.Column="1"
+                                       Style="{StaticResource TextLabelSoft}"
+                                       VerticalTextAlignment="End"
+                                       Text="{Binding Total}"/>
+                            </Grid>
+                            <Border Style="{StaticResource Card}">
+                                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Transactions}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate x:DataType="transactions:TransactionModel">
+                                            <VerticalStackLayout>
+                                                <controls:ListDivider/>
+                                                <SwipeView>
+                                                    <SwipeView.RightItems>
+                                                        <SwipeItems>
+                                                            <SwipeItemView Invoked="DeleteTransactionSwipeItem_OnInvoked">
+                                                                <Grid WidthRequest="64"
+                                                                      BackgroundColor="{StaticResource OverLimit}">
+                                                                    <controls:IconView Data="{x:Static controls:Icons.Trash}"
+                                                                                       HorizontalOptions="Center"
+                                                                                       VerticalOptions="Center"
+                                                                                       Color="{StaticResource White}"/>
+                                                                </Grid>
+                                                            </SwipeItemView>
+                                                        </SwipeItems>
+                                                    </SwipeView.RightItems>
+                                                    <transactioncontrols:TransactionRowView Transaction="{Binding}"
+                                                                                            BackgroundColor="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}">
+                                                        <transactioncontrols:TransactionRowView.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TransactionRow_OnTapped"/>
+                                                        </transactioncontrols:TransactionRowView.GestureRecognizers>
+                                                    </transactioncontrols:TransactionRowView>
+                                                </SwipeView>
+                                            </VerticalStackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </VerticalStackLayout>
+                            </Border>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+            <Label Style="{StaticResource TextLabelSoft}"
+                   Margin="0,24,0,0"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding HasTransactions}"
+                   Text="{Binding EndText}"/>
+
+            <Label Style="{StaticResource TextBodySoft}"
+                   Margin="16,48,16,0"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding IsTransactionsListEmpty}"
+                   Text="{x:Static resx:AppResources.Activity_Empty}"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </abstractions:BaseContentPage>

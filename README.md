@@ -8,7 +8,7 @@
 ![GitHub](https://img.shields.io/github/license/KrawMire/profitocracy?label=License)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/main_banner.png" alt="Title image" />
+  <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/main_banner.png" alt="Profitocracy: your money, governed." />
 </p>
 
 <p align="left">
@@ -38,27 +38,23 @@ Welcome to the source code of **Profitocracy**.
 ## Android Preview
 
 <p align="left">
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/authorization.ap.png" alt="Authorization" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/foss.ap.png" alt="FOSS" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/home.ap.png" alt="Home" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/home_spending.ap.png" alt="Home Page Spending" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/languages.ap.png" alt="Languages" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/overview.ap.png" alt="Overview" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/profiles.ap.png" alt="Profiles" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/transactions.ap.png" alt="Transactions" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/01_home.png" alt="Home: what you can spend today" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/02_insights.png" alt="Insights: where the month went" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/03_limits.png" alt="Category limits" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/04_new_transaction.png" alt="New transaction" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/05_activity.png" alt="Activity" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/android/06_profiles.png" alt="Profiles and settings" width="150"/>
 </p>
 
 ## iOS Preview
 
 <p align="left">
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/authorization.as_65.jpg" alt="Authorization" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/foss.as_65.jpg" alt="FOSS" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/home.as_65.jpg" alt="Home" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/home_spendings.as_65.jpg" alt="Home Page Spending" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/languages.as_65.jpg" alt="Languages" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/overview.as_65.jpg" alt="Overview" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/profiles.as_65.jpg" alt="Profiles" width="150"/>
-    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/transactions.as_65.jpg" alt="Transactions" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/01_home.jpg" alt="Home: what you can spend today" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/02_insights.jpg" alt="Insights: where the month went" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/03_limits.jpg" alt="Category limits" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/04_new_transaction.jpg" alt="New transaction" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/05_activity.jpg" alt="Activity" width="150"/>
+    <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/banners/ios/06_profiles.jpg" alt="Profiles and settings" width="150"/>
 </p>
 
 # Installation
@@ -133,23 +129,3 @@ Once created, you can track your category-wise spending on the **Home Screen.**
 
 - If a planned amount is set, Profitocracy compares your spending against it for better tracking.
 - If no planned amount is defined, the app simply displays the total expenses for the category during the ongoing month.
-
-# Gettings Started
-
-All the steps were recorded on iOS device, but it is also correct for Android and other operating systems.
-There we will look at all the steps to set up **Profitocracy** for comfortable use.
-
-| Description                                                                                                                                    | Screen Recording                                                                                                                 |
-|------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| 1. **Creating Your First Profile**. Learn how to set up your first profile when launching the app for the first time.                          | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/1_first_profile.gif" />        |
-| 2. **Adding a Second Profile**. Discover how to create and manage an another profile directly from the settings page.                          | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/2_second_profile.gif" />       |
-| 3. **Switching Profiles**. See how to set the second profile as the current active one for personalized budget tracking.                       | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/3_set_current_profile.gif" />  |
-| 4. **Editing a Profile**. Learn how to update or modify an existing profile with ease.                                                         | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/4_profile_edit.gif" />         |
-| 5. **Creating Spending Categories**. Walk through the process of creating your first two spending categories to organize expenses effectively. | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/5_first_category.gif" />       |
-| 6. **Editing a Category**. Watch how to edit an existing category to refine your financial organization.                                       | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/6_edit_category.gif" />        |
-| 7. **Creating a Main Spending Transaction**. See how to add a new transaction with the Main spending type.                                     | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/7_main_transaction.gif" />     |
-| 8. **Saving in a Different Currency (EUR)**. Learn how to create a saving transaction in EUR for managing multi-currency budgets.              | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/8_saving_transaction.gif" />   |
-| 9. **Recording Income Transactions**. Walk through the steps for adding an income transaction to track earnings.                               | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/9_income.gif" />               |
-| 10. **Handling Withdrawals from Savings (EUR)**. Watch how to create a transaction for withdrawing funds from savings in EUR.                  | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/10_withdraw.gif" />            |
-| 11. **Visualizing Expenses with Charts**. Explore the overview page to see how expenses are visualized through insightful and detailed charts. | <img src="https://raw.githubusercontent.com/KrawMire/profitocracy/main/docs/assets/getting_started/11_overview.gif" />            |
-

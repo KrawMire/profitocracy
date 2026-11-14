@@ -59,6 +59,7 @@ public class Currency : IEquatable<Currency>
         public static readonly Currency Bgn = new("BGN", "лв"); // Bulgarian Lev
         public static readonly Currency Brl = new("BRL", "R$"); // Brazilian Real
         public static readonly Currency Btc = new("BTC", "₿"); // Bitcoin
+        public static readonly Currency Byn = new("BYN", "Br"); // Belarusian Ruble
         public static readonly Currency Clp = new("CLP", "$"); // Chilean Peso
         public static readonly Currency Cop = new("COP", "$"); // Colombian Peso
         public static readonly Currency Czk = new("CZK", "Kč"); // Czech Koruna
@@ -107,16 +108,17 @@ public class Currency : IEquatable<Currency>
             { Inr.Code, Inr }, { Rub.Code, Rub },
 
             { Aed.Code, Aed }, { Ars.Code, Ars }, { Bdt.Code, Bdt }, { Bgn.Code, Bgn },
-            { Brl.Code, Brl }, { Btc.Code, Btc }, { Clp.Code, Clp }, { Cop.Code, Cop },
-            { Czk.Code, Czk }, { Dkk.Code, Dkk }, { Egp.Code, Egp }, { Eth.Code, Eth },
-            { Fjd.Code, Fjd }, { Ghs.Code, Ghs }, { Hkd.Code, Hkd }, { Huf.Code, Huf },
-            { Idr.Code, Idr }, { Ils.Code, Ils }, { Iqd.Code, Iqd }, { Kes.Code, Kes },
-            { Krw.Code, Krw }, { Kwd.Code, Kwd }, { Mxn.Code, Mxn }, { Myr.Code, Myr },
-            { Nok.Code, Nok }, { Ngn.Code, Ngn }, { Nzd.Code, Nzd }, { Omr.Code, Omr },
-            { Php.Code, Php }, { Pln.Code, Pln }, { Pkr.Code, Pkr }, { Pyg.Code, Pyg },
-            { Ron.Code, Ron }, { Rsd.Code, Rsd }, { Sar.Code, Sar }, { Sek.Code, Sek },
-            { Sgd.Code, Sgd }, { Thb.Code, Thb }, { Try.Code, Try }, { Twd.Code, Twd },
-            { Vef.Code, Vef }, { Vnd.Code, Vnd }, { Wst.Code, Wst }, { Zar.Code, Zar }
+            { Brl.Code, Brl }, { Btc.Code, Btc }, { Byn.Code, Byn }, { Clp.Code, Clp },
+            { Cop.Code, Cop }, { Czk.Code, Czk }, { Dkk.Code, Dkk }, { Egp.Code, Egp },
+            { Eth.Code, Eth }, { Fjd.Code, Fjd }, { Ghs.Code, Ghs }, { Hkd.Code, Hkd },
+            { Huf.Code, Huf }, { Idr.Code, Idr }, { Ils.Code, Ils }, { Iqd.Code, Iqd },
+            { Kes.Code, Kes }, { Krw.Code, Krw }, { Kwd.Code, Kwd }, { Mxn.Code, Mxn },
+            { Myr.Code, Myr }, { Nok.Code, Nok }, { Ngn.Code, Ngn }, { Nzd.Code, Nzd },
+            { Omr.Code, Omr }, { Php.Code, Php }, { Pln.Code, Pln }, { Pkr.Code, Pkr },
+            { Pyg.Code, Pyg }, { Ron.Code, Ron }, { Rsd.Code, Rsd }, { Sar.Code, Sar },
+            { Sek.Code, Sek }, { Sgd.Code, Sgd }, { Thb.Code, Thb }, { Try.Code, Try },
+            { Twd.Code, Twd }, { Vef.Code, Vef }, { Vnd.Code, Vnd }, { Wst.Code, Wst },
+            { Zar.Code, Zar }
         };
     }
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Profitocracy.Mobile.Models.Transactions"
+             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             x:Class="Profitocracy.Mobile.Views.Transactions.Controls.TransactionRowView">
+    <!-- Transaction row of a card list: icon tile, title, category meta and the amount -->
+    <Grid x:Name="Root"
+          x:DataType="models:TransactionModel"
+          ColumnDefinitions="auto,*,auto"
+          ColumnSpacing="12"
+          Padding="16,14"
+          BackgroundColor="Transparent">
+        <Border Grid.Column="0"
+                Style="{StaticResource IconTile}">
+            <Border.Triggers>
+                <DataTrigger TargetType="Border"
+                             Binding="{Binding IsSaved}"
+                             Value="True">
+                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SavedTint}, Dark={StaticResource DarkSavedTint}}"/>
+                </DataTrigger>
+                <DataTrigger TargetType="Border"
+                             Binding="{Binding IsIncome}"
+                             Value="True">
+                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource MainTint}, Dark={StaticResource DarkMainTint}}"/>
+                </DataTrigger>
+            </Border.Triggers>
+            <controls:IconView Data="{Binding IconData}"
+                               Size="20"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}">
+                <controls:IconView.Triggers>
+                    <DataTrigger TargetType="controls:IconView"
+                                 Binding="{Binding IsSaved}"
+                                 Value="True">
+                        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource SavedText}, Dark={StaticResource DarkSavedText}}"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="controls:IconView"
+                                 Binding="{Binding IsIncome}"
+                                 Value="True">
+                        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource DarkMainColor}}"/>
+                    </DataTrigger>
+                </controls:IconView.Triggers>
+            </controls:IconView>
+        </Border>
+
+        <VerticalStackLayout Grid.Column="1"
+                             Spacing="4"
+                             VerticalOptions="Center">
+            <Label Style="{StaticResource TextBodyStrong}"
+                   LineBreakMode="TailTruncation"
+                   Text="{Binding Title}"/>
+            <HorizontalStackLayout Spacing="6">
+                <Ellipse Style="{StaticResource MetaDot}"
+                         Fill="{Binding SpendingType, Converter={StaticResource SpendingTypeColorConverter}}"/>
+                <Label x:Name="MetaLabel"
+                       Style="{StaticResource TextCaption}"
+                       LineBreakMode="TailTruncation"
+                       Text="{Binding Meta}"/>
+                <controls:IconView Data="{x:Static controls:Icons.Repeat}"
+                                   IsVisible="{Binding IsRecurring}"
+                                   Size="12"
+                                   VerticalOptions="Center"
+                                   Color="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Column="2"
+                             Spacing="4"
+                             VerticalOptions="Center">
+            <Label Style="{StaticResource TextAmountM}"
+                   HorizontalTextAlignment="End"
+                   Text="{Binding PrimaryAmount}">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding IsSaved}"
+                                 Value="True">
+                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource SavedText}, Dark={StaticResource DarkSavedText}}"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding IsIncome}"
+                                 Value="True">
+                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource DarkMainColor}}"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Label Style="{StaticResource TextCaption}"
+                   HorizontalTextAlignment="End"
+                   IsVisible="{Binding HasSecondaryAmount}"
+                   Text="{Binding SecondaryAmount}"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentView>

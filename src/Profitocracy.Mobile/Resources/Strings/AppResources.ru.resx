@@ -1008,4 +1008,370 @@
   <data name="NotificationsSettings_Reminder" xml:space="preserve">
       <value>Напоминания</value>
   </data>
+  <data name="Pages_Activity" xml:space="preserve">
+    <value>Активность</value>
+  </data>
+  <data name="Pages_Insights" xml:space="preserve">
+    <value>Аналитика</value>
+  </data>
+  <data name="Common_Today" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
+  <data name="Common_Yesterday" xml:space="preserve">
+    <value>Вчера</value>
+  </data>
+  <data name="Common_NeedsWord" xml:space="preserve">
+    <value>нужды</value>
+  </data>
+  <data name="Common_WantsWord" xml:space="preserve">
+    <value>желания</value>
+  </data>
+  <data name="Common_SavingsWord" xml:space="preserve">
+    <value>накопления</value>
+  </data>
+  <data name="Common_Needs" xml:space="preserve">
+    <value>Нужды</value>
+  </data>
+  <data name="Common_Wants" xml:space="preserve">
+    <value>Желания</value>
+  </data>
+  <data name="Common_Savings" xml:space="preserve">
+    <value>Накопления</value>
+  </data>
+  <data name="Common_Left" xml:space="preserve">
+    <value>осталось</value>
+  </data>
+  <data name="Common_Over" xml:space="preserve">
+    <value>сверх</value>
+  </data>
+  <data name="Common_NoLimit" xml:space="preserve">
+    <value>Без лимита</value>
+  </data>
+  <data name="Home_LeftThisMonth" xml:space="preserve">
+    <value>Осталось в этом месяце</value>
+  </data>
+  <data name="Home_LeftThisPeriod" xml:space="preserve">
+    <value>Осталось в этом периоде</value>
+  </data>
+  <data name="Home_DaysToGo" xml:space="preserve">
+    <value>Ещё дней: {0}</value>
+  </data>
+  <data name="Home_LastDay" xml:space="preserve">
+    <value>Последний день</value>
+  </data>
+  <data name="Home_UsedOfIncome" xml:space="preserve">
+    <value>{0} потрачено из {1} дохода</value>
+  </data>
+  <data name="Home_LeftOf" xml:space="preserve">
+    <value>осталось из {0}</value>
+  </data>
+  <data name="Home_IfYouStopHere" xml:space="preserve">
+    <value>если больше не тратить</value>
+  </data>
+  <data name="Home_SpreadHint" xml:space="preserve">
+    <value>Всё, что вы не потратите сегодня, распределится на оставшиеся дни.</value>
+  </data>
+  <data name="Home_OverLimitTitle" xml:space="preserve">
+    <value>{0}: превышение лимита на {1}</value>
+  </data>
+  <data name="Home_OverLimitDetail" xml:space="preserve">
+    <value>Потрачено {0} из {1}</value>
+  </data>
+  <data name="Home_BudgetSplit" xml:space="preserve">
+    <value>Распределение бюджета</value>
+  </data>
+  <data name="Home_BudgetSplitCaption" xml:space="preserve">
+    <value>50 / 30 / 20 от дохода</value>
+  </data>
+  <data name="Home_TypeBudget" xml:space="preserve">
+    <value>{0} · бюджет {1}</value>
+  </data>
+  <data name="Home_AmountLeft" xml:space="preserve">
+    <value>Осталось {0}</value>
+  </data>
+  <data name="Home_AmountOver" xml:space="preserve">
+    <value>{0} сверх</value>
+  </data>
+  <data name="Home_ToGoal" xml:space="preserve">
+    <value>{0} до цели</value>
+  </data>
+  <data name="Home_GoalReached" xml:space="preserve">
+    <value>Цель достигнута</value>
+  </data>
+  <data name="Home_EditLimits" xml:space="preserve">
+    <value>Изменить лимиты</value>
+  </data>
+  <data name="Home_CategoryOf" xml:space="preserve">
+    <value>{0} из {1}</value>
+  </data>
+  <data name="Home_CategorySpent" xml:space="preserve">
+    <value>Потрачено {0}</value>
+  </data>
+  <data name="Home_Recent" xml:space="preserve">
+    <value>Недавние</value>
+  </data>
+  <data name="Home_SeeAll" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Home_NoRecent" xml:space="preserve">
+    <value>В этом периоде пока нет операций.</value>
+  </data>
+  <data name="Home_EmptyMonthText" xml:space="preserve">
+    <value>Сначала добавьте доход за этот месяц. Profitocracy разделит его на 50/30/20 и посчитает, сколько можно тратить каждый день.</value>
+  </data>
+  <data name="Home_AddIncome" xml:space="preserve">
+    <value>Добавить доход</value>
+  </data>
+  <data name="Home_NoCategoriesTitle" xml:space="preserve">
+    <value>В этом профиле нет категорий</value>
+  </data>
+  <data name="Home_NoCategoriesText" xml:space="preserve">
+    <value>Категории ограничивают траты, например на еду или транспорт, внутри деления 50/30/20.</value>
+  </data>
+  <data name="Home_CreateCategory" xml:space="preserve">
+    <value>Создать категорию</value>
+  </data>
+  <data name="Home_Recalculating" xml:space="preserve">
+    <value>Пересчитываем после последнего изменения…</value>
+  </data>
+  <data name="Activity_All" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="Activity_Spent" xml:space="preserve">
+    <value>Траты</value>
+  </data>
+  <data name="Activity_Income" xml:space="preserve">
+    <value>Доходы</value>
+  </data>
+  <data name="Activity_Saved" xml:space="preserve">
+    <value>Отложено</value>
+  </data>
+  <data name="Activity_SoFar" xml:space="preserve">
+    <value>Пока что:</value>
+  </data>
+  <data name="Activity_In" xml:space="preserve">
+    <value>пришло,</value>
+  </data>
+  <data name="Activity_OutAnd" xml:space="preserve">
+    <value>ушло и</value>
+  </data>
+  <data name="Activity_PutAside" xml:space="preserve">
+    <value>отложено.</value>
+  </data>
+  <data name="Activity_End" xml:space="preserve">
+    <value>Это всё с {0}.</value>
+  </data>
+  <data name="Activity_Empty" xml:space="preserve">
+    <value>За этот период здесь пока пусто.</value>
+  </data>
+  <data name="Activity_Filtered" xml:space="preserve">
+    <value>Фильтры применены</value>
+  </data>
+  <data name="Activity_ResetFilters" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="Insights_Week" xml:space="preserve">
+    <value>Неделя</value>
+  </data>
+  <data name="Insights_Month" xml:space="preserve">
+    <value>Месяц</value>
+  </data>
+  <data name="Insights_Year" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="Insights_Custom" xml:space="preserve">
+    <value>Период</value>
+  </data>
+  <data name="Insights_KeptSoFar" xml:space="preserve">
+    <value>Сохранено</value>
+  </data>
+  <data name="Insights_KeptText" xml:space="preserve">
+    <value>Вы сохранили {0} дохода.</value>
+  </data>
+  <data name="Insights_NoIncome" xml:space="preserve">
+    <value>В этом периоде пока нет дохода.</value>
+  </data>
+  <data name="Insights_Income" xml:space="preserve">
+    <value>Доход</value>
+  </data>
+  <data name="Insights_Spent" xml:space="preserve">
+    <value>Потрачено</value>
+  </data>
+  <data name="Insights_PutAside" xml:space="preserve">
+    <value>Отложено</value>
+  </data>
+  <data name="Insights_WhereItWent" xml:space="preserve">
+    <value>Куда ушли деньги</value>
+  </data>
+  <data name="Insights_Used" xml:space="preserve">
+    <value>{0} потрачено</value>
+  </data>
+  <data name="Insights_OfNeeds" xml:space="preserve">
+    <value>{0} · {1} нужд</value>
+  </data>
+  <data name="Insights_OfWants" xml:space="preserve">
+    <value>{0} · {1} желаний</value>
+  </data>
+  <data name="Insights_OfGoal" xml:space="preserve">
+    <value>{0} · {1} цели</value>
+  </data>
+  <data name="Insights_DayByDay" xml:space="preserve">
+    <value>По дням</value>
+  </data>
+  <data name="Insights_WeekByWeek" xml:space="preserve">
+    <value>По неделям</value>
+  </data>
+  <data name="Insights_SavingsNotCounted" xml:space="preserve">
+    <value>без накоплений</value>
+  </data>
+  <data name="Insights_PerDay" xml:space="preserve">
+    <value>{0} в день</value>
+  </data>
+  <data name="Insights_PerWeek" xml:space="preserve">
+    <value>{0} в неделю</value>
+  </data>
+  <data name="Insights_TodayMark" xml:space="preserve">
+    <value>сегодня</value>
+  </data>
+  <data name="Insights_AgainstLimits" xml:space="preserve">
+    <value>Относительно лимитов</value>
+  </data>
+  <data name="Insights_Limit" xml:space="preserve">
+    <value>лимит</value>
+  </data>
+  <data name="Insights_OfLimit" xml:space="preserve">
+    <value>из {0}</value>
+  </data>
+  <data name="Insights_NoLimitLower" xml:space="preserve">
+    <value>без лимита</value>
+  </data>
+  <data name="Insights_NoCategories" xml:space="preserve">
+    <value>В этом периоде нет трат по категориям.</value>
+  </data>
+  <data name="NewTransaction_Title" xml:space="preserve">
+    <value>Новая операция</value>
+  </data>
+  <data name="NewTransaction_EditTitle" xml:space="preserve">
+    <value>Изменить операцию</value>
+  </data>
+  <data name="NewTransaction_NoCategory" xml:space="preserve">
+    <value>Без категории</value>
+  </data>
+  <data name="NewTransaction_IncomeHint" xml:space="preserve">
+    <value>Доход сразу попадает на баланс и увеличивает бюджеты 50/30/20 этого месяца.</value>
+  </data>
+  <data name="NewTransaction_WithdrawHint" xml:space="preserve">
+    <value>Берётся из накоплений в {0} и добавляется на баланс.</value>
+  </data>
+  <data name="NewTransaction_Note" xml:space="preserve">
+    <value>Добавить заметку</value>
+  </data>
+  <data name="NewTransaction_Save" xml:space="preserve">
+    <value>Сохранить · {0}</value>
+  </data>
+  <data name="NewTransaction_InProfile" xml:space="preserve">
+    <value>= {0} в профиле {1}</value>
+  </data>
+  <data name="NewTransaction_EnterProfileAmount" xml:space="preserve">
+    <value>Нажмите, чтобы ввести сумму в {0}</value>
+  </data>
+  <data name="NewTransaction_Rate" xml:space="preserve">
+    <value>1 {0} = {1}</value>
+  </data>
+  <data name="NewTransaction_Currency" xml:space="preserve">
+    <value>Валюта</value>
+  </data>
+  <data name="NewTransaction_Repeat" xml:space="preserve">
+    <value>Повтор</value>
+  </data>
+  <data name="NewTransaction_NoRepeat" xml:space="preserve">
+    <value>Не повторять</value>
+  </data>
+  <data name="NewTransaction_Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="NewTransaction_DecimalPoint" xml:space="preserve">
+    <value>Десятичная точка</value>
+  </data>
+  <data name="Settings_Subtitle" xml:space="preserve">
+    <value>У каждого профиля своя валюта, бюджет и история.</value>
+  </data>
+  <data name="Settings_NewProfile" xml:space="preserve">
+    <value>Новый профиль</value>
+  </data>
+  <data name="Settings_InUse" xml:space="preserve">
+    <value>Активен</value>
+  </data>
+  <data name="Settings_Switch" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="Settings_ProfileLeft" xml:space="preserve">
+    <value>{0} · осталось {1}</value>
+  </data>
+  <data name="Settings_Budget" xml:space="preserve">
+    <value>Бюджет</value>
+  </data>
+  <data name="Settings_CategoriesLimits" xml:space="preserve">
+    <value>Категории и лимиты</value>
+  </data>
+  <data name="Settings_CategoriesSummary" xml:space="preserve">
+    <value>{0} · {1} в месяц</value>
+  </data>
+  <data name="Settings_BudgetSplit" xml:space="preserve">
+    <value>Распределение бюджета</value>
+  </data>
+  <data name="Settings_BudgetSplitInfo" xml:space="preserve">
+    <value>Profitocracy делит каждый доход 50/30/20: половина на нужды, 30% на желания и 20% в накопления.</value>
+  </data>
+  <data name="Settings_Appearance" xml:space="preserve">
+    <value>Оформление</value>
+  </data>
+  <data name="Settings_Footer" xml:space="preserve">
+    <value>Все данные остаются на этом устройстве. Profitocracy — проект с открытым кодом: без аккаунтов и слежки.</value>
+  </data>
+  <data name="Categories_Subtitle" xml:space="preserve">
+    <value>Месячные лимиты профиля {0}. Нажмите, чтобы изменить.</value>
+  </data>
+  <data name="Categories_SpentThisMonth" xml:space="preserve">
+    <value>{0} потрачено в этом месяце</value>
+  </data>
+  <data name="Categories_OverSpent" xml:space="preserve">
+    <value>{0} сверх · потрачено {1}</value>
+  </data>
+  <data name="Categories_AMonth" xml:space="preserve">
+    <value>в месяц</value>
+  </data>
+  <data name="Categories_SetOne" xml:space="preserve">
+    <value>задать</value>
+  </data>
+  <data name="Categories_LimitsAddUp" xml:space="preserve">
+    <value>Сумма лимитов</value>
+  </data>
+  <data name="Categories_LimitsTotal" xml:space="preserve">
+    <value>{0} в месяц · {1} дохода</value>
+  </data>
+  <data name="Categories_LimitsTotalNoIncome" xml:space="preserve">
+    <value>{0} в месяц</value>
+  </data>
+  <data name="Categories_Add" xml:space="preserve">
+    <value>Добавить категорию</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="Insights_StillYours" xml:space="preserve">
+    <value>{0} из {1} дохода всё ещё ваши.</value>
+  </data>
+  <data name="Insights_BySpendingType" xml:space="preserve">
+    <value>по типу расходов</value>
+  </data>
+  <data name="Insights_SpentAndSaved" xml:space="preserve">
+    <value>потрачено и отложено</value>
+  </data>
+  <data name="Insights_BarsCut" xml:space="preserve">
+    <value>Столбцы выше двойного лимита обрезаны.</value>
+  </data>
+  <data name="NewTransaction_Amount" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
 </root>

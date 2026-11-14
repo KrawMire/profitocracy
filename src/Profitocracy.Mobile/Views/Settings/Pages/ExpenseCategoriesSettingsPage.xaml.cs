@@ -14,7 +14,6 @@ public partial class ExpenseCategoriesSettingsPage : BaseContentPage
         InitializeComponent();
 
         BindingContext = _viewModel = viewModel;
-        CategoriesCollectionView.ItemsSource = _viewModel.Categories;
     }
 
     private void UpdateCategoriesList(object? sender, EventArgs e)
@@ -22,6 +21,14 @@ public partial class ExpenseCategoriesSettingsPage : BaseContentPage
         ProcessAction(async () =>
         {
             await _viewModel.Initialize();
+        });
+    }
+
+    private void BackButton_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            await Navigation.PopAsync();
         });
     }
 
@@ -33,23 +40,16 @@ public partial class ExpenseCategoriesSettingsPage : BaseContentPage
         });
     }
 
-    private void EditCategory_OnInvoked(object? sender, EventArgs e)
+    private void Category_OnTapped(object? sender, TappedEventArgs e)
     {
         ProcessAction(async () =>
         {
-            if (sender is not SwipeItemView swipeItem)
-            {
-                throw new InvalidCastException(AppResources.CommonError_InternalErrorTryAgain);
-            }
-
-            var category = swipeItem.BindingContext as CategoryModel;
-
-            if (category?.Id is null)
+            if ((sender as BindableObject)?.BindingContext is not CategorySettingsModel category)
             {
                 throw new ArgumentNullException(AppResources.CommonError_FindCategoryToEdit);
             }
 
-            await OpenEditCategoryPage((Guid)category.Id);
+            await OpenEditCategoryPage(category.Id);
         });
     }
 
@@ -57,14 +57,7 @@ public partial class ExpenseCategoriesSettingsPage : BaseContentPage
     {
         ProcessAction(async () =>
         {
-            if (sender is not SwipeItemView swipeItem)
-            {
-                throw new InvalidCastException(AppResources.CommonError_InternalErrorTryAgain);
-            }
-
-            var category = swipeItem.BindingContext as CategoryModel;
-
-            if (category?.Id is null)
+            if ((sender as BindableObject)?.BindingContext is not CategorySettingsModel category)
             {
                 throw new ArgumentNullException(AppResources.CommonError_FindCategoryToDelete);
             }
@@ -77,7 +70,7 @@ public partial class ExpenseCategoriesSettingsPage : BaseContentPage
 
             if (isDelete)
             {
-                await _viewModel.DeleteCategory((Guid)category.Id);
+                await _viewModel.DeleteCategory(category.Id);
             }
         });
     }

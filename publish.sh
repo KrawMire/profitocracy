@@ -15,7 +15,7 @@ function publish_android() {
 
   dotnet publish \
     src/Profitocracy.Mobile/Profitocracy.Mobile.csproj \
-    -f net9.0-android \
+    -f net10.0-android \
     -c Release \
     -o "${ANDROID_PUBLISH_PATH}" \
     -p:AndroidKeyStore=true \
@@ -37,7 +37,7 @@ function publish_ios() {
 
   dotnet publish \
     src/Profitocracy.Mobile/Profitocracy.Mobile.csproj \
-    -f net9.0-ios \
+    -f net10.0-ios \
     -c Release \
     -o "${IOS_PUBLISH_PATH}" \
     -p:ArchiveOnBuild=true \

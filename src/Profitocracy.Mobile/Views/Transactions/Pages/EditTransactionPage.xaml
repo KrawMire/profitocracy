@@ -6,290 +6,344 @@
                               xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
                               xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
                               xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Transactions"
+                              xmlns:categories="clr-namespace:Profitocracy.Mobile.Models.Categories"
                               xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
                               x:Class="Profitocracy.Mobile.Views.Transactions.Pages.EditTransactionPage"
                               x:DataType="viewmodel:EditTransactionPageViewModel"
                               Loaded="EditTransactionPage_OnLoaded"
                               Shell.PresentationMode="ModalAnimated"
                               ios:Page.ModalPresentationStyle="PageSheet"
-                              Padding="16"
+                              SafeAreaEdges="All"
                               HideSoftInputOnTapped="True">
-    <Grid VerticalOptions="Fill"
-          RowDefinitions="auto,auto,*,auto">
+    <abstractions:BaseContentPage.Resources>
+        <!-- Spending type card: dot, name and the word of the split -->
+        <Style TargetType="Border" x:Key="TypeCard">
+            <Setter Property="MinimumHeightRequest" Value="56"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 12"/>
+            <Setter Property="StrokeThickness" Value="1.5"/>
+            <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}"/>
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}"/>
+        </Style>
+        <!-- Field tile: note, date, time and repeat -->
+        <Style TargetType="Border" x:Key="FieldTile">
+            <Setter Property="HeightRequest" Value="44"/>
+            <Setter Property="Padding" Value="12,0"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
+            <Setter Property="StrokeThickness" Value="0"/>
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}"/>
+        </Style>
+    </abstractions:BaseContentPage.Resources>
 
-        <controls:ModalHeaderView Grid.Row="0"
-                                  Title="{x:Static resx:AppResources.Pages_NewTransaction}"
-                                  CloseClicked="CloseButton_OnClicked"/>
+    <Grid RowDefinitions="auto,*,auto"
+          Padding="0,8,0,0">
 
-        <Grid Grid.Row="1"
-              Margin="0,32,0,0"
-              ColumnDefinitions="*,16,*">
-            <Button  Grid.Column="0"
-                    Text="{x:Static resx:AppResources.AddTransaction_Expense}"
-                    x:Name="ExpenseButton"
-                    Clicked="ExpenseButton_OnClicked">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Style.Triggers>
-                            <DataTrigger TargetType="Button"
-                                         Binding="{Binding IsExpense}"
-                                         Value="True">
-                                <Setter Property="FontFamily" Value="OpenSansSemibold"/>
-                                <Setter Property="FontSize" Value="16"/>
-                                <Setter Property="TextColor" Value="{StaticResource White}"/>
-                            </DataTrigger>
-                            <DataTrigger TargetType="Button"
-                                         Binding="{Binding IsExpense}"
-                                         Value="False">
-                                <Setter Property="FontFamily" Value="OpenSansSemibold"/>
-                                <Setter Property="FontSize" Value="16"/>
-                                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource LightPrimaryText}}"/>
-                                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource LightBackground}}"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button Grid.Column="2"
-                    Text="{x:Static resx:AppResources.AddTransaction_Income}"
-                    x:Name="IncomeButton"
-                    Clicked="IncomeButton_OnClicked">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Style.Triggers>
-                            <DataTrigger TargetType="Button"
-                                         Binding="{Binding IsIncome}"
-                                         Value="True">
-                                <Setter Property="FontFamily" Value="OpenSansSemibold"/>
-                                <Setter Property="FontSize" Value="16"/>
-                                <Setter Property="TextColor" Value="{StaticResource White}"/>
-                            </DataTrigger>
-                            <DataTrigger TargetType="Button"
-                                         Binding="{Binding IsIncome}"
-                                         Value="False">
-                                <Setter Property="FontFamily" Value="OpenSansSemibold"/>
-                                <Setter Property="FontSize" Value="16"/>
-                                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource LightPrimaryText}}"/>
-                                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource LightBackground}}"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
+        <!-- Header -->
+        <Grid Grid.Row="0"
+              ColumnDefinitions="88,*,88"
+              Padding="8,0">
+            <Label Grid.Column="0"
+                   Style="{StaticResource LinkLabel}"
+                   HorizontalOptions="Start"
+                   Padding="8,0"
+                   Text="{x:Static resx:AppResources.Common_Cancel}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseButton_OnClicked"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Grid.Column="1"
+                   Style="{StaticResource TextBodyStrong}"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   LineBreakMode="TailTruncation"
+                   Text="{Binding Title}"/>
         </Grid>
-        <ScrollView Grid.Row="2"
-                    Margin="0,8">
-            <StackLayout>
-                <StackLayout IsVisible="{Binding IsIncome}">
-                    <Border Style="{StaticResource TransactionAddAmountBorder}"
-                            Padding="16"
-                            Margin="0,16,0,0">
-                        <StackLayout>
-                            <FlexLayout JustifyContent="SpaceBetween">
-                                <Label Text="{x:Static resx:AppResources.AddTransaction_WithdrawSavedFunds}"
-                                       Style="{StaticResource ExpenseCardSubtitle}"
-                                       VerticalTextAlignment="Start"/>
-                                <Switch IsToggled="{Binding IsMultiCurrency, Mode=TwoWay}"/>
-                            </FlexLayout>
-                            <StackLayout Margin="0,16,0,0">
-                                <Label Text="{x:Static resx:AppResources.AddTransaction_Amount}"/>
-                                <Entry Margin="0,4,0,0"
-                                       Keyboard="Numeric"
-                                       Text="{Binding Amount, Mode=TwoWay}"/>
-                            </StackLayout>
-                            <StackLayout Margin="0,16,0,0"
-                                         IsVisible="{Binding IsMultiCurrency}">
-                                <Label Text="{x:Static resx:AppResources.AddTransaction_WithdrawAmount}" />
-                                <Grid Margin="0,4,0,0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition Width="8"/>
-                                        <ColumnDefinition Width="3*" />
-                                    </Grid.ColumnDefinitions>
 
-                                    <Picker Grid.Column="0"
-                                            x:Name="IncomeCurrencyPicker"
-                                            SelectedItem="{Binding SelectedCurrency}"
-                                            ItemDisplayBinding="{Binding Code}"/>
-                                    <Entry Grid.Column="2"
-                                           Keyboard="Numeric"
-                                           Text="{Binding DestinationAmount, Mode=TwoWay}"/>
-                                </Grid>
-                            </StackLayout>
-                        </StackLayout>
-                    </Border>
+        <ScrollView Grid.Row="1"
+                    VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Padding="16,8,16,0"
+                                 Spacing="12">
 
-                    <StackLayout Margin="0,16,0,0">
-                        <Label Text="{x:Static resx:AppResources.AddTransaction_Description}"/>
-                        <Entry Margin="0,4,0,0"
-                               Text="{Binding Description, Mode=TwoWay}"/>
-                    </StackLayout>
-
-                    <StackLayout Margin="0,16,0,0">
-                        <Label Text="{x:Static resx:AppResources.AddTransaction_Date}"/>
-                        <Grid ColumnDefinitions="*,8,*"
-                              Margin="0,4,0,0">
-                            <DatePicker Grid.Column="0"
-                                        Date="{Binding Timestamp, Mode=TwoWay}"/>
-                            <TimePicker Grid.Column="2"
-                                        Time="{Binding Time, Mode=TwoWay}"/>
-                        </Grid>
-                    </StackLayout>
-                </StackLayout>
-                <StackLayout IsVisible="{Binding IsExpense}">
-                    <Grid ColumnDefinitions="*,16,*,16,*">
-                        <Button Grid.Column="0"
-                                Text="{x:Static resx:AppResources.AddTransaction_Main}"
-                                Clicked="MainTypeButton_OnClicked">
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Style.Triggers>
-                                        <DataTrigger TargetType="Button"
-                                                     Binding="{Binding IsMain}"
-                                                     Value="True">
-                                            <Setter Property="FontFamily" Value="OpenSansSemibold"/>
-                                            <Setter Property="FontSize" Value="16"/>
-                                            <Setter Property="TextColor" Value="{StaticResource White}"/>
-                                        </DataTrigger>
-                                        <DataTrigger TargetType="Button"
-                                                     Binding="{Binding IsMain}"
-                                                     Value="False">
-                                            <Setter Property="FontFamily" Value="OpenSansSemibold"/>
-                                            <Setter Property="FontSize" Value="16"/>
-                                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource LightPrimaryText}}"/>
-                                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource LightBackground}}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-                        <Button Grid.Column="2"
-                                Text="{x:Static resx:AppResources.AddTransaction_Secondary}"
-                                Clicked="SecondaryTypeButton_OnClicked">
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Style.Triggers>
-                                        <DataTrigger TargetType="Button"
-                                                     Binding="{Binding IsSecondary}"
-                                                     Value="True">
-                                            <Setter Property="FontFamily" Value="OpenSansSemibold"/>
-                                            <Setter Property="FontSize" Value="16"/>
-                                            <Setter Property="TextColor" Value="{StaticResource White}"/>
-                                        </DataTrigger>
-                                        <DataTrigger TargetType="Button"
-                                                     Binding="{Binding IsSecondary}"
-                                                     Value="False">
-                                            <Setter Property="FontFamily" Value="OpenSansSemibold"/>
-                                            <Setter Property="FontSize" Value="16"/>
-                                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource LightPrimaryText}}"/>
-                                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource LightBackground}}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-                        <Button Grid.Column="4"
-                                Text="{x:Static resx:AppResources.AddTransaction_Saved}"
-                                Clicked="SavedTypeButton_OnClicked">
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Style.Triggers>
-                                        <DataTrigger TargetType="Button"
-                                                     Binding="{Binding IsSaved}"
-                                                     Value="True">
-                                            <Setter Property="FontFamily" Value="OpenSansSemibold"/>
-                                            <Setter Property="FontSize" Value="16"/>
-                                            <Setter Property="TextColor" Value="{StaticResource White}"/>
-                                        </DataTrigger>
-                                        <DataTrigger TargetType="Button"
-                                                     Binding="{Binding IsSaved}"
-                                                     Value="False">
-                                            <Setter Property="FontFamily" Value="OpenSansSemibold"/>
-                                            <Setter Property="FontSize" Value="16"/>
-                                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource LightPrimaryText}}"/>
-                                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryText}, Dark={StaticResource LightBackground}}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
+                <!-- Expense / Income -->
+                <Border Style="{StaticResource Card}"
+                        Padding="4">
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="4">
+                        <controls:ChipView Grid.Column="0"
+                                           Text="{x:Static resx:AppResources.AddTransaction_Expense}"
+                                           IsSelected="{Binding IsExpense}"
+                                           Tapped="ExpenseButton_OnClicked"/>
+                        <controls:ChipView Grid.Column="1"
+                                           Text="{x:Static resx:AppResources.AddTransaction_Income}"
+                                           IsSelected="{Binding IsIncome}"
+                                           Tapped="IncomeButton_OnClicked"/>
                     </Grid>
+                </Border>
 
-                    <Border Style="{StaticResource TransactionAddAmountBorder}"
-                            Padding="16"
-                            Margin="0,16,0,0">
-                        <StackLayout>
-                            <FlexLayout JustifyContent="SpaceBetween">
-                                <Label Text="{x:Static resx:AppResources.AddTransaction_MultiCurrencyTransaction}"
-                                       Style="{StaticResource ExpenseCardSubtitle}"
-                                       VerticalTextAlignment="Start"/>
-                                <Switch IsToggled="{Binding IsMultiCurrency, Mode=TwoWay}"/>
-                            </FlexLayout>
-                            <StackLayout Margin="0,16,0,0"
-                                         IsVisible="{Binding IsMultiCurrency}">
-                                <Label Text="{x:Static resx:AppResources.AddTransaction_OriginalCurrencyAmount}" />
-                                <Grid Margin="0,4,0,0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition Width="8"/>
-                                        <ColumnDefinition Width="3*" />
-                                    </Grid.ColumnDefinitions>
+                <!-- The amount, typed with the system number pad -->
+                <Border Style="{StaticResource Card}"
+                        Padding="16,12,16,14"
+                        StrokeThickness="2"
+                        Stroke="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AmountCard_OnTapped"/>
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="4">
+                        <Grid ColumnDefinitions="auto,*"
+                              ColumnSpacing="8">
+                            <Border Grid.Column="0"
+                                    Padding="10,0"
+                                    HeightRequest="44"
+                                    VerticalOptions="Center"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 8"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource Ground}, Dark={StaticResource DarkGround}}"
+                                    SemanticProperties.Description="{x:Static resx:AppResources.NewTransaction_Currency}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CurrencyButton_OnTapped"/>
+                                </Border.GestureRecognizers>
+                                <HorizontalStackLayout Spacing="4">
+                                    <Label Style="{StaticResource TextBodyStrong}"
+                                           VerticalTextAlignment="Center"
+                                           Text="{Binding EditedCurrencyCode}"/>
+                                    <controls:IconView Data="{x:Static controls:Icons.ChevronDown}"
+                                                       Size="16"
+                                                       VerticalOptions="Center"
+                                                       Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                                </HorizontalStackLayout>
+                            </Border>
+                            <controls:BorderlessEntry x:Name="AmountEntry"
+                                                      Grid.Column="1"
+                                                      BackgroundColor="Transparent"
+                                                      VerticalOptions="Center"
+                                                      HorizontalTextAlignment="End"
+                                                      Keyboard="Numeric"
+                                                      FontFamily="SansBold"
+                                                      FontSize="36"
+                                                      CharacterSpacing="-0.72"
+                                                      Placeholder="0.00"
+                                                      MinimumHeightRequest="44"
+                                                      SemanticProperties.Description="{x:Static resx:AppResources.NewTransaction_Amount}"
+                                                      Text="{Binding EditedAmount, Mode=TwoWay}"/>
+                        </Grid>
+                        <Label Style="{StaticResource TextLabelSoft}"
+                               HorizontalTextAlignment="End"
+                               IsVisible="{Binding IsMultiCurrency}"
+                               Text="{Binding ConvertedText}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ConvertedAmount_OnTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </VerticalStackLayout>
+                </Border>
 
-                                    <Picker Grid.Column="0"
-                                            x:Name="ExpenseCurrencyPicker"
-                                            SelectedItem="{Binding SelectedCurrency}"
-                                            ItemDisplayBinding="{Binding Code}"/>
-                                    <Entry Grid.Column="2"
-                                           Keyboard="Numeric"
-                                           Text="{Binding DestinationAmount, Mode=TwoWay}"/>
-                                </Grid>
-                            </StackLayout>
-                            <StackLayout Margin="0,16,0,0">
-                                <Label Text="{x:Static resx:AppResources.AddTransaction_Amount}"/>
-                                <Entry Margin="0,4,0,0"
-                                       Keyboard="Numeric"
-                                       Text="{Binding Amount, Mode=TwoWay}"/>
-                            </StackLayout>
-                        </StackLayout>
+                <!-- Expense: 50 / 30 / 20 spending type -->
+                <Grid ColumnDefinitions="*,*,*"
+                      ColumnSpacing="8"
+                      IsVisible="{Binding IsExpense}">
+                    <Border Grid.Column="0"
+                            Style="{StaticResource TypeCard}">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MainTypeButton_OnClicked"/>
+                        </Border.GestureRecognizers>
+                        <Border.Triggers>
+                            <DataTrigger TargetType="Border"
+                                         Binding="{Binding IsMain}"
+                                         Value="True">
+                                <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"/>
+                                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource MainTint}, Dark={StaticResource DarkMainTint}}"/>
+                            </DataTrigger>
+                        </Border.Triggers>
+                        <VerticalStackLayout Spacing="2"
+                                             VerticalOptions="Center">
+                            <HorizontalStackLayout Spacing="6">
+                                <Ellipse Style="{StaticResource SpendingDot}"
+                                         Fill="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"/>
+                                <Label Style="{StaticResource TextBodyStrong}"
+                                       Text="{x:Static resx:AppResources.AddTransaction_Main}"/>
+                            </HorizontalStackLayout>
+                            <Label Style="{StaticResource TextCaption}"
+                                   Margin="14,0,0,0"
+                                   Text="{x:Static resx:AppResources.Common_NeedsWord}"/>
+                        </VerticalStackLayout>
                     </Border>
+                    <Border Grid.Column="1"
+                            Style="{StaticResource TypeCard}">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SecondaryTypeButton_OnClicked"/>
+                        </Border.GestureRecognizers>
+                        <Border.Triggers>
+                            <DataTrigger TargetType="Border"
+                                         Binding="{Binding IsSecondary}"
+                                         Value="True">
+                                <Setter Property="Stroke" Value="{StaticResource SecondaryColor}"/>
+                                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SecondaryTint}, Dark={StaticResource DarkSecondaryTint}}"/>
+                            </DataTrigger>
+                        </Border.Triggers>
+                        <VerticalStackLayout Spacing="2"
+                                             VerticalOptions="Center">
+                            <HorizontalStackLayout Spacing="6">
+                                <Ellipse Style="{StaticResource SpendingDot}"
+                                         Fill="{StaticResource SecondaryColor}"/>
+                                <Label Style="{StaticResource TextBodyStrong}"
+                                       Text="{x:Static resx:AppResources.AddTransaction_Secondary}">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                     Binding="{Binding IsSecondary}"
+                                                     Value="True">
+                                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource SecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </HorizontalStackLayout>
+                            <Label Style="{StaticResource TextCaption}"
+                                   Margin="14,0,0,0"
+                                   Text="{x:Static resx:AppResources.Common_WantsWord}"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Style="{StaticResource TypeCard}">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SavedTypeButton_OnClicked"/>
+                        </Border.GestureRecognizers>
+                        <Border.Triggers>
+                            <DataTrigger TargetType="Border"
+                                         Binding="{Binding IsSaved}"
+                                         Value="True">
+                                <Setter Property="Stroke" Value="{StaticResource SavedColor}"/>
+                                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource SavedTint}, Dark={StaticResource DarkSavedTint}}"/>
+                            </DataTrigger>
+                        </Border.Triggers>
+                        <VerticalStackLayout Spacing="2"
+                                             VerticalOptions="Center">
+                            <HorizontalStackLayout Spacing="6">
+                                <Ellipse Style="{StaticResource SpendingDot}"
+                                         Fill="{StaticResource SavedColor}"/>
+                                <Label Style="{StaticResource TextBodyStrong}"
+                                       Text="{x:Static resx:AppResources.AddTransaction_Saved}">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                     Binding="{Binding IsSaved}"
+                                                     Value="True">
+                                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource SavedText}, Dark={StaticResource DarkSavedText}}"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </HorizontalStackLayout>
+                            <Label Style="{StaticResource TextCaption}"
+                                   Margin="14,0,0,0"
+                                   Text="{x:Static resx:AppResources.Common_SavingsWord}"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
 
-                    <StackLayout Margin="0,16,0,0">
-                        <Label Text="{x:Static resx:AppResources.AddTransaction_Category}"/>
-                        <Picker Margin="0,4,0,0"
-                                x:Name="CategoryPicker"
-                                SelectedItem="{Binding Category}"
-                                ItemDisplayBinding="{Binding Name}" />
-                    </StackLayout>
+                <!-- Expense: category -->
+                <ScrollView Orientation="Horizontal"
+                            HorizontalScrollBarVisibility="Never"
+                            Margin="0,0,-16,0"
+                            IsVisible="{Binding IsExpense}">
+                    <HorizontalStackLayout Spacing="8"
+                                           Padding="0,0,16,0"
+                                           BindableLayout.ItemsSource="{Binding CategoryChips}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="categories:CategoryChipModel">
+                                <controls:ChipView Text="{Binding Name}"
+                                                   IsSelected="{Binding IsSelected}"
+                                                   Tapped="CategoryChip_OnTapped"/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </HorizontalStackLayout>
+                </ScrollView>
 
-                    <StackLayout Margin="0,16,0,0">
-                        <Label Text="{x:Static resx:AppResources.AddTransaction_Description}"/>
-                        <Entry Margin="0,4,0,0"
-                               Text="{Binding Description, Mode=TwoWay}"/>
-                    </StackLayout>
+                <!-- Income: what happens with it -->
+                <Border Style="{StaticResource Card}"
+                        Padding="16,14"
+                        IsVisible="{Binding IsIncome}">
+                    <Label Style="{StaticResource TextBodySoft}"
+                           Text="{Binding IncomeHint}"/>
+                </Border>
 
-                    <StackLayout Margin="0,16,0,0">
-                        <Label Text="{x:Static resx:AppResources.AddTransaction_Date}"/>
-                        <Grid ColumnDefinitions="*,8,*"
-                              Margin="0,4,0,0">
-                            <DatePicker Grid.Column="0"
+                <!-- Note -->
+                <Border Style="{StaticResource FieldTile}">
+                    <controls:BorderlessEntry BackgroundColor="Transparent"
+                                              MinimumHeightRequest="44"
+                                              VerticalOptions="Center"
+                                              FontSize="15"
+                                              Placeholder="{x:Static resx:AppResources.NewTransaction_Note}"
+                                              Text="{Binding Description, Mode=TwoWay}"/>
+                </Border>
+
+                <!-- Date and time -->
+                <Grid ColumnDefinitions="*,*"
+                      ColumnSpacing="8">
+                    <Border Grid.Column="0"
+                            Style="{StaticResource FieldTile}">
+                        <Grid>
+                            <Label Style="{StaticResource TextBodyStrong}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation"
+                                   InputTransparent="True"
+                                   Text="{Binding DateText}"/>
+                            <!-- Invisible native picker over the tile opens the system date picker -->
+                            <DatePicker Opacity="0.02"
+                                        TextColor="Transparent"
+                                        BackgroundColor="Transparent"
                                         Date="{Binding Timestamp, Mode=TwoWay}"/>
-                            <TimePicker Grid.Column="2"
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Style="{StaticResource FieldTile}">
+                        <Grid>
+                            <Label Style="{StaticResource TextBodyStrong}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   InputTransparent="True"
+                                   Text="{Binding TimeText}"/>
+                            <!-- Invisible native picker over the tile opens the system time picker -->
+                            <TimePicker Opacity="0.02"
+                                        TextColor="Transparent"
+                                        BackgroundColor="Transparent"
                                         Time="{Binding Time, Mode=TwoWay}"/>
                         </Grid>
-                    </StackLayout>
-                </StackLayout>
-                <StackLayout Margin="0,16,0,0">
-                    <Label Text="{x:Static resx:AppResources.AddTransaction_RecurringTransactionInterval}"/>
-                    <Picker Margin="0,4,0,0"
-                        x:Name="IntervalPicker"
-                        SelectedItem="{Binding SelectedInterval}"
-                        ItemDisplayBinding="{Binding Name}"/>
-                </StackLayout>
-            </StackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- Repeat -->
+                <Border Style="{StaticResource FieldTile}">
+                    <Grid>
+                        <Grid ColumnDefinitions="*,auto"
+                              ColumnSpacing="4"
+                              InputTransparent="True"
+                              CascadeInputTransparent="True">
+                            <Label Grid.Column="0"
+                                   Style="{StaticResource TextBodyStrong}"
+                                   VerticalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation"
+                                   Text="{Binding IntervalText}"/>
+                            <controls:IconView Grid.Column="1"
+                                               Data="{x:Static controls:Icons.ChevronDown}"
+                                               Size="16"
+                                               VerticalOptions="Center"
+                                               Color="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                        </Grid>
+                        <Picker x:Name="IntervalPicker"
+                                Opacity="0.02"
+                                TextColor="Transparent"
+                                BackgroundColor="Transparent"
+                                Title="{x:Static resx:AppResources.NewTransaction_Repeat}"
+                                SelectedItem="{Binding SelectedInterval}"
+                                ItemDisplayBinding="{Binding Name}"/>
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
         </ScrollView>
-        <Button Grid.Row="3"
-                Text="{x:Static resx:AppResources.AddTransaction_SaveTransaction}"
-                VerticalOptions="End"
+
+        <!-- Save -->
+        <Button Grid.Row="2"
+                Margin="16,12,16,16"
+                Style="{StaticResource AccentButton}"
+                Text="{Binding SaveText}"
                 Clicked="EditTransactionButton_OnClicked"/>
     </Grid>
 </abstractions:BaseContentPage>
