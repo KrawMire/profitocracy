@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net9.0-android;net9.0-ios;</TargetFrameworks>
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">12.2</SupportedOSPlatformVersion>
+        <TargetFrameworks>net10.0-android;net10.0-ios;</TargetFrameworks>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 
         <OutputType>Exe</OutputType>
@@ -11,6 +11,8 @@
         <SingleProject>true</SingleProject>
         <Nullable>enable</Nullable>
         <UseMaui>true</UseMaui>
+        <!-- Enable this property in case when you have XCode and .NET versions mismatch -->
+        <ValidateXcodeVersion>false</ValidateXcodeVersion>
 
         <ApplicationTitle>Profitocracy</ApplicationTitle>
         <ApplicationId>com.krawmire.profitocracy</ApplicationId>
@@ -24,7 +26,7 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
-        <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+        <RuntimeIdentifier>iossimulator-arm64</RuntimeIdentifier>
     </PropertyGroup>
 
     <ItemGroup>
@@ -33,15 +35,14 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="12.1.0" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="13.0.0" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-        <PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-rc5.4" />
         <PackageReference Include="Meziantou.Framework.ResxSourceGenerator" Version="1.0.13">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.90" />
-        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.90" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.100" />
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.100" />
         <PackageReference Include="Plugin.Maui.AppRating" Version="1.2.1" />
         <PackageReference Include="Plugin.LocalNotification" Version="12.0.2" />
         <PackageReference Include="Plugin.Maui.Biometric" Version="0.0.7" />
@@ -51,8 +52,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <MauiIcon Include="Resources\AppIcon\appicon.svg" BaseSize="128,128" Resize="false" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#ffffff" />
-        <MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="500,575" Resize="false" Color="#ffffff" />
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" BaseSize="128,128" Resize="false" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#0E4A33" />
+        <MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="240,250" Resize="false" Color="#EDEFE7" />
         <MauiImage Include="Resources\Images\*" />
         <MauiFont Include="Resources\Fonts\*" />
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
@@ -60,10 +61,11 @@
 
     <ItemGroup>
         <!-- Used by tab bar -->
-        <MauiImage Update="Resources\Images\home.png" BaseSize="24,24" />
-        <MauiImage Update="Resources\Images\transactions.png" BaseSize="24,24" />
-        <MauiImage Update="Resources\Images\settings.png" BaseSize="24,24" />
-        <MauiImage Update="Resources\Images\chart.png" BaseSize="24,24" />
+        <MauiImage Update="Resources\Images\home.svg" BaseSize="24,24" />
+        <MauiImage Update="Resources\Images\transactions.svg" BaseSize="24,24" />
+        <MauiImage Update="Resources\Images\settings.svg" BaseSize="24,24" />
+        <MauiImage Update="Resources\Images\chart.svg" BaseSize="24,24" />
+        <MauiImage Update="Resources\Images\add_transaction.svg" BaseSize="44,44" />
 
         <!-- Used by the rest of the application -->
         <MauiImage Update="Resources\Images\bin.png" BaseSize="20,20" />
@@ -76,9 +78,9 @@
         <AdditionalFiles Include="**/*.resx" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+    <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
       <PackageReference Include="Xamarin.AndroidX.Work.Runtime">
-        <Version>2.10.2</Version>
+        <Version>2.10.3</Version>
       </PackageReference>
     </ItemGroup>
 

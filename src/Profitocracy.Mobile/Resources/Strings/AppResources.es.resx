@@ -1008,4 +1008,370 @@
   <data name="NotificationsSettings_Reminder" xml:space="preserve">
       <value>Recordatorios</value>
   </data>
+  <data name="Pages_Activity" xml:space="preserve">
+    <value>Actividad</value>
+  </data>
+  <data name="Pages_Insights" xml:space="preserve">
+    <value>Análisis</value>
+  </data>
+  <data name="Common_Today" xml:space="preserve">
+    <value>Hoy</value>
+  </data>
+  <data name="Common_Yesterday" xml:space="preserve">
+    <value>Ayer</value>
+  </data>
+  <data name="Common_NeedsWord" xml:space="preserve">
+    <value>necesidades</value>
+  </data>
+  <data name="Common_WantsWord" xml:space="preserve">
+    <value>deseos</value>
+  </data>
+  <data name="Common_SavingsWord" xml:space="preserve">
+    <value>ahorros</value>
+  </data>
+  <data name="Common_Needs" xml:space="preserve">
+    <value>Necesidades</value>
+  </data>
+  <data name="Common_Wants" xml:space="preserve">
+    <value>Deseos</value>
+  </data>
+  <data name="Common_Savings" xml:space="preserve">
+    <value>Ahorros</value>
+  </data>
+  <data name="Common_Left" xml:space="preserve">
+    <value>quedan</value>
+  </data>
+  <data name="Common_Over" xml:space="preserve">
+    <value>de más</value>
+  </data>
+  <data name="Common_NoLimit" xml:space="preserve">
+    <value>Sin límite</value>
+  </data>
+  <data name="Home_LeftThisMonth" xml:space="preserve">
+    <value>Queda este mes</value>
+  </data>
+  <data name="Home_LeftThisPeriod" xml:space="preserve">
+    <value>Queda en este periodo</value>
+  </data>
+  <data name="Home_DaysToGo" xml:space="preserve">
+    <value>Quedan {0} días</value>
+  </data>
+  <data name="Home_LastDay" xml:space="preserve">
+    <value>Último día</value>
+  </data>
+  <data name="Home_UsedOfIncome" xml:space="preserve">
+    <value>{0} usados de {1} de ingresos</value>
+  </data>
+  <data name="Home_LeftOf" xml:space="preserve">
+    <value>quedan de {0}</value>
+  </data>
+  <data name="Home_IfYouStopHere" xml:space="preserve">
+    <value>si paras aquí</value>
+  </data>
+  <data name="Home_SpreadHint" xml:space="preserve">
+    <value>Lo que no gastes hoy se reparte entre el resto del mes.</value>
+  </data>
+  <data name="Home_OverLimitTitle" xml:space="preserve">
+    <value>{0} supera su límite en {1}</value>
+  </data>
+  <data name="Home_OverLimitDetail" xml:space="preserve">
+    <value>{0} gastados de {1}</value>
+  </data>
+  <data name="Home_BudgetSplit" xml:space="preserve">
+    <value>Reparto del presupuesto</value>
+  </data>
+  <data name="Home_BudgetSplitCaption" xml:space="preserve">
+    <value>50 / 30 / 20 de los ingresos</value>
+  </data>
+  <data name="Home_TypeBudget" xml:space="preserve">
+    <value>{0} · presupuesto {1}</value>
+  </data>
+  <data name="Home_AmountLeft" xml:space="preserve">
+    <value>Quedan {0}</value>
+  </data>
+  <data name="Home_AmountOver" xml:space="preserve">
+    <value>{0} de más</value>
+  </data>
+  <data name="Home_ToGoal" xml:space="preserve">
+    <value>{0} para la meta</value>
+  </data>
+  <data name="Home_GoalReached" xml:space="preserve">
+    <value>Meta alcanzada</value>
+  </data>
+  <data name="Home_EditLimits" xml:space="preserve">
+    <value>Editar límites</value>
+  </data>
+  <data name="Home_CategoryOf" xml:space="preserve">
+    <value>{0} de {1}</value>
+  </data>
+  <data name="Home_CategorySpent" xml:space="preserve">
+    <value>{0} gastados</value>
+  </data>
+  <data name="Home_Recent" xml:space="preserve">
+    <value>Recientes</value>
+  </data>
+  <data name="Home_SeeAll" xml:space="preserve">
+    <value>Ver todo</value>
+  </data>
+  <data name="Home_NoRecent" xml:space="preserve">
+    <value>Todavía no hay movimientos en este periodo.</value>
+  </data>
+  <data name="Home_EmptyMonthText" xml:space="preserve">
+    <value>Primero añade los ingresos de este mes. Profitocracy los reparte 50/30/20 y calcula cuánto puedes gastar cada día.</value>
+  </data>
+  <data name="Home_AddIncome" xml:space="preserve">
+    <value>Añadir ingreso</value>
+  </data>
+  <data name="Home_NoCategoriesTitle" xml:space="preserve">
+    <value>No hay categorías en este perfil</value>
+  </data>
+  <data name="Home_NoCategoriesText" xml:space="preserve">
+    <value>Las categorías limitan cosas como comida o transporte dentro del reparto 50/30/20.</value>
+  </data>
+  <data name="Home_CreateCategory" xml:space="preserve">
+    <value>Crear una categoría</value>
+  </data>
+  <data name="Home_Recalculating" xml:space="preserve">
+    <value>Recalculando {0} tras tu último cambio…</value>
+  </data>
+  <data name="Activity_All" xml:space="preserve">
+    <value>Todo</value>
+  </data>
+  <data name="Activity_Spent" xml:space="preserve">
+    <value>Gastos</value>
+  </data>
+  <data name="Activity_Income" xml:space="preserve">
+    <value>Ingresos</value>
+  </data>
+  <data name="Activity_Saved" xml:space="preserve">
+    <value>Ahorrado</value>
+  </data>
+  <data name="Activity_SoFar" xml:space="preserve">
+    <value>Hasta ahora:</value>
+  </data>
+  <data name="Activity_In" xml:space="preserve">
+    <value>de ingresos,</value>
+  </data>
+  <data name="Activity_OutAnd" xml:space="preserve">
+    <value>de gastos y</value>
+  </data>
+  <data name="Activity_PutAside" xml:space="preserve">
+    <value>ahorrados.</value>
+  </data>
+  <data name="Activity_End" xml:space="preserve">
+    <value>Eso es todo desde el {0}.</value>
+  </data>
+  <data name="Activity_Empty" xml:space="preserve">
+    <value>Aún no hay nada en este periodo.</value>
+  </data>
+  <data name="Activity_Filtered" xml:space="preserve">
+    <value>Filtros aplicados</value>
+  </data>
+  <data name="Activity_ResetFilters" xml:space="preserve">
+    <value>Restablecer</value>
+  </data>
+  <data name="Insights_Week" xml:space="preserve">
+    <value>Semana</value>
+  </data>
+  <data name="Insights_Month" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="Insights_Year" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="Insights_Custom" xml:space="preserve">
+    <value>Otro</value>
+  </data>
+  <data name="Insights_KeptSoFar" xml:space="preserve">
+    <value>Conservado</value>
+  </data>
+  <data name="Insights_KeptText" xml:space="preserve">
+    <value>Has conservado el {0} de tus ingresos.</value>
+  </data>
+  <data name="Insights_NoIncome" xml:space="preserve">
+    <value>Aún no hay ingresos en este periodo.</value>
+  </data>
+  <data name="Insights_Income" xml:space="preserve">
+    <value>Ingresos</value>
+  </data>
+  <data name="Insights_Spent" xml:space="preserve">
+    <value>Gastado</value>
+  </data>
+  <data name="Insights_PutAside" xml:space="preserve">
+    <value>Ahorrado</value>
+  </data>
+  <data name="Insights_WhereItWent" xml:space="preserve">
+    <value>A dónde fue</value>
+  </data>
+  <data name="Insights_Used" xml:space="preserve">
+    <value>{0} usados</value>
+  </data>
+  <data name="Insights_OfNeeds" xml:space="preserve">
+    <value>{0} · {1} de necesidades</value>
+  </data>
+  <data name="Insights_OfWants" xml:space="preserve">
+    <value>{0} · {1} de deseos</value>
+  </data>
+  <data name="Insights_OfGoal" xml:space="preserve">
+    <value>{0} · {1} de la meta</value>
+  </data>
+  <data name="Insights_DayByDay" xml:space="preserve">
+    <value>Día a día</value>
+  </data>
+  <data name="Insights_WeekByWeek" xml:space="preserve">
+    <value>Semana a semana</value>
+  </data>
+  <data name="Insights_SavingsNotCounted" xml:space="preserve">
+    <value>sin contar ahorros</value>
+  </data>
+  <data name="Insights_PerDay" xml:space="preserve">
+    <value>{0} al día</value>
+  </data>
+  <data name="Insights_PerWeek" xml:space="preserve">
+    <value>{0} a la semana</value>
+  </data>
+  <data name="Insights_TodayMark" xml:space="preserve">
+    <value>hoy</value>
+  </data>
+  <data name="Insights_AgainstLimits" xml:space="preserve">
+    <value>Frente a tus límites</value>
+  </data>
+  <data name="Insights_Limit" xml:space="preserve">
+    <value>límite</value>
+  </data>
+  <data name="Insights_OfLimit" xml:space="preserve">
+    <value>de {0}</value>
+  </data>
+  <data name="Insights_NoLimitLower" xml:space="preserve">
+    <value>sin límite</value>
+  </data>
+  <data name="Insights_NoCategories" xml:space="preserve">
+    <value>No hay gastos por categoría en este periodo.</value>
+  </data>
+  <data name="NewTransaction_Title" xml:space="preserve">
+    <value>Nuevo movimiento</value>
+  </data>
+  <data name="NewTransaction_EditTitle" xml:space="preserve">
+    <value>Editar movimiento</value>
+  </data>
+  <data name="NewTransaction_NoCategory" xml:space="preserve">
+    <value>Sin categoría</value>
+  </data>
+  <data name="NewTransaction_IncomeHint" xml:space="preserve">
+    <value>Los ingresos van directo a tu saldo y suben los presupuestos 50/30/20 de este mes.</value>
+  </data>
+  <data name="NewTransaction_WithdrawHint" xml:space="preserve">
+    <value>Se toma de tus ahorros en {0} y se suma al saldo.</value>
+  </data>
+  <data name="NewTransaction_Note" xml:space="preserve">
+    <value>Añadir una nota</value>
+  </data>
+  <data name="NewTransaction_Save" xml:space="preserve">
+    <value>Guardar · {0}</value>
+  </data>
+  <data name="NewTransaction_InProfile" xml:space="preserve">
+    <value>= {0} en {1}</value>
+  </data>
+  <data name="NewTransaction_EnterProfileAmount" xml:space="preserve">
+    <value>Toca para introducir el importe en {0}</value>
+  </data>
+  <data name="NewTransaction_Rate" xml:space="preserve">
+    <value>1 {0} = {1}</value>
+  </data>
+  <data name="NewTransaction_Currency" xml:space="preserve">
+    <value>Moneda</value>
+  </data>
+  <data name="NewTransaction_Repeat" xml:space="preserve">
+    <value>Repetir</value>
+  </data>
+  <data name="NewTransaction_NoRepeat" xml:space="preserve">
+    <value>No se repite</value>
+  </data>
+  <data name="NewTransaction_Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="NewTransaction_DecimalPoint" xml:space="preserve">
+    <value>Punto decimal</value>
+  </data>
+  <data name="Settings_Subtitle" xml:space="preserve">
+    <value>Cada perfil tiene su propia moneda, presupuesto e historial.</value>
+  </data>
+  <data name="Settings_NewProfile" xml:space="preserve">
+    <value>Nuevo perfil</value>
+  </data>
+  <data name="Settings_InUse" xml:space="preserve">
+    <value>En uso</value>
+  </data>
+  <data name="Settings_Switch" xml:space="preserve">
+    <value>Cambiar</value>
+  </data>
+  <data name="Settings_ProfileLeft" xml:space="preserve">
+    <value>{0} · quedan {1}</value>
+  </data>
+  <data name="Settings_Budget" xml:space="preserve">
+    <value>Presupuesto</value>
+  </data>
+  <data name="Settings_CategoriesLimits" xml:space="preserve">
+    <value>Categorías y límites</value>
+  </data>
+  <data name="Settings_CategoriesSummary" xml:space="preserve">
+    <value>{0} · {1} al mes</value>
+  </data>
+  <data name="Settings_BudgetSplit" xml:space="preserve">
+    <value>Reparto del presupuesto</value>
+  </data>
+  <data name="Settings_BudgetSplitInfo" xml:space="preserve">
+    <value>Profitocracy reparte cada ingreso 50/30/20: la mitad para necesidades, un 30 % para deseos y un 20 % para ahorros.</value>
+  </data>
+  <data name="Settings_Appearance" xml:space="preserve">
+    <value>Apariencia</value>
+  </data>
+  <data name="Settings_Footer" xml:space="preserve">
+    <value>Todo se queda en este dispositivo. Profitocracy es de código abierto: sin cuentas ni rastreo.</value>
+  </data>
+  <data name="Categories_Subtitle" xml:space="preserve">
+    <value>Límites mensuales de {0}. Toca uno para cambiarlo.</value>
+  </data>
+  <data name="Categories_SpentThisMonth" xml:space="preserve">
+    <value>{0} gastados este mes</value>
+  </data>
+  <data name="Categories_OverSpent" xml:space="preserve">
+    <value>{0} de más · {1} gastados</value>
+  </data>
+  <data name="Categories_AMonth" xml:space="preserve">
+    <value>al mes</value>
+  </data>
+  <data name="Categories_SetOne" xml:space="preserve">
+    <value>fijar uno</value>
+  </data>
+  <data name="Categories_LimitsAddUp" xml:space="preserve">
+    <value>Los límites suman</value>
+  </data>
+  <data name="Categories_LimitsTotal" xml:space="preserve">
+    <value>{0} al mes · {1} de los ingresos</value>
+  </data>
+  <data name="Categories_LimitsTotalNoIncome" xml:space="preserve">
+    <value>{0} al mes</value>
+  </data>
+  <data name="Categories_Add" xml:space="preserve">
+    <value>Añadir una categoría</value>
+  </data>
+  <data name="Common_Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Insights_StillYours" xml:space="preserve">
+    <value>{0} de {1} de ingresos siguen siendo tuyos.</value>
+  </data>
+  <data name="Insights_BySpendingType" xml:space="preserve">
+    <value>por tipo de gasto</value>
+  </data>
+  <data name="Insights_SpentAndSaved" xml:space="preserve">
+    <value>gastado y ahorrado</value>
+  </data>
+  <data name="Insights_BarsCut" xml:space="preserve">
+    <value>Las barras que superan el doble del presupuesto se recortan.</value>
+  </data>
+  <data name="NewTransaction_Amount" xml:space="preserve">
+    <value>Importe</value>
+  </data>
 </root>

@@ -1,74 +1,382 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
-             xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
-             xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
-             xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Overview"
-             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
-             x:Class="Profitocracy.Mobile.Views.Overview.Pages.OverviewPage"
-             x:DataType="viewmodel:OverviewPageViewModel"
-             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
-             Title="{x:Static resx:AppResources.Pages_Overview}"
-             NavigatedTo="OverviewPage_OnNavigatedTo"
-             HideSoftInputOnTapped="True">
-    <abstractions:BaseContentPage.ToolbarItems>
-        <ToolbarItem Text="{x:Static resx:AppResources.Overview_Filters}"
-                     Clicked="PeriodButton_Clicked"/>
-    </abstractions:BaseContentPage.ToolbarItems>
+                              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+                              xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
+                              xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+                              xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Overview"
+                              xmlns:categories="clr-namespace:Profitocracy.Mobile.Models.Categories"
+                              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+                              xmlns:overviewcontrols="clr-namespace:Profitocracy.Mobile.Views.Overview.Controls"
+                              x:Class="Profitocracy.Mobile.Views.Overview.Pages.OverviewPage"
+                              x:DataType="viewmodel:OverviewPageViewModel"
+                              Title="{x:Static resx:AppResources.Pages_Insights}"
+                              Shell.NavBarIsVisible="False"
+                              ios:Page.UseSafeArea="True"
+                              NavigatedTo="OverviewPage_OnNavigatedTo"
+                              HideSoftInputOnTapped="True">
     <ScrollView VerticalScrollBarVisibility="Never">
-        <StackLayout Padding="8,16">
-            <Label Style="{StaticResource PageSubtitle}">
-                <Label.Text>
-                    <MultiBinding StringFormat="{}{0:d} - {1:d}">
-                        <Binding Path="DateFrom"/>
-                        <Binding Path="DateTo"/>
-                    </MultiBinding>
-                </Label.Text>
-            </Label>
+        <VerticalStackLayout Padding="16,0,16,32">
 
-            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_CategoriesExpenses}">
-                <lvc:CartesianChart Series="{Binding CategoriesExpenses}"
-                                    XAxes="{Binding CategoriesExpensesLabels}"
-                                    HeightRequest="320"
-                                    TooltipPosition="Top"/>
-            </controls:ContentSectionView>
+            <!-- Title and the covered days -->
+            <Grid ColumnDefinitions="*,auto"
+                  MinimumHeightRequest="44">
+                <Label Grid.Column="0"
+                       Style="{StaticResource TextTitleL}"
+                       VerticalTextAlignment="Center"
+                       Text="{x:Static resx:AppResources.Pages_Insights}"/>
+                <Label Grid.Column="1"
+                       Style="{StaticResource TextLabelSoft}"
+                       VerticalTextAlignment="Center"
+                       Text="{Binding DateRange}"/>
+            </Grid>
 
-            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_SpendingTypes}">
-                <lvc:PieChart Series="{Binding SpendingTypeDistribution}"
-                              HeightRequest="160"
-                              TooltipPosition="Top"/>
-            </controls:ContentSectionView>
+            <!-- Period -->
+            <Border Style="{StaticResource Card}"
+                    Margin="0,16,0,0"
+                    Padding="4">
+                <Grid ColumnDefinitions="*,*,*,*"
+                      ColumnSpacing="4">
+                    <controls:ChipView Grid.Column="0"
+                                       Text="{x:Static resx:AppResources.Insights_Week}"
+                                       IsSelected="{Binding IsWeek}"
+                                       Tapped="WeekChip_OnTapped"/>
+                    <controls:ChipView Grid.Column="1"
+                                       Text="{x:Static resx:AppResources.Insights_Month}"
+                                       IsSelected="{Binding IsMonth}"
+                                       Tapped="MonthChip_OnTapped"/>
+                    <controls:ChipView Grid.Column="2"
+                                       Text="{x:Static resx:AppResources.Insights_Year}"
+                                       IsSelected="{Binding IsYear}"
+                                       Tapped="YearChip_OnTapped"/>
+                    <controls:ChipView Grid.Column="3"
+                                       Text="{x:Static resx:AppResources.Insights_Custom}"
+                                       IsSelected="{Binding IsCustom}"
+                                       Tapped="CustomChip_OnTapped"/>
+                </Grid>
+            </Border>
 
-            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_IncomeExpense}">
-                <lvc:PieChart Series="{Binding IncomeAndExpense}"
-                              HeightRequest="160"
-                              TooltipPosition="Top"/>
-            </controls:ContentSectionView>
+            <!-- How much of the income is kept -->
+            <Border Style="{StaticResource Card}"
+                    Margin="0,12,0,0"
+                    Padding="16">
+                <VerticalStackLayout>
+                    <Label Style="{StaticResource TextLabelSoft}"
+                           Text="{x:Static resx:AppResources.Insights_KeptSoFar}"/>
+                    <Label Style="{StaticResource TextHero}"
+                           Margin="0,4,0,0"
+                           Text="{Binding KeptPercent}"/>
+                    <Label Style="{StaticResource TextBodySoft}"
+                           Margin="0,4,0,0"
+                           Text="{Binding KeptText}"/>
 
-            <controls:ContentSectionView Title="{x:Static resx:AppResources.Overview_CategoriesPlannedAndActual}">
-                <lvc:CartesianChart Series="{Binding PlannedAndActualCategoriesAmounts}"
-                                    XAxes="{Binding PlannedAndActualCategoriesAmountsLabels}"
-                                    HeightRequest="320"
-                                    TooltipPosition="Top"/>
-            </controls:ContentSectionView>
+                    <BoxView Style="{StaticResource Divider}"
+                             Margin="0,16,0,0"/>
 
-            <controls:ContentSectionView IsVisible="{Binding IsShowDailyExpenses}"
-                                         Title="{x:Static resx:AppResources.Overview_DailyExpenses}">
-                <lvc:CartesianChart Series="{Binding DailyExpenses}"
-                                    XAxes="{Binding DailyExpensesLabels}"
-                                    HeightRequest="320"
-                                    TooltipPosition="Top"/>
-            </controls:ContentSectionView>
+                    <VerticalStackLayout Margin="0,14,0,0"
+                                         Spacing="12">
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,auto">
+                                <Label Grid.Column="0"
+                                       Style="{StaticResource TextLabelSoft}"
+                                       VerticalTextAlignment="Center"
+                                       Text="{x:Static resx:AppResources.Insights_Income}"/>
+                                <Label Grid.Column="1"
+                                       Style="{StaticResource TextAmountM}"
+                                       TextColor="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource DarkMainColor}}"
+                                       Text="{Binding Income}"/>
+                            </Grid>
+                            <controls:MeterView Progress="{Binding IncomeRatio}"
+                                                TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
+                                                FillColor="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource DarkMainColor}}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,auto">
+                                <Label Grid.Column="0"
+                                       Style="{StaticResource TextLabelSoft}"
+                                       VerticalTextAlignment="Center"
+                                       Text="{x:Static resx:AppResources.Insights_Spent}"/>
+                                <Label Grid.Column="1"
+                                       Style="{StaticResource TextAmountM}"
+                                       Text="{Binding Spent}"/>
+                            </Grid>
+                            <controls:MeterView Progress="{Binding SpentRatio}"
+                                                TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
+                                                FillColor="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,auto">
+                                <Label Grid.Column="0"
+                                       Style="{StaticResource TextLabelSoft}"
+                                       VerticalTextAlignment="Center"
+                                       Text="{x:Static resx:AppResources.Insights_PutAside}"/>
+                                <Label Grid.Column="1"
+                                       Style="{StaticResource TextAmountM}"
+                                       TextColor="{AppThemeBinding Light={StaticResource SavedText}, Dark={StaticResource DarkSavedText}}"
+                                       Text="{Binding PutAside}"/>
+                            </Grid>
+                            <controls:MeterView Progress="{Binding PutAsideRatio}"
+                                                TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
+                                                FillColor="{StaticResource SavedColor}"/>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
 
-            <controls:ContentSectionView IsVisible="{Binding IsShowWeeklyExpenses}"
-                                         Title="{x:Static resx:AppResources.Overview_WeeklyExpenses}">
-                <lvc:CartesianChart Series="{Binding WeeklyExpenses}"
-                                    XAxes="{Binding WeeklyExpensesLabels}"
-                                    HeightRequest="320"
-                                    TooltipPosition="Top"/>
-            </controls:ContentSectionView>
-        </StackLayout>
+            <!-- Where it went -->
+            <Grid ColumnDefinitions="*,auto"
+                  Margin="4,24,4,0">
+                <Label Grid.Column="0"
+                       Style="{StaticResource TextTitleM}"
+                       VerticalTextAlignment="End"
+                       Text="{x:Static resx:AppResources.Insights_WhereItWent}"/>
+                <Label Grid.Column="1"
+                       Style="{StaticResource TextLabelSoft}"
+                       VerticalTextAlignment="End"
+                       Text="{x:Static resx:AppResources.Insights_BySpendingType}"/>
+            </Grid>
+            <Border Style="{StaticResource Card}"
+                    Margin="0,12,0,0"
+                    Padding="16,20,16,4">
+                <VerticalStackLayout>
+                    <Grid HorizontalOptions="Center"
+                          WidthRequest="240"
+                          HeightRequest="128">
+                        <overviewcontrols:HalfDonutView MainShare="{Binding MainShare}"
+                                                        SecondaryShare="{Binding SecondaryShare}"
+                                                        SavedShare="{Binding SavedShare}"
+                                                        MainColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"
+                                                        SecondaryColor="{StaticResource SecondaryColor}"
+                                                        SavedColor="{StaticResource SavedColor}"
+                                                        TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"/>
+                        <VerticalStackLayout VerticalOptions="End"
+                                             Margin="0,0,0,6"
+                                             Spacing="2">
+                            <Label Style="{StaticResource TextAmountL}"
+                                   TextColor="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"
+                                   HorizontalTextAlignment="Center"
+                                   Text="{Binding UsedTotal}"/>
+                            <Label Style="{StaticResource TextCaption}"
+                                   HorizontalTextAlignment="Center"
+                                   Text="{x:Static resx:AppResources.Insights_SpentAndSaved}"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <VerticalStackLayout Margin="0,16,0,0">
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <Grid ColumnDefinitions="auto,*,auto,40"
+                              ColumnSpacing="8"
+                              Padding="0,14">
+                            <Ellipse Grid.Column="0"
+                                     Style="{StaticResource SpendingDot}"
+                                     Fill="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"/>
+                            <Label Grid.Column="1"
+                                   Style="{StaticResource TextBodyStrong}"
+                                   VerticalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static resx:AppResources.Home_Main}"/>
+                                        <Span Text=" · "
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                        <Span Text="{x:Static resx:AppResources.Common_NeedsWord}"
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Grid.Column="2"
+                                   Style="{StaticResource TextAmountM}"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding MainAmount}"/>
+                            <Label Grid.Column="3"
+                                   Style="{StaticResource TextLabelSoft}"
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding MainPercent}"/>
+                        </Grid>
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <Grid ColumnDefinitions="auto,*,auto,40"
+                              ColumnSpacing="8"
+                              Padding="0,14">
+                            <Ellipse Grid.Column="0"
+                                     Style="{StaticResource SpendingDot}"
+                                     Fill="{StaticResource SecondaryColor}"/>
+                            <Label Grid.Column="1"
+                                   Style="{StaticResource TextBodyStrong}"
+                                   VerticalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static resx:AppResources.Home_Secondary}"/>
+                                        <Span Text=" · "
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                        <Span Text="{x:Static resx:AppResources.Common_WantsWord}"
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Grid.Column="2"
+                                   Style="{StaticResource TextAmountM}"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding SecondaryAmount}"/>
+                            <Label Grid.Column="3"
+                                   Style="{StaticResource TextLabelSoft}"
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding SecondaryPercent}"/>
+                        </Grid>
+                        <BoxView Style="{StaticResource Divider}"/>
+                        <Grid ColumnDefinitions="auto,*,auto,40"
+                              ColumnSpacing="8"
+                              Padding="0,14">
+                            <Ellipse Grid.Column="0"
+                                     Style="{StaticResource SpendingDot}"
+                                     Fill="{StaticResource SavedColor}"/>
+                            <Label Grid.Column="1"
+                                   Style="{StaticResource TextBodyStrong}"
+                                   VerticalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static resx:AppResources.Home_Saved}"/>
+                                        <Span Text=" · "
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                        <Span Text="{x:Static resx:AppResources.Common_SavingsWord}"
+                                              FontFamily="SansRegular"
+                                              TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Grid.Column="2"
+                                   Style="{StaticResource TextAmountM}"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding SavedAmount}"/>
+                            <Label Grid.Column="3"
+                                   Style="{StaticResource TextLabelSoft}"
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding SavedPercent}"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Day by day -->
+            <Grid ColumnDefinitions="*,auto"
+                  Margin="4,24,4,0">
+                <Label Grid.Column="0"
+                       Style="{StaticResource TextTitleM}"
+                       VerticalTextAlignment="End"
+                       Text="{Binding BarsTitle}"/>
+                <Label Grid.Column="1"
+                       Style="{StaticResource TextLabelSoft}"
+                       VerticalTextAlignment="End"
+                       Text="{x:Static resx:AppResources.Insights_SavingsNotCounted}"/>
+            </Grid>
+            <Border Style="{StaticResource Card}"
+                    Margin="0,12,0,0"
+                    Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <overviewcontrols:SpendingBarsView Bars="{Binding Bars}"
+                                                       Average="{Binding BarsAverage}"
+                                                       AverageText="{Binding BarsAverageText}"
+                                                       NoteText="{Binding BarsNote}"
+                                                       BarColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"
+                                                       OverColor="{StaticResource OverLimit}"
+                                                       NoteColor="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"
+                                                       EmptyColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
+                                                       TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"
+                                                       SurfaceColor="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}"/>
+                    <Label Style="{StaticResource TextCaption}"
+                           IsVisible="{Binding HasClippedBars}"
+                           Text="{x:Static resx:AppResources.Insights_BarsCut}"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Against your limits -->
+            <Grid ColumnDefinitions="*,auto"
+                  Margin="4,24,4,0">
+                <Label Grid.Column="0"
+                       Style="{StaticResource TextTitleM}"
+                       VerticalTextAlignment="End"
+                       Text="{x:Static resx:AppResources.Insights_AgainstLimits}"/>
+                <HorizontalStackLayout Grid.Column="1"
+                                       Spacing="6"
+                                       VerticalOptions="End">
+                    <BoxView WidthRequest="2"
+                             HeightRequest="12"
+                             VerticalOptions="Center"
+                             BackgroundColor="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+                    <Label Style="{StaticResource TextLabelSoft}"
+                           Text="{x:Static resx:AppResources.Insights_Limit}"/>
+                </HorizontalStackLayout>
+            </Grid>
+            <Border Style="{StaticResource Card}"
+                    Margin="0,12,0,0"
+                    IsVisible="{Binding HasLimits}">
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Limits}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="categories:CategoryLimitModel">
+                            <VerticalStackLayout>
+                                <controls:ListDivider/>
+                                <VerticalStackLayout Padding="16,14"
+                                                     Spacing="8">
+                                    <Grid ColumnDefinitions="*,auto"
+                                          ColumnSpacing="8">
+                                        <Label Grid.Column="0"
+                                               Style="{StaticResource TextBodyStrong}"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="End"
+                                               Text="{Binding Name}"/>
+                                        <HorizontalStackLayout Grid.Column="1"
+                                                               Spacing="4">
+                                            <Label Style="{StaticResource TextAmountM}"
+                                                   VerticalTextAlignment="End"
+                                                   Text="{Binding Actual}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label"
+                                                                 Binding="{Binding IsOver}"
+                                                                 Value="True">
+                                                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"/>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                            <Label Style="{StaticResource TextCaption}"
+                                                   VerticalTextAlignment="End"
+                                                   Margin="0,0,0,1"
+                                                   Text="{Binding Limit}"/>
+                                        </HorizontalStackLayout>
+                                    </Grid>
+                                    <controls:MeterView Progress="{Binding Progress}"
+                                                        Mark="{Binding Mark}"
+                                                        FillColor="{AppThemeBinding Light={StaticResource MainColor}, Dark={StaticResource DarkMainColor}}"
+                                                        TrackColor="{AppThemeBinding Light={StaticResource Line}, Dark={StaticResource DarkLine}}"
+                                                        MarkColor="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}">
+                                        <controls:MeterView.Triggers>
+                                            <DataTrigger TargetType="controls:MeterView"
+                                                         Binding="{Binding IsOver}"
+                                                         Value="True">
+                                                <Setter Property="FillColor" Value="{StaticResource OverLimit}"/>
+                                                <Setter Property="TrackColor" Value="{AppThemeBinding Light={StaticResource OverTint}, Dark={StaticResource DarkOverTint}}"/>
+                                            </DataTrigger>
+                                        </controls:MeterView.Triggers>
+                                    </controls:MeterView>
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </Border>
+            <Label Style="{StaticResource TextBodySoft}"
+                   Margin="4,12,4,0"
+                   IsVisible="{Binding HasNoLimits}"
+                   Text="{x:Static resx:AppResources.Insights_NoCategories}"/>
+        </VerticalStackLayout>
     </ScrollView>
 </abstractions:BaseContentPage>

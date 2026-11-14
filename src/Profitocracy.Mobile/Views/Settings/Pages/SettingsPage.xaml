@@ -2,68 +2,256 @@
 
 <abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                               xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
                               xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
+                              xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Settings"
+                              xmlns:profiles="clr-namespace:Profitocracy.Mobile.Models.Profiles"
                               xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Settings.Controls"
+                              xmlns:sharedcontrols="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
                               x:Class="Profitocracy.Mobile.Views.Settings.Pages.SettingsPage"
+                              x:DataType="viewmodel:SettingsPageViewModel"
                               Title="{x:Static resx:AppResources.Pages_Settings}"
-                              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+                              Shell.NavBarIsVisible="False"
+                              ios:Page.UseSafeArea="True"
+                              NavigatedTo="SettingsPage_OnNavigatedTo"
                               HideSoftInputOnTapped="True">
-    <ScrollView Padding="16"
-                VerticalScrollBarVisibility="Never">
-        <StackLayout>
-            <Label Text="{x:Static resx:AppResources.Settings_Application}"
-                   Style="{StaticResource SettingsGroupTitle}"
-                   Margin="0,0,0,0"/>
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Profiles}"
-                                       Clicked="ProfilesButton_OnClicked"
-                                       Margin="0,8,0,0"/>
+    <abstractions:BaseContentPage.Resources>
+        <!-- Currency tile of a profile -->
+        <Style TargetType="Label" x:Key="CurrencyTileText">
+            <Setter Property="FontFamily" Value="SansBold"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+        </Style>
+    </abstractions:BaseContentPage.Resources>
 
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Categories}"
-                                       Clicked="CategoriesButton_OnClicked"
-                                       Margin="0,8,0,0"/>
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_ImportExport}"
-                                       Clicked="ImportExportButton_OnClicked"
-                                       Margin="0,8,0,0"/>
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout Padding="16,0,16,32">
 
-            <Label Text="{x:Static resx:AppResources.Settings_General}"
-                   Style="{StaticResource SettingsGroupTitle}"
-                   Margin="0,16,0,0"/>
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Authentication}"
-                                       Clicked="AuthenticationButton_OnClicked"
-                                       Margin="0,8,0,0"/>
+            <Label Style="{StaticResource TextTitleL}"
+                   MinimumHeightRequest="44"
+                   VerticalTextAlignment="Center"
+                   Text="{x:Static resx:AppResources.Pages_Settings}"/>
+            <Label Style="{StaticResource TextBodySoft}"
+                   Margin="0,8,0,0"
+                   Text="{x:Static resx:AppResources.Settings_Subtitle}"/>
 
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Notifications}"
-                                       Clicked="NotificationsButton_OnClicked"
-                                       Margin="0,8,0,0"/>
+            <!-- Profiles -->
+            <Grid ColumnDefinitions="*,auto"
+                  Margin="4,24,4,0">
+                <Label Grid.Column="0"
+                       Style="{StaticResource TextTitleM}"
+                       VerticalTextAlignment="Center"
+                       Text="{x:Static resx:AppResources.Settings_Profiles}"/>
+                <Label Grid.Column="1"
+                       Style="{StaticResource LinkLabel}"
+                       Padding="8,0"
+                       Margin="0,0,-8,0"
+                       Text="{x:Static resx:AppResources.Settings_NewProfile}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddProfileButton_OnTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
 
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Theme}"
-                                       Clicked="ThemeButton_OnClicked"
-                                       Margin="0,8,0,0"/>
+            <!-- Profiles: the one in use first, then the others -->
+            <Border Style="{StaticResource Card}"
+                    Margin="0,4,0,0">
+                <VerticalStackLayout>
+                    <Grid ColumnDefinitions="auto,*,auto"
+                          ColumnSpacing="12"
+                          Padding="16,14,8,14"
+                          MinimumHeightRequest="44">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CurrentProfile_OnTapped"/>
+                        </Grid.GestureRecognizers>
+                        <Border Grid.Column="0"
+                                Style="{StaticResource IconTile}"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource MainTint}, Dark={StaticResource DarkMainTint}}">
+                            <Label Style="{StaticResource CurrencyTileText}"
+                                   TextColor="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource DarkMainColor}}"
+                                   Text="{Binding CurrentProfile.CurrencyBadge, FallbackValue=''}">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding CurrentProfile.IsCodeBadge, FallbackValue=False}"
+                                                 Value="True">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1"
+                                             Spacing="4"
+                                             VerticalOptions="Center">
+                            <Label Style="{StaticResource TextBodyStrong}"
+                                   LineBreakMode="TailTruncation"
+                                   Text="{Binding CurrentProfile.Name, FallbackValue=''}"/>
+                            <Label Style="{StaticResource TextCaption}"
+                                   LineBreakMode="TailTruncation"
+                                   Text="{Binding CurrentProfile.Detail, FallbackValue=''}"/>
+                        </VerticalStackLayout>
+                        <HorizontalStackLayout Grid.Column="2"
+                                               Spacing="4"
+                                               Padding="8,0">
+                            <sharedcontrols:IconView Data="{x:Static sharedcontrols:Icons.Check}"
+                                                     Size="18"
+                                                     StrokeWidth="2"
+                                                     VerticalOptions="Center"
+                                                     Color="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource Chartreuse}}"/>
+                            <Label Style="{StaticResource TextLabel}"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource Chartreuse}}"
+                                   Text="{x:Static resx:AppResources.Settings_InUse}"/>
+                        </HorizontalStackLayout>
+                    </Grid>
 
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Language}"
-                                       Clicked="LanguageButton_OnClicked"
-                                       Margin="0,8,0,0"/>
-
-            <Label Text="{x:Static resx:AppResources.Settings_AboutApplication}"
-                   Style="{StaticResource SettingsGroupTitle}"
-                   Margin="0,16,0,0"/>
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_GitHub}"
-                                       Clicked="GitHubButton_OnClicked"
-                                       Margin="0,8,0,0"/>
-            <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_RateTheApp}"
-                                       Clicked="RateAppButton_OnClicked"
-                                       Margin="0,8,0,0"/>
-
-            <Border Style="{StaticResource SettingsButton}"
-                    Margin="0,8,0,0" >
-                <FlexLayout JustifyContent="SpaceBetween">
-                    <Label Style="{StaticResource SettingsButtonText}"
-                           Text="{x:Static resx:AppResources.Settings_Version}" />
-                    <Label Style="{StaticResource DisabledSettingsButtonText}"
-                           x:Name="VersionLabel"/>
-                </FlexLayout>
+                    <VerticalStackLayout BindableLayout.ItemsSource="{Binding OtherProfiles}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="profiles:ProfileModel">
+                                <VerticalStackLayout>
+                                    <BoxView Style="{StaticResource Divider}"/>
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItemView Invoked="EditProfile_OnInvoked">
+                                                    <Grid WidthRequest="64"
+                                                          BackgroundColor="{StaticResource InfoBlue}">
+                                                        <sharedcontrols:IconView Data="{x:Static sharedcontrols:Icons.Pencil}"
+                                                                                 HorizontalOptions="Center"
+                                                                                 VerticalOptions="Center"
+                                                                                 Color="{StaticResource White}"/>
+                                                    </Grid>
+                                                </SwipeItemView>
+                                                <SwipeItemView Invoked="DeleteProfile_OnInvoked">
+                                                    <Grid WidthRequest="64"
+                                                          BackgroundColor="{StaticResource OverLimit}">
+                                                        <sharedcontrols:IconView Data="{x:Static sharedcontrols:Icons.Trash}"
+                                                                                 HorizontalOptions="Center"
+                                                                                 VerticalOptions="Center"
+                                                                                 Color="{StaticResource White}"/>
+                                                    </Grid>
+                                                </SwipeItemView>
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+                                        <Grid ColumnDefinitions="auto,*,auto"
+                                              ColumnSpacing="12"
+                                              Padding="16,14,8,14"
+                                              BackgroundColor="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}">
+                                            <Border Grid.Column="0"
+                                                    Style="{StaticResource IconTile}">
+                                                <Label Style="{StaticResource CurrencyTileText}"
+                                                       Text="{Binding CurrencyBadge}">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label"
+                                                                     Binding="{Binding IsCodeBadge}"
+                                                                     Value="True">
+                                                            <Setter Property="FontSize" Value="12"/>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </Border>
+                                            <VerticalStackLayout Grid.Column="1"
+                                                                 Spacing="4"
+                                                                 VerticalOptions="Center">
+                                                <Label Style="{StaticResource TextBodyStrong}"
+                                                       LineBreakMode="TailTruncation"
+                                                       Text="{Binding Name}"/>
+                                                <Label Style="{StaticResource TextCaption}"
+                                                       LineBreakMode="TailTruncation"
+                                                       Text="{Binding Detail}"/>
+                                            </VerticalStackLayout>
+                                            <Label Grid.Column="2"
+                                                   Style="{StaticResource LinkLabel}"
+                                                   Padding="8,0"
+                                                   Text="{x:Static resx:AppResources.Settings_Switch}">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="SwitchProfile_OnTapped"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </Grid>
+                                    </SwipeView>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
             </Border>
-        </StackLayout>
+
+            <!-- Budget -->
+            <Label Style="{StaticResource TextTitleM}"
+                   Margin="4,24,4,0"
+                   Text="{x:Static resx:AppResources.Settings_Budget}"/>
+            <Border Style="{StaticResource Card}"
+                    Margin="0,12,0,0">
+                <VerticalStackLayout>
+                    <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_CategoriesLimits}"
+                                               Value="{Binding CategoriesSummary}"
+                                               Clicked="CategoriesButton_OnClicked"/>
+                    <BoxView Style="{StaticResource Divider}"/>
+                    <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_BudgetSplit}"
+                                               Value="50 / 30 / 20"
+                                               Clicked="BudgetSplitButton_OnClicked"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Application -->
+            <Label Style="{StaticResource TextTitleM}"
+                   Margin="4,24,4,0"
+                   Text="{x:Static resx:AppResources.Settings_Application}"/>
+            <Border Style="{StaticResource Card}"
+                    Margin="0,12,0,0">
+                <VerticalStackLayout>
+                    <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Authentication}"
+                                               Clicked="AuthenticationButton_OnClicked"/>
+                    <BoxView Style="{StaticResource Divider}"/>
+                    <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Notifications}"
+                                               Clicked="NotificationsButton_OnClicked"/>
+                    <BoxView Style="{StaticResource Divider}"/>
+                    <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Language}"
+                                               Clicked="LanguageButton_OnClicked"/>
+                    <BoxView Style="{StaticResource Divider}"/>
+                    <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_Appearance}"
+                                               Value="{Binding Appearance}"
+                                               Clicked="ThemeButton_OnClicked"/>
+                    <BoxView Style="{StaticResource Divider}"/>
+                    <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_ImportExport}"
+                                               Clicked="ImportExportButton_OnClicked"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- About -->
+            <Label Style="{StaticResource TextTitleM}"
+                   Margin="4,24,4,0"
+                   Text="{x:Static resx:AppResources.Settings_AboutApplication}"/>
+            <Border Style="{StaticResource Card}"
+                    Margin="0,12,0,0">
+                <VerticalStackLayout>
+                    <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_GitHub}"
+                                               Clicked="GitHubButton_OnClicked"/>
+                    <BoxView Style="{StaticResource Divider}"/>
+                    <controls:NavigationButton Title="{x:Static resx:AppResources.Settings_RateTheApp}"
+                                               Clicked="RateAppButton_OnClicked"/>
+                    <BoxView Style="{StaticResource Divider}"/>
+                    <Grid ColumnDefinitions="*,auto"
+                          Padding="16,14"
+                          MinimumHeightRequest="48">
+                        <Label Grid.Column="0"
+                               Style="{StaticResource TextBodyStrong}"
+                               VerticalTextAlignment="Center"
+                               Text="{x:Static resx:AppResources.Settings_Version}" />
+                        <Label Grid.Column="1"
+                               Style="{StaticResource TextLabelSoft}"
+                               VerticalTextAlignment="Center"
+                               x:Name="VersionLabel"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Style="{StaticResource TextLabelSoft}"
+                   Margin="4,16,4,0"
+                   Text="{x:Static resx:AppResources.Settings_Footer}"/>
+        </VerticalStackLayout>
     </ScrollView>
 </abstractions:BaseContentPage>

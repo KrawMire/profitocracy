@@ -1,5 +1,3 @@
-using LiveChartsCore;
-using LiveChartsCore.SkiaSharpView;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.ViewModels.Overview;
@@ -26,22 +24,6 @@ public partial class OverviewPage : BaseContentPage
     {
         ProcessAction(async () =>
         {
-            var currentTheme = Application.Current?.RequestedTheme;
-            if (currentTheme is not null)
-            {
-                LiveCharts.Configure(settings =>
-                {
-                    if (currentTheme == AppTheme.Dark)
-                    {
-                        settings.AddDarkTheme();
-                    }
-                    else
-                    {
-                        settings.AddLightTheme();
-                    }
-                });
-            }
-
             if (_filtersViewModel.IsApplied)
             {
                 _lastAppliedFiltersViewModel = _filtersViewModel;
@@ -51,7 +33,13 @@ public partial class OverviewPage : BaseContentPage
         });
     }
 
-    private void PeriodButton_Clicked(object? sender, EventArgs e)
+    private void WeekChip_OnTapped(object? sender, EventArgs e) => ChangePeriod(InsightsPeriod.Week);
+
+    private void MonthChip_OnTapped(object? sender, EventArgs e) => ChangePeriod(InsightsPeriod.Month);
+
+    private void YearChip_OnTapped(object? sender, EventArgs e) => ChangePeriod(InsightsPeriod.Year);
+
+    private void CustomChip_OnTapped(object? sender, EventArgs e)
     {
         ProcessAction(async () =>
         {
@@ -62,6 +50,18 @@ public partial class OverviewPage : BaseContentPage
             _filtersViewModel.CopyFrom(_lastAppliedFiltersViewModel);
             var filtersPage = new OverviewFiltersPage(_filtersViewModel);
             await Navigation.PushModalAsync(filtersPage);
+        });
+    }
+
+    private void ChangePeriod(InsightsPeriod period)
+    {
+        ProcessAction(async () =>
+        {
+            // A preset period replaces the custom one
+            _filtersViewModel.Reset();
+            _lastAppliedFiltersViewModel.Reset();
+
+            await _viewModel.ChangePeriod(period);
         });
     }
 }

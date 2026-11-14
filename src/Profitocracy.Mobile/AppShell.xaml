@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:Profitocracy.Mobile"
        xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
        xmlns:homepages="clr-namespace:Profitocracy.Mobile.Views.Home.Pages"
        xmlns:transactionpages="clr-namespace:Profitocracy.Mobile.Views.Transactions.Pages"
@@ -10,19 +11,29 @@
        Loaded="AppShell_OnLoaded">
     <TabBar>
         <Tab Title="{x:Static resx:AppResources.Pages_Home}" Icon="home.png">
-            <ShellContent ContentTemplate="{DataTemplate homepages:HomePage}"/>
+            <ShellContent Route="HomePage"
+                          ContentTemplate="{DataTemplate homepages:HomePage}"/>
         </Tab>
-        <Tab Title="{x:Static resx:AppResources.Pages_Transactions}" Icon="transactions.png">
-            <ShellContent Title="{x:Static resx:AppResources.Pages_Transactions_All}"
+        <Tab Title="{x:Static resx:AppResources.Pages_Activity}" Icon="transactions.png">
+            <ShellContent Route="TransactionsPage"
+                          Title="{x:Static resx:AppResources.Pages_Transactions_All}"
                           ContentTemplate="{DataTemplate transactionpages:TransactionsPage}"/>
-            <ShellContent Title="{x:Static resx:AppResources.Pages_Transactions_Recurring}"
-                          ContentTemplate="{DataTemplate transactionpages:RecurringTransactionsPage}"/>
         </Tab>
-        <Tab Title="{x:Static resx:AppResources.Pages_Overview}" Icon="chart.png">
-            <ShellContent ContentTemplate="{DataTemplate overviewpages:OverviewPage}"/>
+        <!-- Not a real page: selecting it opens the new transaction sheet, see AppShell.OnNavigating -->
+        <Tab Route="{x:Static local:AppShell.AddTransactionRoute}"
+             Title=""
+             Icon="add_transaction.png">
+            <ShellContent>
+                <ContentPage/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="{x:Static resx:AppResources.Pages_Insights}" Icon="chart.png">
+            <ShellContent Route="OverviewPage"
+                          ContentTemplate="{DataTemplate overviewpages:OverviewPage}"/>
         </Tab>
         <Tab Title="{x:Static resx:AppResources.Pages_Settings}" Icon="settings.png">
-            <ShellContent ContentTemplate="{DataTemplate settingspages:SettingsPage}"/>
+            <ShellContent Route="SettingsPage"
+                          ContentTemplate="{DataTemplate settingspages:SettingsPage}"/>
         </Tab>
     </TabBar>
 </Shell>

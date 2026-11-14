@@ -11,6 +11,12 @@ public partial class App : Application
     {
         InitializeComponent();
 
+        // Pages shrink above the keyboard instead of sliding under it,
+        // so the save button of the transaction sheet stays above the number pad
+        Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.Application.UseWindowSoftInputModeAdjust(
+            Current!.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>(),
+            Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.WindowSoftInputModeAdjust.Resize);
+
         _appInit = appInit;
         _serviceProvider = serviceProvider;
     }

@@ -27,7 +27,17 @@
                                                 CloseClicked="CloseButton_OnClicked"/>
             </StackLayout>
             
-            <CollectionView Grid.Row="1" x:Name="TransactionsCollectionView">
+            <CollectionView Grid.Row="1"
+                            x:Name="TransactionsCollectionView"
+                            Margin="16,0">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="8"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.Footer>
+                    <Grid HeightRequest="24"
+                          BackgroundColor="Transparent"/>
+                </CollectionView.Footer>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="transactions:TransactionModel">
                         <controls:TransactionView Transaction="{Binding}"/>

@@ -3,20 +3,35 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Settings.Controls"
-             x:Class="Profitocracy.Mobile.Views.Settings.Controls.NavigationButton"
-             x:DataType="controls:NavigationButton">
-    <Border Style="{StaticResource SettingsButton}">
-        <Border.GestureRecognizers>
+             xmlns:sharedcontrols="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             x:Class="Profitocracy.Mobile.Views.Settings.Controls.NavigationButton">
+    <!-- A row inside a grouped settings card: title, optional value and a chevron -->
+    <Grid x:Name="Root"
+          x:DataType="controls:NavigationButton"
+          ColumnDefinitions="*,auto,auto"
+          ColumnSpacing="4"
+          Padding="16,14"
+          MinimumHeightRequest="48"
+          BackgroundColor="Transparent">
+        <Grid.GestureRecognizers>
             <TapGestureRecognizer Tapped="InternalNavigationButton_OnClicked"/>
-        </Border.GestureRecognizers>
-        <FlexLayout JustifyContent="SpaceBetween">
-            <Label Style="{StaticResource SettingsButtonText}"
-                   VerticalTextAlignment="Center"
-                   Text="{Binding Title}" />
-            <Label Style="{StaticResource SettingsButtonText}"
-                   VerticalTextAlignment="Center"
-                   Text="&#xf125;" 
-                   FontFamily="{OnPlatform iOS=Ionicons, Android=Ionicons.ttf#}"/>
-        </FlexLayout>
-    </Border>
+        </Grid.GestureRecognizers>
+        <Label Grid.Column="0"
+               Style="{StaticResource TextBodyStrong}"
+               VerticalTextAlignment="Center"
+               Text="{Binding Title}" />
+        <ContentView Grid.Column="1"
+                     VerticalOptions="Center"
+                     Content="{Binding Accessory}"/>
+        <Label Grid.Column="1"
+               Style="{StaticResource TextLabelSoft}"
+               VerticalTextAlignment="Center"
+               IsVisible="{Binding HasValue}"
+               Text="{Binding Value}"/>
+        <sharedcontrols:IconView Grid.Column="2"
+                                 Data="{x:Static sharedcontrols:Icons.ChevronRight}"
+                                 Size="18"
+                                 VerticalOptions="Center"
+                                 Color="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+    </Grid>
 </ContentView>

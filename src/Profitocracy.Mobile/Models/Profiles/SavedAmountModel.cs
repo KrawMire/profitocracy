@@ -1,5 +1,6 @@
 using Profitocracy.Core.Domain.Model.Shared.ValueObjects;
 using Profitocracy.Mobile.Services.Static;
+using Profitocracy.Mobile.Utils;
 
 namespace Profitocracy.Mobile.Models.Profiles;
 
@@ -12,8 +13,8 @@ public class SavedAmountModel
     {
         return new SavedAmountModel
         {
-            CurrencyName = CurrencyService.CurrencyNames[savedAmount.Key.Code],
-            Amount = $"{savedAmount.Key.Symbol}{savedAmount.Value}",
+            CurrencyName = CurrencyService.CurrencyNames.GetValueOrDefault(savedAmount.Key.Code, savedAmount.Key.Code),
+            Amount = NumberUtils.FormatMoney(savedAmount.Value, savedAmount.Key.Symbol),
         };
     }
 }

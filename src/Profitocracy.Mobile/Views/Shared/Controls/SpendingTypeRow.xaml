@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             x:Class="Profitocracy.Mobile.Views.Shared.Controls.SpendingTypeRow">
+    <!-- One of the 50 / 30 / 20 rows: dot, name, spent amount, budget and a meter -->
+    <VerticalStackLayout x:Name="Root"
+                         x:DataType="controls:SpendingTypeRow"
+                         Padding="16,14"
+                         BackgroundColor="Transparent">
+        <VerticalStackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Root_OnTapped"/>
+        </VerticalStackLayout.GestureRecognizers>
+        <Grid ColumnDefinitions="auto,*,auto"
+              ColumnSpacing="8">
+            <Ellipse Grid.Column="0"
+                     Style="{StaticResource SpendingDot}"
+                     Fill="{Binding DotColor}"/>
+            <Label Grid.Column="1"
+                   Style="{StaticResource TextBodyStrong}"
+                   VerticalTextAlignment="Center"
+                   Text="{Binding Title}"/>
+            <Label Grid.Column="2"
+                   Style="{StaticResource TextAmountM}"
+                   VerticalTextAlignment="Center"
+                   Text="{Binding Amount}"/>
+        </Grid>
+        <Grid ColumnDefinitions="*,auto"
+              ColumnSpacing="8"
+              Margin="16,4,0,0">
+            <Label Grid.Column="0"
+                   Style="{StaticResource TextCaption}"
+                   LineBreakMode="TailTruncation"
+                   Text="{Binding Detail}"/>
+            <Label Grid.Column="1"
+                   Style="{StaticResource TextCaption}"
+                   Text="{Binding Remaining}"/>
+        </Grid>
+        <controls:MeterView Margin="16,8,0,0"
+                            Progress="{Binding Progress}"
+                            FillColor="{Binding DotColor}"
+                            TrackColor="{Binding TintColor}"/>
+    </VerticalStackLayout>
+</ContentView>

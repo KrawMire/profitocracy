@@ -45,11 +45,42 @@ public static class NumberUtils
     /// <param name="currencySymbol">The symbol of the currency to prepend to the formatted number. If null, the default currency symbol is used.</param>
     /// <returns>A string representation of the rounded number prefixed with the currency symbol.</returns>
     public static string RoundDecimalMoney(decimal? num, string? currencySymbol)
+        => FormatMoney(num ?? 0, currencySymbol);
+
+    /// <summary>
+    /// Formats money the way the design shows it: currency symbol, group
+    /// separators, fixed decimals and a typographic minus, e.g. "−€1,474.67".
+    /// </summary>
+    /// <param name="num">The amount to format.</param>
+    /// <param name="currencySymbol">The symbol of the currency. If null, the default currency symbol is used.</param>
+    /// <param name="showPlus">Whether a positive amount gets an explicit "+" sign.</param>
+    /// <param name="decimals">Number of decimal places.</param>
+    /// <returns>Formatted amount of money.</returns>
+    public static string FormatMoney(decimal num, string? currencySymbol, bool showPlus = false, int decimals = 2)
     {
         currencySymbol ??= Currency.AvailableCurrencies.DefaultCurrency.Symbol;
 
-        return $"{currencySymbol}{RoundDecimal(num)}";
+        var rounded = Math.Round(num, decimals);
+        var absolute = Math.Abs(rounded).ToString($"N{decimals}", CultureInfo.CurrentCulture);
+        var sign = rounded switch
+        {
+            < 0 => "\u2212",
+            > 0 when showPlus => "+",
+            _ => string.Empty
+        };
+
+        return $"{sign}{currencySymbol}{absolute}";
     }
+
+    /// <summary>
+    /// Formats money without decimals when the amount is whole, e.g. "€1,000" but "€9.99".
+    /// Used for limits and budgets, which are usually round numbers.
+    /// </summary>
+    /// <param name="num">The amount to format.</param>
+    /// <param name="currencySymbol">The symbol of the currency.</param>
+    /// <returns>Formatted amount of money.</returns>
+    public static string FormatMoneyCompact(decimal num, string? currencySymbol)
+        => FormatMoney(num, currencySymbol, decimals: num == Math.Round(num) ? 0 : 2);
 
     /// <summary>
     /// Get ratio between two decimal numbers.

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+             x:Class="Profitocracy.Mobile.Views.Shared.Controls.SpendingTypeEmptyRow">
+    <!-- A 50 / 30 / 20 row of a period without income: there is nothing to show yet -->
+    <Grid x:Name="Root"
+          x:DataType="controls:SpendingTypeEmptyRow"
+          ColumnDefinitions="*,auto"
+          Padding="16,14">
+        <VerticalStackLayout Grid.Column="0"
+                             Spacing="4">
+            <HorizontalStackLayout Spacing="8">
+                <Ellipse Style="{StaticResource SpendingDot}"
+                         Fill="{Binding DotColor}"/>
+                <Label Style="{StaticResource TextBodyStrong}"
+                       Text="{Binding Title}"/>
+            </HorizontalStackLayout>
+            <Label Style="{StaticResource TextCaption}"
+                   Margin="16,0,0,0"
+                   Text="{Binding Word}"/>
+        </VerticalStackLayout>
+        <Label Grid.Column="1"
+               Style="{StaticResource TextAmountM}"
+               TextColor="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"
+               VerticalTextAlignment="Center"
+               Text="—"/>
+    </Grid>
+</ContentView>

@@ -62,31 +62,42 @@
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             
-                            <StackLayout Margin="8,8,8,0">
+                            <StackLayout Margin="16,8,16,0">
                                 <Border Style="{StaticResource CurrentProfileCard}"
                                         IsVisible="{Binding IsCurrent}">
-                                    <StackLayout>
-                                        <FlexLayout JustifyContent="SpaceBetween">
-                                            <Label Style="{StaticResource CurrentProfileCardName}"
-                                                   Text="{Binding Name}"/>
-                                            <Label Style="{StaticResource CurrentProfileCardName}"
+                                    <Grid ColumnDefinitions="auto,*"
+                                          ColumnSpacing="16">
+                                        <Border Grid.Column="0"
+                                                Style="{StaticResource CurrentCurrencyBadge}">
+                                            <Label Style="{StaticResource CurrencyBadgeText}"
+                                                   TextColor="{StaticResource Ink}"
                                                    Text="{Binding CurrencySymbol}"/>
-                                        </FlexLayout>
-                                    </StackLayout>
-                                </Border> 
+                                        </Border>
+                                        <Label Grid.Column="1"
+                                               Style="{StaticResource CurrentProfileCardName}"
+                                               VerticalTextAlignment="Center"
+                                               LineBreakMode="TailTruncation"
+                                               Text="{Binding Name}"/>
+                                    </Grid>
+                                </Border>
                                 <Border Style="{StaticResource ProfileCard}"
                                         IsVisible="{Binding IsNotCurrent}">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ProfileCard_OnTapped"/>
                                     </Border.GestureRecognizers>
-                                    <StackLayout>
-                                        <FlexLayout JustifyContent="SpaceBetween">
-                                            <Label Style="{StaticResource CategoryCardName}"
-                                                   Text="{Binding Name}"/>
-                                            <Label Style="{StaticResource CategoryCardPlannedAmount}"
+                                    <Grid ColumnDefinitions="auto,*"
+                                          ColumnSpacing="16">
+                                        <Border Grid.Column="0"
+                                                Style="{StaticResource CurrencyBadge}">
+                                            <Label Style="{StaticResource CurrencyBadgeText}"
                                                    Text="{Binding CurrencySymbol}"/>
-                                        </FlexLayout>
-                                    </StackLayout>
+                                        </Border>
+                                        <Label Grid.Column="1"
+                                               Style="{StaticResource CategoryCardName}"
+                                               VerticalTextAlignment="Center"
+                                               LineBreakMode="TailTruncation"
+                                               Text="{Binding Name}"/>
+                                    </Grid>
                                 </Border>
                             </StackLayout>
                         </SwipeView>

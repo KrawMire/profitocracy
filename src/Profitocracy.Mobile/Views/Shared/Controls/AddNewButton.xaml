@@ -5,19 +5,21 @@
              x:Class="Profitocracy.Mobile.Views.Shared.Controls.AddNewButton"
              WidthRequest="60"
              HeightRequest="60">
-    <Button BackgroundColor="{StaticResource Primary}"
+    <Button BackgroundColor="{StaticResource Chartreuse}"
             WidthRequest="60"
             HeightRequest="60"
             CornerRadius="30"
+            Padding="0"
             ImageSource="{FontImage &#xf217;,
                 FontFamily={OnPlatform iOS=Ionicons, Android=Ionicons.ttf#},
+                Color={StaticResource Ink},
                 Size=24}"
             Clicked="InternalAddNewButton_OnClicked">
         <Button.Shadow>
-            <Shadow Brush="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray950}}"
-                    Offset="0,8"
-                    Radius="16"
-                    Opacity="0.9" />
+            <Shadow Brush="{StaticResource Ink}"
+                    Offset="0,6"
+                    Radius="14"
+                    Opacity="0.25" />
         </Button.Shadow>
     </Button>
 </ContentView>

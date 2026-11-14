@@ -19,7 +19,6 @@ public partial class TransactionsPage : BaseContentPage
 
         _lastAppliedFiltersViewModel = _filtersViewModel = filtersViewModel;
         BindingContext = _viewModel = viewModel;
-        TransactionsCollectionView.ItemsSource = _viewModel.Transactions;
     }
 
     private void TransactionsPage_NavigatedTo(object? sender, EventArgs e)
@@ -35,18 +34,58 @@ public partial class TransactionsPage : BaseContentPage
         });
     }
 
-    private void AddTransactionButton_OnClicked(object? sender, EventArgs e)
+    private void PreviousMonthButton_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(() => _viewModel.ShowPreviousMonth(_lastAppliedFiltersViewModel));
+    }
+
+    private void NextMonthButton_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(() => _viewModel.ShowNextMonth(_lastAppliedFiltersViewModel));
+    }
+
+    private void ResetFiltersButton_OnTapped(object? sender, TappedEventArgs e)
     {
         ProcessAction(async () =>
         {
-            var editPage = Handler?.MauiContext?.Services.GetService<EditTransactionPage>();
+            _filtersViewModel.Reset();
+            _lastAppliedFiltersViewModel.Reset();
 
-            if (editPage is null)
+            await _viewModel.Initialize(_lastAppliedFiltersViewModel);
+        });
+    }
+
+    private void AllChip_OnTapped(object? sender, EventArgs e) => _viewModel.Kind = ActivityKind.All;
+
+    private void SpentChip_OnTapped(object? sender, EventArgs e) => _viewModel.Kind = ActivityKind.Spent;
+
+    private void IncomeChip_OnTapped(object? sender, EventArgs e) => _viewModel.Kind = ActivityKind.Income;
+
+    private void SavedChip_OnTapped(object? sender, EventArgs e) => _viewModel.Kind = ActivityKind.Saved;
+
+    private void RecurringButton_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            var recurringPage = Handler?.MauiContext?.Services.GetService<RecurringTransactionsPage>();
+
+            if (recurringPage is not null)
             {
-                throw new ArgumentNullException(AppResources.CommonError_OpenEditTransactionPage);
+                await Navigation.PushAsync(recurringPage);
+            }
+        });
+    }
+
+    private void TransactionRow_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            if ((sender as BindableObject)?.BindingContext is not TransactionModel { Id: not null } transaction)
+            {
+                throw new ArgumentNullException(AppResources.CommonError_FindTransactionToEdit);
             }
 
-            await Navigation.PushModalAsync(editPage);
+            await EditTransaction(transaction);
         });
     }
 
@@ -68,7 +107,7 @@ public partial class TransactionsPage : BaseContentPage
 
             var isDelete = await DisplayAlert(
                 AppResources.Transactions_DeleteAlert_Title,
-                string.Format(AppResources.Transactions_DeleteAlert_Description, transaction.Description),
+                string.Format(AppResources.Transactions_DeleteAlert_Description, transaction.Title),
                 AppResources.Transactions_DeleteAlert_Ok,
                 AppResources.Transactions_DeleteAlert_Cancel);
 
@@ -79,49 +118,33 @@ public partial class TransactionsPage : BaseContentPage
         });
     }
 
-    private void EditTransactionSwipeItem_OnInvoked(object? sender, EventArgs e)
+    private async Task EditTransaction(TransactionModel transaction)
     {
-        ProcessAction(async () =>
+        var isTransactionInPeriod = await _viewModel.IsTransactionInProfilePeriod((Guid)transaction.Id!);
+
+        if (!isTransactionInPeriod)
         {
-            if (sender is not SwipeItemView swipeItem)
-            {
-                throw new InvalidCastException(AppResources.CommonError_InternalErrorTryAgain);
-            }
-
-            var transaction = swipeItem.BindingContext as TransactionModel;
-
-            if (transaction?.Id is null)
-            {
-                throw new ArgumentNullException(AppResources.CommonError_FindTransactionToEdit);
-            }
-
-            var isTransactionInPeriod = await _viewModel.IsTransactionInProfilePeriod((Guid)transaction.Id);
-            var isEdit = true;
-
-            if (!isTransactionInPeriod)
-            {
-                isEdit = await DisplayAlert(
-                    AppResources.Transactions_EditNotInPeriodAlert_Title,
-                    string.Format(AppResources.Transactions_EditNotInPeriodAlert_Description, transaction.Description),
-                    AppResources.Transactions_EditNotInPeriodAlert_Ok,
-                    AppResources.Transactions_EditNotInPeriodAlert_Cancel);
-            }
+            var isEdit = await DisplayAlert(
+                AppResources.Transactions_EditNotInPeriodAlert_Title,
+                string.Format(AppResources.Transactions_EditNotInPeriodAlert_Description, transaction.Title),
+                AppResources.Transactions_EditNotInPeriodAlert_Ok,
+                AppResources.Transactions_EditNotInPeriodAlert_Cancel);
 
             if (!isEdit)
             {
                 return;
             }
+        }
 
-            var editPage = Handler?.MauiContext?.Services.GetService<EditTransactionPage>();
+        var editPage = Handler?.MauiContext?.Services.GetService<EditTransactionPage>();
 
-            if (editPage is null)
-            {
-                throw new ArgumentNullException(AppResources.CommonError_OpenEditTransactionPage);
-            }
+        if (editPage is null)
+        {
+            throw new ArgumentNullException(AppResources.CommonError_OpenEditTransactionPage);
+        }
 
-            editPage.AddTransactionId((Guid)transaction.Id);
-            await Navigation.PushModalAsync(editPage);
-        });
+        editPage.AddTransactionId((Guid)transaction.Id!);
+        await Navigation.PushModalAsync(editPage);
     }
 
     private void TransactionFilters_OnClicked(object? sender, EventArgs e)

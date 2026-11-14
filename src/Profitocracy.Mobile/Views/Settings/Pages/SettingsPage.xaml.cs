@@ -1,22 +1,137 @@
 using Plugin.Maui.AppRating;
+using Profitocracy.Core.Exceptions;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Constants;
+using Profitocracy.Mobile.Models.Profiles;
+using Profitocracy.Mobile.Resources.Strings;
+using Profitocracy.Mobile.ViewModels.Settings;
 
 namespace Profitocracy.Mobile.Views.Settings.Pages;
 
 public partial class SettingsPage : BaseContentPage
 {
     private readonly IAppRating _appRating;
+    private readonly SettingsPageViewModel _viewModel;
 
-    public SettingsPage(IAppRating appRating)
+    public SettingsPage(IAppRating appRating, SettingsPageViewModel viewModel)
     {
         InitializeComponent();
         VersionLabel.Text = AppInfo.VersionString;
         _appRating = appRating;
+        BindingContext = _viewModel = viewModel;
     }
 
-    private void ProfilesButton_OnClicked(object? sender, EventArgs e)
-        => NavigateToPage<ProfilesSettingsPage>();
+    private void SettingsPage_OnNavigatedTo(object? sender, NavigatedToEventArgs e)
+    {
+        ProcessAction(_viewModel.Initialize);
+    }
+
+    private void AddProfileButton_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(() => OpenEditProfilePage(null));
+    }
+
+    private void CurrentProfile_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(() => OpenEditProfilePage(_viewModel.CurrentProfile?.Id));
+    }
+
+    private void SwitchProfile_OnTapped(object? sender, TappedEventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            if ((sender as BindableObject)?.BindingContext is not ProfileModel { Id: not null } profile)
+            {
+                throw new ArgumentNullException(AppResources.CommonError_GetProfileById);
+            }
+
+            var changeCurrentProfile = await DisplayAlert(
+                AppResources.ProfileSettings_ChangeAlert_Title,
+                string.Format(AppResources.ProfileSettings_ChangeAlert_Desription, profile.Name),
+                AppResources.ProfileSettings_ChangeAlert_Ok,
+                AppResources.ProfileSettings_ChangeAlert_Cancel);
+
+            if (changeCurrentProfile)
+            {
+                await _viewModel.SetCurrentProfile(profile.Id.Value);
+            }
+        });
+    }
+
+    private void EditProfile_OnInvoked(object? sender, EventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            if ((sender as BindableObject)?.BindingContext is not ProfileModel { Id: not null } profile)
+            {
+                throw new ArgumentNullException(AppResources.CommonError_GetProfileById);
+            }
+
+            await OpenEditProfilePage(profile.Id);
+        });
+    }
+
+    private void DeleteProfile_OnInvoked(object? sender, EventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            if ((sender as BindableObject)?.BindingContext is not ProfileModel { Id: not null } profile)
+            {
+                throw new ArgumentNullException(AppResources.CommonError_GetProfileById);
+            }
+
+            var isDelete = await DisplayAlert(
+                AppResources.ProfileSettings_DeleteAlert_Title,
+                string.Format(AppResources.ProfileSettings_DeleteAlert_Description, profile.Name),
+                AppResources.ProfileSettings_DeleteAlert_Ok,
+                AppResources.ProfileSettings_DeleteAlert_Cancel);
+
+            if (!isDelete)
+            {
+                return;
+            }
+
+            try
+            {
+                await _viewModel.DeleteProfile(profile.Id.Value);
+            }
+            catch (LastProfileDeletionException ex)
+            {
+                await DisplayAlert(
+                    AppResources.ProfileSettings_LastProfileErrorAlert_Title,
+                    string.Format(AppResources.ProfileSettings_LastProfileErrorAlert_Description, ex.ProfileName),
+                    AppResources.ProfileSettings_LastProfileErrorAlert_Ok);
+            }
+        });
+    }
+
+    private void BudgetSplitButton_OnClicked(object? sender, EventArgs e)
+    {
+        ProcessAction(async () =>
+        {
+            await DisplayAlert(
+                AppResources.Settings_BudgetSplit,
+                AppResources.Settings_BudgetSplitInfo,
+                AppResources.ErrorAlert_Ok);
+        });
+    }
+
+    private async Task OpenEditProfilePage(Guid? profileId)
+    {
+        var editPage = Handler?.MauiContext?.Services.GetService<EditProfilePage>();
+
+        if (editPage is null)
+        {
+            throw new ArgumentNullException(AppResources.CommonError_GetProfileById);
+        }
+
+        if (profileId is not null)
+        {
+            editPage.AddProfileId((Guid)profileId);
+        }
+
+        await Navigation.PushModalAsync(editPage);
+    }
 
     private void CategoriesButton_OnClicked(object? sender, EventArgs e)
         => NavigateToPage<ExpenseCategoriesSettingsPage>();

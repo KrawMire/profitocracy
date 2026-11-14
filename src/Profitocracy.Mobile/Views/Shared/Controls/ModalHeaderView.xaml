@@ -5,16 +5,25 @@
              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
              x:Class="Profitocracy.Mobile.Views.Shared.Controls.ModalHeaderView"
              x:DataType="controls:ModalHeaderView">
-    <FlexLayout JustifyContent="SpaceBetween">
-        <Label Style="{StaticResource PageTitle}"
+    <!-- Header of a sheet: close button and a centred title -->
+    <Grid ColumnDefinitions="44,*,44"
+          Margin="-8,0">
+        <Grid Grid.Column="0"
+              HeightRequest="44">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CloseButton_OnClicked"/>
+            </Grid.GestureRecognizers>
+            <controls:IconView Data="{x:Static controls:Icons.Close}"
+                               Size="22"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}"/>
+        </Grid>
+
+        <Label Grid.Column="1"
+               Style="{StaticResource TextBodyStrong}"
                Text="{Binding Title}"
+               HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"/>
-        
-        <Button Style="{StaticResource CloseButton}"
-                ImageSource="{FontImage &#xf129;,
-                    FontFamily={OnPlatform iOS=Ionicons, Android=Ionicons.ttf#},
-                    Size=12}"
-                Clicked="CloseButton_OnClicked"
-                VerticalOptions="Center"/>
-    </FlexLayout>
+    </Grid>
 </ContentView>

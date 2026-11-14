@@ -1,9 +1,12 @@
 using Profitocracy.Core.Domain.Abstractions.Services;
-using Profitocracy.Core.Domain.Model.Profiles.Entities;
+using Profitocracy.Core.Domain.Model.Profiles;
 using Profitocracy.Core.Domain.Model.Profiles.ValueObjects;
+using Profitocracy.Core.Persistence;
 using Profitocracy.Mobile.Abstractions;
 using Profitocracy.Mobile.Models.Categories;
 using Profitocracy.Mobile.Models.Profiles;
+using Profitocracy.Mobile.Models.Transactions;
+using Profitocracy.Mobile.Resources.Strings;
 using Profitocracy.Mobile.Utils;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -12,187 +15,312 @@ namespace Profitocracy.Mobile.ViewModels.Home;
 
 public class HomePageViewModel : BaseNotifyObject
 {
+    private const int RecentTransactionsCount = 3;
+
     private string _profileName = string.Empty;
+    private string _periodTitle = string.Empty;
+    private string _balanceCaption = AppResources.Home_LeftThisMonth;
+    private string _daysToGo = string.Empty;
     private string _balance = string.Empty;
-    private string _totalActualAmount = string.Empty;
-    private string _totalPlannedAmount = string.Empty;
-    private string _todayActualAmount = string.Empty;
-    private string _todayPlannedAmount = string.Empty;
-    private string _balanceForTomorrow = string.Empty;
-    private string _mainActualAmount = string.Empty;
-    private string _mainPlannedAmount = string.Empty;
-    private string _secondaryActualAmount = string.Empty;
-    private string _secondaryPlannedAmount = string.Empty;
-    private string _savedActualAmount = string.Empty;
-    private string _savedPlannedAmount = string.Empty;
+    private string _usedOfIncome = string.Empty;
+    private double _usedRatio;
+    private string _todayLeft = string.Empty;
+    private string _todayLeftOf = string.Empty;
+    private string _tomorrow = string.Empty;
+    private string _spreadHint = string.Empty;
+    private string _emptyPeriodText = string.Empty;
+    private string _recalculatingText = string.Empty;
 
-    private float _totalBalanceRatio;
-    private float _todayBalanceRatio;
-    private float _mainExpensesRatio;
-    private float _secondaryExpensesRatio;
-    private float _savedRatio;
+    private bool _hasOverLimit;
+    private string _overLimitTitle = string.Empty;
+    private string _overLimitDetail = string.Empty;
 
-    private string _profileCurrency = string.Empty;
-    private string _dateFrom = string.Empty;
-    private string _dateTo = string.Empty;
+    private string _mainSpent = string.Empty;
+    private string _mainDetail = string.Empty;
+    private string _mainRemaining = string.Empty;
+    private double _mainRatio;
+    private string _secondarySpent = string.Empty;
+    private string _secondaryDetail = string.Empty;
+    private string _secondaryRemaining = string.Empty;
+    private double _secondaryRatio;
+    private string _savedSpent = string.Empty;
+    private string _savedDetail = string.Empty;
+    private string _savedRemaining = string.Empty;
+    private double _savedRatio;
 
+    private bool _isLoaded;
+    private bool _hasIncome = true;
     private bool _isDisplayNoCategories;
+    private bool _hasRecent;
+    private bool _hasSavedAmounts;
     private bool _isRefreshing = true;
-    private bool _isShowSavedAmounts;
 
     private readonly ICalculationService _calculationService;
+    private readonly ITransactionRepository _transactionRepository;
+
+    public HomePageViewModel(
+        ICalculationService calculationService,
+        ITransactionRepository transactionRepository)
+    {
+        _calculationService = calculationService;
+        _transactionRepository = transactionRepository;
+
+        RefreshCommand = new Command(
+            execute: Refresh,
+            canExecute: () => !IsRefreshing);
+    }
 
     public Guid ProfileId { get; private set; }
+    public DateTime DateFrom { get; private set; }
+    public DateTime DateTo { get; private set; }
+
+    public ObservableCollection<CategoryExpenseModel> CategoriesExpenses { get; } = [];
+    public ObservableCollection<TransactionModel> RecentTransactions { get; } = [];
+    public ObservableCollection<SavedAmountModel> SavedAmounts { get; } = [];
+
+    /// <summary>
+    /// Category with the biggest overspend, the banner leads to it.
+    /// </summary>
+    public CategoryExpenseModel? OverLimitCategory { get; private set; }
+
+    public ICommand RefreshCommand { get; }
 
     public string ProfileName
     {
         get => _profileName;
-        set => SetProperty(ref _profileName, value);
+        private set => SetProperty(ref _profileName, value);
+    }
+
+    public string PeriodTitle
+    {
+        get => _periodTitle;
+        private set => SetProperty(ref _periodTitle, value);
+    }
+
+    public string BalanceCaption
+    {
+        get => _balanceCaption;
+        private set => SetProperty(ref _balanceCaption, value);
+    }
+
+    public string DaysToGo
+    {
+        get => _daysToGo;
+        private set => SetProperty(ref _daysToGo, value);
     }
 
     public string Balance
     {
         get => _balance;
-        set => SetProperty(ref _balance, value);
+        private set => SetProperty(ref _balance, value);
     }
 
-    public string TotalActualAmount
+    public string UsedOfIncome
     {
-        get => _totalActualAmount;
-        set => SetProperty(ref _totalActualAmount, value);
+        get => _usedOfIncome;
+        private set => SetProperty(ref _usedOfIncome, value);
     }
 
-    public string TotalPlannedAmount
+    public double UsedRatio
     {
-        get => _totalPlannedAmount;
-        set => SetProperty(ref _totalPlannedAmount, value);
+        get => _usedRatio;
+        private set => SetProperty(ref _usedRatio, value);
     }
 
-    public string TodayActualAmount
+    public string TodayLeft
     {
-        get => _todayActualAmount;
-        set => SetProperty(ref _todayActualAmount, value);
+        get => _todayLeft;
+        private set => SetProperty(ref _todayLeft, value);
     }
 
-    public string TodayPlannedAmount
+    public string TodayLeftOf
     {
-        get => _todayPlannedAmount;
-        set => SetProperty(ref _todayPlannedAmount, value);
+        get => _todayLeftOf;
+        private set => SetProperty(ref _todayLeftOf, value);
     }
 
-    public string BalanceForTomorrow
+    public string Tomorrow
     {
-        get => _balanceForTomorrow;
-        set => SetProperty(ref _balanceForTomorrow, value);
+        get => _tomorrow;
+        private set => SetProperty(ref _tomorrow, value);
     }
 
-    public string MainActualAmount
+    public string SpreadHint
     {
-        get => _mainActualAmount;
-        set => SetProperty(ref _mainActualAmount, value);
+        get => _spreadHint;
+        private set => SetProperty(ref _spreadHint, value);
     }
 
-    public string MainPlannedAmount
+    public string EmptyPeriodText
     {
-        get => _mainPlannedAmount;
-        set => SetProperty(ref _mainPlannedAmount, value);
+        get => _emptyPeriodText;
+        private set => SetProperty(ref _emptyPeriodText, value);
     }
 
-    public string SecondaryActualAmount
+    public string RecalculatingText
     {
-        get => _secondaryActualAmount;
-        set => SetProperty(ref _secondaryActualAmount, value);
+        get => _recalculatingText;
+        private set => SetProperty(ref _recalculatingText, value);
     }
 
-    public string SecondaryPlannedAmount
+    public bool HasOverLimit
     {
-        get => _secondaryPlannedAmount;
-        set => SetProperty(ref _secondaryPlannedAmount, value);
+        get => _hasOverLimit;
+        private set => SetProperty(ref _hasOverLimit, value);
     }
 
-    public string SavedActualAmount
+    public string OverLimitTitle
     {
-        get => _savedActualAmount;
-        set => SetProperty(ref _savedActualAmount, value);
+        get => _overLimitTitle;
+        private set => SetProperty(ref _overLimitTitle, value);
     }
 
-    public string SavedPlannedAmount
+    public string OverLimitDetail
     {
-        get => _savedPlannedAmount;
-        set => SetProperty(ref _savedPlannedAmount, value);
+        get => _overLimitDetail;
+        private set => SetProperty(ref _overLimitDetail, value);
     }
 
-    public float TotalBalanceRatio
+    public string MainSpent
     {
-        get => _totalBalanceRatio;
-        private set => SetProperty(ref _totalBalanceRatio, value);
+        get => _mainSpent;
+        private set => SetProperty(ref _mainSpent, value);
     }
 
-    public float TodayBalanceRatio
+    public string MainDetail
     {
-        get => _todayBalanceRatio;
-        private set => SetProperty(ref _todayBalanceRatio, value);
+        get => _mainDetail;
+        private set => SetProperty(ref _mainDetail, value);
     }
 
-    public float MainExpensesRatio
+    public string MainRemaining
     {
-        get => _mainExpensesRatio;
-        private set => SetProperty(ref _mainExpensesRatio, value);
+        get => _mainRemaining;
+        private set => SetProperty(ref _mainRemaining, value);
     }
 
-    public float SecondaryExpensesRatio
+    public double MainRatio
     {
-        get => _secondaryExpensesRatio;
-        private set => SetProperty(ref _secondaryExpensesRatio, value);
+        get => _mainRatio;
+        private set => SetProperty(ref _mainRatio, value);
     }
 
-    public float SavedRatio
+    public string SecondarySpent
+    {
+        get => _secondarySpent;
+        private set => SetProperty(ref _secondarySpent, value);
+    }
+
+    public string SecondaryDetail
+    {
+        get => _secondaryDetail;
+        private set => SetProperty(ref _secondaryDetail, value);
+    }
+
+    public string SecondaryRemaining
+    {
+        get => _secondaryRemaining;
+        private set => SetProperty(ref _secondaryRemaining, value);
+    }
+
+    public double SecondaryRatio
+    {
+        get => _secondaryRatio;
+        private set => SetProperty(ref _secondaryRatio, value);
+    }
+
+    public string SavedSpent
+    {
+        get => _savedSpent;
+        private set => SetProperty(ref _savedSpent, value);
+    }
+
+    public string SavedDetail
+    {
+        get => _savedDetail;
+        private set => SetProperty(ref _savedDetail, value);
+    }
+
+    public string SavedRemaining
+    {
+        get => _savedRemaining;
+        private set => SetProperty(ref _savedRemaining, value);
+    }
+
+    public double SavedRatio
     {
         get => _savedRatio;
         private set => SetProperty(ref _savedRatio, value);
     }
 
-    public string DateFrom
+    /// <summary>
+    /// False until the first calculation finishes, the page shows placeholders meanwhile.
+    /// </summary>
+    public bool IsLoaded
     {
-        get => _dateFrom;
-        private set => SetProperty(ref _dateFrom, value);
+        get => _isLoaded;
+        private set
+        {
+            SetProperty(ref _isLoaded, value);
+            OnPropertyChanged(nameof(IsLoading));
+            OnPropertyChanged(nameof(IsShowFilledPeriod));
+            OnPropertyChanged(nameof(IsShowEmptyPeriod));
+        }
     }
 
-    public string DateTo
+    public bool IsLoading => !IsLoaded;
+
+    /// <summary>
+    /// Whether there is any money in the period. Without it there is nothing to split.
+    /// </summary>
+    public bool HasIncome
     {
-        get => _dateTo;
-        private set => SetProperty(ref _dateTo, value);
+        get => _hasIncome;
+        private set
+        {
+            SetProperty(ref _hasIncome, value);
+            OnPropertyChanged(nameof(IsShowFilledPeriod));
+            OnPropertyChanged(nameof(IsShowEmptyPeriod));
+        }
     }
+
+    public bool IsShowFilledPeriod => IsLoaded && HasIncome;
+    public bool IsShowEmptyPeriod => IsLoaded && !HasIncome;
 
     public bool IsDisplayNoCategories
     {
         get => _isDisplayNoCategories;
-        private set => SetProperty(ref _isDisplayNoCategories, value);
+        private set
+        {
+            SetProperty(ref _isDisplayNoCategories, value);
+            OnPropertyChanged(nameof(HasCategories));
+        }
+    }
+
+    public bool HasCategories => !IsDisplayNoCategories;
+
+    public bool HasRecent
+    {
+        get => _hasRecent;
+        private set
+        {
+            SetProperty(ref _hasRecent, value);
+            OnPropertyChanged(nameof(HasNoRecent));
+        }
+    }
+
+    public bool HasNoRecent => !HasRecent;
+
+    public bool HasSavedAmounts
+    {
+        get => _hasSavedAmounts;
+        private set => SetProperty(ref _hasSavedAmounts, value);
     }
 
     public bool IsRefreshing
     {
         get => _isRefreshing;
         set => SetProperty(ref _isRefreshing, value);
-    }
-
-    public bool IsShowSavedAmounts
-    {
-        get => _isShowSavedAmounts;
-        set => SetProperty(ref _isShowSavedAmounts, value);
-    }
-
-    public ICommand RefreshCommand { get; private set; }
-
-    public readonly ObservableCollection<SavedAmountModel> SavedAmounts = [];
-    public readonly ObservableCollection<CategoryExpenseModel> CategoriesExpenses = [];
-
-    public HomePageViewModel(ICalculationService calculationService)
-    {
-        _calculationService = calculationService;
-        RefreshCommand = new Command(
-            execute: Refresh,
-            canExecute: () => !IsRefreshing);
     }
 
     private async void Refresh()
@@ -213,113 +341,174 @@ public class HomePageViewModel : BaseNotifyObject
 
         if (profile is null)
         {
+            IsRefreshing = false;
             return;
         }
 
-        _profileCurrency = profile.Settings.Currency.Symbol;
+        var currency = profile.Settings.Currency;
+        var period = profile.BillingPeriod;
+        var isMonth = DateUtils.IsCalendarMonth(period.DateFrom, period.DateTo);
 
         ProfileId = profile.Id;
+        DateFrom = period.DateFrom;
+        DateTo = period.DateTo;
+
         ProfileName = profile.Name;
-        Balance = NumberUtils.RoundDecimalMoney(profile.Balance, _profileCurrency);
-        DateFrom = profile.BillingPeriod.DateFrom.ToShortDateString();
-        DateTo = profile.BillingPeriod.DateTo.ToShortDateString();
+        PeriodTitle = DateUtils.PeriodTitle(period.DateFrom, period.DateTo);
+        BalanceCaption = isMonth ? AppResources.Home_LeftThisMonth : AppResources.Home_LeftThisPeriod;
+        SpreadHint = string.Format(AppResources.Home_SpreadHint, DateUtils.MonthName(period.DateFrom));
+        EmptyPeriodText = string.Format(AppResources.Home_EmptyMonthText, DateUtils.MonthName(period.DateFrom));
+        RecalculatingText = string.Format(AppResources.Home_Recalculating, DateUtils.MonthName(period.DateFrom));
 
-        InitializeExpenses(profile.Expenses);
-        CategoriesExpenses.Clear();
+        var daysLeft = (period.DateTo.Date - DateTime.Today).Days;
+        DaysToGo = daysLeft > 0
+            ? string.Format(AppResources.Home_DaysToGo, daysLeft)
+            : AppResources.Home_LastDay;
 
-        if (profile.CategoriesExpenses.Count > 0)
-        {
-            IsDisplayNoCategories = false;
-            InitializeCategoriesExpenses(profile.CategoriesExpenses);
-        }
-        else
-        {
-            IsDisplayNoCategories = true;
-        }
+        Balance = NumberUtils.FormatMoney(profile.Balance, currency.Symbol);
+        HasIncome = profile.Expenses.TotalBalance.PlannedAmount > 0;
 
-        SavedAmounts.Clear();
-        IsShowSavedAmounts = profile.SavedAmounts.Count > 0;
+        InitializeExpenses(profile, currency.Symbol);
+        InitializeCategoriesExpenses(profile, currency.Symbol);
+        InitializeSavedAmounts(profile);
+        await InitializeRecentTransactions(profile);
 
-        foreach (var savedAmount in profile.SavedAmounts)
-        {
-            var savedAmountModel = SavedAmountModel.FromDomain(savedAmount);
-            SavedAmounts.Add(savedAmountModel);
-        }
-
+        IsLoaded = true;
         IsRefreshing = false;
     }
 
-    private void InitializeExpenses(ProfileExpenses expenses)
+    private void InitializeExpenses(Profile profile, string symbol)
     {
-        TotalActualAmount = NumberUtils.RoundDecimalMoney(expenses.TotalBalance.ActualAmount, _profileCurrency);
-        TotalPlannedAmount = NumberUtils.RoundDecimalMoney(expenses.TotalBalance.PlannedAmount, _profileCurrency);
-        TodayActualAmount = NumberUtils.RoundDecimalMoney(expenses.TodayBalance.ActualAmount, _profileCurrency);
-        TodayPlannedAmount = NumberUtils.RoundDecimalMoney(expenses.TodayBalance.PlannedAmount, _profileCurrency);
-        BalanceForTomorrow = NumberUtils.RoundDecimalMoney(expenses.TomorrowBalance, _profileCurrency);
-        MainActualAmount = NumberUtils.RoundDecimalMoney(expenses.Main.ActualAmount, _profileCurrency);
-        MainPlannedAmount = NumberUtils.RoundDecimalMoney(expenses.Main.PlannedAmount, _profileCurrency);
-        SecondaryActualAmount = NumberUtils.RoundDecimalMoney(expenses.Secondary.ActualAmount, _profileCurrency);
-        SecondaryPlannedAmount = NumberUtils.RoundDecimalMoney(expenses.Secondary.PlannedAmount, _profileCurrency);
-        SavedActualAmount = NumberUtils.RoundDecimalMoney(expenses.Saved.ActualAmount, _profileCurrency);
-        SavedPlannedAmount = NumberUtils.RoundDecimalMoney(expenses.Saved.PlannedAmount, _profileCurrency);
+        var expenses = profile.Expenses;
 
-        InitializeExpenseRatios(expenses);
+        UsedOfIncome = string.Format(
+            AppResources.Home_UsedOfIncome,
+            NumberUtils.FormatMoney(expenses.TotalBalance.ActualAmount, symbol),
+            NumberUtils.FormatMoney(expenses.TotalBalance.PlannedAmount, symbol));
+        UsedRatio = GetRatio(expenses.TotalBalance);
+
+        TodayLeft = NumberUtils.FormatMoney(
+            expenses.TodayBalance.PlannedAmount - expenses.TodayBalance.ActualAmount,
+            symbol);
+        TodayLeftOf = string.Format(
+            AppResources.Home_LeftOf,
+            NumberUtils.FormatMoney(expenses.TodayBalance.PlannedAmount, symbol));
+        Tomorrow = NumberUtils.FormatMoney(expenses.TomorrowBalance, symbol);
+
+        MainSpent = NumberUtils.FormatMoney(expenses.Main.ActualAmount, symbol);
+        MainDetail = string.Format(
+            AppResources.Home_TypeBudget,
+            AppResources.Common_Needs,
+            NumberUtils.FormatMoney(expenses.Main.PlannedAmount, symbol, decimals: 0));
+        MainRemaining = FormatRemaining(expenses.Main, symbol);
+        MainRatio = GetRatio(expenses.Main);
+
+        SecondarySpent = NumberUtils.FormatMoney(expenses.Secondary.ActualAmount, symbol);
+        SecondaryDetail = string.Format(
+            AppResources.Home_TypeBudget,
+            AppResources.Common_Wants,
+            NumberUtils.FormatMoney(expenses.Secondary.PlannedAmount, symbol, decimals: 0));
+        SecondaryRemaining = FormatRemaining(expenses.Secondary, symbol);
+        SecondaryRatio = GetRatio(expenses.Secondary);
+
+        SavedSpent = NumberUtils.FormatMoney(expenses.Saved.ActualAmount, symbol);
+        SavedDetail = string.Format(
+            AppResources.Home_TypeBudget,
+            AppResources.Common_Savings,
+            NumberUtils.FormatMoney(expenses.Saved.PlannedAmount, symbol, decimals: 0));
+
+        var toGoal = expenses.Saved.PlannedAmount - expenses.Saved.ActualAmount;
+        SavedRemaining = toGoal > 0
+            ? string.Format(AppResources.Home_ToGoal, NumberUtils.FormatMoney(toGoal, symbol))
+            : AppResources.Home_GoalReached;
+        SavedRatio = GetRatio(expenses.Saved);
     }
 
-    private void InitializeExpenseRatios(ProfileExpenses expenses)
+    private void InitializeCategoriesExpenses(Profile profile, string symbol)
     {
-        TotalBalanceRatio = GetExpenseRatio(expenses.TotalBalance);
-        TodayBalanceRatio = GetExpenseRatio(expenses.TodayBalance);
-        MainExpensesRatio = GetExpenseRatio(expenses.Main);
-        SecondaryExpensesRatio = GetExpenseRatio(expenses.Secondary);
-        SavedRatio = GetExpenseRatio(expenses.Saved);
-    }
+        var categories = profile.CategoriesExpenses
+            .Select(c => CategoryExpenseModel.FromDomain(c, symbol))
+            .OrderByDescending(c => c.HasLimit)
+            .ThenByDescending(c => c.Ratio)
+            .ToList();
 
-    private void InitializeCategoriesExpenses(List<ProfileCategory> categories)
-    {
+        CategoriesExpenses.Clear();
+
         foreach (var category in categories)
         {
-            decimal? plannedAmount = null;
-            float? ratio = null;
-
-            var showRatio = category.PlannedAmount is not (null or 0);
-
-            if (showRatio)
-            {
-                plannedAmount = category.PlannedAmount;
-                ratio = GetCategoryRatio(category);
-            }
-
-            var categoryExpense = new CategoryExpenseModel(
-                Id: category.Id,
-                Name: category.Name,
-                ActualAmount: NumberUtils.RoundDecimal(category.ActualAmount),
-                IsShowRatio: showRatio,
-                PlannedAmount: plannedAmount,
-                Ratio: ratio,
-                _profileCurrency);
-
-            CategoriesExpenses.Add(categoryExpense);
+            CategoriesExpenses.Add(category);
         }
+
+        IsDisplayNoCategories = categories.Count == 0;
+
+        OverLimitCategory = categories
+            .Where(c => c.IsOver)
+            .MaxBy(c => c.ActualAmount - c.PlannedAmount!.Value);
+
+        HasOverLimit = OverLimitCategory is not null;
+
+        if (OverLimitCategory is null)
+        {
+            return;
+        }
+
+        OverLimitTitle = string.Format(
+            AppResources.Home_OverLimitTitle,
+            OverLimitCategory.Name,
+            NumberUtils.FormatMoney(OverLimitCategory.ActualAmount - OverLimitCategory.PlannedAmount!.Value, symbol));
+        OverLimitDetail = string.Format(
+            AppResources.Home_OverLimitDetail,
+            NumberUtils.FormatMoney(OverLimitCategory.ActualAmount, symbol),
+            NumberUtils.FormatMoney(OverLimitCategory.PlannedAmount.Value, symbol));
     }
 
-    private static float GetExpenseRatio(ProfileExpense expense)
+    private void InitializeSavedAmounts(Profile profile)
     {
-        if (expense.PlannedAmount == 0)
+        SavedAmounts.Clear();
+
+        foreach (var savedAmount in profile.SavedAmounts)
         {
-            return 1;
+            SavedAmounts.Add(SavedAmountModel.FromDomain(savedAmount));
         }
 
-        return NumberUtils.GetFloatRatio(expense.ActualAmount, expense.PlannedAmount);
+        HasSavedAmounts = SavedAmounts.Count > 0;
     }
 
-    private static float GetCategoryRatio(ProfileCategory category)
+    private async Task InitializeRecentTransactions(Profile profile)
     {
-        if (category.PlannedAmount is null or 0)
+        var transactions = await _transactionRepository.GetForPeriod(
+            profile.Id,
+            profile.BillingPeriod.DateFrom,
+            profile.BillingPeriod.DateTo);
+
+        RecentTransactions.Clear();
+
+        foreach (var transaction in transactions
+                     .OrderByDescending(t => t.Timestamp)
+                     .Take(RecentTransactionsCount))
         {
-            return 1;
+            RecentTransactions.Add(TransactionModel.FromDomain(transaction));
         }
 
-        return NumberUtils.GetFloatRatio(category.ActualAmount, (decimal)category.PlannedAmount);
+        HasRecent = RecentTransactions.Count > 0;
+    }
+
+    private static string FormatRemaining(ProfileExpense expense, string symbol)
+    {
+        var remaining = expense.PlannedAmount - expense.ActualAmount;
+
+        return remaining >= 0
+            ? string.Format(AppResources.Home_AmountLeft, NumberUtils.FormatMoney(remaining, symbol))
+            : string.Format(AppResources.Home_AmountOver, NumberUtils.FormatMoney(-remaining, symbol));
+    }
+
+    private static double GetRatio(ProfileExpense expense)
+    {
+        if (expense.PlannedAmount <= 0)
+        {
+            return expense.ActualAmount > 0 ? 1 : 0;
+        }
+
+        return (double)(expense.ActualAmount / expense.PlannedAmount);
     }
 }

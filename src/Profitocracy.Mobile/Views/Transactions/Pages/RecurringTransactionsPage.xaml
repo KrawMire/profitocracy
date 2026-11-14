@@ -9,7 +9,7 @@
              xmlns:transactions="clr-namespace:Profitocracy.Mobile.Models.Transactions"
              xmlns:sharedcontrols="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
              x:Class="Profitocracy.Mobile.Views.Transactions.Pages.RecurringTransactionsPage"
-             Title="{x:Static resx:AppResources.Pages_Transactions}"
+             Title="{x:Static resx:AppResources.Pages_Transactions_Recurring}"
              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
              x:DataType="viewmodel:RecurringTransactionsPageViewModel"
              HideSoftInputOnTapped="True"
@@ -20,10 +20,19 @@
                Text="{x:Static resx:AppResources.Transactions_NoTransactions}"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
-               Padding="16, 0"/>
+               Padding="32, 0"/>
 
         <CollectionView x:Name="TransactionsCollectionView"
-                        VerticalScrollBarVisibility="Default">
+                        Margin="16,0"
+                        VerticalScrollBarVisibility="Never">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="8"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.Header>
+                <Grid HeightRequest="12"
+                      BackgroundColor="Transparent"/>
+            </CollectionView.Header>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="transactions:TransactionModel">
                     <SwipeView>

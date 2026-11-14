@@ -2,96 +2,183 @@
 
 <abstractions:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                               xmlns:resx="clr-namespace:Profitocracy.Mobile.Resources.Strings"
                               xmlns:categories="clr-namespace:Profitocracy.Mobile.Models.Categories"
                               xmlns:abstractions="clr-namespace:Profitocracy.Mobile.Abstractions"
                               xmlns:viewmodel="clr-namespace:Profitocracy.Mobile.ViewModels.Categories"
-                              xmlns:sharedcontrols="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
+                              xmlns:controls="clr-namespace:Profitocracy.Mobile.Views.Shared.Controls"
                               x:Class="Profitocracy.Mobile.Views.Settings.Pages.ExpenseCategoriesSettingsPage"
                               x:DataType="viewmodel:ExpenseCategoriesSettingsPageViewModel"
                               Title="{x:Static resx:AppResources.Pages_Categories}"
-                              BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+                              Shell.NavBarIsVisible="False"
+                              ios:Page.UseSafeArea="True"
                               NavigatedTo="UpdateCategoriesList"
                               HideSoftInputOnTapped="True">
-    <abstractions:BaseContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Label Style="{StaticResource ExpenseCardSubtitleSecondary}" 
-                   IsVisible="{Binding IsCategoriesListEmpty}" 
-                   Text="{x:Static resx:AppResources.Home_NoCategories}"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   Padding="16,0"/>
-            <CollectionView Grid.Row="0"
-                            x:Name="CategoriesCollectionView"
-                            VerticalScrollBarVisibility="Never">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="categories:CategoryModel">
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems>
-                                    <SwipeItemView Padding="4,0,8,0"
-                                                   BackgroundColor="Transparent"
-                                                   Invoked="DeleteCategory_OnInvoked">
-                                        <VerticalStackLayout VerticalOptions="Center" 
-                                                             Width="16">
-                                            <Border BackgroundColor="{StaticResource DangerRed}"
-                                                    StrokeThickness="0"
-                                                    Padding="16">
-                                                <Border.StrokeShape>
-                                                    <RoundRectangle CornerRadius="40"/>
-                                                </Border.StrokeShape>
-                                                <Image Source="bin.png" 
-                                                       Width="8"/>
-                                            </Border>
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout Padding="16,0,16,32">
+
+            <!-- Back to settings -->
+            <HorizontalStackLayout Spacing="2"
+                                   Margin="-8,0,0,0"
+                                   Padding="2,0,8,0"
+                                   HorizontalOptions="Start"
+                                   MinimumHeightRequest="44">
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackButton_OnTapped"/>
+                </HorizontalStackLayout.GestureRecognizers>
+                <controls:IconView Data="{x:Static controls:Icons.ChevronLeft}"
+                                   Size="22"
+                                   VerticalOptions="Center"
+                                   Color="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource Chartreuse}}"/>
+                <Label Style="{StaticResource LinkLabel}"
+                       Text="{x:Static resx:AppResources.Pages_Settings}"/>
+            </HorizontalStackLayout>
+
+            <Label Style="{StaticResource TextTitleL}"
+                   Margin="0,8,0,0"
+                   Text="{x:Static resx:AppResources.Pages_Categories}"/>
+            <Label Style="{StaticResource TextBodySoft}"
+                   Margin="0,8,0,0"
+                   Text="{Binding Subtitle}"/>
+
+            <!-- Categories -->
+            <Border Style="{StaticResource Card}"
+                    Margin="0,24,0,0"
+                    IsVisible="{Binding HasCategories}">
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Categories}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="categories:CategorySettingsModel">
+                            <VerticalStackLayout>
+                                <controls:ListDivider/>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItemView Invoked="DeleteCategory_OnInvoked">
+                                                <Grid WidthRequest="64"
+                                                      BackgroundColor="{StaticResource OverLimit}">
+                                                    <controls:IconView Data="{x:Static controls:Icons.Trash}"
+                                                                       HorizontalOptions="Center"
+                                                                       VerticalOptions="Center"
+                                                                       Color="{StaticResource White}"/>
+                                                </Grid>
+                                            </SwipeItemView>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid ColumnDefinitions="auto,*,auto,auto"
+                                          ColumnSpacing="12"
+                                          Padding="16,14"
+                                          BackgroundColor="{AppThemeBinding Light={StaticResource Surface}, Dark={StaticResource DarkSurface}}">
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Category_OnTapped"/>
+                                        </Grid.GestureRecognizers>
+                                        <Border Grid.Column="0"
+                                                Style="{StaticResource IconTile}">
+                                            <Border.Triggers>
+                                                <DataTrigger TargetType="Border"
+                                                             Binding="{Binding IsOver}"
+                                                             Value="True">
+                                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource OverTint}, Dark={StaticResource DarkOverTint}}"/>
+                                                </DataTrigger>
+                                            </Border.Triggers>
+                                            <controls:IconView Data="{x:Static controls:Icons.Tag}"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center"
+                                                               Color="{AppThemeBinding Light={StaticResource Ink}, Dark={StaticResource DarkInk}}">
+                                                <controls:IconView.Triggers>
+                                                    <DataTrigger TargetType="controls:IconView"
+                                                                 Binding="{Binding IsOver}"
+                                                                 Value="True">
+                                                        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"/>
+                                                    </DataTrigger>
+                                                </controls:IconView.Triggers>
+                                            </controls:IconView>
+                                        </Border>
+                                        <VerticalStackLayout Grid.Column="1"
+                                                             Spacing="4"
+                                                             VerticalOptions="Center">
+                                            <Label Style="{StaticResource TextBodyStrong}"
+                                                   LineBreakMode="TailTruncation"
+                                                   Text="{Binding Name}"/>
+                                            <Label Style="{StaticResource TextCaption}"
+                                                   LineBreakMode="TailTruncation"
+                                                   Text="{Binding Spent}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label"
+                                                                 Binding="{Binding IsOver}"
+                                                                 Value="True">
+                                                        <Setter Property="FontFamily" Value="SansMedium"/>
+                                                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource OverText}, Dark={StaticResource DarkOverText}}"/>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                         </VerticalStackLayout>
-                                    </SwipeItemView>
-                                    <SwipeItemView Padding="8,0,4,0"
-                                                   BackgroundColor="Transparent"
-                                                   Invoked="EditCategory_OnInvoked">
-                                        <VerticalStackLayout VerticalOptions="Center" 
-                                                             Width="16">
-                                            <Border BackgroundColor="{StaticResource InfoBlue}"
-                                                    StrokeThickness="0"
-                                                    Padding="16">
-                                                <Border.StrokeShape>
-                                                    <RoundRectangle CornerRadius="40"/>
-                                                </Border.StrokeShape>
-                                                <Image Source="edit.png" 
-                                                       Width="8"/>
-                                            </Border>
+                                        <VerticalStackLayout Grid.Column="2"
+                                                             Spacing="4"
+                                                             VerticalOptions="Center">
+                                            <Label Style="{StaticResource TextAmountM}"
+                                                   HorizontalTextAlignment="End"
+                                                   Text="{Binding Limit}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label"
+                                                                 Binding="{Binding HasNoLimit}"
+                                                                 Value="True">
+                                                        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                            <Label Style="{StaticResource TextCaption}"
+                                                   HorizontalTextAlignment="End"
+                                                   Text="{Binding LimitCaption}"/>
                                         </VerticalStackLayout>
-                                    </SwipeItemView>
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            
-                            <Border Style="{StaticResource CategoryCard}"
-                                    Margin="8,8,8,0">
-                                <StackLayout>
-                                    <FlexLayout JustifyContent="SpaceBetween">
-                                        <Label Style="{StaticResource CategoryCardName}"
-                                               Text="{Binding Name}"/>
-                                        <Label Style="{StaticResource CategoryCardPlannedAmount}"
-                                               Text="{Binding DisplayPlannedAmount}"/>
-                                    </FlexLayout>
-                                </StackLayout>
-                            </Border>
-                        </SwipeView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.Footer>
-                    <Grid HeightRequest="92"
-                          BackgroundColor="Transparent"/>
-                </CollectionView.Footer>
-            </CollectionView>
-            
-            <sharedcontrols:AddNewButton Grid.Row="0" 
-                                         HorizontalOptions="End"
-                                         VerticalOptions="End"
-                                         Margin="0,0,16, 16"
-                                         Clicked="AddCategoryButton_OnClicked"/>
-        </Grid>
-    </abstractions:BaseContentPage.Content>
+                                        <controls:IconView Grid.Column="3"
+                                                           Data="{x:Static controls:Icons.ChevronRight}"
+                                                           Size="18"
+                                                           VerticalOptions="Center"
+                                                           Color="{AppThemeBinding Light={StaticResource InkSoft}, Dark={StaticResource DarkInkSoft}}"/>
+                                    </Grid>
+                                </SwipeView>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="auto,*"
+                  ColumnSpacing="8"
+                  Margin="4,12,4,0"
+                  IsVisible="{Binding HasCategories}">
+                <Label Grid.Column="0"
+                       Style="{StaticResource TextLabelSoft}"
+                       Text="{x:Static resx:AppResources.Categories_LimitsAddUp}"/>
+                <Label Grid.Column="1"
+                       Style="{StaticResource TextLabel}"
+                       HorizontalTextAlignment="End"
+                       Text="{Binding LimitsTotal}"/>
+            </Grid>
+
+            <Label Style="{StaticResource TextBodySoft}"
+                   Margin="4,24,4,0"
+                   IsVisible="{Binding IsCategoriesListEmpty}"
+                   Text="{x:Static resx:AppResources.Home_NoCategoriesText}"/>
+
+            <!-- Add a category -->
+            <Border Style="{StaticResource Card}"
+                    Margin="0,24,0,0"
+                    MinimumHeightRequest="48">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AddCategoryButton_OnClicked"/>
+                </Border.GestureRecognizers>
+                <HorizontalStackLayout Spacing="8"
+                                       HorizontalOptions="Center">
+                    <controls:IconView Data="{x:Static controls:Icons.Plus}"
+                                       Size="20"
+                                       VerticalOptions="Center"
+                                       Color="{AppThemeBinding Light={StaticResource NoteGreen}, Dark={StaticResource Chartreuse}}"/>
+                    <Label Style="{StaticResource LinkLabel}"
+                           Text="{x:Static resx:AppResources.Categories_Add}"/>
+                </HorizontalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
 </abstractions:BaseContentPage>
